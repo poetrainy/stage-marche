@@ -3,8 +3,15 @@ import { Box } from '@chakra-ui/react';
 
 import NextLink from 'next/link';
 
-const SigninBtn: FC = () => (
+type Props = {
+  text: string;
+  path: string;
+};
+
+const GradationBtn: FC<Props> = ({ text, path }) => (
   <Box
+    w={'fit-content'}
+    m={'0 auto'}
     sx={{
       '>a': {
         display: 'flex',
@@ -19,10 +26,10 @@ const SigninBtn: FC = () => (
       },
     }}
   >
-    <NextLink href={'/signin'} passHref>
-      無料でログイン
+    <NextLink href={`/${path}`} passHref>
+      {text}
     </NextLink>
   </Box>
 );
 
-export default SigninBtn;
+export default GradationBtn;

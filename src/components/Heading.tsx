@@ -4,7 +4,7 @@ import { navContentsType } from 'src/types/nav';
 import { navContents } from 'src/libs/nav';
 
 type Props = {
-  path: string;
+  path?: string;
 };
 
 const Heading: FC<Props> = ({ path }) => {
@@ -12,17 +12,19 @@ const Heading: FC<Props> = ({ path }) => {
   const [navIndex, setNavIndex] = useState<number>(0);
 
   useEffect(() => {
-    for (let i = 0; i < navContents.length; i++) {
-      if (`/${navContents[i].path}` === path) {
-        setNav(navContents[i]);
-        setNavIndex(i);
+    if (path) {
+      for (let i = 0; i < navContents.length; i++) {
+        if (`/${navContents[i].path}` === path) {
+          setNav(navContents[i]);
+          setNavIndex(i);
+        }
       }
     }
   }, []);
 
   return (
     <>
-      {nav && (
+      {(nav || path === undefined) && (
         <Center
           w={'100vw'}
           h={'64px'}

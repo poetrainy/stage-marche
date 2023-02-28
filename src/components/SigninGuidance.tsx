@@ -2,7 +2,8 @@ import { FC, useEffect, useState } from 'react';
 import { Box, Center, Text } from '@chakra-ui/react';
 
 import OriginalSpacer from 'src/components/OriginalSpacer';
-import SigninBtn from 'src/components/SigninBtn';
+import GradationBtn from 'src/components/GradationBtn';
+import PreText from 'src/components/PreText';
 
 import { signinGuidanceText } from 'src/libs/signin';
 
@@ -29,17 +30,7 @@ const SigninGuidance: FC = () => {
           <Box as={'img'} src={`/img/guidance_${guidance.path}.svg`} />
           <OriginalSpacer size={'32px'} />
           <Center flexDirection={'column'} gap={'12px'} w={'fit-content'}>
-            <Text as={'h2'} w={'fit-content'}>
-              <Text
-                as={'pre'}
-                fontSize={'2rem'}
-                fontWeight={'bold'}
-                lineHeight={'3.2rem'}
-                textAlign={'center'}
-              >
-                {guidance.heading}
-              </Text>
-            </Text>
+            <PreText text={guidance.heading} />
             <Text
               w={'90vw'}
               color={'black600'}
@@ -51,7 +42,7 @@ const SigninGuidance: FC = () => {
             </Text>
           </Center>
           <OriginalSpacer size={'32px'} />
-          <SigninBtn />
+          <GradationBtn text={'無料でログイン'} path={'signin'} />
         </Center>
       )}
     </>
