@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 
 import Contents from 'src/components/Contents';
 
-const Home: NextPage = () => {
+const User: NextPage = () => {
   return <Contents />;
 };
 
-export default Home;
+export default User;

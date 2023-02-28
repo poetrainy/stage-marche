@@ -1,0 +1,9 @@
+{
+    "theme_color": "#9C519D",
+    "background_color": "#F8F8F8",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "name": "\u30c1\u30b1\u30c3\u30c8\u30de\u30eb\u30b7\u30a7",
+    "short_name": "\u30c1\u30b1\u30de\u30eb"
+}
