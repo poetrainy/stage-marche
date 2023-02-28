@@ -11,9 +11,7 @@ import { signinGuidanceTextType } from 'src/types/signin';
 import useGetPath from 'src/hooks/useGetPath';
 
 const SigninGuidance: FC = () => {
-  const [guidance, setGuidance] = useState<signinGuidanceTextType>(
-    signinGuidanceText[0]
-  );
+  const [guidance, setGuidance] = useState<signinGuidanceTextType>();
   const path = useGetPath();
 
   useEffect(() => {
