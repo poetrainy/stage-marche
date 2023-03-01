@@ -11,6 +11,12 @@ const colors = {
   black200: '#F1F1F1',
   black100: '#F8F8F8',
   gradation1: 'linear-gradient(135deg, #F97794 0%, #623AA2 100%)',
+  pink: '#ed8599',
+  yellow: '#fcd13e',
+  lime: '#d9da21',
+  green: '#aac836',
+  skyblue: '#5dc1cf',
+  primaryBlue: '#46b4bc',
 };
 const styles = {
   global: {

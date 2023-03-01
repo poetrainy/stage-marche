@@ -57,7 +57,7 @@ const Navigation: FC<Props> = ({ path }) => {
                 content: '""',
                 width: '24px',
                 height: '4px',
-                background: 'primary',
+                background: 'primaryBlue',
                 borderRadius: '0px 0px 4px 4px',
                 position: 'absolute',
                 inset: '0 auto auto auto',
@@ -79,7 +79,7 @@ const Navigation: FC<Props> = ({ path }) => {
                 path: {
                   fill:
                     `/${item.path}` === path && !item.center
-                      ? 'primary'
+                      ? 'primaryBlue'
                       : item.fill,
                 },
               }}
@@ -87,7 +87,9 @@ const Navigation: FC<Props> = ({ path }) => {
             <Text
               as={'span'}
               color={
-                `/${item.path}` === path && !item.center ? 'primary' : item.fill
+                `/${item.path}` === path && !item.center
+                  ? 'primaryBlue'
+                  : item.fill
               }
               fontSize={'1rem'}
               fontWeight={'bold'}

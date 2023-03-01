@@ -39,7 +39,7 @@ const Enquete: NextPage = () => {
             {item.map((content, i2) => (
               <Text
                 key={content + i2}
-                color={'primary'}
+                color={'primaryBlue'}
                 bg={'white'}
                 p={'12px 20px'}
                 fontSize={'1.5rem'}
