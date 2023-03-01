@@ -16,11 +16,19 @@ const Contents: FC<Props> = ({ component }) => {
   return (
     <>
       {path && (
-        <Center flexDirection={"column"} minH={'100vh'} p={'64px 0 96px'}>
+        <Box flexDirection={'column'}>
           <Heading path={path} />
-          <>{component}</>
+          <Box
+            as={'main'}
+            w={'90vw'}
+            minH={'100vh'}
+            m={'0 auto'}
+            p={'64px 0 96px'}
+          >
+            {component}
+          </Box>
           <Navigation path={path} />
-        </Center>
+        </Box>
       )}
     </>
   );

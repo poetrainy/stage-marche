@@ -7,7 +7,7 @@ import { loginState } from 'src/libs/signin';
 
 const Column: NextPage = () => {
   const Component = () => {
-    return <>{!loginState && <SigninGuidance />}</>;
+    return <>{loginState ? <>あああ</> : <SigninGuidance />}</>;
   };
 
   return <Contents component={<Component />} />;

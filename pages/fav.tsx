@@ -7,7 +7,7 @@ import { loginState } from 'src/libs/signin';
 
 const Fav: NextPage = () => {
   const Component = () => {
-    return <>{!loginState && <SigninGuidance />}</>;
+    return <>{loginState ? <>きになるな〜</> : <SigninGuidance />}</>;
   };
 
   return <Contents component={<Component />} />;

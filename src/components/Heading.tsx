@@ -26,6 +26,7 @@ const Heading: FC<Props> = ({ path }) => {
     <>
       {nav && path !== undefined && (
         <Center
+          as={'header'}
           w={'100vw'}
           h={'64px'}
           bg={'white'}

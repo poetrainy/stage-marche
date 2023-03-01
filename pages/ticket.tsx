@@ -7,7 +7,7 @@ import { loginState } from 'src/libs/signin';
 
 const Ticket: NextPage = () => {
   const Component = () => {
-    return <>{!loginState && <SigninGuidance />}</>;
+    return <>{loginState && <SigninGuidance />}</>;
   };
 
   return <Contents component={<Component />} />;

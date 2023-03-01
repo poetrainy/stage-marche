@@ -26,13 +26,12 @@ const SigninGuidance: FC = () => {
   return (
     <>
       {guidance && (
-        <Center h={'auto'} flexDirection={'column'} pb={'32px'}>
+        <Center flexDirection={'column'} h={'calc(100vh - 64px - 96px)'} pb={'56px'} m={'auto'}>
           <Box as={'img'} src={`/img/guidance_${guidance.path}.svg`} />
           <OriginalSpacer size={'32px'} />
           <Center flexDirection={'column'} gap={'12px'} w={'fit-content'}>
             <PreText text={guidance.heading} />
             <Text
-              w={'90vw'}
               color={'black600'}
               fontSize={'1.2rem'}
               lineHeight={'2.2rem'}
