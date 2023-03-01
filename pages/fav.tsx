@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Center, Flex, Text } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 
 import Contents from 'src/components/Contents';
@@ -60,7 +60,7 @@ const Fav: NextPage = () => {
                 {typeArray[item.type].text}
               </Text>
               <OriginalSpacer size={'4px'} />
-              <Text as={'h2'} fontSize={'1.7rem'} fontWeight={'bold'}>
+              <Text as={'h3'} fontSize={'1.7rem'} fontWeight={'bold'}>
                 {item.name}
               </Text>
               <OriginalSpacer size={'4px'} />
@@ -95,57 +95,72 @@ const Fav: NextPage = () => {
             <NowStage />
             <Headline text={'公演が終了した作品'} />
             <Box w={'100%'} overflow={'scroll'}>
-              <Flex gap={'12px'} w={`calc(156px * ${stageArray.length})`}>
+              <Flex gap={'12px'} w={`calc(160px * ${stageArray.length})`}>
                 {stageArray.map((item, i) => (
-                  <Box
+                  <Flex
                     key={item.name + i}
-                    // gap={'4%'}
-                    w={'156px'}
+                    flexDir={'column'}
+                    justifyContent={'space-between'}
+                    w={'160px'}
                     bg={'white'}
-                    p={'10px'}
+                    p={'10px 10px 14px'}
                     borderRadius={'16px'}
                     boxShadow={'0px 0px 15px rgba(0, 0, 0, 0.05)'}
                   >
-                    <Box
-                      w={'100%'}
-                      bg={'black600'}
-                      pt={'calc(100% / 3 * 4.2)'}
-                      borderRadius={'8px'}
-                      overflow={'hidden'}
-                      pos={'relative'}
-                      boxShadow={'0px 0px 3px rgba(0, 0, 0, 0.1)'}
-                    >
+                    <Box>
                       <Box
-                        as={'img'}
-                        src={`./img/stage_img_${item.img}.jpg`}
                         w={'100%'}
-                        h={'100%'}
-                        objectFit={'cover'}
-                        pos={'absolute'}
-                        inset={'0 0 0 0'}
-                      />
+                        bg={'black600'}
+                        pt={'calc(100% / 3 * 4.2)'}
+                        borderRadius={'8px'}
+                        overflow={'hidden'}
+                        pos={'relative'}
+                        boxShadow={'0px 0px 3px rgba(0, 0, 0, 0.1)'}
+                      >
+                        <Box
+                          as={'img'}
+                          src={`./img/stage_img_${item.img}.jpg`}
+                          w={'100%'}
+                          h={'100%'}
+                          objectFit={'cover'}
+                          pos={'absolute'}
+                          inset={'0 0 0 0'}
+                        />
+                        <Center
+                          w={'40px'}
+                          h={'40px'}
+                          bg={'primaryBlue'}
+                          pos={'absolute'}
+                          inset={'8px auto auto 4px'}
+                          borderRadius={'9999px'}
+                        >
+                          <Box as={'img'} src={'./img/nav_fav.svg'} />
+                        </Center>
+                      </Box>
+                      <OriginalSpacer size={'8px'} />
+                      <Text
+                        w={'fit-content'}
+                        color={'white'}
+                        bg={typeArray[item.type].color}
+                        p={'4px 12px'}
+                        fontSize={'1.1rem'}
+                        fontWeight={'bold'}
+                        borderRadius={'9999px'}
+                      >
+                        {typeArray[item.type].text}
+                      </Text>
+                      <OriginalSpacer size={'4px'} />
+                      <Text as={'h3'} fontSize={'1.4rem'} fontWeight={'bold'}>
+                        {item.name}
+                      </Text>
+                      <OriginalSpacer size={'8px'} />
                     </Box>
-                    <OriginalSpacer size={'8px'} />
-                    <Text
-                      w={'fit-content'}
-                      color={'white'}
-                      bg={typeArray[item.type].color}
-                      p={'4px 12px'}
-                      fontSize={'1.1rem'}
-                      fontWeight={'bold'}
-                      borderRadius={'9999px'}
-                    >
-                      {typeArray[item.type].text}
-                    </Text>
-                    <OriginalSpacer size={'4px'} />
-                    <Text as={'h2'} fontSize={'1.4rem'} fontWeight={'bold'}>
-                      {item.name}
-                    </Text>
-                  </Box>
+                    <StageInfomation data={item} time />
+                  </Flex>
                 ))}
               </Flex>
             </Box>
-            <OriginalSpacer size={'32px'} />
+            <OriginalSpacer size={'40px'} />
           </>
         ) : (
           <SigninGuidance />

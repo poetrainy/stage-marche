@@ -5,14 +5,14 @@ export type stageType = {
   genre: number[];
   schedule: {
     start: {
-      yyyy: number;
-      mm: number;
-      dd: number;
+      y: number;
+      m: number;
+      d: number;
     };
     end: {
-      yyyy: number;
-      mm: number;
-      dd: number;
+      y: number;
+      m: number;
+      d: number;
     };
   };
   time: {

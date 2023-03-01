@@ -6,9 +6,12 @@ import { prefectureArray } from 'src/libs/stage';
 
 type Props = {
   data: stageType;
+  place?: boolean;
+  schedule?: boolean;
+  time?: boolean;
 };
 
-const StageInfomation: FC<Props> = ({ data }) => (
+const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
   <Flex
     flexDir={'column'}
     gap={'4px'}
@@ -35,47 +38,52 @@ const StageInfomation: FC<Props> = ({ data }) => (
       },
     }}
   >
-    <Flex
-      sx={{
-        '&::before': {
-          background: 'url("./img/stage_info_schedule.svg")',
-        },
-      }}
-    >
-      {data.schedule.start.yyyy}.{data.schedule.start.mm}.
-      {data.schedule.start.dd}〜{data.schedule.end.yyyy}.{data.schedule.end.mm}.
-      {data.schedule.end.dd}
-    </Flex>
-    <Flex
-      sx={{
-        '&::before': {
-          background: 'url("./img/stage_info_time.svg")',
-        },
-      }}
-    >
-      {data.time.matinee && (
-        <>
-          {data.time.matinee.start[0]}:{data.time.matinee.start[1]}〜
-          {data.time.matinee.end[0]}:{data.time.matinee.end[1]}
-          <br />
-        </>
-      )}
-      {data.time.soiree && (
-        <>
-          {data.time.soiree.start[0]}:{data.time.soiree.start[1]}〜
-          {data.time.soiree.end[0]}:{data.time.soiree.end[1]}
-        </>
-      )}
-    </Flex>
-    <Flex
-      sx={{
-        '&::before': {
-          background: 'url("./img/stage_info_place.svg")',
-        },
-      }}
-    >
-      {prefectureArray[data.prefecture]} {data.place}
-    </Flex>
+    {!place && (
+      <Flex
+        sx={{
+          '&::before': {
+            background: 'url("./img/stage_info_place.svg")',
+          },
+        }}
+      >
+        {prefectureArray[data.prefecture]}公演 {!time && data.place}
+      </Flex>
+    )}
+    {!schedule && (
+      <Flex
+        sx={{
+          '&::before': {
+            background: 'url("./img/stage_info_schedule.svg")',
+          },
+        }}
+      >
+        {data.schedule.start.y}.{data.schedule.start.m}.{data.schedule.start.d}
+        -{data.schedule.end.y}.{data.schedule.end.m}.{data.schedule.end.d}
+      </Flex>
+    )}
+    {!time && (
+      <Flex
+        sx={{
+          '&::before': {
+            background: 'url("./img/stage_info_time.svg")',
+          },
+        }}
+      >
+        {data.time.matinee && (
+          <>
+            {data.time.matinee.start[0]}:{data.time.matinee.start[1]}〜
+            {data.time.matinee.end[0]}:{data.time.matinee.end[1]}
+            <br />
+          </>
+        )}
+        {data.time.soiree && (
+          <>
+            {data.time.soiree.start[0]}:{data.time.soiree.start[1]}〜
+            {data.time.soiree.end[0]}:{data.time.soiree.end[1]}
+          </>
+        )}
+      </Flex>
+    )}
   </Flex>
 );
 
