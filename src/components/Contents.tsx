@@ -16,7 +16,7 @@ const Contents: FC<Props> = ({ component }) => {
   return (
     <>
       {path && (
-        <Box flexDirection={'column'}>
+        <Box flexDir={'column'}>
           <Heading path={path} />
           <Box
             as={'main'}

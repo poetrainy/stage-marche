@@ -21,16 +21,17 @@ const Navigation: FC<Props> = ({ path }) => {
       inset={'auto auto 0 0'}
       boxShadow={'0px 0px 15px rgba(0, 0, 0, 0.05)'}
       borderRadius={'30px 30px 0px 0px'}
+      zIndex={'20'}
     >
       {navContents.map((item, i) => (
         <Center
           key={item.path + i}
-          flexDirection={'column'}
+          flexDir={'column'}
           w={'19vw'}
           sx={{
             '>a': {
               display: 'flex',
-              flexDirection: 'column',
+              flexDir: 'column',
               alignItems: 'center',
               gap: '4px',
               position: 'relative',

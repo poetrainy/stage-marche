@@ -15,7 +15,37 @@ export const signinGuidanceText: signinGuidanceTextType[] = [
   },
   {
     path: 'fav',
-    heading: '興味がある公演は、ログインして\n「気になる」しておこう！',
-    text: '興味はあるけど、他の公演とも迷う…そんな時は「気になる」機能を使って作品をピンしましょう。目移りも楽しいものですね！',
+    heading: '興味がある公演は、ログインして\n『気になる』しておこう！',
+    text: '興味はあるけど、他の公演とも迷う…そんな時は『気になる』機能を使って作品をピンしましょう。目移りも楽しいものですね！',
   },
 ];
+
+export const genreArray: string[][] = [
+  ['ミュージカル', 'お芝居'],
+  // 'メジャー作品',
+  // 'マイナー作品',
+  ['歴史', '現代', '近未来'],
+  [
+    'シリアス',
+    'ラブ',
+    'ミステリー',
+    '革命',
+    'ほのぼの',
+    '成長',
+    '学園',
+    'スポーツ',
+    '実写化',
+  ],
+  // '群像劇',
+  // '一人芝居',
+];
+
+let type: { text: string; color: string; index: number }[] = [];
+const setTypeArray = () => {
+  let colorArray = ['primaryBlue', 'pink', 'green', 'yellow'];
+  for (let i = 0; i < genreArray[0].length; i++) {
+    type.push({ text: genreArray[0][i], color: colorArray[i], index: i });
+  }
+};
+setTypeArray();
+export const typeArray = type;
