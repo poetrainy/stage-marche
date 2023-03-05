@@ -1,34 +1,38 @@
 export type stageType = {
   name: string;
-  img: string;
+  path: string;
+  imgLength: 1;
   type: number;
   genre: number[];
+  description: string;
   schedule: {
-    start: {
-      y: number;
-      m: number;
-      d: number;
+    place: string;
+    prefecture: number;
+    date: {
+      start: {
+        y: number;
+        m: number;
+        d: number;
+      };
+      end: {
+        y: number;
+        m: number;
+        d: number;
+      };
     };
-    end: {
-      y: number;
-      m: number;
-      d: number;
+    time: {
+      matinee:
+        | {
+            start: string[];
+            end: string[];
+          }
+        | undefined;
+      soiree:
+        | {
+            start: string[];
+            end: string[];
+          }
+        | undefined;
     };
-  };
-  time: {
-    matinee:
-      | {
-          start: string[];
-          end: string[];
-        }
-      | undefined;
-    soiree:
-      | {
-          start: string[];
-          end: string[];
-        }
-      | undefined;
-  };
-  place: string;
-  prefecture: number;
+  }[];
 };

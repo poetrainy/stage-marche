@@ -6,6 +6,7 @@ import Headline from 'src/components/Headline';
 import OriginalSpacer from 'src/components/OriginalSpacer';
 import SigninGuidance from 'src/components/SigninGuidance';
 import StageInfomation from 'src/components/StageInfomation';
+import StageType from 'src/components/StageType';
 
 import { genreArray, loginState, typeArray } from 'src/libs/signin';
 import { stageArray } from 'src/libs/stage';
@@ -33,7 +34,7 @@ const Fav: NextPage = () => {
           >
             <Box
               as={'img'}
-              src={`./img/stage_img_${item.img}.jpg`}
+              src={`./img/stage_img_${item.path}_01.jpg`}
               w={'100%'}
               h={'100%'}
               objectFit={'cover'}
@@ -48,17 +49,7 @@ const Fav: NextPage = () => {
             p={'6px 0'}
           >
             <Box>
-              <Text
-                w={'fit-content'}
-                color={'white'}
-                bg={typeArray[item.type].color}
-                p={'4px 12px'}
-                fontSize={'1.1rem'}
-                fontWeight={'bold'}
-                borderRadius={'9999px'}
-              >
-                {typeArray[item.type].text}
-              </Text>
+              <StageType data={item} />
               <OriginalSpacer size={'4px'} />
               <Text as={'h3'} fontSize={'1.7rem'} fontWeight={'bold'}>
                 {item.name}
@@ -119,7 +110,7 @@ const Fav: NextPage = () => {
                       >
                         <Box
                           as={'img'}
-                          src={`./img/stage_img_${item.img}.jpg`}
+                          src={`./img/stage_img_${item.path}_01.jpg`}
                           w={'100%'}
                           h={'100%'}
                           objectFit={'cover'}

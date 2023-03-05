@@ -46,7 +46,8 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
           },
         }}
       >
-        {prefectureArray[data.prefecture]}公演 {!time && data.place}
+        {prefectureArray[data.schedule[0].prefecture]}公演{' '}
+        {!time && data.schedule[0].place}
       </Flex>
     )}
     {!schedule && (
@@ -57,8 +58,9 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
           },
         }}
       >
-        {data.schedule.start.y}.{data.schedule.start.m}.{data.schedule.start.d}
-        -{data.schedule.end.y}.{data.schedule.end.m}.{data.schedule.end.d}
+        {data.schedule[0].date.start.y}.{data.schedule[0].date.start.m}.
+        {data.schedule[0].date.start.d}-{data.schedule[0].date.end.y}.
+        {data.schedule[0].date.end.m}.{data.schedule[0].date.end.d}
       </Flex>
     )}
     {!time && (
@@ -69,17 +71,21 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
           },
         }}
       >
-        {data.time.matinee && (
+        {data.schedule[0].time.matinee && (
           <>
-            {data.time.matinee.start[0]}:{data.time.matinee.start[1]}〜
-            {data.time.matinee.end[0]}:{data.time.matinee.end[1]}
+            {data.schedule[0].time.matinee.start[0]}:
+            {data.schedule[0].time.matinee.start[1]}〜
+            {data.schedule[0].time.matinee.end[0]}:
+            {data.schedule[0].time.matinee.end[1]}
             <br />
           </>
         )}
-        {data.time.soiree && (
+        {data.schedule[0].time.soiree && (
           <>
-            {data.time.soiree.start[0]}:{data.time.soiree.start[1]}〜
-            {data.time.soiree.end[0]}:{data.time.soiree.end[1]}
+            {data.schedule[0].time.soiree.start[0]}:
+            {data.schedule[0].time.soiree.start[1]}〜
+            {data.schedule[0].time.soiree.end[0]}:
+            {data.schedule[0].time.soiree.end[1]}
           </>
         )}
       </Flex>

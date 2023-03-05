@@ -3,87 +3,108 @@ import { stageType } from 'src/types/stage';
 export const stageArray: stageType[] = [
   {
     name: 'ミュージカル『エリザベート』',
-    img: 'elisabeth',
+    path: 'elisabeth',
+    imgLength: 1,
     type: 0,
     genre: [0, 0],
-    schedule: {
-      start: {
-        y: 2023,
-        m: 1,
-        d: 1,
+    description:
+      '作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。',
+    schedule: [
+      {
+        place: '博多座',
+        prefecture: 39,
+        date: {
+          start: {
+            y: 2023,
+            m: 1,
+            d: 1,
+          },
+          end: {
+            y: 2023,
+            m: 4,
+            d: 10,
+          },
+        },
+        time: {
+          matinee: {
+            start: ['13', '00'],
+            end: ['15', '30'],
+          },
+          soiree: {
+            start: ['17', '00'],
+            end: ['20', '30'],
+          },
+        },
       },
-      end: {
-        y: 2023,
-        m: 4,
-        d: 10,
-      },
-    },
-    time: {
-      matinee: {
-        start: ['13', '00'],
-        end: ['15', '30'],
-      },
-      soiree: {
-        start: ['17', '00'],
-        end: ['20', '30'],
-      },
-    },
-    place: '博多座',
-    prefecture: 39,
+    ],
   },
   {
     name: 'しびれ雲',
-    img: 'shibiregumo',
+    path: 'shibiregumo',
+    imgLength: 1,
     type: 1,
     genre: [1, 4],
-    schedule: {
-      start: {
-        y: 2023,
-        m: 1,
-        d: 1,
+    description:
+      '作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。',
+    schedule: [
+      {
+        place: '兵庫県立芸術文化センター 阪急中ホール',
+        prefecture: 27,
+        date: {
+          start: {
+            y: 2023,
+            m: 1,
+            d: 1,
+          },
+          end: {
+            y: 2023,
+            m: 4,
+            d: 10,
+          },
+        },
+        time: {
+          matinee: undefined,
+          soiree: {
+            start: ['17', '00'],
+            end: ['20', '30'],
+          },
+        },
       },
-      end: {
-        y: 2023,
-        m: 4,
-        d: 10,
-      },
-    },
-    time: {
-      matinee: undefined,
-      soiree: {
-        start: ['17', '00'],
-        end: ['20', '30'],
-      },
-    },
-    place: '兵庫県立芸術文化センター 阪急中ホール',
-    prefecture: 27,
+    ],
   },
   {
     name: 'Endless SHOCK',
-    img: 'endlessshock',
+    path: 'endlessshock',
+    imgLength: 1,
     type: 0,
     genre: [1, 5],
-    schedule: {
-      start: {
-        y: 2023,
-        m: 1,
-        d: 1,
+    description:
+      '作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。',
+    schedule: [
+      {
+        place: '梅田芸術劇場 メインホール',
+        prefecture: 26,
+        date: {
+          start: {
+            y: 2023,
+            m: 1,
+            d: 1,
+          },
+          end: {
+            y: 2023,
+            m: 4,
+            d: 10,
+          },
+        },
+        time: {
+          matinee: {
+            start: ['17', '00'],
+            end: ['20', '30'],
+          },
+          soiree: undefined,
+        },
       },
-      end: {
-        y: 2023,
-        m: 4,
-        d: 10,
-      },
-    },
-    time: {
-      matinee: {
-        start: ['17', '00'],
-        end: ['20', '30'],
-      },
-      soiree: undefined,
-    },
-    place: '梅田芸術劇場 メインホール',
-    prefecture: 26,
+    ],
   },
 ];
 
