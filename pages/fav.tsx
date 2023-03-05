@@ -21,7 +21,7 @@ const Fav: NextPage = () => {
           bg={'white'}
           p={'14px'}
           borderRadius={'24px'}
-          boxShadow={'0px 0px 15px rgba(0, 0, 0, 0.05)'}
+          textStyle={'shadow'}
         >
           <Box
             w={'44%'}
@@ -34,7 +34,7 @@ const Fav: NextPage = () => {
           >
             <Box
               as={'img'}
-              src={`./img/stage_img_${item.path}_01.jpg`}
+              src={`/img/stage_img_${item.path}_01.jpg`}
               w={'100%'}
               h={'100%'}
               objectFit={'cover'}
@@ -96,7 +96,7 @@ const Fav: NextPage = () => {
                     bg={'white'}
                     p={'10px 10px 14px'}
                     borderRadius={'16px'}
-                    boxShadow={'0px 0px 15px rgba(0, 0, 0, 0.05)'}
+                    textStyle={'shadow'}
                   >
                     <Box>
                       <Box
@@ -110,7 +110,7 @@ const Fav: NextPage = () => {
                       >
                         <Box
                           as={'img'}
-                          src={`./img/stage_img_${item.path}_01.jpg`}
+                          src={`/img/stage_img_${item.path}_01.jpg`}
                           w={'100%'}
                           h={'100%'}
                           objectFit={'cover'}
@@ -120,12 +120,12 @@ const Fav: NextPage = () => {
                         <Center
                           w={'40px'}
                           h={'40px'}
-                          bg={'primaryBlue'}
+                          bg={'primary'}
                           pos={'absolute'}
                           inset={'8px auto auto 4px'}
                           borderRadius={'9999px'}
                         >
-                          <Box as={'img'} src={'./img/nav_fav.svg'} />
+                          <Box as={'img'} src={'/img/nav_fav.svg'} />
                         </Center>
                       </Box>
                       <OriginalSpacer size={'8px'} />

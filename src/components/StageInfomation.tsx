@@ -33,7 +33,7 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
           height: '16px',
           position: 'absolute',
           inset: '0 auto auto 0',
-          // background: 'url("./img/stage_info_schedule.svg")',
+          // background: 'url("/img/stage_info_schedule.svg")',
         },
       },
     }}
@@ -42,7 +42,7 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
       <Flex
         sx={{
           '&::before': {
-            background: 'url("./img/stage_info_place.svg")',
+            background: 'url("/img/stage_info_place.svg")',
           },
         }}
       >
@@ -54,7 +54,7 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
       <Flex
         sx={{
           '&::before': {
-            background: 'url("./img/stage_info_schedule.svg")',
+            background: 'url("/img/stage_info_schedule.svg")',
           },
         }}
       >
@@ -67,7 +67,7 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
       <Flex
         sx={{
           '&::before': {
-            background: 'url("./img/stage_info_time.svg")',
+            background: 'url("/img/stage_info_time.svg")',
           },
         }}
       >

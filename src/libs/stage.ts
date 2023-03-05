@@ -1,5 +1,9 @@
 import { stageType } from 'src/types/stage';
 
+export const SEAT_STATUS_OK = 'ok';
+export const SEAT_STATUS_FEW = 'few';
+export const SEAT_STATUS_NO = 'no';
+
 export const stageArray: stageType[] = [
   {
     name: 'ミュージカル『エリザベート』',
@@ -10,6 +14,48 @@ export const stageArray: stageType[] = [
     description:
       '作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。',
     schedule: [
+      {
+        place: '梅田芸術劇場 メインホール',
+        prefecture: 26,
+        date: {
+          start: {
+            y: 2023,
+            m: 1,
+            d: 1,
+          },
+          end: {
+            y: 2023,
+            m: 4,
+            d: 10,
+          },
+        },
+        time: {
+          matinee: {
+            start: ['17', '00'],
+            end: ['20', '30'],
+          },
+          soiree: undefined,
+        },
+        seat: {
+          monopoly: {
+            class: 'B',
+            price: '4,000',
+            status: SEAT_STATUS_OK,
+          },
+          other: [
+            {
+              class: 'A',
+              price: '9,000',
+              status: SEAT_STATUS_FEW,
+            },
+            {
+              class: 'S',
+              price: '14,000',
+              status: SEAT_STATUS_NO,
+            },
+          ],
+        },
+      },
       {
         place: '博多座',
         prefecture: 39,
@@ -34,6 +80,25 @@ export const stageArray: stageType[] = [
             start: ['17', '00'],
             end: ['20', '30'],
           },
+        },
+        seat: {
+          monopoly: {
+            class: 'B',
+            price: '4,000',
+            status: SEAT_STATUS_OK,
+          },
+          other: [
+            {
+              class: 'A',
+              price: '9,000',
+              status: SEAT_STATUS_FEW,
+            },
+            {
+              class: 'S',
+              price: '14,000',
+              status: SEAT_STATUS_NO,
+            },
+          ],
         },
       },
     ],
@@ -69,6 +134,25 @@ export const stageArray: stageType[] = [
             end: ['20', '30'],
           },
         },
+        seat: {
+          monopoly: {
+            class: 'B',
+            price: '4,000',
+            status: SEAT_STATUS_NO,
+          },
+          other: [
+            {
+              class: 'A',
+              price: '8,500',
+              status: SEAT_STATUS_OK,
+            },
+            {
+              class: 'S',
+              price: '13,000',
+              status: SEAT_STATUS_FEW,
+            },
+          ],
+        },
       },
     ],
   },
@@ -102,6 +186,21 @@ export const stageArray: stageType[] = [
             end: ['20', '30'],
           },
           soiree: undefined,
+        },
+        seat: {
+          monopoly: undefined,
+          other: [
+            {
+              class: 'A',
+              price: '8,500',
+              status: SEAT_STATUS_FEW,
+            },
+            {
+              class: 'S',
+              price: '13,000',
+              status: SEAT_STATUS_NO,
+            },
+          ],
         },
       },
     ],

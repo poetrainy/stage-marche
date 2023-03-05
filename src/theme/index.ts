@@ -1,7 +1,7 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const colors = {
-  primary: '#9C519D',
+  // primary: '#9C519D',
   white: '#FFFFFF',
   black800: '#303030',
   black600: '#5A5A5A',
@@ -16,7 +16,8 @@ const colors = {
   lime: '#d9da21',
   green: '#aac836',
   skyblue: '#5dc1cf',
-  primaryBlue: '#46b4bc',
+  primary: '#4AB9C9',
+  // primary: '#46b4bc',
 };
 const styles = {
   global: {
@@ -57,12 +58,8 @@ const breakpoints = {
   // example
 };
 const textStyles = {
-  bodyWidth: {
-    width: {
-      base: '90vw',
-      sm: '80vw',
-    },
-    mx: 'auto',
+  shadow: {
+    boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.05)',
   },
 };
 

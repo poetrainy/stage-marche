@@ -34,5 +34,19 @@ export type stageType = {
           }
         | undefined;
     };
+    seat: {
+      monopoly:
+        | {
+            class: string;
+            price: string;
+            status: string;
+          }
+        | undefined;
+      other: {
+        class: string;
+        price: string;
+        status: string;
+      }[];
+    };
   }[];
 };

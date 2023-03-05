@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 }),
           }}
         >
-          <Box as={'img'} src={'./img/icon-white.svg'} w={'100%'} />
+          <Box as={'img'} src={'/img/icon-white.svg'} w={'100%'} />
         </Box>
       </Center> */}
       <Component {...pageProps} />

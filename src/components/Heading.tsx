@@ -32,7 +32,7 @@ const Heading: FC<Props> = ({ path }) => {
           bg={'white'}
           pos={'fixed'}
           inset={'0 0 auto auto'}
-          boxShadow={'0px 0px 15px rgba(0, 0, 0, 0.05)'}
+          textStyle={'shadow'}
           zIndex={'20'}
         >
           <Text w={'fit-content'} fontSize={'1.7rem'} fontWeight={'bold'}>

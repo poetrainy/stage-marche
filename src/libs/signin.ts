@@ -42,7 +42,7 @@ export const genreArray: string[][] = [
 
 let type: { text: string; color: string; index: number }[] = [];
 const setTypeArray = () => {
-  let colorArray = ['primaryBlue', 'pink', 'green', 'yellow'];
+  let colorArray = ['primary', 'pink', 'green', 'yellow'];
   for (let i = 0; i < genreArray[0].length; i++) {
     type.push({ text: genreArray[0][i], color: colorArray[i], index: i });
   }

@@ -17,7 +17,7 @@ const Enquete: NextPage = () => {
             {item.map((content, i2) => (
               <Text
                 key={content + i2}
-                color={'primaryBlue'}
+                color={'primary'}
                 bg={'white'}
                 p={'12px 20px'}
                 fontSize={'1.5rem'}
@@ -89,7 +89,7 @@ const Enquete: NextPage = () => {
             >
               <PreText text={item.heading} />
               <OriginalSpacer size={'24px'} />
-              <Box as={'img'} src={`./img/enquete_${i + 1}_${item.path}.svg`} />
+              <Box as={'img'} src={`/img/enquete_${i + 1}_${item.path}.svg`} />
               <OriginalSpacer size={'48px'} />
               <>{item.component}</>
             </Center>

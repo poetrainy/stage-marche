@@ -19,7 +19,7 @@ const Navigation: FC<Props> = ({ path }) => {
       p={'0 calc(5vw / 2)'}
       pos={'fixed'}
       inset={'auto auto 0 0'}
-      boxShadow={'0px 0px 15px rgba(0, 0, 0, 0.05)'}
+      textStyle={'shadow'}
       borderRadius={'30px 30px 0px 0px'}
       zIndex={'20'}
     >
@@ -58,7 +58,7 @@ const Navigation: FC<Props> = ({ path }) => {
                 content: '""',
                 width: '24px',
                 height: '4px',
-                background: 'primaryBlue',
+                background: 'primary',
                 borderRadius: '0px 0px 4px 4px',
                 position: 'absolute',
                 inset: '0 auto auto auto',
@@ -80,7 +80,7 @@ const Navigation: FC<Props> = ({ path }) => {
                 path: {
                   fill:
                     `/${item.path}` === path && !item.center
-                      ? 'primaryBlue'
+                      ? 'primary'
                       : item.fill,
                 },
               }}
@@ -88,9 +88,7 @@ const Navigation: FC<Props> = ({ path }) => {
             <Text
               as={'span'}
               color={
-                `/${item.path}` === path && !item.center
-                  ? 'primaryBlue'
-                  : item.fill
+                `/${item.path}` === path && !item.center ? 'primary' : item.fill
               }
               fontSize={'1rem'}
               fontWeight={'bold'}
