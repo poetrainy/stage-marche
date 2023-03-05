@@ -21,10 +21,10 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
     sx={{
       '>div': {
         alignItems: 'flex-start',
-        gap: '4px',
+        gap: '3px',
         width: '100%',
         lineHeight: '1.6rem',
-        paddingLeft: '20px',
+        paddingLeft: '19px',
         position: 'relative',
         '&::before': {
           content: '""',
