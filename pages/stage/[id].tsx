@@ -255,6 +255,7 @@ const StageId: NextPage<Props> = ({ id }) => {
           <OriginalSpacer size={'24px'} />
           <StageInfo />
           <OriginalSpacer size={'20px'} />
+          {isLoad && <>チケット情報読み込み中…</>}
           <Flex
             as={'h2'}
             alignItems={'center'}
@@ -266,9 +267,17 @@ const StageId: NextPage<Props> = ({ id }) => {
             borderRadius={'9999px'}
             pos={'relative'}
             zIndex={3}
+            transition={'opacity 0.1s'}
             textStyle={'bodyW'}
             onClick={() => ticketInfo()}
             sx={{
+              ...(isLoad
+                ? {
+                    opacity: 1,
+                  }
+                : {
+                    opacity: 0,
+                  }),
               '&::before': {
                 content: '""',
                 display: 'block',
