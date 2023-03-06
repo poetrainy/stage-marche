@@ -5,6 +5,8 @@ export type stageType = {
   type: number;
   genre: number[];
   description: string;
+  youtube: string[];
+  cast: string[];
   schedule: {
     place: string;
     prefecture: number;
@@ -49,4 +51,9 @@ export type stageType = {
       }[];
     };
   }[];
+};
+
+export type castType = {
+  name: string;
+  path: string;
 };

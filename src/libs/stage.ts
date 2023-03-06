@@ -1,4 +1,4 @@
-import { stageType } from 'src/types/stage';
+import { castType, stageType } from 'src/types/stage';
 
 export const SEAT_STATUS_OK = 'ok';
 export const SEAT_STATUS_FEW = 'few';
@@ -13,6 +13,14 @@ export const stageArray: stageType[] = [
     genre: [0, 0],
     description:
       '作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。',
+    youtube: ['7KZxVqBX6YI', 'W9721KaWPhU'],
+    cast: [
+      'hanafusamari',
+      'manakireika',
+      'inoueyoshio',
+      'yamazakiikusaburo',
+      'furukawayuta',
+    ],
     schedule: [
       {
         place: '梅田芸術劇場 メインホール',
@@ -82,11 +90,7 @@ export const stageArray: stageType[] = [
           },
         },
         seat: {
-          monopoly: {
-            class: 'B',
-            price: '4,000',
-            status: SEAT_STATUS_OK,
-          },
+          monopoly: undefined,
           other: [
             {
               class: 'A',
@@ -111,6 +115,8 @@ export const stageArray: stageType[] = [
     genre: [1, 4],
     description:
       '作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。',
+    youtube: ['S-t0DgrnzkA', 'G4xFb3r0SRs'],
+    cast: ['inoueyoshio'],
     schedule: [
       {
         place: '兵庫県立芸術文化センター 阪急中ホール',
@@ -164,6 +170,8 @@ export const stageArray: stageType[] = [
     genre: [1, 5],
     description:
       '作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。',
+    youtube: ['boZsxp1aC_o', 'Sl9QqiSHu7U'],
+    cast: ['domotokoichi', 'kitayamahiromitsu', 'satoshori'],
     schedule: [
       {
         place: '梅田芸術劇場 メインホール',
@@ -207,7 +215,7 @@ export const stageArray: stageType[] = [
   },
 ];
 
-export const prefectureArray = [
+export const prefectureArray: string[] = [
   '北海道',
   '青森',
   '岩手',
@@ -255,4 +263,39 @@ export const prefectureArray = [
   '宮崎',
   '鹿児島',
   '沖縄',
+];
+
+export const castArray: castType[] = [
+  {
+    name: '井上芳雄',
+    path: 'inoueyoshio',
+  },
+  {
+    name: '堂本光一',
+    path: 'domotokoichi',
+  },
+  {
+    name: '花總まり',
+    path: 'hanafusamari',
+  },
+  {
+    name: '愛希れいか',
+    path: 'manakireika',
+  },
+  {
+    name: '山崎育三郎',
+    path: 'yamazakiikusaburo',
+  },
+  {
+    name: '古川雄大',
+    path: 'furukawayuta',
+  },
+  {
+    name: '北山宏光',
+    path: 'kitayamahiromitsu',
+  },
+  {
+    name: '佐藤勝利',
+    path: 'satoshori',
+  },
 ];

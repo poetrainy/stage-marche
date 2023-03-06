@@ -7,8 +7,9 @@ import OriginalSpacer from 'src/components/OriginalSpacer';
 import SigninGuidance from 'src/components/SigninGuidance';
 import StageInfomation from 'src/components/StageInfomation';
 import StageType from 'src/components/StageType';
+import StageGenre from 'src/components/StageGenre';
 
-import { genreArray, loginState, typeArray } from 'src/libs/signin';
+import { loginState } from 'src/libs/signin';
 import { stageArray } from 'src/libs/stage';
 
 const Fav: NextPage = () => {
@@ -55,19 +56,7 @@ const Fav: NextPage = () => {
                 {item.name}
               </Text>
               <OriginalSpacer size={'4px'} />
-              <Flex gap={'4px'}>
-                {item.genre.map((genre, i2) => (
-                  <Text
-                    as={'span'}
-                    key={genre + i2}
-                    color={'black400'}
-                    fontSize={'1.2rem'}
-                    fontWeight={'bold'}
-                  >
-                    #{genreArray[i2 + 1][genre]}
-                  </Text>
-                ))}
-              </Flex>
+              <StageGenre data={item} />
             </Box>
             <StageInfomation data={item} />
           </Flex>
@@ -129,17 +118,7 @@ const Fav: NextPage = () => {
                         </Center>
                       </Box>
                       <OriginalSpacer size={'8px'} />
-                      <Text
-                        w={'fit-content'}
-                        color={'white'}
-                        bg={typeArray[item.type].color}
-                        p={'4px 12px'}
-                        fontSize={'1.1rem'}
-                        fontWeight={'bold'}
-                        borderRadius={'9999px'}
-                      >
-                        {typeArray[item.type].text}
-                      </Text>
+                      <StageType data={item} />
                       <OriginalSpacer size={'4px'} />
                       <Text as={'h3'} fontSize={'1.4rem'} fontWeight={'bold'}>
                         {item.name}

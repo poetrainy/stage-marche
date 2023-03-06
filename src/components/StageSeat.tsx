@@ -30,13 +30,13 @@ const Headline: FC<Props> = ({ status }) => {
     >
       <Center
         as={'p'}
-        color={'white'}
         fontSize={'1.1rem'}
         fontWeight={'bold'}
         mb={'40px'}
         pos={'relative'}
         sx={{
           ...(status === SEAT_STATUS_OK && {
+            color: 'white',
             '&::before': {
               content: '""',
               display: 'block',
@@ -59,6 +59,7 @@ const Headline: FC<Props> = ({ status }) => {
             },
           }),
           ...(status === SEAT_STATUS_FEW && {
+            color: 'white',
             '&::before': {
               content: '""',
               display: 'block',
@@ -72,12 +73,13 @@ const Headline: FC<Props> = ({ status }) => {
             },
           }),
           ...(status === SEAT_STATUS_NO && {
+            color: 'black400',
             '&::before': {
               content: '""',
               display: 'block',
               width: '40px',
               height: '5px',
-              background: 'white',
+              background: 'black400',
               borderRadius: '9999px',
               position: 'absolute',
               inset: 'auto auto -24px auto',
@@ -88,7 +90,7 @@ const Headline: FC<Props> = ({ status }) => {
               display: 'block',
               width: '40px',
               height: '5px',
-              background: 'white',
+              background: 'black400',
               borderRadius: '9999px',
               position: 'absolute',
               inset: 'auto auto -24px auto',
