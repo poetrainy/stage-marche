@@ -8,10 +8,11 @@ import StageType from 'src/components/Stage/Type';
 import StageSeat from 'src/components/Stage/Seat';
 import StageGenre from 'src/components/Stage/Genre';
 import ColumnBunner from 'src/components/Column/Bunner';
-
-import { prefectureArray, stageArray, castArray } from 'src/libs/stage';
+import Back from 'src/components/Back';
 
 import { castType, stageType } from 'src/types/stage';
+
+import { prefectureArray, stageArray, castArray } from 'src/libs/stage';
 import { columnArray } from 'src/libs/column';
 
 type Props = {
@@ -176,7 +177,8 @@ const StageId: NextPage<Props> = ({ id }) => {
     <>
       {data && img && cast && (
         <>
-          <Box as={'ul'}>
+          <Box as={'ul'} pos={'relative'}>
+            <Back />
             {img.map((item, i) => (
               <Center
                 as={'li'}
