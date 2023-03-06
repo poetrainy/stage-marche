@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import ColumnBunner from 'src/components/Column/Bunner';
 
 import Contents from 'src/components/Contents';
+import Headline from 'src/components/Headline';
 import OriginalSpacer from 'src/components/OriginalSpacer';
 import SigninGuidance from 'src/components/SigninGuidance';
 import { columnArray } from 'src/libs/column';
@@ -12,7 +13,7 @@ import { loginState } from 'src/libs/signin';
 const Column: NextPage = () => {
   const ComponentArray = [
     {
-      text: '気になる公演に関するコラムがあります',
+      text: '気になる公演とあわせて読みたい',
       component: <ColumnBunner data={columnArray} />,
     },
     {
@@ -25,13 +26,10 @@ const Column: NextPage = () => {
     return (
       <>
         {loginState ? (
-          <Flex flexDir={'column'} gap={'24px'}>
+          <Flex flexDir={'column'} gap={'28px'}>
             {ComponentArray.map((item, i) => (
               <Box key={item.text + i}>
-                <Text fontSize={'1.8rem'} fontWeight={'bold'}>
-                  {item.text}
-                </Text>
-                <OriginalSpacer size={'16px'} />
+                <Headline text={item.text} top />
                 {item.component}
               </Box>
             ))}
