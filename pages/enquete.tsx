@@ -6,13 +6,13 @@ import Heading from 'src/components/Heading';
 import OriginalSpacer from 'src/components/OriginalSpacer';
 import PreText from 'src/components/PreText';
 
-import { genreArray } from 'src/libs/signin';
+import { stageGenreArray } from 'src/libs/signin';
 
 const Enquete: NextPage = () => {
   const SigninEnqueteGenre = () => {
     return (
       <Flex as={'ul'} gap={'8px'} flexWrap={'wrap'} w={'90vw'}>
-        {genreArray.map((item, i) => (
+        {stageGenreArray.map((item, i) => (
           <Flex as={'ul'} key={item[i] + i} gap={'8px'} flexWrap={'wrap'}>
             {item.map((content, i2) => (
               <Text

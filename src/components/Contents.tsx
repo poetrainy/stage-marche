@@ -1,5 +1,5 @@
-import { FC, useEffect, useState } from 'react';
-import { Box, Center } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Box } from '@chakra-ui/react';
 
 import Heading from 'src/components/Heading';
 import Navigation from 'src/components/Navigation';

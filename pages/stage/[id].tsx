@@ -1,16 +1,18 @@
-import { Box, Center, Flex, Text } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-import OriginalSpacer from 'src/components/OriginalSpacer';
+import { Box, Center, Flex, Text } from '@chakra-ui/react';
 
+import OriginalSpacer from 'src/components/OriginalSpacer';
 import StageInfomation from 'src/components/Stage/Infomation';
 import StageType from 'src/components/Stage/Type';
 import StageSeat from 'src/components/Stage/Seat';
 import StageGenre from 'src/components/Stage/Genre';
+import ColumnBunner from 'src/components/Column/Bunner';
 
 import { prefectureArray, stageArray, castArray } from 'src/libs/stage';
 
 import { castType, stageType } from 'src/types/stage';
+import { columnArray } from 'src/libs/column';
 
 type Props = {
   id: string;
@@ -150,7 +152,7 @@ const StageId: NextPage<Props> = ({ id }) => {
     },
     {
       title: 'あわせて読みたい',
-      component: <Youtube />,
+      component: <ColumnBunner data={columnArray} />,
     },
     {
       title: 'キャスト',
@@ -249,7 +251,9 @@ const StageId: NextPage<Props> = ({ id }) => {
           >
             チケット詳細
           </Flex>
-          <Box
+          <Flex
+            flexDir={'column'}
+            gap={'10vw'}
             w={'100vw'}
             bg={'white'}
             p={'calc(24px + 5vw) 5vw 5vw'}
@@ -258,7 +262,24 @@ const StageId: NextPage<Props> = ({ id }) => {
             textStyle={'shadow'}
           >
             {data.schedule.map((item, i) => (
-              <Box key={item.place + i}>
+              <Box
+                key={item.place + i}
+                sx={{
+                  ...(i > 0 && {
+                    position: 'relative',
+                    '&::before': {
+                      content: '""',
+                      display: 'block',
+                      width: '95%',
+                      height: '1px',
+                      background: 'black300',
+                      margin: 'auto',
+                      position: 'absolute',
+                      inset: '-5vw 0 auto 0',
+                    },
+                  }),
+                }}
+              >
                 <Text
                   color={'black800'}
                   fontWeight={'bold'}
@@ -269,7 +290,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                 <OriginalSpacer size={'4px'} />
                 <StageInfomation data={data} place time />
                 <OriginalSpacer size={'16px'} />
-                <Box bg={'#F6F6F6'} p={'24px 20px'} borderRadius={'16px'}>
+                <Box bg={'#F6F6F6'} p={'16px'} borderRadius={'16px'}>
                   {item.seat.monopoly && (
                     <>
                       <Text fontWeight={'bold'} fontSize={'1.5rem'}>
@@ -296,7 +317,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                         <StageSeat status={item.seat.monopoly.status} />
                       </Flex>
                       <OriginalSpacer size={'12px'} />
-                      <Box w={'90%'} h={'1px'} bg={'black300'} m={'0 auto'} />
+                      <Box w={'95%'} h={'1px'} bg={'black300'} m={'0 auto'} />
                       <OriginalSpacer size={'12px'} />
                     </>
                   )}
@@ -326,7 +347,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                 </Box>
               </Box>
             ))}
-          </Box>
+          </Flex>
           <Recommend />
         </>
       )}

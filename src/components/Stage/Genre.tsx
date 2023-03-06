@@ -3,28 +3,43 @@ import { Flex, Text } from '@chakra-ui/react';
 
 import { stageType } from 'src/types/stage';
 
-import { genreArray } from 'src/libs/signin';
+import { stageGenreArray } from 'src/libs/signin';
+import { columnType } from 'src/types/column';
+import { columnGenreArray } from 'src/libs/column';
 
 type Props = {
-  data: stageType;
+  data: stageType | columnType;
+  column?: boolean;
 };
 
-const StageType: FC<Props> = ({ data }) => {
+const StageGenre: FC<Props> = ({ data, column }) => {
   return (
     <Flex gap={'4px'}>
-      {data.genre.map((genre, i2) => (
+      {data.genre.map((item, i) => (
         <Text
           as={'span'}
-          key={genre + i2}
-          color={'black400'}
+          key={item + i}
           fontSize={'1.2rem'}
           fontWeight={'bold'}
+          sx={{
+            ...(column
+              ? {
+                  color: 'primary',
+                }
+              : {
+                  color: 'black400',
+                }),
+          }}
         >
-          #{genreArray[i2 + 1][genre]}
+          {column ? (
+            <>#{columnGenreArray[i]}</>
+          ) : (
+            <>#{stageGenreArray[i + 1][item]}</>
+          )}
         </Text>
       ))}
     </Flex>
   );
 };
 
-export default StageType;
+export default StageGenre;
