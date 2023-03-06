@@ -80,7 +80,7 @@ const Heading: FC<Props> = ({ path, back }) => {
             />
           )}
           <Text w={'fit-content'} fontSize={'1.7rem'} fontWeight={'bold'}>
-            {navIndex === 0 ? 'チケットマルシェ' : nav.name}
+            {navIndex === 0 ? 'ステージマルシェ' : nav.name}
           </Text>
         </Center>
       )}

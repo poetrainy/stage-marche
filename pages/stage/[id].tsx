@@ -255,7 +255,7 @@ const StageId: NextPage<Props> = ({ id }) => {
           <OriginalSpacer size={'24px'} />
           <StageInfo />
           <OriginalSpacer size={'20px'} />
-          {isLoad && <>チケット情報読み込み中…</>}
+          {!isLoad && <>チケット情報読み込み中…</>}
           <Flex
             as={'h2'}
             alignItems={'center'}
