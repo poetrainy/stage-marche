@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 
-import Contents from 'src/components/Contents';
+import MainContents from 'src/components/MainContents';
 import SigninGuidance from 'src/components/SigninGuidance';
 
 import { loginState } from 'src/libs/signin';
@@ -10,7 +10,7 @@ const Ticket: NextPage = () => {
     return <>{loginState && <SigninGuidance />}</>;
   };
 
-  return <Contents component={<Component />} />;
+  return <MainContents component={<Component />} />;
 };
 
 export default Ticket;

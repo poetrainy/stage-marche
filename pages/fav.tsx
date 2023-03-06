@@ -1,12 +1,10 @@
-import { Box, Center, Flex, Text } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 
-import Contents from 'src/components/Contents';
-import Headline from 'src/components/Headline';
-import OriginalSpacer from 'src/components/OriginalSpacer';
+import MainContents from 'src/components/MainContents';
 import SigninGuidance from 'src/components/SigninGuidance';
 import StageBunnerLarge from 'src/components/Stage/BunnerLarge';
 import StageBunnerSmall from 'src/components/Stage/BunnerSmall';
+import SubContents from 'src/components/SubContents';
 
 import { loginState } from 'src/libs/signin';
 import { stageArray } from 'src/libs/stage';
@@ -27,14 +25,7 @@ const Fav: NextPage = () => {
     return (
       <>
         {loginState ? (
-          <Flex flexDir={'column'} gap={'28px'}>
-            {ComponentArray.map((item, i) => (
-              <Box key={item.text + i}>
-                <Headline text={item.text} top />
-                {item.component}
-              </Box>
-            ))}
-          </Flex>
+          <SubContents data={ComponentArray} />
         ) : (
           <SigninGuidance />
         )}
@@ -42,7 +33,7 @@ const Fav: NextPage = () => {
     );
   };
 
-  return <Contents component={<Component />} />;
+  return <MainContents component={<Component />} />;
 };
 
 export default Fav;

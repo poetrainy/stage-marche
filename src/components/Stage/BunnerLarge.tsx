@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
+import NextLink from 'next/link';
 
 import StageType from 'src/components/Stage/Type';
 import OriginalSpacer from 'src/components/OriginalSpacer';
@@ -14,16 +15,22 @@ type Props = {
 
 const StageBunnerLarge: FC<Props> = ({ data }) => {
   return (
-    <Flex flexDir={'column'} gap={'16px'} sx={{ '>a': {} }}>
+    <Flex
+      flexDir={'column'}
+      gap={'16px'}
+      sx={{
+        '>a': {
+          display: 'flex',
+          gap: '4%',
+          background: 'white',
+          padding: '14px',
+          borderRadius: '24px',
+          textStyle: 'shadow',
+        },
+      }}
+    >
       {data.map((item, i) => (
-        <Flex
-          key={item.name + i}
-          gap={'4%'}
-          bg={'white'}
-          p={'14px'}
-          borderRadius={'24px'}
-          textStyle={'shadow'}
-        >
+        <NextLink href={`/stage/${item.path}`} passHref key={item.name + i}>
           <Box
             w={'44%'}
             bg={'black600'}
@@ -60,7 +67,7 @@ const StageBunnerLarge: FC<Props> = ({ data }) => {
             </Box>
             <StageInfomation data={item} />
           </Flex>
-        </Flex>
+        </NextLink>
       ))}
     </Flex>
   );

@@ -10,7 +10,7 @@ type Props = {
   status: string;
 };
 
-const Headline: FC<Props> = ({ status }) => {
+const StageSeat: FC<Props> = ({ status }) => {
   return (
     <Center
       w={'72px'}
@@ -107,4 +107,4 @@ const Headline: FC<Props> = ({ status }) => {
   );
 };
 
-export default Headline;
+export default StageSeat;

@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 
-import Contents from 'src/components/Contents';
+import MainContents from 'src/components/MainContents';
 
 const User: NextPage = () => {
-  return <Contents />;
+  return <MainContents />;
 };
 
 export default User;

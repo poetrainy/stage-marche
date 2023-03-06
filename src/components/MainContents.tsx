@@ -10,7 +10,7 @@ type Props = {
   component?: JSX.Element;
 };
 
-const Contents: FC<Props> = ({ component }) => {
+const MainContents: FC<Props> = ({ component }) => {
   const path = useGetPath();
 
   return (
@@ -33,4 +33,4 @@ const Contents: FC<Props> = ({ component }) => {
   );
 };
 
-export default Contents;
+export default MainContents;

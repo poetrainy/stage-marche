@@ -5,13 +5,11 @@ import OriginalSpacer from 'src/components/OriginalSpacer';
 
 type Props = {
   text: string;
-  top?: boolean;
 };
 
-const Headline: FC<Props> = ({ text, top }) => {
+const Headline: FC<Props> = ({ text }) => {
   return (
     <>
-      {!top && <OriginalSpacer size={'28px'} />}
       <Text as={'h2'} fontSize={'2rem'} fontWeight={'bold'}>
         {text}
       </Text>
