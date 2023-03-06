@@ -18,13 +18,7 @@ const Contents: FC<Props> = ({ component }) => {
       {path && (
         <Box flexDir={'column'}>
           <Heading path={path} />
-          <Box
-            as={'main'}
-            w={'90vw'}
-            minH={'100vh'}
-            m={'0 auto'}
-            p={'64px 0 96px'}
-          >
+          <Box as={'main'} minH={'100vh'} p={'64px 0 96px'} textStyle={'bodyW'}>
             {component}
           </Box>
           <Navigation path={path} />

@@ -32,11 +32,9 @@ const StageId: NextPage<Props> = ({ id }) => {
     if (data) {
       let imgArray = [];
       let castObjArray = [];
-      // let castArray = [];
       for (let i = 0; i < data.imgLength; i++) {
         imgArray.push(i);
       }
-      // let test = castArray.filter((item: castType) => item.path === params.id);
       for (let i = 0; i < data.cast.length; i++) {
         for (let i2 = 0; i2 < castArray.length; i2++) {
           if (data.cast[i] === castArray[i2].path) {
@@ -55,7 +53,7 @@ const StageId: NextPage<Props> = ({ id }) => {
   const StageInfo = () => (
     <>
       {data && (
-        <Box w={'90vw'} m={'0 auto'}>
+        <Box textStyle={'bodyW'}>
           <StageType data={data} />
           <OriginalSpacer size={'4px'} />
           <Text fontSize={'2.2rem'} fontWeight={'bold'}>
@@ -161,7 +159,7 @@ const StageId: NextPage<Props> = ({ id }) => {
   ];
 
   const Recommend = () => (
-    <Flex flexDir={'column'} gap={'32px'} w={'90vw'} m={'0 auto'}>
+    <Flex flexDir={'column'} gap={'32px'} textStyle={'bodyW'}>
       {recommendArray.map((item, i) => (
         <Box as={'section'} key={item.title + i}>
           <Text as={'h2'} fontSize={'1.8rem'} fontWeight={'bold'}>
@@ -216,16 +214,15 @@ const StageId: NextPage<Props> = ({ id }) => {
           <Flex
             as={'h2'}
             alignItems={'center'}
-            w={'90vw'}
             h={'56px'}
             color={'white'}
             bg={'primary'}
-            m={'0 auto'}
             p={'0 24px'}
             fontWeight={'bold'}
             borderRadius={'9999px'}
             pos={'relative'}
             zIndex={3}
+            textStyle={'bodyW'}
             sx={{
               '&::before': {
                 content: '""',
@@ -372,13 +369,8 @@ export const getStaticProps = async ({
 }: {
   params: { id: string };
 }) => {
-  // let data = stageArray.filter((item: stageType) => item.path === params.id);
-  // console.log(data);
-  // console.log(params.id);
-
   return {
     props: {
-      // data: data,
       id: params.id,
     },
   };

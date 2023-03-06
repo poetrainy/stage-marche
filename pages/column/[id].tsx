@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 
 import StageGenre from 'src/components/Stage/Genre';
+import ColumnDate from 'src/components/Column/Date';
 
-import { castType, stageType } from 'src/types/stage';
 import { columnType } from 'src/types/column';
 
-import { prefectureArray, stageArray, castArray } from 'src/libs/stage';
 import { columnArray } from 'src/libs/column';
+import OriginalSpacer from 'src/components/OriginalSpacer';
+import Heading from 'src/components/Heading';
+import useGetPath from 'src/hooks/useGetPath';
 
 type Props = {
   id: string;
@@ -16,21 +18,47 @@ type Props = {
 
 const ColumnId: NextPage<Props> = ({ id }) => {
   const [data, setData] = useState<columnType>();
+  const path = useGetPath()
 
   useEffect(() => {
     let array = columnArray.filter((item: columnType) => item.id + '' === id);
     setData(array[0]);
   }, []);
 
-  return (
+  const ColumnInfo = () => (
     <>
       {data && (
-        <Box>
-          <Text>{data.title}</Text>
+        <Box textStyle={'bodyW'}>
+          <ColumnDate data={data} />
+          <OriginalSpacer size={'4px'} />
+          <Text fontSize={'2rem'} fontWeight={'bold'}>
+            {data.title}
+          </Text>
+          <OriginalSpacer size={'8px'} />
           <StageGenre data={data} column />
-          <Text as={'pre'}>{data.text}</Text>
         </Box>
       )}
+    </>
+  );
+
+  const ColumnText = () => (
+    <>
+      {data && (
+        <Text as={'pre'} bg={'white'} p={'24px 5vw'} lineHeight={'2.6rem'}>
+          {data.text}
+        </Text>
+      )}
+    </>
+  );
+
+  return (
+    <>
+      <Heading path={'/column'} back />
+      <OriginalSpacer size={'88px'} />
+      <ColumnInfo />
+      <OriginalSpacer size={'24px'} />
+      <ColumnText />
+      <OriginalSpacer size={'64px'} />
     </>
   );
 };

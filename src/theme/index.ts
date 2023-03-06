@@ -58,6 +58,10 @@ const breakpoints = {
   // example
 };
 const textStyles = {
+  bodyW: {
+    width: '90vw',
+    margin: '0 auto',
+  },
   shadow: {
     boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.05)',
   },

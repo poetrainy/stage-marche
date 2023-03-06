@@ -6,6 +6,7 @@ import OriginalSpacer from 'src/components/OriginalSpacer';
 import StageGenre from 'src/components/Stage/Genre';
 
 import { columnType } from 'src/types/column';
+import ColumnDate from 'src/components/Column/Date';
 
 type Props = {
   data: columnType[];
@@ -16,8 +17,7 @@ const ColumnBunner: FC<Props> = ({ data }) => {
     <Flex
       flexDir={'column'}
       gap={'12px'}
-      w={'90vw'}
-      m={'0 auto'}
+      textStyle={'bodyW'}
       sx={{
         '>a': {
           display: 'flex',
@@ -34,9 +34,7 @@ const ColumnBunner: FC<Props> = ({ data }) => {
       {data.map((item, i) => (
         <NextLink href={`/column/${item.id}`} passHref key={item.title + i}>
           <Box w={'60%'}>
-            <Text color={'black400'} fontSize={'1.1rem'} fontWeight={'bold'}>
-              {item.date.y}年{item.date.m}月{item.date.d}日
-            </Text>
+            <ColumnDate data={item} />
             <OriginalSpacer size={'2px'} />
             <Text fontSize={'1.5rem'} fontWeight={'bold'}>
               {item.title}

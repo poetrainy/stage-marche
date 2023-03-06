@@ -11,7 +11,7 @@ import { stageGenreArray } from 'src/libs/signin';
 const Enquete: NextPage = () => {
   const SigninEnqueteGenre = () => {
     return (
-      <Flex as={'ul'} gap={'8px'} flexWrap={'wrap'} w={'90vw'}>
+      <Flex as={'ul'} gap={'8px'} flexWrap={'wrap'} textStyle={'bodyW'}>
         {stageGenreArray.map((item, i) => (
           <Flex as={'ul'} key={item[i] + i} gap={'8px'} flexWrap={'wrap'}>
             {item.map((content, i2) => (
