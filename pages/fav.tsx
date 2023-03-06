@@ -5,9 +5,9 @@ import Contents from 'src/components/Contents';
 import Headline from 'src/components/Headline';
 import OriginalSpacer from 'src/components/OriginalSpacer';
 import SigninGuidance from 'src/components/SigninGuidance';
-import StageInfomation from 'src/components/StageInfomation';
-import StageType from 'src/components/StageType';
-import StageGenre from 'src/components/StageGenre';
+import StageInfomation from 'src/components/Stage/Infomation';
+import StageType from 'src/components/Stage/Type';
+import StageGenre from 'src/components/Stage/Genre';
 
 import { loginState } from 'src/libs/signin';
 import { stageArray } from 'src/libs/stage';

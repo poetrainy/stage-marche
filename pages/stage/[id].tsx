@@ -3,10 +3,10 @@ import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import OriginalSpacer from 'src/components/OriginalSpacer';
 
-import StageInfomation from 'src/components/StageInfomation';
-import StageType from 'src/components/StageType';
-import StageSeat from 'src/components/StageSeat';
-import StageGenre from 'src/components/StageGenre';
+import StageInfomation from 'src/components/Stage/Infomation';
+import StageType from 'src/components/Stage/Type';
+import StageSeat from 'src/components/Stage/Seat';
+import StageGenre from 'src/components/Stage/Genre';
 
 import { prefectureArray, stageArray, castArray } from 'src/libs/stage';
 
