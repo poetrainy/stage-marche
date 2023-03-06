@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Box, Center, Flex, Text } from '@chakra-ui/react';
 
 import OriginalSpacer from 'src/components/OriginalSpacer';
@@ -28,6 +28,38 @@ const StageId: NextPage<Props> = ({ id }) => {
   const [data, setData] = useState<stageType>();
   const [img, setImg] = useState<number[]>();
   const [cast, setCast] = useState<castType[]>();
+  const elm = useRef<HTMLDivElement>(null);
+  const [isTicketElm, setIsTicketElm] = useState<boolean>(false);
+  const [ticketElmHeight, setTicketElmHeight] = useState<number>(0);
+  const [isLoad, setIsLoad] = useState<boolean>(false);
+
+  const ticketStyle = (flag: boolean) => {
+    if (flag) {
+      // @ts-ignore
+      elm.current.style.height = `${ticketElmHeight}px`;
+      // @ts-ignore
+      elm.current.style.paddingTop = 'calc(24px + 5vw)';
+      // @ts-ignore
+      elm.current.style.paddingBottom = '5vw';
+    } else {
+      // @ts-ignore
+      elm.current.style.height = '0';
+      // @ts-ignore
+      elm.current.style.paddingTop = '0';
+      // @ts-ignore
+      elm.current.style.paddingBottom = '0';
+    }
+    setIsTicketElm(flag);
+  };
+
+  useEffect(() => {
+    if (img) {
+      // @ts-ignore
+      setTicketElmHeight(elm.current.clientHeight);
+      ticketStyle(false);
+      setIsLoad(true);
+    }
+  }, [img]);
 
   useEffect(() => {
     if (data) {
@@ -173,6 +205,16 @@ const StageId: NextPage<Props> = ({ id }) => {
     </Flex>
   );
 
+  const ticketInfo = () => {
+    console.log(isTicketElm);
+    if (isTicketElm) {
+      ticketStyle(false);
+    } else {
+      ticketStyle(true);
+    }
+    // setIsTicketElm(!isTicketElm);
+  };
+
   return (
     <>
       {data && img && cast && (
@@ -225,6 +267,7 @@ const StageId: NextPage<Props> = ({ id }) => {
             pos={'relative'}
             zIndex={3}
             textStyle={'bodyW'}
+            onClick={() => ticketInfo()}
             sx={{
               '&::before': {
                 content: '""',
@@ -255,10 +298,15 @@ const StageId: NextPage<Props> = ({ id }) => {
             gap={'10vw'}
             w={'100vw'}
             bg={'white'}
-            p={'calc(24px + 5vw) 5vw 5vw'}
+            px={'5vw'}
+            pt={'calc(24px + 5vw)'}
+            pb={'5vw'}
             transform={'translateY(-28px)'}
             borderRadius={'5vw'}
             textStyle={'shadow'}
+            overflow={'hidden'}
+            transition={'height 0.15s, padding-top 0.15s, padding-bottom 0.15s'}
+            ref={elm}
           >
             {data.schedule.map((item, i) => (
               <Box
@@ -347,6 +395,7 @@ const StageId: NextPage<Props> = ({ id }) => {
               </Box>
             ))}
           </Flex>
+          {!isTicketElm && <OriginalSpacer size={'28px'} />}
           <Recommend />
         </>
       )}
