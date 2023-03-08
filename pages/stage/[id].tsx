@@ -339,7 +339,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                 <Text
                   color={'black800'}
                   fontWeight={'bold'}
-                  fontSize={'1.7rem'}
+                  fontSize={'1.8rem'}
                 >
                   【{prefectureArray[item.prefecture]}公演】{item.place}
                 </Text>
