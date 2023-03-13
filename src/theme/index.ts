@@ -40,6 +40,10 @@ const styles = {
       fontFamily: 'body',
       whiteSpace: 'pre-wrap',
     },
+    '.setGenre': {
+      background: 'primary',
+      color: 'white',
+    },
     // '::selection': {
     //   background: 'tomato',
     // },

@@ -20,32 +20,30 @@ export const signinGuidanceText: signinGuidanceTextType[] = [
   },
 ];
 
-export const stageGenreArray: string[][] = [
-  ['ミュージカル', 'お芝居'],
-  // 'メジャー作品',
-  // 'マイナー作品',
-  ['歴史', '現代', '近未来'],
-  [
-    'シリアス',
-    'ラブ',
-    'ミステリー',
-    '革命',
-    'ほのぼの',
-    '成長',
-    '学園',
-    'スポーツ',
-    '実写化',
-  ],
-  // '群像劇',
-  // '一人芝居',
+export const stageGenreArray: string[] = [
+  '歴史',
+  '現代',
+  '近未来',
+  'ミステリー',
+  'シリアス',
+  'ラブ',
+  '革命',
+  'ほのぼの',
+  '成長',
+  'スポーツ',
+  '実写化',
+  '学園',
 ];
 
-let type: { text: string; color: string; index: number }[] = [];
-const setTypeArray = () => {
-  let colorArray = ['primary', 'pink', 'green', 'yellow'];
-  for (let i = 0; i < stageGenreArray[0].length; i++) {
-    type.push({ text: stageGenreArray[0][i], color: colorArray[i], index: i });
-  }
-};
-setTypeArray();
-export const typeArray = type;
+export const typeArray = [
+  {
+    text: 'ミュージカル',
+    color: 'pink',
+    index: 0,
+  },
+  {
+    text: 'お芝居',
+    color: 'green',
+    index: 1,
+  },
+];

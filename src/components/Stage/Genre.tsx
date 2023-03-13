@@ -34,7 +34,7 @@ const StageGenre: FC<Props> = ({ data, column }) => {
           {column ? (
             <>#{columnGenreArray[i]}</>
           ) : (
-            <>#{stageGenreArray[i + 1][item]}</>
+            <>#{stageGenreArray[item]}</>
           )}
         </Text>
       ))}
