@@ -1,5 +1,5 @@
 import { FC, SetStateAction, useEffect, useState } from 'react';
-import { Box, Center, Flex, Input, Text } from '@chakra-ui/react';
+import { Box, Button, Center, Flex, Input, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
 import { navContents } from 'src/libs/nav';
@@ -21,6 +21,7 @@ const Heading: FC<Props> = ({ path, back, search }) => {
   const [navIndex, setNavIndex] = useState<number>(0);
 
   const [inputText, setInputText] = useState<string>();
+  const [isSearch, setIsSearch] = useState<boolean>(false);
 
   useEffect(() => {
     if (path) {
@@ -120,7 +121,7 @@ const Heading: FC<Props> = ({ path, back, search }) => {
               transform: 'rotateZ(45deg)',
             },
           }}
-          onClick={() => backFunc()}
+          onClick={() => isSearchFunc()}
         />
       )}
     </>
@@ -130,6 +131,10 @@ const Heading: FC<Props> = ({ path, back, search }) => {
     currentTarget: { value: SetStateAction<string | undefined> };
   }) => {
     setInputText(e.currentTarget.value);
+  };
+
+  const isSearchFunc = () => {
+    setIsSearch(!isSearch);
   };
 
   return (
@@ -159,14 +164,64 @@ const Heading: FC<Props> = ({ path, back, search }) => {
           inset={'0 0 auto auto'}
           zIndex={'30'}
           textAlign={'center'}
+          transition={'transform 0.3s'}
+          sx={{
+            ...(isSearch
+              ? {
+                  transform: 'translateY(0)',
+                }
+              : {
+                  transform: 'translateY(100%)',
+                }),
+          }}
         >
           <Center
             w={'100vw'}
             h={'64px'}
             fontSize={'1.7rem'}
             fontWeight={'bold'}
+            pos={'relative'}
           >
+            <Text
+              as={'button'}
+              color={'primary'}
+              pos={'absolute'}
+              inset={'auto auto auto 5vw'}
+            >
+              クリア
+            </Text>
             {navIndex === 0 ? 'チケット' : nav.name}を検索
+            <Center
+              w={'20px'}
+              h={'20px'}
+              pos={'absolute'}
+              inset={'auto 5vw auto auto'}
+              sx={{
+                '&::before': {
+                  content: '""',
+                  display: 'block',
+                  width: '22px',
+                  height: '3px',
+                  background: 'black800',
+                  position: 'absolute',
+                  margin: 'auto',
+                  borderRadius: '9999px',
+                  transform: 'rotateZ(-45deg)',
+                },
+                '&::after': {
+                  content: '""',
+                  display: 'block',
+                  width: '22px',
+                  height: '3px',
+                  background: 'black800',
+                  position: 'absolute',
+                  margin: 'auto',
+                  borderRadius: '9999px',
+                  transform: 'rotateZ(45deg)',
+                },
+              }}
+              onClick={() => isSearchFunc()}
+            />
           </Center>
           <OriginalSpacer size={'16px'} />
           <Input
@@ -200,8 +255,8 @@ const Heading: FC<Props> = ({ path, back, search }) => {
                   >
                     {item.condition}
                   </Box>
-                  <OriginalSpacer size={'8px'} />
-                  <Flex gap={'4px 8px'} flexWrap={'wrap'}>
+                  <OriginalSpacer size={'12px'} />
+                  <Flex gap={'8px'} flexWrap={'wrap'}>
                     {item.item.map((tag: string, i2: number) => (
                       <Box
                         key={tag + i2}
@@ -217,6 +272,19 @@ const Heading: FC<Props> = ({ path, back, search }) => {
               )
             )}
           </Flex>
+          <Center
+            w={'100vw'}
+            h={'64px'}
+            color={'white'}
+            bg={'primary'}
+            fontSize={'1.6rem'}
+            fontWeight={'bold'}
+            pos={'absolute'}
+            inset={'auto auto 0 auto'}
+            opacity={0.7}
+          >
+            3817件の{navIndex === 0 ? 'チケット' : nav.name}を見る
+          </Center>
         </Box>
       )}
     </>

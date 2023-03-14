@@ -13,12 +13,14 @@ export const searchStageArray: searchType[] = [
     item: stageGenreArray,
   },
   {
-    condition: '公演地',
-    item: ['大阪府'],
-  },
-  {
     condition: 'こだわり',
-    item: ['はじめてのB席', 'コラムが読める', '動画がある', '配信公演'],
+    item: [
+      'はじめてのB席',
+      '大阪公演がある',
+      '動画がある',
+      'コラムが読める',
+      '配信公演がある',
+    ],
   },
 ];
 
