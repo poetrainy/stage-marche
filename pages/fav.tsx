@@ -1,12 +1,10 @@
 import type { NextPage } from 'next';
 
 import MainContents from 'src/components/MainContents';
-import SigninGuidance from 'src/components/SigninGuidance';
 import StageBunnerLarge from 'src/components/Stage/BunnerLarge';
 import StageBunnerSmall from 'src/components/Stage/BunnerSmall';
 import SubContents from 'src/components/SubContents';
 
-import { loginState } from 'src/libs/signin';
 import { stageArray } from 'src/libs/stage';
 
 const Fav: NextPage = () => {
@@ -21,19 +19,7 @@ const Fav: NextPage = () => {
     },
   ];
 
-  const Component = () => {
-    return (
-      <>
-        {loginState ? (
-          <SubContents data={ComponentArray} />
-        ) : (
-          <SigninGuidance />
-        )}
-      </>
-    );
-  };
-
-  return <MainContents component={<Component />} />;
+  return <MainContents component={<SubContents data={ComponentArray} />} />;
 };
 
 export default Fav;

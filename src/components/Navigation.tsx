@@ -52,7 +52,7 @@ const Navigation: FC<Props> = ({ path }) => {
                   }),
               ...(`/${item.path}` === path &&
                 item.center && {
-                  background: 'gradation1',
+                  background: 'greenToBlue',
                 }),
               '&::before': {
                 content: '""',

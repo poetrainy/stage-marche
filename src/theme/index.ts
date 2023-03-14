@@ -1,7 +1,6 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const colors = {
-  // primary: '#9C519D',
   white: '#FFFFFF',
   black800: '#303030',
   black600: '#5A5A5A',
@@ -10,7 +9,7 @@ const colors = {
   black300: '#DCDCDC',
   black200: '#F1F1F1',
   black100: '#F8F8F8',
-  gradation1: 'linear-gradient(135deg, #F97794 0%, #623AA2 100%)',
+  greenToBlue: 'linear-gradient(-225deg, #9bf1cb 0%, #44a1be 100%)',
   pink: '#ed8599',
   yellow: '#fcd13e',
   lime: '#d9da21',

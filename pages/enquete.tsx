@@ -183,10 +183,6 @@ const Enquete: NextPage = () => {
     },
   ];
 
-  // const Component = () => {
-  //   return <>{!loginState && <SigninGuidance />}</>;
-  // };
-
   return (
     <>
       <Box w={'100vw'} overflow={'hidden'}>

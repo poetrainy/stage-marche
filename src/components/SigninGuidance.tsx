@@ -28,8 +28,8 @@ const SigninGuidance: FC = () => {
       {guidance && (
         <Center
           flexDir={'column'}
-          h={'calc(100vh - 64px - 96px)'}
-          pb={'56px'}
+          h={'calc(100vh - 64px - 96px - 32px)'}
+          pb={'40px'}
           m={'auto'}
         >
           <Box as={'img'} src={`/img/guidance_${guidance.path}.svg`} />
@@ -46,7 +46,7 @@ const SigninGuidance: FC = () => {
             </Text>
           </Center>
           <OriginalSpacer size={'32px'} />
-          <GradationBtn text={'無料でログイン'} path={'signin'} />
+          <GradationBtn text={'Googleでログイン'} path={'signin'} />
         </Center>
       )}
     </>

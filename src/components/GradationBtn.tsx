@@ -20,7 +20,7 @@ const GradationBtn: FC<Props> = ({ text, path }) => (
         width: '240px',
         height: '64px',
         color: 'white',
-        background: 'gradation1',
+        background: 'greenToBlue',
         fontWeight: 'bold',
         borderRadius: '9999px',
       },

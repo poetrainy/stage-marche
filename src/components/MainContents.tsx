@@ -5,13 +5,16 @@ import Heading from 'src/components/Heading';
 import Navigation from 'src/components/Navigation';
 
 import useGetPath from 'src/hooks/useGetPath';
+import SigninGuidance from 'src/components/SigninGuidance';
+import { loginState } from 'src/libs/signin';
 
 type Props = {
   component?: JSX.Element;
+  login?: boolean;
   search?: boolean;
 };
 
-const MainContents: FC<Props> = ({ component, search }) => {
+const MainContents: FC<Props> = ({ component, login, search }) => {
   const path = useGetPath();
 
   return (
@@ -22,10 +25,10 @@ const MainContents: FC<Props> = ({ component, search }) => {
           <Box
             as={'main'}
             minH={'100vh'}
-            p={'calc(64px + 32px) 0 calc(96px + 40px)'}
+            p={'calc(64px + 32px) 0 calc(96px + 96px)'}
             textStyle={'bodyW'}
           >
-            {component}
+            {!login && loginState ? <>{component}</> : <SigninGuidance />}
           </Box>
           <Navigation path={path} />
         </Box>
