@@ -80,9 +80,15 @@ const Heading: FC<Props> = ({ path, back, search }) => {
   const HeadingText = () => (
     <>
       {nav && (
-        <Text as={'span'}>
-          {navIndex === 0 ? 'ステージマルシェ' : nav.name}
-        </Text>
+        <>
+          {navIndex === 0 ? (
+            <Box w={'160px'} mt={'10px'}>
+              <Box as={'img'} src={'./img/logo.svg'} />
+            </Box>
+          ) : (
+            <Text as={'span'}>{nav.name}</Text>
+          )}
+        </>
       )}
     </>
   );
@@ -94,6 +100,7 @@ const Heading: FC<Props> = ({ path, back, search }) => {
           h={'100%'}
           pos={'absolute'}
           inset={'auto 5vw auto auto'}
+          mt={'2px'}
           sx={{
             '&::before': {
               content: '""',

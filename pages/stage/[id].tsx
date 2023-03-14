@@ -406,6 +406,7 @@ const StageId: NextPage<Props> = ({ id }) => {
           </Flex>
           {!isTicketElm && <OriginalSpacer size={'28px'} />}
           <Recommend />
+          <OriginalSpacer size={'56px'} />
         </>
       )}
     </>
