@@ -12,7 +12,7 @@ const colors = {
   // greenToBlue: 'linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%)',
   greenToBlue: 'linear-gradient(-225deg, #9bf1cb 0%, #44a1be 100%)',
   yellowToRed:
-    'linear-gradient(115.54deg, #924993 16.77%, #9C519D 25%, #A95BAA 67.68%, #9C519D 82.17%, #924993 91.96%)',
+    'linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%)',
   pink: '#ed8599',
   yellow: '#fcd13e',
   lime: '#d9da21',

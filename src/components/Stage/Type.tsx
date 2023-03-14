@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Text } from '@chakra-ui/react';
 
-import { stageType } from 'src/types/stage';
+import { typeArray } from 'src/libs/stage';
 
-import { typeArray } from 'src/libs/signin';
+import { stageType } from 'src/types/stage';
 
 type Props = {
   data: stageType;
