@@ -19,31 +19,3 @@ export const signinGuidanceText: signinGuidanceTextType[] = [
     text: '興味はあるけど、他の公演とも迷う…そんな時は『気になる』機能を使って作品をピンしましょう。目移りも楽しいものですね！',
   },
 ];
-
-export const stageGenreArray: string[] = [
-  '歴史',
-  '現代',
-  '近未来',
-  'ミステリー',
-  'シリアス',
-  'ラブ',
-  '革命',
-  'ほのぼの',
-  '成長',
-  'スポーツ',
-  '学園',
-  '実写化',
-];
-
-export const typeArray = [
-  {
-    text: 'ミュージカル',
-    color: 'pink',
-    index: 0,
-  },
-  {
-    text: 'お芝居',
-    color: 'green',
-    index: 1,
-  },
-];

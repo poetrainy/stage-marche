@@ -12,15 +12,28 @@ type Props = {
   component?: JSX.Element;
   login?: boolean;
   search?: boolean;
+  specialBackground?: boolean;
 };
 
-const MainContents: FC<Props> = ({ component, login, search }) => {
+const MainContents: FC<Props> = ({
+  component,
+  login,
+  search,
+  specialBackground,
+}) => {
   const path = useGetPath();
 
   return (
     <>
       {path && (
-        <Box flexDir={'column'}>
+        <Box
+          flexDir={'column'}
+          sx={{
+            ...(specialBackground && {
+              background: 'greenToBlue',
+            }),
+          }}
+        >
           <Heading path={path} search={search} />
           <Box
             as={'main'}

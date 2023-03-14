@@ -299,3 +299,31 @@ export const castArray: castType[] = [
     path: 'satoshori',
   },
 ];
+
+export const stageGenreArray: string[] = [
+  '歴史',
+  '現代',
+  '近未来',
+  'ミステリー',
+  'シリアス',
+  'ラブ',
+  '革命',
+  'ほのぼの',
+  '成長',
+  'スポーツ',
+  '学園',
+  '実写化',
+];
+
+export const typeArray = [
+  {
+    text: 'ミュージカル',
+    color: 'pink',
+    index: 0,
+  },
+  {
+    text: 'お芝居',
+    color: 'green',
+    index: 1,
+  },
+];

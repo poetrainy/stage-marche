@@ -6,8 +6,7 @@ import { FormEvent, useState } from 'react';
 import OriginalSpacer from 'src/components/OriginalSpacer';
 import PreText from 'src/components/PreText';
 
-import { stageGenreArray } from 'src/libs/signin';
-import { prefectureArray } from 'src/libs/stage';
+import { stageGenreArray, prefectureArray } from 'src/libs/stage';
 
 const Enquete: NextPage = () => {
   const [genre, setGenre] = useState<number[]>([]);
@@ -106,7 +105,6 @@ const Enquete: NextPage = () => {
     return (
       <Center
         as={'p'}
-        // h={'210px'}
         color={'black600'}
         fontSize={'1.2rem'}
         lineHeight={'2.2rem'}

@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
 
-import { stageType } from 'src/types/stage';
-
-import { stageGenreArray } from 'src/libs/signin';
-import { columnType } from 'src/types/column';
+import { stageGenreArray } from 'src/libs/stage';
 import { columnGenreArray } from 'src/libs/column';
+
+import { stageType } from 'src/types/stage';
+import { columnType } from 'src/types/column';
 
 type Props = {
   data: stageType | columnType;
@@ -31,11 +31,7 @@ const StageGenre: FC<Props> = ({ data, column }) => {
                 }),
           }}
         >
-          {column ? (
-            <>#{columnGenreArray[i]}</>
-          ) : (
-            <>#{stageGenreArray[item]}</>
-          )}
+          {column ? <>#{columnGenreArray[i]}</> : <>#{stageGenreArray[item]}</>}
         </Text>
       ))}
     </Flex>
