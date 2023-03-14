@@ -25,7 +25,7 @@ const StageBunnerLarge: FC<Props> = ({ data }) => {
           background: 'white',
           padding: '14px',
           borderRadius: '24px',
-          textStyle: 'shadow',
+          textStyle: 'lightShadow',
         },
       }}
     >

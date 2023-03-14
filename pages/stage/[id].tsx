@@ -312,7 +312,7 @@ const StageId: NextPage<Props> = ({ id }) => {
             pb={'5vw'}
             transform={'translateY(-28px)'}
             borderRadius={'5vw'}
-            textStyle={'shadow'}
+            textStyle={'lightShadow'}
             overflow={'hidden'}
             transition={'height 0.15s, padding-top 0.15s, padding-bottom 0.15s'}
             ref={elm}

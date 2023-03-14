@@ -18,7 +18,7 @@ const Back: FC = () => {
       inset={'5vw auto auto 5vw'}
       borderRadius={'9999px'}
       zIndex={3}
-      textStyle={'shadow'}
+      textStyle={'lightShadow'}
       sx={{
         '&::before': {
           content: '""',

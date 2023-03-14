@@ -27,7 +27,7 @@ const ColumnBunner: FC<Props> = ({ data }) => {
           background: 'white',
           padding: '16px',
           borderRadius: '16px',
-          textStyle: 'shadow',
+          textStyle: 'lightShadow',
         },
       }}
     >

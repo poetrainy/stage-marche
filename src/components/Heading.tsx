@@ -148,7 +148,7 @@ const Heading: FC<Props> = ({ path, back, search }) => {
         fontWeight={'bold'}
         pos={'fixed'}
         inset={'0 0 auto auto'}
-        textStyle={'shadow'}
+        textStyle={'lightShadow'}
         zIndex={'20'}
       >
         <Back />

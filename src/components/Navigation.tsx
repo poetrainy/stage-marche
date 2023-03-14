@@ -19,7 +19,7 @@ const Navigation: FC<Props> = ({ path }) => {
       p={'0 calc(5vw / 2)'}
       pos={'fixed'}
       inset={'auto auto 0 0'}
-      textStyle={'shadow'}
+      textStyle={'lightShadow'}
       borderRadius={'30px 30px 0px 0px'}
       zIndex={'20'}
     >

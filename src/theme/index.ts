@@ -60,8 +60,11 @@ const textStyles = {
     width: '90vw',
     margin: '0 auto',
   },
-  shadow: {
+  lightShadow: {
     boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.05)',
+  },
+  deepShadow: {
+    boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.1)',
   },
   tagItem: {
     width: 'fit-content',
