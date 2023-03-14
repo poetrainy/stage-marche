@@ -37,7 +37,6 @@ const Enquete: NextPage = () => {
         keepGenre.push(input);
       }
     }
-    console.log(keepGenre);
     if (keepGenre.length === 3) {
       setIsGenreLengthArray([false, false, true]);
     } else if (keepGenre.length === 2) {
@@ -57,7 +56,7 @@ const Enquete: NextPage = () => {
 
   const SigninEnquetePrefecture = () => {
     return (
-      <Center h={'224px'} textStyle={'bodyW'}>
+      <Center h={'210px'} textStyle={'bodyW'}>
         <Box
           w={'80%'}
           h={'72px'}
@@ -105,24 +104,18 @@ const Enquete: NextPage = () => {
 
   const SigninEnqueteComplete = () => {
     return (
-      <>
-        {/* <Center flexDir={'column'} h={'224px'}>> */}
-        <Center
-          as={'p'}
-          h={'224px'}
-          color={'black600'}
-          fontSize={'1.2rem'}
-          lineHeight={'2.2rem'}
-          textAlign={'center'}
-        >
-          会員登録をしていただき、ありがとうございます！
-          <br />
-          さまざまな作品があなたを待っていますよ！
-        </Center>
-        {/* <OriginalSpacer size={'24px'} /> */}
-        {/* <GradationBtn text={'早速チケットを見る'} path={''} /> */}
-        {/* </Center> */}
-      </>
+      <Center
+        as={'p'}
+        // h={'210px'}
+        color={'black600'}
+        fontSize={'1.2rem'}
+        lineHeight={'2.2rem'}
+        textAlign={'center'}
+      >
+        会員登録をしていただき、ありがとうございます！
+        <br />
+        さまざまな作品があなたを待っていますよ！
+      </Center>
     );
   };
 
@@ -135,23 +128,22 @@ const Enquete: NextPage = () => {
       path: 'genre',
       heading: '好きな映画・ドラマ・小説・漫画の\nジャンルはなんですか？',
       component: (
-        <Center gap={'8px'} flexWrap={'wrap'} h={'224px'} textStyle={'bodyW'}>
+        <Center
+          gap={'4px 8px'}
+          flexWrap={'wrap'}
+          h={'210px'}
+          textStyle={'bodyW'}
+        >
           {stageGenreArray.map((item: string, i) => (
-            <Flex
+            <Box
               key={0 + item + i}
-              gap={'8px'}
-              flexWrap={'wrap'}
               bg={'white'}
-              p={'12px 20px'}
-              fontSize={'1.5rem'}
-              fontWeight={'bold'}
-              borderRadius={'9999px'}
-              transition={'color 0.2s, background 0.2s'}
+              textStyle={'tagItem'}
               onClick={() => setGenreFunc(i)}
               sx={{
                 ...(isGenreLengthArray[2]
                   ? {
-                      color: 'black400',
+                      color: '#bdbdbd',
                     }
                   : {
                       color: 'skyblue',
@@ -174,7 +166,7 @@ const Enquete: NextPage = () => {
               }}
             >
               {item}
-            </Flex>
+            </Box>
           ))}
         </Center>
       ),
@@ -198,6 +190,30 @@ const Enquete: NextPage = () => {
   return (
     <>
       <Box w={'100vw'} overflow={'hidden'}>
+        <Box
+          w={'100vw'}
+          h={'16px'}
+          bg={'black300'}
+          pos={'fixed'}
+          inset={'0 0 auto auto'}
+          sx={{
+            '&::before': {
+              content: '""',
+              display: 'block',
+              width: '100%',
+              height: '100%',
+              background: 'skyblue',
+              transform: 'translateX(-100%)',
+              transition: 'transform 0.4s',
+              ...(page === 1 && {
+                transform: 'translateX(-50%)',
+              }),
+              ...(page === 2 && {
+                transform: 'translateX(0)',
+              }),
+            },
+          }}
+        />
         <Flex flexWrap={'wrap'} w={`calc(${signinEnqueteText.length} * 100vw)`}>
           {signinEnqueteText.map((item, i) => (
             <Center
@@ -207,6 +223,7 @@ const Enquete: NextPage = () => {
               minH={'100vh'}
               transform={`translateX(calc(${page} * -100vw))`}
               transition={'transform 0.3s'}
+              pb={'16px'}
               sx={{
                 '&:nth-of-type(1)': {
                   '>button': {
@@ -263,14 +280,14 @@ const Enquete: NextPage = () => {
               <PreText text={item.heading} />
               <OriginalSpacer size={'24px'} />
               <Box as={'img'} src={`/img/enquete_${i + 1}_${item.path}.svg`} />
-              <OriginalSpacer size={'40px'} />
-              <>{item.component}</>
               <OriginalSpacer size={'32px'} />
+              <>{item.component}</>
+              <OriginalSpacer size={'40px'} />
               {i < 2 ? (
                 <Center
                   as={'button'}
-                  w={'240px'}
-                  h={'72px'}
+                  w={'232px'}
+                  h={'64px'}
                   bg={'black300'}
                   borderRadius={'9999px'}
                   overflow={'hidden'}
@@ -290,8 +307,8 @@ const Enquete: NextPage = () => {
                     '&::after': {
                       content: '""',
                       display: 'block',
-                      width: '32px',
-                      height: '32px',
+                      width: '28px',
+                      height: '28px',
                       background:
                         'url("./img/enquete_icon_check.svg") no-repeat',
                       backgroundSize: 'contain',

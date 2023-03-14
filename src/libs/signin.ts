@@ -31,8 +31,8 @@ export const stageGenreArray: string[] = [
   'ほのぼの',
   '成長',
   'スポーツ',
-  '実写化',
   '学園',
+  '実写化',
 ];
 
 export const typeArray = [

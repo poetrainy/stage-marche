@@ -17,7 +17,6 @@ const colors = {
   green: '#aac836',
   skyblue: '#5dc1cf',
   primary: '#4AB9C9',
-  // primary: '#46b4bc',
 };
 const styles = {
   global: {
@@ -44,12 +43,6 @@ const styles = {
       background: 'primary',
       color: 'white',
     },
-    // '::selection': {
-    //   background: 'tomato',
-    // },
-    // '::-moz-selection': {
-    //   background: 'tomato',
-    // },
   },
 };
 const fonts = {
@@ -59,7 +52,6 @@ const breakpoints = {
   sm: '500px',
   md: '640px',
   lg: '820px',
-  // example
 };
 const textStyles = {
   bodyW: {
@@ -68,6 +60,14 @@ const textStyles = {
   },
   shadow: {
     boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.05)',
+  },
+  tagItem: {
+    width: 'fit-content',
+    padding: '12px 20px',
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    borderRadius: '9999px',
+    transition: 'color 0.2s, background 0.2s',
   },
 };
 

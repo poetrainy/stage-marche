@@ -32,7 +32,7 @@ const Column: NextPage = () => {
     );
   };
 
-  return <MainContents component={<Component />} />;
+  return <MainContents component={<Component />} search />;
 };
 
 export default Column;

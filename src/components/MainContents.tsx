@@ -8,16 +8,17 @@ import useGetPath from 'src/hooks/useGetPath';
 
 type Props = {
   component?: JSX.Element;
+  search?: boolean;
 };
 
-const MainContents: FC<Props> = ({ component }) => {
+const MainContents: FC<Props> = ({ component, search }) => {
   const path = useGetPath();
 
   return (
     <>
       {path && (
         <Box flexDir={'column'}>
-          <Heading path={path} />
+          <Heading path={path} search={search} />
           <Box
             as={'main'}
             minH={'100vh'}
