@@ -130,6 +130,7 @@ const Enquete: NextPage = () => {
           gap={'4px 8px'}
           flexWrap={'wrap'}
           h={'210px'}
+          px={'8px'}
           textStyle={'bodyW'}
         >
           {stageGenreArray.map((item: string, i) => (
@@ -223,19 +224,19 @@ const Enquete: NextPage = () => {
                   '>button': {
                     ...(isGenreLengthArray[0] && {
                       '&::before': {
-                        transform: 'translateX(-66%)',
+                        width: '33%',
                       },
                     }),
                     ...(isGenreLengthArray[1] && {
                       '&::before': {
-                        transform: 'translateX(-33%)',
+                        width: '66%',
                       },
                     }),
                     ...(isGenreLengthArray[2]
                       ? {
                           pointerEvents: 'auto',
                           '&::before': {
-                            transform: 'translateX(0)',
+                            width: '100%',
                           },
                         }
                       : {
@@ -249,7 +250,7 @@ const Enquete: NextPage = () => {
                       ? {
                           pointerEvents: 'auto',
                           '&::before': {
-                            transform: 'translateX(0)',
+                            width: '100%',
                           },
                         }
                       : {
@@ -291,12 +292,12 @@ const Enquete: NextPage = () => {
                     '&::before': {
                       content: '""',
                       display: 'block',
-                      width: '100%',
+                      width: 0,
                       height: '100%',
                       background: 'skyblue',
                       position: 'absolute',
-                      transform: 'translateX(-100%)',
-                      transition: 'transform 0.4s',
+                      inset: '0 auto auto 0',
+                      transition: 'width 0.4s',
                     },
                     '&::after': {
                       content: '""',
