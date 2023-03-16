@@ -9,7 +9,7 @@ import SigninGuidance from 'src/components/SigninGuidance';
 import { loginState } from 'src/libs/signin';
 
 type Props = {
-  component?: JSX.Element;
+  component: JSX.Element;
   login?: boolean;
   search?: boolean;
   specialBackground?: boolean;
@@ -38,7 +38,7 @@ const MainContents: FC<Props> = ({
           <Box
             as={'main'}
             minH={'100vh'}
-            p={'calc(64px + 32px) 0 calc(96px + 96px)'}
+            p={'calc(64px + 32px) 0 calc(40px + 96px)'}
             textStyle={'bodyW'}
           >
             {!login && loginState ? <>{component}</> : <SigninGuidance />}

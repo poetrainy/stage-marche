@@ -48,6 +48,11 @@ const StageId: NextPage<Props> = ({ id }) => {
       elm.current.style.paddingTop = '0';
       // @ts-ignore
       elm.current.style.paddingBottom = '0';
+      if (!isLoad) {
+        setTimeout(() => {
+          setIsLoad(true);
+        }, 600);
+      }
     }
     setIsTicketElm(flag);
   };
@@ -57,7 +62,6 @@ const StageId: NextPage<Props> = ({ id }) => {
       // @ts-ignore
       setTicketElmHeight(elm.current.clientHeight);
       ticketStyle(false);
-      setIsLoad(true);
     }
   }, [img]);
 
@@ -205,14 +209,12 @@ const StageId: NextPage<Props> = ({ id }) => {
     </Flex>
   );
 
-  const ticketInfo = () => {
-    console.log(isTicketElm);
+  const ticketInfoFunc = () => {
     if (isTicketElm) {
       ticketStyle(false);
     } else {
       ticketStyle(true);
     }
-    // setIsTicketElm(!isTicketElm);
   };
 
   return (
@@ -255,7 +257,11 @@ const StageId: NextPage<Props> = ({ id }) => {
           <OriginalSpacer size={'24px'} />
           <StageInfo />
           <OriginalSpacer size={'20px'} />
-          {!isLoad && <>チケット情報読み込み中…</>}
+          {!isLoad && (
+            <Center as={'p'} w={'100%'} h={'56px'}>
+              チケット情報読み込み中…
+            </Center>
+          )}
           <Flex
             as={'h2'}
             alignItems={'center'}
@@ -269,7 +275,7 @@ const StageId: NextPage<Props> = ({ id }) => {
             zIndex={3}
             transition={'opacity 0.1s'}
             textStyle={'bodyW'}
-            onClick={() => ticketInfo()}
+            onClick={() => ticketInfoFunc()}
             sx={{
               ...(isLoad
                 ? {
@@ -314,8 +320,17 @@ const StageId: NextPage<Props> = ({ id }) => {
             borderRadius={'5vw'}
             textStyle={'lightShadow'}
             overflow={'hidden'}
-            transition={'height 0.15s, padding-top 0.15s, padding-bottom 0.15s'}
             ref={elm}
+            sx={{
+              ...(isLoad
+                ? {
+                    transition:
+                      'height 0.15s, padding-top 0.15s, padding-bottom 0.15s',
+                  }
+                : {
+                    opacity: 0,
+                  }),
+            }}
           >
             {data.schedule.map((item, i) => (
               <Box

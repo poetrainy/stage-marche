@@ -35,25 +35,25 @@ const Navigation: FC<Props> = ({ path }) => {
               alignItems: 'center',
               gap: '4px',
               position: 'relative',
-              ...(item.center
-                ? {
-                    justifyContent: 'center',
-                    width: '80px',
-                    height: '80px',
-                    background: 'black800',
-                    borderRadius: '9999px',
-                    overflow: 'hidden',
-                    transform: 'translateY(-16px)',
-                  }
-                : {
-                    width: '100%',
-                    height: '100%',
-                    padding: '16px 0',
-                  }),
-              ...(`/${item.path}` === path &&
-                item.center && {
-                  background: 'greenToBlue',
-                }),
+              // ...(item.center
+              //   ? {
+              //       justifyContent: 'center',
+              //       width: '80px',
+              //       height: '80px',
+              //       background: 'black800',
+              //       borderRadius: '9999px',
+              //       overflow: 'hidden',
+              //       transform: 'translateY(-16px)',
+              //     }
+              //   : {
+              width: '100%',
+              height: '100%',
+              padding: '16px 0',
+              // }),
+              // ...(`/${item.path}` === path &&
+              //   item.center && {
+              //     background: 'greenToBlue',
+              //   }),
               '&::before': {
                 content: '""',
                 width: '24px',
@@ -62,7 +62,8 @@ const Navigation: FC<Props> = ({ path }) => {
                 borderRadius: '0px 0px 4px 4px',
                 position: 'absolute',
                 inset: '0 auto auto auto',
-                ...(`/${item.path}` === path && !item.center
+                // ...(`/${item.path}` === path && !item.center
+                ...(`/${item.path}` === path
                   ? {
                       display: 'block',
                     }
@@ -79,16 +80,16 @@ const Navigation: FC<Props> = ({ path }) => {
               sx={{
                 path: {
                   fill:
-                    `/${item.path}` === path && !item.center
-                      ? 'primary'
-                      : item.fill,
+                    // `/${item.path}` === path && !item.center
+                    `/${item.path}` === path ? 'primary' : item.fill,
                 },
               }}
             />
             <Text
               as={'span'}
               color={
-                `/${item.path}` === path && !item.center ? 'primary' : item.fill
+                // `/${item.path}` === path && !item.center ? 'primary' : item.fill
+                `/${item.path}` === path ? 'primary' : item.fill
               }
               fontSize={'1rem'}
               fontWeight={'bold'}

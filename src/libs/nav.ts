@@ -26,7 +26,8 @@ export const navContents: navContentsType[] = [
     img: TicketIcon,
     path: 'ticket',
     center: true,
-    fill: 'white',
+    fill: 'black400',
+    // fill: 'white',
   },
   {
     name: '気になる',

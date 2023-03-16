@@ -162,7 +162,7 @@ const Heading: FC<Props> = ({ path, back, search }) => {
         <HeadingText />
         <Search />
       </Center>
-      {nav && (
+      {nav && search && (
         <Box
           w={'100vw'}
           h={'100vh'}

@@ -3,7 +3,13 @@ import type { NextPage } from 'next';
 import MainContents from 'src/components/MainContents';
 
 const User: NextPage = () => {
-  return <MainContents />;
+  const Component = () => (
+    <>
+      <>てすと</>
+    </>
+  );
+
+  return <MainContents component={<Component />} />;
 };
 
 export default User;
