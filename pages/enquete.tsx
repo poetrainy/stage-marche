@@ -209,15 +209,18 @@ const Enquete: NextPage = () => {
             },
           }}
         />
-        <Flex flexWrap={'wrap'} w={`calc(${signinEnqueteText.length} * 100vw)`}>
+        <Flex
+          flexWrap={'wrap'}
+          w={`calc(${signinEnqueteText.length} * 100vw)`}
+          transform={`translateX(calc(${page} * -100vw))`}
+          transition={'transform 0.3s'}
+        >
           {signinEnqueteText.map((item, i) => (
             <Center
               key={item.path + i}
               flexDir={'column'}
               w={'100vw'}
               minH={'100vh'}
-              transform={`translateX(calc(${page} * -100vw))`}
-              transition={'transform 0.3s'}
               pb={'16px'}
               sx={{
                 '&:nth-of-type(1)': {
