@@ -12,6 +12,7 @@ type Props = {
   component: JSX.Element;
   login?: boolean;
   search?: boolean;
+  index?: boolean;
   specialBackground?: boolean;
 };
 
@@ -19,6 +20,7 @@ const MainContents: FC<Props> = ({
   component,
   login,
   search,
+  index,
   specialBackground,
 }) => {
   const path = useGetPath();
@@ -39,7 +41,11 @@ const MainContents: FC<Props> = ({
             as={'main'}
             minH={'100vh'}
             p={'calc(64px + 32px) 0 calc(40px + 96px)'}
-            textStyle={'bodyW'}
+            sx={{
+              ...(!index && {
+                textStyle: 'bodyW',
+              }),
+            }}
           >
             {!login && loginState ? <>{component}</> : <SigninGuidance />}
           </Box>
