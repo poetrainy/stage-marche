@@ -31,12 +31,13 @@ const Home: NextPage = () => {
         setSelected(selected + 1);
       }
     };
+
     return (
       <>
         <Box textStyle={'bodyW'}>
           <Headline text={'大阪公演中の作品があります'} />
         </Box>
-        <Box w={'100vw'} overflow={'hidden'}>
+        <Box w={'100vw'} overflow={'hidden'} pos={'relative'}>
           <Flex
             as={'ul'}
             w={`calc(100vw * ${stageArray.length})`}
@@ -135,12 +136,13 @@ const Home: NextPage = () => {
               </Box>
             ))}
           </Flex>
+          <OriginalSpacer size={'12px'} />
           <Flex gap={'8px'} w={'fit-content'} m={'0 auto'}>
             {stageArray.map((item, i) => (
               <Box
                 key={item.path + i}
-                w={'12px'}
-                h={'12px'}
+                w={'10px'}
+                h={'10px'}
                 borderRadius={'9999px'}
                 transition={'background 0.2s'}
                 onClick={() => choice(i)}
@@ -156,8 +158,70 @@ const Home: NextPage = () => {
               />
             ))}
           </Flex>
-          <Box onClick={() => prev()}>ひだり</Box>
-          <Box onClick={() => next()}>みぎ</Box>
+          <Box
+            as={'button'}
+            onClick={() => prev()}
+            inset={'0 auto 22px 16px'}
+            textStyle={'button'}
+            sx={{
+              '&::before': {
+                content: '""',
+                display: 'block',
+                width: '4px',
+                height: '12px',
+                background: 'black200',
+                borderRadius: '9999px',
+                margin: 'auto',
+                position: 'absolute',
+                inset: '9px 0 auto -2px',
+                transform: 'rotateZ(45deg)',
+              },
+              '&::after': {
+                content: '""',
+                display: 'block',
+                width: '4px',
+                height: '12px',
+                background: 'black200',
+                borderRadius: '9999px',
+                margin: 'auto',
+                position: 'absolute',
+                inset: 'auto 2px 9px 0',
+                transform: 'rotateZ(-45deg)',
+              },
+            }}
+          />
+          <Box
+            as={'button'}
+            onClick={() => next()}
+            inset={'0 16px 22px auto'}
+            textStyle={'button'}
+            sx={{
+              '&::before': {
+                content: '""',
+                display: 'block',
+                width: '4px',
+                height: '12px',
+                background: 'black200',
+                borderRadius: '9999px',
+                margin: 'auto',
+                position: 'absolute',
+                inset: '9px -2px auto 0',
+                transform: 'rotateZ(-45deg)',
+              },
+              '&::after': {
+                content: '""',
+                display: 'block',
+                width: '4px',
+                height: '12px',
+                background: 'black200',
+                borderRadius: '9999px',
+                margin: 'auto',
+                position: 'absolute',
+                inset: 'auto 0 9px 2px',
+                transform: 'rotateZ(45deg)',
+              },
+            }}
+          />
         </Box>
         <OriginalSpacer size={'24px'} />
         <Box as={'section'} textStyle={'bodyW'}>

@@ -75,6 +75,15 @@ const textStyles = {
     borderRadius: '9999px',
     transition: 'color 0.2s, background 0.2s',
   },
+  button: {
+    width: '36px',
+    height: '36px',
+    background: 'rgba(0, 0, 0, 0.5)',
+    // bg: 'primary',
+    margin: 'auto',
+    position: 'absolute',
+    borderRadius: '9999px',
+  },
 };
 
 const theme = extendTheme({

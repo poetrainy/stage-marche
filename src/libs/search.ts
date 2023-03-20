@@ -35,4 +35,8 @@ export const searchColumnArray: searchType[] = [
     condition: 'タグ',
     item: columnGenreArray,
   },
+  {
+    condition: 'こだわり',
+    item: ['はじめてのB席', '大阪公演がある', '配信公演がある'],
+  },
 ];

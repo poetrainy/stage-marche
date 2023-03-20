@@ -1,4 +1,6 @@
+export type searchConditionArray = 'スタイル' | 'タグ' | 'こだわり';
+
 export type searchType = {
-  condition: string;
+  condition: searchConditionArray;
   item: string[];
 };

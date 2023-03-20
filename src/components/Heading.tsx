@@ -19,20 +19,41 @@ const Heading: FC<Props> = ({ path, back, search }) => {
   const router = useRouter();
   const [nav, setNav] = useState<navContentsType>();
   const [navIndex, setNavIndex] = useState<number>(0);
-
   const [inputText, setInputText] = useState<string>();
   const [isSearch, setIsSearch] = useState<boolean>(false);
+  const [selected, setSelected] = useState<boolean[][]>();
+  const [array, setArray] = useState<searchType[]>();
 
   useEffect(() => {
-    if (path) {
-      for (let i = 0; i < navContents.length; i++) {
-        if (`/${navContents[i].path}` === path) {
-          setNav(navContents[i]);
-          setNavIndex(i);
-        }
+    for (let i = 0; i < navContents.length; i++) {
+      if (`/${navContents[i].path}` === path) {
+        setNav(navContents[i]);
+        setNavIndex(i);
+      }
+    }
+    if (search) {
+      if (path === '/') {
+        setArray(searchStageArray);
+      } else {
+        setArray(searchColumnArray);
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (array) {
+      let keepFlagArray: boolean[][] = [];
+      let keepFlag: boolean[] = [];
+      array.forEach((element) => {
+        element.item.forEach((content, i) => {
+          keepFlag.push(false);
+        });
+        keepFlagArray.push(keepFlag);
+        keepFlag = [];
+      });
+      setSelected(keepFlagArray);
+    }
+  }, [array]);
 
   const backFunc = () => {
     router.back();
@@ -134,6 +155,16 @@ const Heading: FC<Props> = ({ path, back, search }) => {
     </>
   );
 
+  const selectedFunc = (i: number, i2: number) => {
+    if (selected) {
+      let keepFlagArray = selected;
+      keepFlagArray[i][i2] = !keepFlagArray[i][i2];
+      // console.log();
+      setSelected(keepFlagArray);
+      console.log(keepFlagArray, selected, selected[i][i2]);
+    }
+  };
+
   const inputTextFunc = (e: {
     currentTarget: { value: SetStateAction<string | undefined> };
   }) => {
@@ -155,14 +186,14 @@ const Heading: FC<Props> = ({ path, back, search }) => {
         fontWeight={'bold'}
         pos={'fixed'}
         inset={'0 0 auto auto'}
-        textStyle={'lightShadow'}
+        textStyle={'deepShadow'}
         zIndex={'20'}
       >
         <Back />
         <HeadingText />
         <Search />
       </Center>
-      {nav && search && (
+      {nav && search && selected && array && (
         <Box
           w={'100vw'}
           h={'100vh'}
@@ -197,7 +228,7 @@ const Heading: FC<Props> = ({ path, back, search }) => {
             >
               クリア
             </Text>
-            {navIndex === 0 ? 'チケット' : nav.name}を検索
+            {navIndex === 0 ? 'チケット' : nav.name}を絞り込み
             <Center
               w={'20px'}
               h={'20px'}
@@ -234,7 +265,7 @@ const Heading: FC<Props> = ({ path, back, search }) => {
           <Input
             placeholder={`フリーワードで${
               navIndex === 0 ? 'チケット' : nav.name
-            }を検索`}
+            }を絞り込み`}
             value={inputText}
             w={'calc(100vw - 5vw * 2)'}
             h={'48px'}
@@ -251,33 +282,41 @@ const Heading: FC<Props> = ({ path, back, search }) => {
           />
           <OriginalSpacer size={'24px'} />
           <Flex flexDir={'column'} gap={'24px'} px={'5vw'}>
-            {(navIndex === 0 ? searchStageArray : searchColumnArray).map(
-              (item: searchType, i) => (
-                <Box key={item.condition + i}>
-                  <Box
-                    w={'fit-content'}
-                    color={'primary'}
-                    fontSize={'1.8rem'}
-                    fontWeight={'bold'}
-                  >
-                    {item.condition}
-                  </Box>
-                  <OriginalSpacer size={'12px'} />
-                  <Flex gap={'8px'} flexWrap={'wrap'}>
-                    {item.item.map((tag: string, i2: number) => (
-                      <Box
-                        key={tag + i2}
-                        color={'black400'}
-                        bg={'black100'}
-                        textStyle={'tagItem'}
-                      >
-                        {tag}
-                      </Box>
-                    ))}
-                  </Flex>
+            {array.map((item: searchType, i) => (
+              <Box key={item.condition + i}>
+                <Box
+                  w={'fit-content'}
+                  color={'primary'}
+                  fontSize={'1.8rem'}
+                  fontWeight={'bold'}
+                >
+                  {item.condition}
                 </Box>
-              )
-            )}
+                <OriginalSpacer size={'12px'} />
+                <Flex gap={'8px'} flexWrap={'wrap'}>
+                  {item.item.map((tag: string, i2: number) => (
+                    <Box
+                      key={tag + i2}
+                      textStyle={'tagItem'}
+                      onClick={() => selectedFunc(i, i2)}
+                      sx={{
+                        ...(selected[i][i2]
+                          ? {
+                              color: 'white',
+                              background: 'primary',
+                            }
+                          : {
+                              color: 'black400',
+                              background: 'black100',
+                            }),
+                      }}
+                    >
+                      {tag}
+                    </Box>
+                  ))}
+                </Flex>
+              </Box>
+            ))}
           </Flex>
           <Center
             w={'100vw'}
