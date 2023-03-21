@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { Box, Center, Text } from '@chakra-ui/react';
 
 import OriginalSpacer from 'src/components/OriginalSpacer';
-import GradationBtn from 'src/components/GradationBtn';
+import SigninBtn from 'src/components/SigninBtn';
 import PreText from 'src/components/PreText';
 
 import { signinGuidanceText } from 'src/libs/signin';
@@ -46,7 +46,8 @@ const SigninGuidance: FC = () => {
             </Text>
           </Center>
           <OriginalSpacer size={'32px'} />
-          <GradationBtn text={'Googleでログイン'} path={'signin'} />
+          <SigninBtn />
+          {/* <SigninBtn text={'Googleでログイン'} path={'signin'} /> */}
         </Center>
       )}
     </>

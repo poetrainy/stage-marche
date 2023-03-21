@@ -4,10 +4,13 @@ import NextLink from 'next/link';
 
 import MainContents from 'src/components/MainContents';
 import StageInfomation from 'src/components/Stage/Infomation';
+import useAuth from 'src/hooks/useAuth';
 
 import { stageArray } from 'src/libs/stage';
 
 const Ticket: NextPage = () => {
+  const isAuth = useAuth();
+
   const flag: boolean[] = [true, false, false];
 
   const Component = () => (
@@ -35,7 +38,7 @@ const Ticket: NextPage = () => {
             p={'16px 12px 16px 16px'}
             pos={'relative'}
             textStyle={'deepShadow'}
-            borderRadius={"16px 0 0 16px"}
+            borderRadius={'16px 0 0 16px'}
             sx={{
               '&::after': {
                 content: '""',
@@ -66,7 +69,7 @@ const Ticket: NextPage = () => {
             <Box
               w={'23%'}
               background={'rgba(255, 255, 255, 0.95)'}
-              borderRadius={"0 16px 16px 0"}
+              borderRadius={'0 16px 16px 0'}
               textStyle={'deepShadow'}
             ></Box>
           )}
@@ -75,7 +78,12 @@ const Ticket: NextPage = () => {
     </Flex>
   );
 
-  return <MainContents component={<Component />} specialBackground />;
+  return (
+    <MainContents
+      component={<Component />}
+      specialBackground={isAuth ? true : false}
+    />
+  );
 };
 
 export default Ticket;

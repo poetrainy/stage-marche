@@ -159,9 +159,7 @@ const Heading: FC<Props> = ({ path, back, search }) => {
     if (selected) {
       let keepFlagArray = selected;
       keepFlagArray[i][i2] = !keepFlagArray[i][i2];
-      // console.log();
       setSelected(keepFlagArray);
-      console.log(keepFlagArray, selected, selected[i][i2]);
     }
   };
 
