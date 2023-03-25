@@ -28,8 +28,7 @@ const SigninGuidance: FC = () => {
       {guidance && (
         <Center
           flexDir={'column'}
-          h={'calc(100vh - 64px - 96px - 32px)'}
-          pb={'40px'}
+          h={'calc(100vh - 64px - 32px - 40px - 96px)'}
           m={'auto'}
         >
           <Box as={'img'} src={`/img/guidance_${guidance.path}.svg`} />
@@ -47,7 +46,6 @@ const SigninGuidance: FC = () => {
           </Center>
           <OriginalSpacer size={'32px'} />
           <SigninBtn />
-          {/* <SigninBtn text={'Googleでログイン'} path={'signin'} /> */}
         </Center>
       )}
     </>

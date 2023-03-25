@@ -4,14 +4,6 @@ import { useRouter } from 'next/router';
 
 import { firebase, auth } from 'src/libs/firebase';
 
-// import NextLink from 'next/link';
-
-// type Props = {
-//   text: string;
-//   path: string;
-// };
-
-// const GradationBtn: FC<Props> = ({ text, path }) => {
 const SigninBtn: FC = () => {
   const router = useRouter();
 
@@ -33,14 +25,13 @@ const SigninBtn: FC = () => {
       h={'64px'}
       color={'white'}
       bg={'greenToBlue'}
+      fontSize={'1.6rem'}
       fontWeight={'bold'}
       borderRadius={'9999px'}
       m={'0 auto'}
       onClick={() => signUp()}
     >
-      {/* <NextLink href={`/${path}`} passHref> */}
       {text}
-      {/* </NextLink> */}
     </Center>
   );
 };
