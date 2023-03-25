@@ -1,5 +1,5 @@
 import firebase from 'firebase/compat/app';
-// import 'Firebase/auth';
+// import 'Firebase/compat/auth';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
