@@ -184,8 +184,8 @@ const Heading: FC<Props> = ({ path, back, search }) => {
         fontWeight={'bold'}
         pos={'fixed'}
         inset={'0 0 auto auto'}
-        textStyle={'deepShadow'}
-        zIndex={'20'}
+        textStyle={'lightShadow'}
+        zIndex={'10'}
       >
         <Back />
         <HeadingText />
@@ -198,7 +198,7 @@ const Heading: FC<Props> = ({ path, back, search }) => {
           bg={'white'}
           pos={'fixed'}
           inset={'0 0 auto auto'}
-          zIndex={'30'}
+          zIndex={'15'}
           textAlign={'center'}
           transition={'transform 0.3s'}
           sx={{

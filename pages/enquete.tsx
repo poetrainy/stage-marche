@@ -3,10 +3,19 @@ import type { NextPage } from 'next';
 import NextLink from 'next/link';
 import { FormEvent, useState } from 'react';
 
+import {
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  updateDoc,
+} from 'firebase/firestore';
+
 import OriginalSpacer from 'src/components/OriginalSpacer';
 import PreText from 'src/components/PreText';
 
 import { stageGenreArray, prefectureArray } from 'src/libs/stage';
+import { firebase, auth } from 'src/libs/firebase';
 
 const Enquete: NextPage = () => {
   const [genre, setGenre] = useState<number[]>([]);
@@ -17,6 +26,24 @@ const Enquete: NextPage = () => {
     false,
   ]);
   const [page, setPage] = useState<number>(0);
+
+  // const userRef = db.collection('users').doc('4eADonIyVHL8bdISoN5T');
+  // await userRef.update({
+  //   score: 80,
+  //   updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+  // });
+
+  // const sendFirebaseModal = async (data: number[]) => {
+  //   const db = getFirestore(firebase);
+  //   const colCheck = collection(db, 'check');
+  //   const querySnapshotCheck = await getDocs(colCheck);
+  //   let retId = '';
+  //   querySnapshotCheck.forEach((doc) => {
+  //     retId = doc.id;
+  //   });
+  //   const washingtonRef = doc(db, 'check', retId);
+  //   await updateDoc(washingtonRef, { start: data });
+  // };
 
   const setPageFunc = () => {
     setPage(page + 1);

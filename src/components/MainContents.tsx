@@ -18,7 +18,6 @@ type Props = {
 
 const MainContents: FC<Props> = ({
   component,
-  // login,
   search,
   index,
   specialBackground,
@@ -48,8 +47,8 @@ const MainContents: FC<Props> = ({
               }),
             }}
           >
-            {index || isAuth ? <>{component}</> : <SigninGuidance />}
-            {/* {!login && loginState ? <>{component}</> : <SigninGuidance />} */}
+            <SigninGuidance />
+            {/* {index || isAuth ? <>{component}</> : <SigninGuidance />} */}
           </Box>
           <Navigation path={path} />
         </Box>

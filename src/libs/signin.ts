@@ -1,7 +1,5 @@
 import { signinGuidanceTextType } from 'src/types/signin';
 
-export const loginState: boolean = true;
-
 export const signinGuidanceText: signinGuidanceTextType[] = [
   {
     path: 'column',

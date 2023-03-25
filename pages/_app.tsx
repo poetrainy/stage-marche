@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import theme from 'src/theme';
 import { useEffect, useState } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
+import SigninSuccessBunner from 'src/components/SigninSuccessBunner';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isStart, setIsStart] = useState<boolean>(true);
@@ -66,6 +67,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </Box>
         </Center> */}
       <Component {...pageProps} />
+      <SigninSuccessBunner />
     </ChakraProvider>
   );
 }

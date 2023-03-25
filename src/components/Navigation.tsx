@@ -21,7 +21,7 @@ const Navigation: FC<Props> = ({ path }) => {
       inset={'auto auto 0 0'}
       textStyle={'deepShadow'}
       borderRadius={'30px 30px 0px 0px'}
-      zIndex={'20'}
+      zIndex={'10'}
     >
       {navContents.map((item, i) => (
         <Center
