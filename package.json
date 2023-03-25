@@ -36,7 +36,7 @@
     "@types/react-dom": "18.0.11",
     "@typescript-eslint/eslint-plugin": "2.x",
     "@typescript-eslint/parser": "2.x",
-    "eslint": "6.x",
+    "eslint": "^8.36.0",
     "eslint-config-next": "13.2.1",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
