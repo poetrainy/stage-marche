@@ -1,7 +1,7 @@
 import firebase from 'firebase/compat/app';
-// import 'firebase/auth';
-// import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
+// import 'Firebase/auth';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 const FirebaseCredentials = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '',
