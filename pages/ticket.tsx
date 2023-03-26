@@ -20,11 +20,7 @@ const Ticket: NextPage = () => {
       sx={{
         '>a': {
           display: 'flex',
-          // width: 'fit-content',
           minHeight: '176px',
-          // borderRadius: '16px',
-          // overflow: 'hidden',
-          // textStyle: 'deepShadow',
         },
       }}
     >

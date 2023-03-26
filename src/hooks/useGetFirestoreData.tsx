@@ -19,8 +19,6 @@ const useGetFirestoreData = () => {
         ret.push(doc.data());
         retId.push(doc.id);
       });
-      // console.log(retId);
-      // setFirebaseUsers(retId);
     }
   };
 

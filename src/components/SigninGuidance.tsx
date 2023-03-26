@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 import OriginalSpacer from 'src/components/OriginalSpacer';
-// import SigninBtn from 'src/components/SigninBtn';
 import PreText from 'src/components/PreText';
 
 import { signinGuidanceText } from 'src/libs/signin';
@@ -34,13 +33,10 @@ const SigninGuidance: FC = () => {
     const db = getFirestore(firebaseApp);
     const col = collection(db, 'user');
     const querySnapshot = await getDocs(col);
-    // const ret: any = [];
     const retId: string[] = [];
     querySnapshot.forEach((doc) => {
-      // ret.push(doc.data());
       retId.push(doc.id);
     });
-    // console.log(retId);
     setFirebaseUsers(retId);
   };
 

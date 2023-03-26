@@ -1,5 +1,4 @@
 import firebase from 'firebase/compat/app';
-// import 'Firebase/compat/auth';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { getApp, getApps, initializeApp } from 'firebase/app';
@@ -26,7 +25,6 @@ const firebaseConfig = {
   }.firebaseio.com`,
 };
 
-// if a Firebase instance doesn't exist, create one
 if (!firebase.apps.length) {
   firebase.initializeApp(FirebaseCredentials);
 }
