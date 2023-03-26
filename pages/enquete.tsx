@@ -1,7 +1,7 @@
-import { Box, Center, Flex, Text } from '@chakra-ui/react';
+import { Box, Center, Flex } from '@chakra-ui/react';
 import type { NextPage } from 'next';
-import NextLink from 'next/link';
 import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import {
   collection,
@@ -15,7 +15,8 @@ import OriginalSpacer from 'src/components/OriginalSpacer';
 import PreText from 'src/components/PreText';
 
 import { stageGenreArray, prefectureArray } from 'src/libs/stage';
-import { firebase, auth } from 'src/libs/firebase';
+import { firebase } from 'src/libs/firebase';
+import useGetEmail from 'src/hooks/useGetEmail';
 
 const Enquete: NextPage = () => {
   const [genre, setGenre] = useState<number[]>([]);
@@ -26,24 +27,19 @@ const Enquete: NextPage = () => {
     false,
   ]);
   const [page, setPage] = useState<number>(0);
+  const router = useRouter();
+  const email = useGetEmail();
 
-  // const userRef = db.collection('users').doc('4eADonIyVHL8bdISoN5T');
-  // await userRef.update({
-  //   score: 80,
-  //   updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
-  // });
-
-  // const sendFirebaseModal = async (data: number[]) => {
-  //   const db = getFirestore(firebase);
-  //   const colCheck = collection(db, 'check');
-  //   const querySnapshotCheck = await getDocs(colCheck);
-  //   let retId = '';
-  //   querySnapshotCheck.forEach((doc) => {
-  //     retId = doc.id;
-  //   });
-  //   const washingtonRef = doc(db, 'check', retId);
-  //   await updateDoc(washingtonRef, { start: data });
-  // };
+  const sendFirebase = async () => {
+    const db = firebase.firestore();
+    // @ts-ignore
+    const userRef = doc(db, 'user', email);
+    await updateDoc(userRef, {
+      prefecture: prefecture,
+      genre: genre,
+      fav: [],
+    });
+  };
 
   const setPageFunc = () => {
     setPage(page + 1);
@@ -142,6 +138,11 @@ const Enquete: NextPage = () => {
         さまざまな作品があなたを待っていますよ！
       </Center>
     );
+  };
+
+  const toHomeFunc = () => {
+    sendFirebase();
+    router.push('/');
   };
 
   const signinEnqueteText: {
@@ -250,8 +251,14 @@ const Enquete: NextPage = () => {
               minH={'100vh'}
               pb={'16px'}
               sx={{
-                '&:nth-of-type(1)': {
-                  '>button': {
+                '>button': {
+                  width: '232px',
+                  height: '64px',
+                  borderRadius: '9999px',
+                  overflow: 'hidden',
+                  pos: 'relative',
+                  fontWeight: 'bold',
+                  '&:nth-of-type(1)': {
                     ...(isGenreLengthArray[0] && {
                       '&::before': {
                         width: '33%',
@@ -273,9 +280,7 @@ const Enquete: NextPage = () => {
                           pointerEvents: 'none',
                         }),
                   },
-                },
-                '&:nth-of-type(2)': {
-                  '>button': {
+                  '&:nth-of-type(2)': {
                     ...(Number(prefecture) !== 100
                       ? {
                           pointerEvents: 'auto',
@@ -288,18 +293,6 @@ const Enquete: NextPage = () => {
                         }),
                   },
                 },
-                '>a': {
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '240px',
-                  height: '72px',
-                  color: 'white',
-                  background: 'skyblue',
-                  fontWeight: 'bold',
-                  fontSize: '1.6rem',
-                  borderRadius: '9999px',
-                },
               }}
             >
               <PreText text={item.heading} />
@@ -311,12 +304,7 @@ const Enquete: NextPage = () => {
               {i < 2 ? (
                 <Center
                   as={'button'}
-                  w={'232px'}
-                  h={'64px'}
                   bg={'black300'}
-                  borderRadius={'9999px'}
-                  overflow={'hidden'}
-                  pos={'relative'}
                   onClick={() => setPageFunc()}
                   sx={{
                     '&::before': {
@@ -343,9 +331,14 @@ const Enquete: NextPage = () => {
                   }}
                 />
               ) : (
-                <NextLink href={'/'} passHref>
+                <Center
+                  as={'button'}
+                  color={'white'}
+                  bg={'greenToBlue'}
+                  onClick={() => toHomeFunc()}
+                >
                   舞台を探しに行く！
-                </NextLink>
+                </Center>
               )}
             </Center>
           ))}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { auth } from 'src/libs/firebase';
+
 const useAuth = () => {
   const [email, setEmail] = useState<string>();
 

@@ -2,77 +2,63 @@ import { FC, useEffect, useState } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
-import { firebase, auth, firebaseApp } from 'src/libs/firebase';
+import { firebaseApp } from 'src/libs/firebase';
 
-import useAuth from 'src/hooks/useAuth';
+import useGetEmail from 'src/hooks/useGetEmail';
 
 const SigninSuccessBunner: FC = () => {
-  const [user, setUser] = useState<string>();
+  const email = useGetEmail();
   const [isNewUser, setIsNewUser] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [isDisplay, setIsDisplay] = useState<boolean>(true);
-  const [isOpenApp, setIsOpenApp] = useState<boolean>(false);
-  const isAuth = useAuth();
-  const VISIBLE_TIMER: number = 3000;
-  const [firebaseUsers, setFirebaseUsers] = useState<string[]>();
+  const VISIBLE_TIMER_FAST: number = 2000;
+  const VISIBLE_TIMER_LATEST: number = 2500;
 
   const getFirebase = async () => {
     const db = getFirestore(firebaseApp);
     const col = collection(db, 'user');
     const querySnapshot = await getDocs(col);
-    // const ret: any = [];
+    const ret: any = [];
     const retId: string[] = [];
     querySnapshot.forEach((doc) => {
-      // ret.push(doc.data());
+      ret.push(doc.data());
       retId.push(doc.id);
     });
-    // console.log(retId);
-    setFirebaseUsers(retId);
+    console.log(ret, retId, email);
+    const userIndex = retId.findIndex((item) => item === email);
+    const user = ret[userIndex];
+
+    if (Object.keys(user).length === 1) {
+      setIsNewUser(true);
+    } else {
+      setIsNewUser(false);
+    }
   };
 
-  // useEffect(() => {
-  //   getFirebase();
-  // }, []);
-
-  // const test = async () => {
-  //   const provider = new firebase.auth.GoogleAuthProvider();
-  //   await auth.signInWithPopup(provider).catch(alert);
-  //   auth.onAuthStateChanged(async (user) => {
-  //     if (!!user) {
-  //       // @ts-ignore
-  //       const email = user?.providerData[0]?.email;
-  //       const users = firebaseUsers?.filter((element) => element === email);
-  //       // console.log(users);
-  //     }
-  //   });
-  // };
-
-  useEffect(() => {
-    if (isOpenApp) {
-      if (isAuth) {
-        auth.onAuthStateChanged(async (user) => {
-          if (!!user) {
-            // @ts-ignore
-            const email = user?.providerData[0]?.email;
-            const users = firebaseUsers?.filter((element) => element === email);
-            // console.log(users);
-            setIsNewUser(!isNewUser);
-          }
-        });
-        setTimeout(() => {
-          setIsVisible(!isVisible);
+  const visibleFunc = (flag: boolean) => {
+    setTimeout(
+      () => {
+        setIsVisible(flag);
+        if (flag) {
+          visibleFunc(false);
+        } else {
           setTimeout(() => {
             setIsDisplay(false);
-          }, VISIBLE_TIMER);
-        }, VISIBLE_TIMER);
-      }
-    } else {
-      setIsOpenApp(!isOpenApp);
-    }
-  }, [isAuth]);
+          }, VISIBLE_TIMER_FAST);
+        }
+      },
+      flag ? VISIBLE_TIMER_FAST : VISIBLE_TIMER_LATEST
+    );
+  };
 
-  // 新規会員登録だった場合->
-  // 会員情報がないので undefined
+  useEffect(() => {
+    if (email) {
+      setTimeout(() => {
+        getFirebase();
+      }, 500);
+      visibleFunc(true);
+    }
+  }, [email]);
 
   return (
     <>
@@ -92,7 +78,7 @@ const SigninSuccessBunner: FC = () => {
           transition={'opacity 0.4s, transform 0.4s'}
           textStyle={'deepShadow'}
           sx={{
-            ...(isVisible && isAuth
+            ...(isVisible && email
               ? {
                   opacity: 1,
                   transform: 'translateY(0)',
@@ -104,7 +90,7 @@ const SigninSuccessBunner: FC = () => {
           }}
         >
           <Text as={'span'} color={'primary'}>
-            {user}
+            {email}
           </Text>
           <Text as={'span'} color={'black500'}>
             さん、

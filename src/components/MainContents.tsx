@@ -47,8 +47,8 @@ const MainContents: FC<Props> = ({
               }),
             }}
           >
-            <SigninGuidance />
-            {/* {index || isAuth ? <>{component}</> : <SigninGuidance />} */}
+            {/* <SigninGuidance /> */}
+            {index || isAuth ? <>{component}</> : <SigninGuidance />}
           </Box>
           <Navigation path={path} />
         </Box>

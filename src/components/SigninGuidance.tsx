@@ -67,14 +67,10 @@ const SigninGuidance: FC = () => {
             await userRef.set({
               data: user?.providerData[0],
             });
-            console.log('Firestoreに送信完了');
             router.push('/enquete');
           } else {
-            console.log(users);
             router.push('/');
           }
-        } else {
-          // setEmail(undefined);
         }
       });
     } catch (err) {
