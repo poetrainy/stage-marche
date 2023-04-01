@@ -6,15 +6,24 @@ import { prefectureArray } from 'src/libs/stage';
 
 type Props = {
   data: stageType;
+  prefecture?: boolean;
   place?: boolean;
   schedule?: boolean;
   time?: boolean;
+  index: number;
 };
 
-const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
+const StageInfomation: FC<Props> = ({
+  data,
+  prefecture,
+  place,
+  schedule,
+  time,
+  index,
+}) => (
   <Flex
     flexDir={'column'}
-    gap={'4px'}
+    gap={'6px'}
     w={'100%'}
     color={'black500'}
     fontSize={'1.2rem'}
@@ -33,12 +42,11 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
           height: '16px',
           position: 'absolute',
           inset: '0 auto auto 0',
-          // background: 'url("/img/stage_info_schedule.svg")',
         },
       },
     }}
   >
-    {!place && (
+    {(!place || !prefecture) && (
       <Flex
         sx={{
           '&::before': {
@@ -46,8 +54,13 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
           },
         }}
       >
-        {prefectureArray[data.schedule[0].prefecture]}公演{' '}
-        {!time && data.schedule[0].place}
+        {!prefecture && (
+          <>
+            {prefectureArray[data.schedule[index].prefecture]}
+            公演
+          </>
+        )}
+        {!place && data.schedule[index].place}
       </Flex>
     )}
     {!schedule && (
@@ -58,9 +71,9 @@ const StageInfomation: FC<Props> = ({ data, schedule, place, time }) => (
           },
         }}
       >
-        {data.schedule[0].date.start.y}.{data.schedule[0].date.start.m}.
-        {data.schedule[0].date.start.d}-{data.schedule[0].date.end.y}.
-        {data.schedule[0].date.end.m}.{data.schedule[0].date.end.d}
+        {data.schedule[index].date.start.y}.{data.schedule[index].date.start.m}.
+        {data.schedule[index].date.start.d}-{data.schedule[index].date.end.y}.
+        {data.schedule[index].date.end.m}.{data.schedule[index].date.end.d}
       </Flex>
     )}
     {!time && (

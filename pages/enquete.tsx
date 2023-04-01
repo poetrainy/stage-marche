@@ -2,20 +2,14 @@ import { Box, Center, Flex } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
-
-import {
-  collection,
-  doc,
-  getDocs,
-  getFirestore,
-  updateDoc,
-} from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 
 import OriginalSpacer from 'src/components/OriginalSpacer';
 import PreText from 'src/components/PreText';
 
 import { stageGenreArray, prefectureArray } from 'src/libs/stage';
 import { firebase } from 'src/libs/firebase';
+
 import useGetEmail from 'src/hooks/useGetEmail';
 
 const Enquete: NextPage = () => {

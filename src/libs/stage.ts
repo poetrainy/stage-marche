@@ -123,12 +123,12 @@ export const stageArray: stageType[] = [
         prefecture: 27,
         date: {
           start: {
-            y: 2023,
+            y: 2022,
             m: 1,
             d: 1,
           },
           end: {
-            y: 2023,
+            y: 2022,
             m: 4,
             d: 10,
           },

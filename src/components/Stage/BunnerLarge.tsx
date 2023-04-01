@@ -65,7 +65,7 @@ const StageBunnerLarge: FC<Props> = ({ data }) => {
               <OriginalSpacer size={'4px'} />
               <StageGenre data={item} />
             </Box>
-            <StageInfomation data={item} />
+            <StageInfomation data={item} index={0} time />
           </Flex>
         </NextLink>
       ))}

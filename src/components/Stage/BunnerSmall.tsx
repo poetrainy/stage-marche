@@ -71,7 +71,7 @@ const StageBunnerSmall: FC<Props> = ({ data }) => {
               </Text>
               <OriginalSpacer size={'8px'} />
             </Box>
-            <StageInfomation data={item} time />
+            <StageInfomation data={item} index={0} time place />
           </NextLink>
         ))}
       </Flex>
