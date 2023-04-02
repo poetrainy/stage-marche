@@ -57,3 +57,5 @@ export type castType = {
   name: string;
   path: string;
 };
+
+export type favType = { data: number; place: number };

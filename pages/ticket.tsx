@@ -4,12 +4,12 @@ import NextLink from 'next/link';
 
 import MainContents from 'src/components/MainContents';
 import StageInfomation from 'src/components/Stage/Infomation';
-import useAuth from 'src/hooks/useAuth';
+import useGetEmail from 'src/hooks/useGetEmail';
 
 import { stageArray } from 'src/libs/stage';
 
 const Ticket: NextPage = () => {
-  const isAuth = useAuth();
+  const email = useGetEmail();
 
   const flag: boolean[] = [true, false, false];
 
@@ -77,7 +77,7 @@ const Ticket: NextPage = () => {
   return (
     <MainContents
       component={<Component />}
-      specialBackground={isAuth ? true : false}
+      specialBackground={email ? true : false}
     />
   );
 };

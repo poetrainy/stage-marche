@@ -6,7 +6,7 @@ import Navigation from 'src/components/Navigation';
 
 import useGetPath from 'src/hooks/useGetPath';
 import SigninGuidance from 'src/components/SigninGuidance';
-import useAuth from 'src/hooks/useAuth';
+import useGetEmail from 'src/hooks/useGetEmail';
 
 type Props = {
   component: JSX.Element;
@@ -23,7 +23,7 @@ const MainContents: FC<Props> = ({
   specialBackground,
 }) => {
   const path = useGetPath();
-  const isAuth = useAuth();
+  const email = useGetEmail();
 
   return (
     <>
@@ -47,9 +47,9 @@ const MainContents: FC<Props> = ({
               }),
             }}
           >
-            <>{component}</>
-            {/* <SigninGuidance /> */}
-            {/* {index || isAuth ? <>{component}</> : <SigninGuidance />} */}
+            {/* <>{component}</> */}
+            <SigninGuidance />
+            {/* {index || email ? <>{component}</> : <SigninGuidance />} */}
           </Box>
           <Navigation path={path} />
         </Box>

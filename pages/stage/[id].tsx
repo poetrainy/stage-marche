@@ -1,7 +1,15 @@
 import type { NextPage } from 'next';
 import { useEffect, useRef, useState } from 'react';
 import { Box, Center, Flex, Text } from '@chakra-ui/react';
-import { doc, updateDoc } from 'firebase/firestore';
+import {
+  doc,
+  updateDoc,
+  collection,
+  getDocs,
+  getFirestore,
+} from 'firebase/firestore';
+
+import { firebaseApp } from 'src/libs/firebase';
 
 import OriginalSpacer from 'src/components/OriginalSpacer';
 import StageInfomation from 'src/components/Stage/Infomation';
@@ -11,15 +19,16 @@ import StageGenre from 'src/components/Stage/Genre';
 import ColumnBunner from 'src/components/Column/Bunner';
 import Back from 'src/components/Back';
 
-import { castType, stageType } from 'src/types/stage';
+import { castType, favType, stageType } from 'src/types/stage';
 
 import { firebase } from 'src/libs/firebase';
 import { prefectureArray, stageArray, castArray } from 'src/libs/stage';
 import { columnArray } from 'src/libs/column';
 
-import fav from 'src/assets/nav_fav';
+import favIcon from 'src/assets/nav_fav';
 
 import useGetEmail from 'src/hooks/useGetEmail';
+import { authType } from 'src/types/auth';
 
 type Props = {
   id: string;
@@ -37,11 +46,11 @@ const StageId: NextPage<Props> = ({ id }) => {
   const elm = useRef<HTMLDivElement>(null);
   const [isTicketElm, setIsTicketElm] = useState<boolean>(false);
   const [ticketElmHeight, setTicketElmHeight] = useState<number>(0);
-  const [isLoad, setIsLoad] = useState<boolean>(true);
+  const [isLoad, setIsLoad] = useState<boolean>(false);
   const [isFav, setIsFav] = useState<boolean[]>();
   const [stageIndex, setStageIndex] = useState<number>();
-  // const [isLoad, setIsLoad] = useState<boolean>(false);
   const email = useGetEmail();
+  const [fav, setFav] = useState<favType[]>();
 
   const ticketStyle = (flag: boolean) => {
     if (flag) {
@@ -61,17 +70,59 @@ const StageId: NextPage<Props> = ({ id }) => {
       if (!isLoad) {
         setTimeout(() => {
           setIsLoad(true);
-        }, 600);
+        }, 1000);
       }
     }
     setIsTicketElm(flag);
   };
 
+  const getFirebase = async () => {
+    if (isFav) {
+      const db = getFirestore(firebaseApp);
+      const col = collection(db, 'user');
+      const querySnapshot = await getDocs(col);
+      const ret: any = [];
+      const retId: string[] = [];
+      querySnapshot.forEach((doc) => {
+        ret.push(doc.data());
+        retId.push(doc.id);
+      });
+      const userId = ret.findIndex(
+        (item: authType) => item.data.email === email
+      );
+      const firebaseFav = ret[userId].fav;
+      setFav(firebaseFav);
+      const hoge = firebaseFav.filter(
+        (item: favType) => item.data === stageIndex
+      );
+      let keepIsFav: any = [];
+      isFav.forEach((element: boolean, i: number) => {
+        hoge.forEach((item: favType, i2: number) => {
+          console.log('Ok');
+          if (item.place === i) {
+            keepIsFav.push(!isFav[i]);
+          }
+        });
+        if (keepIsFav.length === i) {
+          keepIsFav.push(isFav[i]);
+        }
+      });
+      console.log(keepIsFav);
+      setIsFav(keepIsFav);
+    }
+  };
+
+  useEffect(() => {
+    if (email) {
+      getFirebase();
+    }
+  }, [email]);
+
   useEffect(() => {
     if (img) {
       // @ts-ignore
       setTicketElmHeight(elm.current.clientHeight);
-      // ticketStyle(false);
+      ticketStyle(false);
     }
   }, [img]);
 
@@ -97,8 +148,6 @@ const StageId: NextPage<Props> = ({ id }) => {
       setImg(imgArray);
       setCast(castObjArray);
       setIsFav(placeFlagArray);
-      // console.log(stageIndexKeep);
-
       setStageIndex(stageIndexKeep);
     } else {
       let array = stageArray.filter((item: stageType) => item.path === id);
@@ -199,6 +248,7 @@ const StageId: NextPage<Props> = ({ id }) => {
       )}
     </>
   );
+
   const Cast = () => (
     <>
       {cast && (
@@ -224,7 +274,6 @@ const StageId: NextPage<Props> = ({ id }) => {
               </Box>
               <OriginalSpacer size={'8px'} />
               <Text
-                // color={'black600'}
                 fontSize={'1.2rem'}
                 fontWeight={'bold'}
                 textAlign={'center'}
@@ -234,39 +283,40 @@ const StageId: NextPage<Props> = ({ id }) => {
             </Box>
           ))}
         </Flex>
-        // </Box>
       )}
     </>
   );
 
-  const recommendArray: RecommendType[] = [
-    {
-      title: '関連動画',
-      component: <Youtube />,
-    },
-    {
-      title: 'あわせて読みたい',
-      component: <ColumnBunner data={columnArray} />,
-    },
-    {
-      title: 'キャスト',
-      component: <Cast />,
-    },
-  ];
+  const Recommend = () => {
+    const recommendArray: RecommendType[] = [
+      {
+        title: '関連動画',
+        component: <Youtube />,
+      },
+      {
+        title: 'あわせて読みたい',
+        component: <ColumnBunner data={columnArray} />,
+      },
+      {
+        title: 'キャスト',
+        component: <Cast />,
+      },
+    ];
 
-  const Recommend = () => (
-    <Flex flexDir={'column'} gap={'32px'} textStyle={'bodyW'}>
-      {recommendArray.map((item, i) => (
-        <Box as={'section'} key={item.title + i}>
-          <Text as={'h2'} fontSize={'1.8rem'} fontWeight={'bold'}>
-            {item.title}
-          </Text>
-          <OriginalSpacer size={'16px'} />
-          {item.component}
-        </Box>
-      ))}
-    </Flex>
-  );
+    return (
+      <Flex flexDir={'column'} gap={'32px'} textStyle={'bodyW'}>
+        {recommendArray.map((item, i) => (
+          <Box as={'section'} key={item.title + i}>
+            <Text as={'h2'} fontSize={'1.8rem'} fontWeight={'bold'}>
+              {item.title}
+            </Text>
+            <OriginalSpacer size={'16px'} />
+            {item.component}
+          </Box>
+        ))}
+      </Flex>
+    );
+  };
 
   const ticketInfoFunc = () => {
     if (isTicketElm) {
@@ -276,13 +326,7 @@ const StageId: NextPage<Props> = ({ id }) => {
     }
   };
 
-  const sendFirebase = async (isFav: boolean[], stageIndex: number) => {
-    let sendData: { data: number; place: number }[] = [];
-    isFav.forEach((element, i) => {
-      if (element) {
-        sendData.push({ data: stageIndex, place: i });
-      }
-    });
+  const sendFirebase = async (sendData: favType[]) => {
     const db = firebase.firestore();
     // @ts-ignore
     const userRef = doc(db, 'user', email);
@@ -292,20 +336,33 @@ const StageId: NextPage<Props> = ({ id }) => {
   };
 
   const addFav = (index: number) => {
-    if (isFav !== undefined && data !== undefined && stageIndex !== undefined) {
-      console.log('ok');
-
+    if (
+      isFav !== undefined &&
+      data !== undefined &&
+      stageIndex !== undefined &&
+      email !== undefined &&
+      fav
+    ) {
       let keepIsFav: boolean[] = [];
       isFav.forEach((element, i) => {
         if (i === index) {
           keepIsFav.push(!element);
-          console.log(data.schedule[i]);
         } else {
           keepIsFav.push(element);
         }
       });
+      let sendData = fav;
+      let keepFavLength = fav.length;
+      fav.forEach((element, i) => {
+        if (element.data === stageIndex && element.place === index) {
+          sendData.splice(i, 1);
+        }
+      });
+      if (fav.length === keepFavLength) {
+        sendData.push({ data: stageIndex, place: index });
+      }
       setIsFav(keepIsFav);
-      sendFirebase(isFav, stageIndex);
+      sendFirebase(sendData);
     }
   };
 
@@ -425,11 +482,11 @@ const StageId: NextPage<Props> = ({ id }) => {
                     <Center
                       as={'button'}
                       w={'32px'}
-                      h={'32px'}
+                      h={'24px'}
                       onClick={() => addFav(i)}
                     >
                       <Box
-                        as={fav}
+                        as={favIcon}
                         w={'24px'}
                         h={'24px'}
                         sx={{

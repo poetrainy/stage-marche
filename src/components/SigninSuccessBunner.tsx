@@ -5,6 +5,9 @@ import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { firebaseApp } from 'src/libs/firebase';
 
 import useGetEmail from 'src/hooks/useGetEmail';
+import useGetFirestoreData from 'src/hooks/useGetFirestoreData';
+
+import { authType } from 'src/types/auth';
 
 const SigninSuccessBunner: FC = () => {
   const email = useGetEmail();
@@ -13,6 +16,7 @@ const SigninSuccessBunner: FC = () => {
   const [isDisplay, setIsDisplay] = useState<boolean>(true);
   const VISIBLE_TIMER_FAST: number = 2000;
   const VISIBLE_TIMER_LATEST: number = 2500;
+  // const firestore = useGetFirestoreData();
 
   const getFirebase = async () => {
     const db = getFirestore(firebaseApp);
@@ -24,11 +28,9 @@ const SigninSuccessBunner: FC = () => {
       ret.push(doc.data());
       retId.push(doc.id);
     });
-    console.log(ret, retId, email);
-    const userIndex = retId.findIndex((item) => item === email);
-    const user = ret[userIndex];
-
-    if (Object.keys(user).length === 1) {
+    const user = ret.filter((item: authType) => item.data.email === email);
+    
+    if (Object.keys(user[0]).length === 1) {
       setIsNewUser(true);
     } else {
       setIsNewUser(false);

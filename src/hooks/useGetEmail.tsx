@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
-import useAuth from 'src/hooks/useAuth';
+import { auth } from 'src/libs/firebase';
 
 const useGetEmail = () => {
-  const getAuth = useAuth();
   const [email, setEmail] = useState<string>();
 
   useEffect(() => {
-    if (getAuth) {
-      // @ts-ignore
-      setEmail(getAuth.email);
-    }
-  }, [getAuth]);
+    auth.onAuthStateChanged((user) => {
+      if (!!user) {
+        // @ts-ignore
+        setEmail(user?.providerData[0].email);
+        // setEmail(user?.providerData[0]);
+      } else {
+        setEmail(undefined);
+      }
+    });
+  }, []);
 
   return email;
 };
