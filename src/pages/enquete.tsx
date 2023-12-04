@@ -7,7 +7,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import OriginalSpacer from "src/components/OriginalSpacer";
 import PreText from "src/components/PreText";
 
-import { STAGE_GENRES, prefectureArray } from "src/libs/stage";
+import { STAGE_GENRES, prefectureArray } from "src/constants/stage";
 import { firebase } from "src/libs/firebase";
 
 import useGetEmail from "src/hooks/useGetEmail";

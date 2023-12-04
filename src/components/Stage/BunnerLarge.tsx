@@ -5,6 +5,7 @@ import NextLink from "next/link";
 import StageTypeComponent from "src/components/Stage/Type";
 import StageGenre from "src/components/Stage/Genre";
 import StageInformation from "src/components/Stage/Information";
+import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
 import { StageType } from "src/types/stage";
 
@@ -16,7 +17,7 @@ type Props = {
 const StageBunnerLarge: FC<Props> = ({ stage, number }) => (
   <Flex
     as={NextLink}
-    href={`/stage/${stage.path}`}
+    href={`${pathWithAuthenticator(`/stage/${stage.path}`)}`}
     passHref
     gap="4%"
     bg="white"

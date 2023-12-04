@@ -7,6 +7,7 @@ import StageGenre from "src/components/Stage/Genre";
 
 import { ColumnType } from "src/types/column";
 import ColumnDate from "src/components/Column/Date";
+import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
 type Props = {
   data: ColumnType[];
@@ -32,7 +33,11 @@ const ColumnBunner: FC<Props> = ({ data }) => {
       }}
     >
       {data.map((item, i) => (
-        <NextLink href={`/column/${item.id}`} passHref key={item.title + i}>
+        <NextLink
+          href={`${pathWithAuthenticator(`/column/${item.id}`)}`}
+          passHref
+          key={item.title + i}
+        >
           <Box w="60%">
             <ColumnDate data={item} />
             <OriginalSpacer size="2px" />

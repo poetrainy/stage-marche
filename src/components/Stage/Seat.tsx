@@ -4,7 +4,7 @@ import {
   SEAT_STATUS_OK,
   SEAT_STATUS_FEW,
   SEAT_STATUS_NO,
-} from "src/libs/stage";
+} from "src/constants/stage";
 
 type Props = {
   status:

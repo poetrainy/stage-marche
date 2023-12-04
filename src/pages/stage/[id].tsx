@@ -22,8 +22,12 @@ import Back from "src/components/Back";
 import { CastType, favType, StageType } from "src/types/stage";
 
 import { firebase } from "src/libs/firebase";
-import { prefectureArray, MOCK_STAGES_BASE, castArray } from "src/libs/stage";
-import { MOCK_COLUMNS_BASE } from "src/libs/column";
+import {
+  prefectureArray,
+  MOCK_STAGES_BASE,
+  castArray,
+} from "src/constants/stage";
+import { MOCK_COLUMNS_BASE } from "src/constants/column";
 
 import favIcon from "src/assets/nav_fav";
 

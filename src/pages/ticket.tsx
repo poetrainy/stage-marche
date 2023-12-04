@@ -5,8 +5,9 @@ import NextLink from "next/link";
 import Layout from "src/components/Layout";
 import StageInformation from "src/components/Stage/Information";
 import useGetEmail from "src/hooks/useGetEmail";
+import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
-import { MOCK_STAGES_BASE } from "src/libs/stage";
+import { MOCK_STAGES_BASE } from "src/constants/stage";
 
 const Ticket: NextPage = () => {
   const email = useGetEmail();
@@ -25,7 +26,11 @@ const Ticket: NextPage = () => {
       }}
     >
       {MOCK_STAGES_BASE.map((item, i) => (
-        <NextLink href={`/stage/${item.path}`} passHref key={item.name + i}>
+        <NextLink
+          href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
+          passHref
+          key={item.name + i}
+        >
           <Flex
             flexDir="column"
             justifyContent="space-between"
@@ -69,12 +74,7 @@ const Ticket: NextPage = () => {
     </Flex>
   );
 
-  return (
-    <Layout
-      component={<Component />}
-      specialBackground={email ? true : false}
-    />
-  );
+  return <Layout component={<Component />} />;
 };
 
 export default Ticket;

@@ -2,7 +2,7 @@ import {
   SEAT_STATUS_NO,
   SEAT_STATUS_OK,
   SEAT_STATUS_FEW,
-} from "src/libs/stage";
+} from "src/constants/stage";
 
 export type StageType = {
   name: string;

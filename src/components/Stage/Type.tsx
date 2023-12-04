@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Text } from "@chakra-ui/react";
 
-import { STAGE_TYPES } from "src/libs/stage";
+import { STAGE_TYPES } from "src/constants/stage";
 
 import { StageType } from "src/types/stage";
 

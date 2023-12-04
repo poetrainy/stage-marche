@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Flex, Text } from "@chakra-ui/react";
 
-import { STAGE_GENRES } from "src/libs/stage";
-import { COLUMN_GENRES } from "src/libs/column";
+import { STAGE_GENRES } from "src/constants/stage";
+import { COLUMN_GENRES } from "src/constants/column";
 
 import { StageType } from "src/types/stage";
 import { ColumnType } from "src/types/column";

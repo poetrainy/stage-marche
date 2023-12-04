@@ -7,6 +7,7 @@ import StageTypeComponent from "src/components/Stage/Type";
 import StageInformation from "src/components/Stage/Information";
 
 import { StageType } from "src/types/stage";
+import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
 type Props = {
   data: StageType[];
@@ -32,7 +33,11 @@ const StageBunnerSmall: FC<Props> = ({ data }) => {
         }}
       >
         {data.map((item, i) => (
-          <NextLink href={`/stage/${item.path}`} passHref key={item.name + i}>
+          <NextLink
+            href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
+            passHref
+            key={item.name + i}
+          >
             <Box>
               <Box
                 w="100%"

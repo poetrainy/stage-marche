@@ -1,5 +1,5 @@
-import { STAGE_GENRES, STAGE_TYPES } from "src/libs/stage";
-import { COLUMN_GENRES } from "src/libs/column";
+import { STAGE_GENRES, STAGE_TYPES } from "src/constants/stage";
+import { COLUMN_GENRES } from "src/constants/column";
 
 import { FilterContentsType } from "src/types/search";
 

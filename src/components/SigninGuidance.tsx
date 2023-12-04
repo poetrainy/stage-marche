@@ -6,7 +6,7 @@ import { collection, getDocs, getFirestore } from "firebase/firestore";
 import OriginalSpacer from "src/components/OriginalSpacer";
 import PreText from "src/components/PreText";
 
-import { SIGN_IN_GUIDANCE_PAGES } from "src/libs/signIn";
+import { SIGN_IN_GUIDANCE_PAGES } from "src/constants/signIn";
 import { firebase, auth, firebaseApp } from "src/libs/firebase";
 
 import { SignInGuidancePageType } from "src/types/signIn";

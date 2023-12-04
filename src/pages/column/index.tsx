@@ -4,7 +4,7 @@ import ColumnBunner from "src/components/Column/Bunner";
 import Layout from "src/components/Layout";
 import SubContents from "src/components/SubContents";
 
-import { MOCK_COLUMNS_BASE } from "src/libs/column";
+import { MOCK_COLUMNS_BASE } from "src/constants/column";
 
 const Column: NextPage = () => {
   const ComponentArray = [

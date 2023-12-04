@@ -2,7 +2,8 @@ import { FC } from "react";
 import NextLink from "next/link";
 import { Box, Flex, Text, VStack } from "@chakra-ui/react";
 
-import { NAVIGATION_CONTENTS } from "src/libs/nav";
+import { NAVIGATION_CONTENTS } from "src/constants/nav";
+import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
 type Props = {
   path: string;
@@ -26,7 +27,7 @@ const Navigation: FC<Props> = ({ path }) => {
       {NAVIGATION_CONTENTS.map((item) => (
         <VStack
           as={NextLink}
-          href={`/${item.path}`}
+          href={`${pathWithAuthenticator(`/${item.path}`)}`}
           passHref
           key={item.path}
           alignItems="center"

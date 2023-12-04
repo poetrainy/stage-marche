@@ -8,7 +8,8 @@ import OriginalSpacer from "src/components/OriginalSpacer";
 import StageTypeComponent from "src/components/Stage/Type";
 import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
 
-import { MOCK_STAGES_BASE } from "src/libs/stage";
+import { MOCK_STAGES_BASE } from "src/constants/stage";
+import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
 const Home: NextPage = () => {
   const Component = () => {
@@ -58,7 +59,10 @@ const Home: NextPage = () => {
                     },
                   }}
                 >
-                  <NextLink href={`/stage/${item.path}`} passHref>
+                  <NextLink
+                    href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
+                    passHref
+                  >
                     <Box
                       w="100%"
                       bg={

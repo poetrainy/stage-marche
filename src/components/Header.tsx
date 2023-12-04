@@ -2,8 +2,8 @@ import { FC, useState } from "react";
 import { Box, Center, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-import { NAVIGATION_CONTENTS } from "src/libs/nav";
-import { FILTER_COLUMNS, FILTER_STAGES } from "src/libs/search";
+import { NAVIGATION_CONTENTS } from "src/constants/nav";
+import { FILTER_COLUMNS, FILTER_STAGES } from "src/constants/filter";
 
 import Modal from "src/components/Modal";
 import IconSearch from "src/components/Icon/IconSearch";

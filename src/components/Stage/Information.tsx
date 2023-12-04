@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 
 import { StageType } from "src/types/stage";
-import { prefectureArray } from "src/libs/stage";
+import { prefectureArray } from "src/constants/stage";
 
 type Props = {
   data: StageType;

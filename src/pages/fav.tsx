@@ -4,7 +4,7 @@ import Layout from "src/components/Layout";
 import StageBunnerSmall from "src/components/Stage/BunnerSmall";
 import SubContents from "src/components/SubContents";
 
-import { MOCK_STAGES_BASE } from "src/libs/stage";
+import { MOCK_STAGES_BASE } from "src/constants/stage";
 import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
 
 const Fav: NextPage = () => {

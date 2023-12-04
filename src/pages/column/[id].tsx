@@ -7,7 +7,7 @@ import ColumnDate from "src/components/Column/Date";
 
 import { ColumnType } from "src/types/column";
 
-import { MOCK_COLUMNS_BASE } from "src/libs/column";
+import { MOCK_COLUMNS_BASE } from "src/constants/column";
 import OriginalSpacer from "src/components/OriginalSpacer";
 import Header from "src/components/Header";
 import useGetPath from "src/hooks/useGetPath";
