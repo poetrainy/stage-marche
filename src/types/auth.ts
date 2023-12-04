@@ -1,4 +1,4 @@
-export type authType = {
+export type AuthType = {
   data: {
     displayName: string;
     email: string;

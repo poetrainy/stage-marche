@@ -1,4 +1,10 @@
-export type stageType = {
+import {
+  SEAT_STATUS_NO,
+  SEAT_STATUS_OK,
+  SEAT_STATUS_FEW,
+} from "src/libs/stage";
+
+export type StageType = {
   name: string;
   path: string;
   imgLength: 1;
@@ -41,19 +47,25 @@ export type stageType = {
         | {
             class: string;
             price: string;
-            status: string;
+            status:
+              | typeof SEAT_STATUS_NO
+              | typeof SEAT_STATUS_OK
+              | typeof SEAT_STATUS_FEW;
           }
         | undefined;
       other: {
         class: string;
         price: string;
-        status: string;
+        status:
+          | typeof SEAT_STATUS_NO
+          | typeof SEAT_STATUS_OK
+          | typeof SEAT_STATUS_FEW;
       }[];
     };
   }[];
 };
 
-export type castType = {
+export type CastType = {
   name: string;
   path: string;
 };

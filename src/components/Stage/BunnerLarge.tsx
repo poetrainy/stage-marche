@@ -1,76 +1,59 @@
-import { FC } from 'react';
-import { Box, Flex, Text } from '@chakra-ui/react';
-import NextLink from 'next/link';
+import { FC } from "react";
+import { Box, Flex, Text, VStack } from "@chakra-ui/react";
+import NextLink from "next/link";
 
-import StageType from 'src/components/Stage/Type';
-import OriginalSpacer from 'src/components/OriginalSpacer';
-import StageGenre from 'src/components/Stage/Genre';
-import StageInfomation from 'src/components/Stage/Infomation';
+import StageTypeComponent from "src/components/Stage/Type";
+import StageGenre from "src/components/Stage/Genre";
+import StageInformation from "src/components/Stage/Information";
 
-import { stageType } from 'src/types/stage';
+import { StageType } from "src/types/stage";
 
 type Props = {
-  data: stageType[];
+  stage: StageType;
+  number?: number[];
 };
 
-const StageBunnerLarge: FC<Props> = ({ data }) => {
-  return (
-    <Flex
-      flexDir={'column'}
-      gap={'16px'}
-      sx={{
-        '>a': {
-          display: 'flex',
-          gap: '4%',
-          background: 'white',
-          padding: '14px',
-          borderRadius: '24px',
-          textStyle: 'lightShadow',
-        },
-      }}
+const StageBunnerLarge: FC<Props> = ({ stage, number }) => (
+  <Flex
+    as={NextLink}
+    href={`/stage/${stage.path}`}
+    passHref
+    gap="4%"
+    bg="white"
+    padding="14px"
+    rounded="24px"
+    textStyle="lightShadow"
+  >
+    <Box
+      w="44%"
+      bg="black600"
+      pt="calc(45% / 3 * 4.2)"
+      rounded="14px"
+      overflow="hidden"
+      pos="relative"
+      boxShadow="0px 0px 3px rgba(0, 0, 0, 0.1)"
     >
-      {data.map((item, i) => (
-        <NextLink href={`/stage/${item.path}`} passHref key={item.name + i}>
-          <Box
-            w={'44%'}
-            bg={'black600'}
-            pt={'calc(45% / 3 * 4.2)'}
-            borderRadius={'14px'}
-            overflow={'hidden'}
-            pos={'relative'}
-            boxShadow={'0px 0px 3px rgba(0, 0, 0, 0.1)'}
-          >
-            <Box
-              as={'img'}
-              src={`/img/stage_img_${item.path}_01.jpg`}
-              w={'100%'}
-              h={'100%'}
-              objectFit={'cover'}
-              pos={'absolute'}
-              inset={'0 0 0 0'}
-            />
-          </Box>
-          <Flex
-            flexDir={'column'}
-            justifyContent={'space-between'}
-            w={'52%'}
-            p={'6px 0'}
-          >
-            <Box>
-              <StageType data={item} />
-              <OriginalSpacer size={'4px'} />
-              <Text as={'h3'} fontSize={'1.7rem'} fontWeight={'bold'}>
-                {item.name}
-              </Text>
-              <OriginalSpacer size={'4px'} />
-              <StageGenre data={item} />
-            </Box>
-            <StageInfomation data={item} index={0} time />
-          </Flex>
-        </NextLink>
-      ))}
+      <Box
+        as="img"
+        src={`/img/stage_img_${stage.path}_01.jpg`}
+        w="100%"
+        h="100%"
+        objectFit="cover"
+        pos="absolute"
+        inset="0 0 0 0"
+      />
+    </Box>
+    <Flex flexDir="column" justifyContent="space-between" w="52%" p="6px 0">
+      <VStack alignItems="stretch" gap="4px" p={0}>
+        <StageTypeComponent data={stage} />
+        <Text as="h3" fontSize="1.7rem" fontWeight="bold">
+          {stage.name}
+        </Text>
+        <StageGenre data={stage} />
+      </VStack>
+      <StageInformation data={stage} index={0} time />
     </Flex>
-  );
-};
+  </Flex>
+);
 
 export default StageBunnerLarge;

@@ -1,5 +1,5 @@
-import { FC } from 'react';
-import { Box } from '@chakra-ui/react';
+import { FC } from "react";
+import { Box } from "@chakra-ui/react";
 
 type Props = {
   size: string;
@@ -11,12 +11,12 @@ const OriginalSpacer: FC<Props> = ({ size, horizontal }) => (
     sx={{
       ...(horizontal
         ? {
-            width: size,
-            height: 'auto',
+            w: size,
+            h: "auto",
           }
         : {
-            width: 'auto',
-            height: size,
+            w: "auto",
+            h: size,
           }),
     }}
   />

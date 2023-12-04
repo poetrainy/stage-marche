@@ -1,4 +1,4 @@
-export type columnType = {
+export type ColumnType = {
   id: number;
   title: string;
   date: {

@@ -1,37 +1,37 @@
-import { FC, useEffect, useState } from 'react';
-import { Box, Center, Text } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { FC, useEffect, useState } from "react";
+import { Box, Center, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
-import OriginalSpacer from 'src/components/OriginalSpacer';
-import PreText from 'src/components/PreText';
+import OriginalSpacer from "src/components/OriginalSpacer";
+import PreText from "src/components/PreText";
 
-import { signinGuidanceText } from 'src/libs/signin';
-import { firebase, auth, firebaseApp } from 'src/libs/firebase';
+import { SIGN_IN_GUIDANCE_PAGES } from "src/libs/signIn";
+import { firebase, auth, firebaseApp } from "src/libs/firebase";
 
-import { signinGuidanceTextType } from 'src/types/signin';
+import { SignInGuidancePageType } from "src/types/signIn";
 
-import useGetPath from 'src/hooks/useGetPath';
+import useGetPath from "src/hooks/useGetPath";
 
-const SigninGuidance: FC = () => {
-  const [guidance, setGuidance] = useState<signinGuidanceTextType>();
+const SignInGuidance: FC = () => {
+  const [guidance, setGuidance] = useState<SignInGuidancePageType>();
   const [firebaseUsers, setFirebaseUsers] = useState<string[]>();
   const path = useGetPath();
   const router = useRouter();
 
-  const text = 'Googleでログイン';
+  const text = "Googleでログイン";
 
   useEffect(() => {
-    for (let i = 0; i < signinGuidanceText.length; i++) {
-      if (`/${signinGuidanceText[i].path}` === path) {
-        setGuidance(signinGuidanceText[i]);
+    for (let i = 0; i < SIGN_IN_GUIDANCE_PAGES.length; i++) {
+      if (`/${SIGN_IN_GUIDANCE_PAGES[i].path}` === path) {
+        setGuidance(SIGN_IN_GUIDANCE_PAGES[i]);
       }
     }
   }, [path]);
 
   const getFirebase = async () => {
     const db = getFirestore(firebaseApp);
-    const col = collection(db, 'user');
+    const col = collection(db, "user");
     const querySnapshot = await getDocs(col);
     const retId: string[] = [];
     querySnapshot.forEach((doc) => {
@@ -56,16 +56,16 @@ const SigninGuidance: FC = () => {
           if (
             users !== undefined &&
             users.length === 0 &&
-            typeof email === 'string'
+            typeof email === "string"
           ) {
             const db = firebase.firestore();
-            const userRef = db.collection('user').doc(email);
+            const userRef = db.collection("user").doc(email);
             await userRef.set({
               data: user?.providerData[0],
             });
-            router.push('/enquete');
+            router.push("/enquete");
           } else {
-            router.push('/');
+            router.push("/");
           }
         }
       });
@@ -78,36 +78,36 @@ const SigninGuidance: FC = () => {
     <>
       {guidance && (
         <Center
-          flexDir={'column'}
-          h={'calc(100vh - 64px - 32px - 40px - 96px)'}
-          m={'auto'}
+          flexDir="column"
+          h="calc(100vh - 64px - 32px - 40px - 96px)"
+          m="auto"
         >
-          <Box as={'img'} src={`/img/guidance_${guidance.path}.svg`} />
-          <OriginalSpacer size={'32px'} />
-          <Center flexDir={'column'} gap={'12px'} w={'fit-content'}>
+          <Box as="img" src={`/img/guidance_${guidance.path}.svg`} />
+          <OriginalSpacer size="32px" />
+          <Center flexDir="column" gap="12px" w="fit-content">
             <PreText text={guidance.heading} />
             <Text
-              color={'black600'}
-              fontSize={'1.2rem'}
-              lineHeight={'2.2rem'}
-              textAlign={'center'}
+              color="black600"
+              fontSize="1.2rem"
+              lineHeight="2.2rem"
+              textAlign="center"
             >
               {guidance.text}
             </Text>
           </Center>
-          <OriginalSpacer size={'32px'} />
+          <OriginalSpacer size="32px" />
           <Center
-            w={'240px'}
-            h={'64px'}
-            color={'white'}
-            bg={'greenToBlue'}
-            fontSize={'1.6rem'}
-            fontWeight={'bold'}
-            borderRadius={'9999px'}
-            m={'0 auto'}
+            w="240px"
+            h="64px"
+            color="white"
+            bg="greenToBlue"
+            fontSize="1.6rem"
+            fontWeight="bold"
+            rounded="full"
+            m="0 auto"
             onClick={() => signUp()}
             _hover={{
-              cursor: 'pointer',
+              cursor: "pointer",
             }}
           >
             {text}
@@ -118,4 +118,4 @@ const SigninGuidance: FC = () => {
   );
 };
 
-export default SigninGuidance;
+export default SignInGuidance;

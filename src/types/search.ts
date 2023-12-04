@@ -1,6 +1,6 @@
-export type searchConditionArray = 'スタイル' | 'タグ' | 'こだわり';
+export type searchConditionArray = "スタイル" | "タグ" | "こだわり";
 
-export type searchType = {
+export type FilterContentsType = {
   condition: searchConditionArray;
   item: string[];
 };

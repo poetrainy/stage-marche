@@ -1,107 +1,116 @@
-import { FC } from 'react';
-import { Center } from '@chakra-ui/react';
+import { FC } from "react";
+import { Center } from "@chakra-ui/react";
 import {
   SEAT_STATUS_OK,
   SEAT_STATUS_FEW,
   SEAT_STATUS_NO,
-} from 'src/libs/stage';
+} from "src/libs/stage";
 
 type Props = {
-  status: string;
+  status:
+    | typeof SEAT_STATUS_OK
+    | typeof SEAT_STATUS_FEW
+    | typeof SEAT_STATUS_NO;
+};
+
+const SEAT_STATUS_OBJECT: Record<
+  typeof SEAT_STATUS_OK | typeof SEAT_STATUS_FEW | typeof SEAT_STATUS_NO,
+  { text: string; background: string }
+> = {
+  ok: {
+    text: "残席あり",
+    background: "pink",
+  },
+  few: {
+    text: "残席わずか",
+    background: "yellow",
+  },
+  no: {
+    text: "残席なし",
+    background: "black300",
+  },
 };
 
 const StageSeat: FC<Props> = ({ status }) => {
   return (
     <Center
-      w={'72px'}
-      h={'72px'}
-      borderRadius={'16px'}
-      sx={{
-        ...(status === SEAT_STATUS_OK && {
-          background: 'pink',
-        }),
-        ...(status === SEAT_STATUS_FEW && {
-          background: 'yellow',
-        }),
-        ...(status === SEAT_STATUS_NO && {
-          background: 'black300',
-        }),
-      }}
+      w="72px"
+      h="72px"
+      bg={SEAT_STATUS_OBJECT[status].background}
+      rounded="16px"
     >
       <Center
-        as={'p'}
-        fontSize={'1.1rem'}
-        fontWeight={'bold'}
-        mb={'40px'}
-        pos={'relative'}
+        as="p"
+        fontSize="1.1rem"
+        fontWeight="bold"
+        mb="40px"
+        pos="relative"
         sx={{
           ...(status === SEAT_STATUS_OK && {
-            color: 'white',
-            '&::before': {
+            color: "white",
+            "&::before": {
               content: '""',
-              display: 'block',
-              width: '36px',
-              height: '36px',
-              border: '#ffffff 3px solid',
-              borderRadius: '9999px',
-              position: 'absolute',
-              inset: 'auto auto -40px auto',
+              display: "block",
+              w: "36px",
+              h: "36px",
+              border: "#ffffff 3px solid",
+              rounded: "full",
+              position: "absolute",
+              inset: "auto auto -40px auto",
             },
-            '&::after': {
+            "&::after": {
               content: '""',
-              display: 'block',
-              width: '24px',
-              height: '24px',
-              border: '#ffffff 3px solid',
-              borderRadius: '9999px',
-              position: 'absolute',
-              inset: 'auto auto -34px auto',
+              display: "block",
+              w: "24px",
+              h: "24px",
+              border: "#ffffff 3px solid",
+              rounded: "full",
+              position: "absolute",
+              inset: "auto auto -34px auto",
             },
           }),
           ...(status === SEAT_STATUS_FEW && {
-            color: 'white',
-            '&::before': {
+            color: "white",
+            "&::before": {
               content: '""',
-              display: 'block',
-              width: '36px',
-              height: '36px',
-              background: 'url("/img/stage_seat_icon_triangle.svg") no-repeat',
-              backgroundSize: 'contain',
-              backgroundPosition: 'center bottom',
-              position: 'absolute',
-              inset: 'auto auto -38px auto',
+              display: "block",
+              w: "36px",
+              h: "36px",
+              bg: 'url("/img/stage_seat_icon_triangle.svg") no-repeat',
+              backgroundSize: "contain",
+              backgroundPosition: "center bottom",
+              position: "absolute",
+              inset: "auto auto -38px auto",
             },
           }),
           ...(status === SEAT_STATUS_NO && {
-            color: 'black400',
-            '&::before': {
+            color: "black400",
+            "&::before": {
               content: '""',
-              display: 'block',
-              width: '40px',
-              height: '5px',
-              background: 'black400',
-              borderRadius: '9999px',
-              position: 'absolute',
-              inset: 'auto auto -24px auto',
-              transform: 'rotateZ(45deg)',
+              display: "block",
+              w: "40px",
+              h: "5px",
+              bg: "black400",
+              rounded: "full",
+              position: "absolute",
+              inset: "auto auto -24px auto",
+              transform: "rotateZ(45deg)",
             },
-            '&::after': {
+            "&::after": {
               content: '""',
-              display: 'block',
-              width: '40px',
-              height: '5px',
-              background: 'black400',
-              borderRadius: '9999px',
-              position: 'absolute',
-              inset: 'auto auto -24px auto',
-              transform: 'rotateZ(-45deg)',
+              display: "block",
+              w: "40px",
+              h: "5px",
+              bg: "black400",
+              rounded: "full",
+              position: "absolute",
+              inset: "auto auto -24px auto",
+              transform: "rotateZ(-45deg)",
             },
           }),
         }}
       >
-        {status === SEAT_STATUS_OK && <>残席あり</>}
-        {status === SEAT_STATUS_FEW && <>残席わずか</>}
-        {status === SEAT_STATUS_NO && <>残席なし</>}
+        {SEAT_STATUS_OBJECT[status].text}
       </Center>
     </Center>
   );

@@ -1,15 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
-const useGetPath = () => {
-  const [path, setPath] = useState<string>();
-  const router = useRouter();
-
-  useEffect(() => {
-    setPath(router.pathname);
-  }, []);
-
-  return path;
-};
+const useGetPath = () => useRouter().pathname;
 
 export default useGetPath;

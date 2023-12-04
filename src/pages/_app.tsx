@@ -1,8 +1,8 @@
-import type { AppProps } from 'next/app';
-import theme from 'src/theme';
-import { useEffect, useState } from 'react';
-import { ChakraProvider } from '@chakra-ui/react';
-import SigninSuccessBunner from 'src/components/SigninSuccessBunner';
+import type { AppProps } from "next/app";
+import theme from "src/theme";
+import { useEffect, useState } from "react";
+import { ChakraProvider } from "@chakra-ui/react";
+import SignInSuccessBunner from "src/components/SignInSuccessBunner";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isStart, setIsStart] = useState<boolean>(true);
@@ -30,14 +30,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider resetCSS theme={theme}>
       {/* <Center
-          w={'100vw'}
-          h={'100vh'}
-          bg={'skyblue'}
-          pb={'40px'}
-          transition={'opacity 0.2s'}
-          pos={'fixed'}
-          inset={'0 0 auto auto'}
-          zIndex={'30'}
+          w="100vw"
+          h="100vh"
+          bg="skyblue"
+          pb="40px"
+          transition="opacity 0.2s"
+          pos="fixed"
+          inset="0 0 auto auto"
+          zIndex="30"
           sx={{
             ...(isStart
               ? {
@@ -51,8 +51,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           }}
         >
           <Box
-            w={'70vw'}
-            transition={'opacity 0.1s'}
+            w="70vw"
+            transition="opacity 0.1s"
             sx={{
               ...(isLogoTransition
                 ? {
@@ -63,11 +63,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                   }),
             }}
           >
-            <Box as={'img'} src={'/img/icon-white.svg'} w={'100%'} />
+            <Box as="img" src="/img/icon-white.svg" w="100%" />
           </Box>
         </Center> */}
       <Component {...pageProps} />
-      <SigninSuccessBunner />
+      <SignInSuccessBunner />
     </ChakraProvider>
   );
 }

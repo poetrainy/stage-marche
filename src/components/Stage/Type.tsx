@@ -1,28 +1,28 @@
-import { FC } from 'react';
-import { Text } from '@chakra-ui/react';
+import { FC } from "react";
+import { Text } from "@chakra-ui/react";
 
-import { typeArray } from 'src/libs/stage';
+import { STAGE_TYPES } from "src/libs/stage";
 
-import { stageType } from 'src/types/stage';
+import { StageType } from "src/types/stage";
 
 type Props = {
-  data: stageType;
+  data: StageType;
 };
 
-const StageType: FC<Props> = ({ data }) => {
+const StageTypeComponent: FC<Props> = ({ data }) => {
   return (
     <Text
-      w={'fit-content'}
-      color={'white'}
-      bg={typeArray[data.type].color}
-      p={'4px 12px'}
-      fontSize={'1.1rem'}
-      fontWeight={'bold'}
-      borderRadius={'9999px'}
+      w="fit-content"
+      color="white"
+      bg={STAGE_TYPES[data.type].color}
+      p="4px 12px"
+      fontSize="1.1rem"
+      fontWeight="bold"
+      rounded="full"
     >
-      {typeArray[data.type].text}
+      {STAGE_TYPES[data.type].text}
     </Text>
   );
 };
 
-export default StageType;
+export default StageTypeComponent;

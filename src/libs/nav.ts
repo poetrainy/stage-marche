@@ -1,46 +1,46 @@
-import { navContentsType } from 'src/types/nav';
+import { NavigationContentsType } from "src/types/nav";
 
-import HomeIcon from 'src/assets/nav_home';
-import ColumnIcon from 'src/assets/nav_column';
-import TicketIcon from 'src/assets/nav_ticket';
-import FavIcon from 'src/assets/nav_fav';
-import UserIcon from 'src/assets/nav_user';
+import HomeIcon from "src/assets/nav_home";
+import ColumnIcon from "src/assets/nav_column";
+import TicketIcon from "src/assets/nav_ticket";
+import FavIcon from "src/assets/nav_fav";
+import UserIcon from "src/assets/nav_user";
 
-export const navContents: navContentsType[] = [
+export const NAVIGATION_CONTENTS: NavigationContentsType[] = [
   {
-    name: 'ホーム',
+    name: "ホーム",
     img: HomeIcon,
-    path: '',
+    path: "",
     center: false,
-    fill: 'black400',
+    fill: "black400",
   },
   {
-    name: 'コラム',
+    name: "コラム",
     img: ColumnIcon,
-    path: 'column',
+    path: "column",
     center: false,
-    fill: 'black400',
+    fill: "black400",
   },
   {
-    name: 'チケット',
+    name: "チケット",
     img: TicketIcon,
-    path: 'ticket',
+    path: "ticket",
     center: true,
-    fill: 'black400',
+    fill: "black400",
     // fill: 'white',
   },
   {
-    name: '気になる',
+    name: "気になる",
     img: FavIcon,
-    path: 'fav',
+    path: "fav",
     center: false,
-    fill: 'black400',
+    fill: "black400",
   },
   {
-    name: 'アカウント',
+    name: "アカウント",
     img: UserIcon,
-    path: 'user',
+    path: "user",
     center: false,
-    fill: 'black400',
+    fill: "black400",
   },
 ];

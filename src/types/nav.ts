@@ -1,4 +1,4 @@
-export type navContentsType = {
+export type NavigationContentsType = {
   name: string;
   img: (props: any) => JSX.Element;
   path: string;

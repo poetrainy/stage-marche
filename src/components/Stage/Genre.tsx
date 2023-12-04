@@ -1,37 +1,29 @@
-import { FC } from 'react';
-import { Flex, Text } from '@chakra-ui/react';
+import { FC } from "react";
+import { Flex, Text } from "@chakra-ui/react";
 
-import { stageGenreArray } from 'src/libs/stage';
-import { columnGenreArray } from 'src/libs/column';
+import { STAGE_GENRES } from "src/libs/stage";
+import { COLUMN_GENRES } from "src/libs/column";
 
-import { stageType } from 'src/types/stage';
-import { columnType } from 'src/types/column';
+import { StageType } from "src/types/stage";
+import { ColumnType } from "src/types/column";
 
 type Props = {
-  data: stageType | columnType;
+  data: StageType | ColumnType;
   column?: boolean;
 };
 
 const StageGenre: FC<Props> = ({ data, column }) => {
   return (
-    <Flex gap={'4px'}>
+    <Flex gap="4px">
       {data.genre.map((item, i) => (
         <Text
-          as={'span'}
+          as="span"
           key={item + i}
-          fontSize={'1.2rem'}
-          fontWeight={'bold'}
-          sx={{
-            ...(column
-              ? {
-                  color: 'primary',
-                }
-              : {
-                  color: 'black400',
-                }),
-          }}
+          color={column ? "primary" : "black400"}
+          fontSize="1.2rem"
+          fontWeight="bold"
         >
-          {column ? <>#{columnGenreArray[i]}</> : <>#{stageGenreArray[item]}</>}
+          {`#${column ? COLUMN_GENRES[i] : STAGE_GENRES[item]}`}
         </Text>
       ))}
     </Flex>

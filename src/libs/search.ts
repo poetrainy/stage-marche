@@ -1,42 +1,42 @@
-import { stageGenreArray, typeArray } from 'src/libs/stage';
-import { columnGenreArray } from 'src/libs/column';
+import { STAGE_GENRES, STAGE_TYPES } from "src/libs/stage";
+import { COLUMN_GENRES } from "src/libs/column";
 
-import { searchType } from 'src/types/search';
+import { FilterContentsType } from "src/types/search";
 
-const styleArray = [typeArray[0].text, typeArray[1].text];
+const STAGE_STYLES = [STAGE_TYPES[0].text, STAGE_TYPES[1].text];
 
-export const searchStageArray: searchType[] = [
+export const FILTER_STAGES: FilterContentsType[] = [
   {
-    condition: 'スタイル',
-    item: styleArray,
+    condition: "スタイル",
+    item: STAGE_STYLES,
   },
   {
-    condition: 'タグ',
-    item: stageGenreArray,
+    condition: "タグ",
+    item: STAGE_GENRES,
   },
   {
-    condition: 'こだわり',
+    condition: "こだわり",
     item: [
-      'はじめてのB席',
-      '大阪公演がある',
-      '動画がある',
-      'コラムが読める',
-      '配信公演がある',
+      "はじめてのB席",
+      "大阪公演がある",
+      "動画がある",
+      "コラムが読める",
+      "配信公演がある",
     ],
   },
 ];
 
-export const searchColumnArray: searchType[] = [
+export const FILTER_COLUMNS: FilterContentsType[] = [
   {
-    condition: 'スタイル',
-    item: styleArray,
+    condition: "スタイル",
+    item: STAGE_STYLES,
   },
   {
-    condition: 'タグ',
-    item: columnGenreArray,
+    condition: "タグ",
+    item: COLUMN_GENRES,
   },
   {
-    condition: 'こだわり',
-    item: ['はじめてのB席', '大阪公演がある', '配信公演がある'],
+    condition: "こだわり",
+    item: ["はじめてのB席", "大阪公演がある", "配信公演がある"],
   },
 ];

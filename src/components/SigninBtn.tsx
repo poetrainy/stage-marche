@@ -1,19 +1,19 @@
-import { FC } from 'react';
-import { Center } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
+import { FC } from "react";
+import { Center } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
-import { firebase, auth } from 'src/libs/firebase';
+import { firebase, auth } from "src/libs/firebase";
 
-const SigninBtn: FC = () => {
+const SignInBtn: FC = () => {
   const router = useRouter();
 
-  const text = 'Googleでログイン';
+  const text = "Googleでログイン";
 
   const signUp = async () => {
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
       await auth.signInWithPopup(provider).catch(alert);
-      router.push('/enquete');
+      router.push("/enquete");
     } catch (err) {
       alert(err);
     }
@@ -21,14 +21,14 @@ const SigninBtn: FC = () => {
 
   return (
     <Center
-      w={'240px'}
-      h={'64px'}
-      color={'white'}
-      bg={'greenToBlue'}
-      fontSize={'1.6rem'}
-      fontWeight={'bold'}
-      borderRadius={'9999px'}
-      m={'0 auto'}
+      w="240px"
+      h="64px"
+      color="white"
+      bg="greenToBlue"
+      fontSize="1.6rem"
+      fontWeight="bold"
+      rounded="full"
+      m="0 auto"
       onClick={() => signUp()}
     >
       {text}
@@ -36,4 +36,4 @@ const SigninBtn: FC = () => {
   );
 };
 
-export default SigninBtn;
+export default SignInBtn;

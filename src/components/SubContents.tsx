@@ -1,7 +1,5 @@
 import { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
-
-import Headline from 'src/components/Headline';
+import { Flex, Heading, VStack } from '@chakra-ui/react';
 
 import { contentsType } from 'src/types/contents';
 
@@ -11,12 +9,20 @@ type Props = {
 
 const SubContents: FC<Props> = ({ data }) => {
   return (
-    <Flex flexDir={'column'} gap={'28px'} w={'100%'}>
+    <Flex flexDir="column" gap="28px" w="100%">
       {data.map((item: contentsType, i) => (
-        <Box w={'100%'} key={item.text + i}>
-          <Headline text={item.text} />
+        <VStack
+          alignItems="stretch"
+          gap="16px"
+          p={0}
+          w="100%"
+          key={item.text + i}
+        >
+          <Heading as="h2" fontSize="2rem" fontWeight="bold">
+            {item.text}
+          </Heading>
           {item.component}
-        </Box>
+        </VStack>
       ))}
     </Flex>
   );

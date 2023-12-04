@@ -1,11 +1,11 @@
-import { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { FC } from "react";
+import { Box, Flex } from "@chakra-ui/react";
 
-import { stageType } from 'src/types/stage';
-import { prefectureArray } from 'src/libs/stage';
+import { StageType } from "src/types/stage";
+import { prefectureArray } from "src/libs/stage";
 
 type Props = {
-  data: stageType;
+  data: StageType;
   prefecture?: boolean;
   place?: boolean;
   schedule?: boolean;
@@ -13,7 +13,7 @@ type Props = {
   index: number;
 };
 
-const StageInfomation: FC<Props> = ({
+const StageInformation: FC<Props> = ({
   data,
   prefecture,
   place,
@@ -22,26 +22,26 @@ const StageInfomation: FC<Props> = ({
   index,
 }) => (
   <Flex
-    flexDir={'column'}
-    gap={'6px'}
-    w={'100%'}
-    color={'black500'}
-    fontSize={'1.2rem'}
+    flexDir="column"
+    gap="6px"
+    w="100%"
+    color="black500"
+    fontSize="1.2rem"
     sx={{
-      '>div': {
-        alignItems: 'flex-start',
-        gap: '3px',
-        width: '100%',
-        lineHeight: '1.6rem',
-        paddingLeft: '19px',
-        position: 'relative',
-        '&::before': {
+      ">div": {
+        alignItems: "flex-start",
+        gap: "3px",
+        w: "100%",
+        lineHeight: "1.6rem",
+        paddingLeft: "19px",
+        position: "relative",
+        "&::before": {
           content: '""',
-          display: 'block',
-          width: '16px',
-          height: '16px',
-          position: 'absolute',
-          inset: '0 auto auto 0',
+          display: "block",
+          w: "16px",
+          h: "16px",
+          position: "absolute",
+          inset: "0 auto auto 0",
         },
       },
     }}
@@ -49,8 +49,8 @@ const StageInfomation: FC<Props> = ({
     {(!place || !prefecture) && (
       <Flex
         sx={{
-          '&::before': {
-            background: 'url("/img/stage_info_place.svg")',
+          "&::before": {
+            bg: 'url("/img/stage_info_place.svg")',
           },
         }}
       >
@@ -66,8 +66,8 @@ const StageInfomation: FC<Props> = ({
     {!schedule && (
       <Flex
         sx={{
-          '&::before': {
-            background: 'url("/img/stage_info_schedule.svg")',
+          "&::before": {
+            bg: 'url("/img/stage_info_schedule.svg")',
           },
         }}
       >
@@ -79,8 +79,8 @@ const StageInfomation: FC<Props> = ({
     {!time && (
       <Flex
         sx={{
-          '&::before': {
-            background: 'url("/img/stage_info_time.svg")',
+          "&::before": {
+            bg: 'url("/img/stage_info_time.svg")',
           },
         }}
       >
@@ -106,4 +106,4 @@ const StageInfomation: FC<Props> = ({
   </Flex>
 );
 
-export default StageInfomation;
+export default StageInformation;
