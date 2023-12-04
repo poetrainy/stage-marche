@@ -5,6 +5,10 @@ import { Box } from "@chakra-ui/react";
 import Header from "src/components/Header";
 import Navigation from "src/components/Navigation";
 import Authenticator from "src/components/Authenticator";
+import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
+import SignInGuidance from "src/components/SignInGuidance";
+import { SIGN_IN_GUIDANCE_PAGES } from "src/constants/signIn";
+import path from "path";
 
 type Props = {
   component: JSX.Element;
@@ -14,6 +18,13 @@ type Props = {
 
 const Layout: FC<Props> = ({ component, search, index }) => {
   const { pathname } = useRouter();
+
+  const isSignIn =
+    typeof window !== "undefined" &&
+    localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR) &&
+    (JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR) ?? "false"
+    ) as boolean);
 
   return (
     <Authenticator>
@@ -32,7 +43,23 @@ const Layout: FC<Props> = ({ component, search, index }) => {
               bg: "greenToBlue",
             }),
           }}
-          children={component}
+          children={
+            isSignIn ? (
+              <>{component}</>
+            ) : pathname === "/column" ||
+              pathname === "/ticket" ||
+              pathname === "/fav" ? (
+              <SignInGuidance
+                guidance={
+                  SIGN_IN_GUIDANCE_PAGES[
+                    pathname.split("/")[1] as "column" | "ticket" | "fav"
+                  ]
+                }
+              />
+            ) : (
+              <>{component}</>
+            )
+          }
         />
         <Navigation path={pathname} />
       </>

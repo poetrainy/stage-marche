@@ -7,5 +7,5 @@ export const pathWithAuthenticator: (path: string) => string = (
     typeof window !== "undefined" &&
     localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR) === "true";
 
-  return isAuthenticated ? path : `${path}?authenticated=false`;
+  return `${path}?authenticated=${isAuthenticated ? "true" : "false"}`;
 };

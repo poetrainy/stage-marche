@@ -22,8 +22,6 @@ const Header: FC<Props> = ({ path, back, search }) => {
     (content) => `/${content.path}` === path
   );
 
-  console.log(navigation);
-
   return (
     <>
       <Center
