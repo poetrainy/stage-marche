@@ -310,13 +310,6 @@ const StageId: NextPage<Props> = ({ id }) => {
                     as={favIcon}
                     w="24px"
                     h="24px"
-                    // sx={{
-                    //   ...(isFav[i] && {
-                    //     path: {
-                    //       fill: "primary",
-                    //     },
-                    //   }),
-                    // }}
                   />
                 </Center>
               </Flex>

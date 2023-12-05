@@ -27,7 +27,6 @@ export const NAVIGATION_CONTENTS: NavigationContentsType[] = [
     path: "ticket",
     center: true,
     fill: "black400",
-    // fill: 'white',
   },
   {
     name: "気になる",
