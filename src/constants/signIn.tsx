@@ -1,10 +1,10 @@
-import { SignInGuidancePageType } from "src/types/signIn";
+// import { SignInGuidancePageType } from "src/types/signIn";
 
 import SvgImageColumn from "src/assets/svg/guidance_column.svg";
 import SvgImageTicket from "src/assets/svg/guidance_ticket.svg";
 import SvgImageFav from "src/assets/svg/guidance_fav.svg";
 
-export const SIGN_IN_GUIDANCE_PAGES: SignInGuidancePageType = {
+export const SIGN_IN_GUIDANCE_PAGES = {
   column: {
     path: SvgImageColumn,
     heading: "演劇のコラムやニュースは\nログインして手軽にチェック！",
