@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text, VStack, background } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { useState } from "react";
 import NextLink from "next/link";
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
                       inset="auto auto 0 0"
                       p="0 5vw 20px"
                     >
-                      <StageTypeComponent data={item} />
+                      <StageTypeComponent type={item.type} />
                       <OriginalSpacer size="4px" />
                       <Text color="white" fontWeight="bold" fontSize="2.2rem">
                         {item.name}
@@ -113,9 +113,10 @@ const Home: NextPage = () => {
                         ))}
                       </Flex>
                     </Box>
-                    <Box
-                      as="img"
-                      src={`/img/stage_img_${item.path}_01.jpg`}
+                    <Image
+                      src={imageWithDirectoryPath(
+                        `stage_img_${item.path}_01.jpg`
+                      )}
                       w="100%"
                       h="100%"
                       objectFit="contain"
@@ -230,14 +231,14 @@ const Home: NextPage = () => {
     ];
 
     return (
-      <VStack alignItems="stretch" gap="24px" p="0">
+      <Flex flexDir="column" gap="24px">
         {contents.map((content) => (
-          <VStack
+          <Flex
+            flexDir="column"
             key={content.heading}
             as="section"
             alignItems="center"
             gap="16px"
-            p="0"
           >
             <Heading
               as="h2"
@@ -248,9 +249,9 @@ const Home: NextPage = () => {
               {content.heading}
             </Heading>
             {content.content}
-          </VStack>
+          </Flex>
         ))}
-      </VStack>
+      </Flex>
     );
   };
 
@@ -258,3 +259,7 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+function imageWithDirectoryPath(arg0: string): string | undefined {
+  throw new Error("Function not implemented.");
+}
+

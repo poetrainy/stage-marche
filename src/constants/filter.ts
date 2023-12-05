@@ -1,14 +1,12 @@
-import { STAGE_GENRES, STAGE_TYPES } from "src/constants/stage";
+import { STAGE_GENRES } from "src/constants/stage";
 import { COLUMN_GENRES } from "src/constants/column";
 
 import { FilterContentsType } from "src/types/search";
 
-const STAGE_STYLES = [STAGE_TYPES[0].text, STAGE_TYPES[1].text];
-
 export const FILTER_STAGES: FilterContentsType[] = [
   {
     condition: "スタイル",
-    item: STAGE_STYLES,
+    item: ["ミュージカル", "ストレートプレイ", "歌舞伎", "落語"],
   },
   {
     condition: "タグ",
@@ -29,7 +27,7 @@ export const FILTER_STAGES: FilterContentsType[] = [
 export const FILTER_COLUMNS: FilterContentsType[] = [
   {
     condition: "スタイル",
-    item: STAGE_STYLES,
+    item: ["ミュージカル", "ストレートプレイ", "歌舞伎", "落語"],
   },
   {
     condition: "タグ",

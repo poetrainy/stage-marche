@@ -1,5 +1,18 @@
 import { CastType, StageType } from "src/types/stage";
 
+// import ImageStageElisabeth from "src/assets/images/stage_img_elisabeth_01.jpg";
+// import ImageStageShibiregumo from "src/assets/images/stage_img_shibiregumo_01.jpg";
+// import ImageStageEndlessshock from "src/assets/images/stage_img_endlessshock_01.jpg";
+
+// import ImageCastHanafusamari from "src/assets/images/cast_hanafusamari.jpg";
+// import ImageCastManakireika from "src/assets/images/cast_manakireika.jpg";
+// import ImageCastInoueyoshio from "src/assets/images/cast_inoueyoshio.jpg";
+// import ImageCastYamazakiikusaburo from "src/assets/images/cast_yamazakiikusaburo.jpg";
+// import ImageCastFurukawayuta from "src/assets/images/cast_furukawayuta.jpg";
+// import ImageCastDomotokoichi from "src/assets/images/cast_domotokoichi.jpg";
+// import ImageCastKitayamahiromitsu from "src/assets/images/cast_kitayamahiromitsu.jpg";
+// import ImageCastSatoshori from "src/assets/images/cast_satoshori.jpg";
+
 export const SEAT_STATUS_OK = "ok";
 export const SEAT_STATUS_FEW = "few";
 export const SEAT_STATUS_NO = "no";
@@ -8,13 +21,13 @@ export const MOCK_STAGES_BASE: StageType[] = [
   {
     name: "ミュージカル『エリザベート』",
     path: "elisabeth",
-    imgLength: 1,
-    type: 0,
-    genre: [0, 4],
+    images: [],
+    type: "musical",
+    genres: [0, 4],
     description:
       "作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。",
     youtube: ["7KZxVqBX6YI", "W9721KaWPhU"],
-    cast: [
+    casts: [
       "hanafusamari",
       "manakireika",
       "inoueyoshio",
@@ -110,13 +123,13 @@ export const MOCK_STAGES_BASE: StageType[] = [
   {
     name: "しびれ雲",
     path: "shibiregumo",
-    imgLength: 1,
-    type: 1,
-    genre: [1, 7],
+    images: [],
+    type: "straightPlay",
+    genres: [1, 7],
     description:
       "作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。",
     youtube: ["S-t0DgrnzkA", "G4xFb3r0SRs"],
-    cast: ["inoueyoshio"],
+    casts: ["inoueyoshio"],
     schedule: [
       {
         place: "兵庫県立芸術文化センター 阪急中ホール",
@@ -165,13 +178,13 @@ export const MOCK_STAGES_BASE: StageType[] = [
   {
     name: "Endless SHOCK",
     path: "endlessshock",
-    imgLength: 1,
-    type: 0,
-    genre: [1, 8],
+    images: [],
+    type: "musical",
+    genres: [1, 8],
     description:
       "作品の説明が入ります。どういうおもしろさがあるのかなとかそういうこと。大体このくらいまで文章を入れられます。長ければ文末が3点リーダに置き換わらないです。",
     youtube: ["boZsxp1aC_o", "Sl9QqiSHu7U"],
-    cast: ["domotokoichi", "kitayamahiromitsu", "satoshori"],
+    casts: ["domotokoichi", "kitayamahiromitsu", "satoshori"],
     schedule: [
       {
         place: "梅田芸術劇場 メインホール",
@@ -265,38 +278,38 @@ export const prefectureArray: string[] = [
   "沖縄",
 ];
 
-export const castArray: CastType[] = [
+export const MOCK_CASTS_BASE: CastType[] = [
   {
+    id: "inoueyoshio",
     name: "井上芳雄",
-    path: "inoueyoshio",
   },
   {
+    id: "domotokoichi",
     name: "堂本光一",
-    path: "domotokoichi",
   },
   {
+    id: "hanafusamari",
     name: "花總まり",
-    path: "hanafusamari",
   },
   {
+    id: "manakireika",
     name: "愛希れいか",
-    path: "manakireika",
   },
   {
+    id: "yamazakiikusaburo",
     name: "山崎育三郎",
-    path: "yamazakiikusaburo",
   },
   {
+    id: "furukawayuta",
     name: "古川雄大",
-    path: "furukawayuta",
   },
   {
+    id: "kitayamahiromitsu",
     name: "北山宏光",
-    path: "kitayamahiromitsu",
   },
   {
+    id: "satoshori",
     name: "佐藤勝利",
-    path: "satoshori",
   },
 ];
 
@@ -315,15 +328,24 @@ export const STAGE_GENRES: string[] = [
   "実写化",
 ];
 
-export const STAGE_TYPES = [
-  {
-    text: "ミュージカル",
+export const STAGE_TYPES: Record<
+  "musical" | "straightPlay" | "kabuki" | "rakugo",
+  { label: string; color: string }
+> = {
+  musical: {
+    label: "ミュージカル",
     color: "pink",
-    index: 0,
   },
-  {
-    text: "お芝居",
+  straightPlay: {
+    label: "ストレートプレイ",
     color: "green",
-    index: 1,
   },
-];
+  kabuki: {
+    label: "歌舞伎",
+    color: "lavender",
+  },
+  rakugo: {
+    label: "落語",
+    color: "orange",
+  },
+};

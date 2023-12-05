@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Flex, VStack } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 import { StageType } from "src/types/stage";
 import StageBunnerLarge from "src/components/Stage/BunnerLarge";
@@ -11,11 +11,11 @@ type Props = {
 
 const StageBunnerLargeWrapper: FC<Props> = ({ stages, number }) => {
   return (
-    <VStack alignItems="stretch" gap="16px" p={0} textStyle="bodyW">
+    <Flex flexDir="column" gap="16px" textStyle="bodyW">
       {stages.map((item) => (
         <StageBunnerLarge key={item.name} stage={item} />
       ))}
-    </VStack>
+    </Flex>
   );
 };
 

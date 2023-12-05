@@ -1,6 +1,6 @@
 import { FC } from "react";
 import NextLink from "next/link";
-import { Box, Flex, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 import { NAVIGATION_CONTENTS } from "src/constants/nav";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
@@ -25,11 +25,12 @@ const Navigation: FC<Props> = ({ path }) => {
       zIndex="10"
     >
       {NAVIGATION_CONTENTS.map((item) => (
-        <VStack
+        <Flex
           as={NextLink}
           href={`${pathWithAuthenticator(`/${item.path}`)}`}
           passHref
           key={item.path}
+          flexDir="column"
           alignItems="center"
           gap="4px"
           position="relative"
@@ -65,7 +66,7 @@ const Navigation: FC<Props> = ({ path }) => {
           >
             {item.name}
           </Text>
-        </VStack>
+        </Flex>
       ))}
     </Flex>
   );

@@ -1,19 +1,21 @@
 import { FC } from "react";
-import { Box, Flex, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
 import StageGenre from "src/components/Stage/Genre";
+import ColumnDate from "src/components/Column/Date";
 
 import { ColumnType } from "src/types/column";
-import ColumnDate from "src/components/Column/Date";
+
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
+import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 
 type Props = {
-  data: ColumnType[];
+  column: ColumnType[];
 };
 
-const ColumnBunner: FC<Props> = ({ data }) => {
+const ColumnBunner: FC<Props> = ({ column }) => {
   return (
     <Flex
       flexDir="column"
@@ -32,7 +34,7 @@ const ColumnBunner: FC<Props> = ({ data }) => {
         },
       }}
     >
-      {data.map((item, i) => (
+      {column.map((item, i) => (
         <NextLink
           href={`${pathWithAuthenticator(`/column/${item.id}`)}`}
           passHref
@@ -59,12 +61,11 @@ const ColumnBunner: FC<Props> = ({ data }) => {
               {item.text}
             </Text>
             <OriginalSpacer size="4px" />
-            <StageGenre data={item} column />
+            <StageGenre data={item} isColumn />
           </Box>
           <Box w="35%" pt="50%" pos="relative" rounded="8px" overflow="hidden">
-            <Box
-              as="img"
-              src={`/img/column_0${item.id}.jpg`}
+            <Image
+              src={imageWithDirectoryPath(`column_0${item.id}.jpg`)}
               w="100%"
               h="100%"
               pos="absolute"

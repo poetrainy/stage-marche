@@ -8,7 +8,6 @@ import Authenticator from "src/components/Authenticator";
 import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
 import SignInGuidance from "src/components/SignInGuidance";
 import { SIGN_IN_GUIDANCE_PAGES } from "src/constants/signIn";
-import path from "path";
 
 type Props = {
   component: JSX.Element;

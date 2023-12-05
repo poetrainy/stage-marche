@@ -7,12 +7,12 @@ import {
 export type StageType = {
   name: string;
   path: string;
-  imgLength: 1;
-  type: number;
-  genre: number[];
+  images: string[];
+  type: "musical" | "straightPlay" | "kabuki" | "rakugo";
+  genres: number[];
   description: string;
   youtube: string[];
-  cast: string[];
+  casts: string[];
   schedule: {
     place: string;
     prefecture: number;
@@ -66,8 +66,8 @@ export type StageType = {
 };
 
 export type CastType = {
+  id: string;
   name: string;
-  path: string;
 };
 
 export type favType = { data: number; place: number };

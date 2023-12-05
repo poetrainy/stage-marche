@@ -23,6 +23,7 @@ const colors = {
 };
 const styles = {
   global: {
+    "*": {},
     html: {
       fontSize: "62.5%",
     },

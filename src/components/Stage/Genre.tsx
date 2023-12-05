@@ -9,21 +9,21 @@ import { ColumnType } from "src/types/column";
 
 type Props = {
   data: StageType | ColumnType;
-  column?: boolean;
+  isColumn?: boolean;
 };
 
-const StageGenre: FC<Props> = ({ data, column }) => {
+const StageGenre: FC<Props> = ({ data, isColumn }) => {
   return (
     <Flex gap="4px">
-      {data.genre.map((item, i) => (
+      {data.genres.map((genre, i) => (
         <Text
           as="span"
-          key={item + i}
-          color={column ? "primary" : "black400"}
+          key={genre + i}
+          color={isColumn ? "primary" : "black400"}
           fontSize="1.2rem"
           fontWeight="bold"
         >
-          {`#${column ? COLUMN_GENRES[i] : STAGE_GENRES[item]}`}
+          {`#${isColumn ? COLUMN_GENRES[i] : STAGE_GENRES[genre]}`}
         </Text>
       ))}
     </Flex>

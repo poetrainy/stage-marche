@@ -10,11 +10,11 @@ const Column: NextPage = () => {
   const ComponentArray = [
     {
       text: "気になる公演とあわせて読みたい",
-      component: <ColumnBunner data={MOCK_COLUMNS_BASE} />,
+      component: <ColumnBunner column={MOCK_COLUMNS_BASE} />,
     },
     {
       text: "最近読まれています",
-      component: <ColumnBunner data={MOCK_COLUMNS_BASE} />,
+      component: <ColumnBunner column={MOCK_COLUMNS_BASE} />,
     },
   ];
 

@@ -1,10 +1,10 @@
 import { NavigationContentsType } from "src/types/nav";
 
-import HomeIcon from "src/assets/nav_home";
-import ColumnIcon from "src/assets/nav_column";
-import TicketIcon from "src/assets/nav_ticket";
-import FavIcon from "src/assets/nav_fav";
-import UserIcon from "src/assets/nav_user";
+import HomeIcon from "src/assets/svg/nav_home";
+import ColumnIcon from "src/assets/svg/nav_column";
+import TicketIcon from "src/assets/svg/nav_ticket";
+import FavIcon from "src/assets/svg/nav_fav";
+import UserIcon from "src/assets/svg/nav_user";
 
 export const NAVIGATION_CONTENTS: NavigationContentsType[] = [
   {

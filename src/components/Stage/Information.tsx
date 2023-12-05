@@ -1,8 +1,12 @@
 import { FC } from "react";
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex, Image } from "@chakra-ui/react";
 
 import { StageType } from "src/types/stage";
 import { prefectureArray } from "src/constants/stage";
+
+import IconSchedule from "src/assets/svg/stage_info_schedule.svg";
+import IconPlace from "src/assets/svg/stage_info_place.svg";
+import IconTime from "src/assets/svg/stage_info_time.svg";
 
 type Props = {
   data: StageType;
@@ -21,39 +25,10 @@ const StageInformation: FC<Props> = ({
   time,
   index,
 }) => (
-  <Flex
-    flexDir="column"
-    gap="6px"
-    w="100%"
-    color="black500"
-    fontSize="1.2rem"
-    sx={{
-      ">div": {
-        alignItems: "flex-start",
-        gap: "3px",
-        w: "100%",
-        lineHeight: "1.6rem",
-        paddingLeft: "19px",
-        position: "relative",
-        "&::before": {
-          content: '""',
-          display: "block",
-          w: "16px",
-          h: "16px",
-          position: "absolute",
-          inset: "0 auto auto 0",
-        },
-      },
-    }}
-  >
+  <Flex flexDir="column" gap="6px" color="black500" fontSize="1.2rem">
     {(!place || !prefecture) && (
-      <Flex
-        sx={{
-          "&::before": {
-            bg: 'url("/img/stage_info_place.svg")',
-          },
-        }}
-      >
+      <Flex gap="4px">
+        <Image as={IconPlace} />
         {!prefecture && (
           <>
             {prefectureArray[data.schedule[index].prefecture]}
@@ -64,26 +39,16 @@ const StageInformation: FC<Props> = ({
       </Flex>
     )}
     {!schedule && (
-      <Flex
-        sx={{
-          "&::before": {
-            bg: 'url("/img/stage_info_schedule.svg")',
-          },
-        }}
-      >
+      <Flex gap="4px">
+        <Image as={IconSchedule} />
         {data.schedule[index].date.start.y}.{data.schedule[index].date.start.m}.
         {data.schedule[index].date.start.d}-{data.schedule[index].date.end.y}.
         {data.schedule[index].date.end.m}.{data.schedule[index].date.end.d}
       </Flex>
     )}
     {!time && (
-      <Flex
-        sx={{
-          "&::before": {
-            bg: 'url("/img/stage_info_time.svg")',
-          },
-        }}
-      >
+      <Flex gap="4px">
+        <Image as={IconTime} />
         {data.schedule[0].time.matinee && (
           <>
             {data.schedule[0].time.matinee.start[0]}:

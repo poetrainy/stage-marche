@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Box, Center, Flex, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
@@ -48,9 +48,8 @@ const StageBunnerSmall: FC<Props> = ({ data }) => {
                 pos="relative"
                 boxShadow="0px 0px 3px rgba(0, 0, 0, 0.1)"
               >
-                <Box
-                  as="img"
-                  src={`/img/stage_img_${item.path}_01.jpg`}
+                <Image
+                  src={item.images[0]}
                   w="100%"
                   h="100%"
                   objectFit="cover"
@@ -69,7 +68,7 @@ const StageBunnerSmall: FC<Props> = ({ data }) => {
                 </Center>
               </Box>
               <OriginalSpacer size="8px" />
-              <StageTypeComponent data={item} />
+              <StageTypeComponent type={item.type} />
               <OriginalSpacer size="4px" />
               <Text as="h3" fontSize="1.4rem" fontWeight="bold">
                 {item.name}

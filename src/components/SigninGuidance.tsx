@@ -1,12 +1,15 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Box, Center, Text } from "@chakra-ui/react";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
 import PreText from "src/components/PreText";
-import { SignInGuidancePageType } from "src/types/signIn";
 
 type Props = {
-  guidance: { heading: string; text: string };
+  guidance: {
+    path: React.FC<React.SVGProps<SVGElement>>;
+    heading: string;
+    text: string;
+  };
 };
 
 const SignInGuidance: FC<Props> = ({ guidance }) => {
@@ -65,7 +68,7 @@ const SignInGuidance: FC<Props> = ({ guidance }) => {
       h="calc(100vh - 64px - 32px - 40px - 96px)"
       m="auto"
     >
-      <Box as="img" src={`/img/guidance_${guidance.path}.svg`} />
+      <Box as="img" src={`./assets/svg/guidance_${guidance.path}.svg`} />
       <OriginalSpacer size="32px" />
       <Center flexDir="column" gap="12px" w="fit-content">
         <PreText text={guidance.heading} />

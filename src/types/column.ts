@@ -6,6 +6,6 @@ export type ColumnType = {
     m: number;
     d: number;
   };
-  genre: number[];
+  genres: number[];
   text: string;
 };
