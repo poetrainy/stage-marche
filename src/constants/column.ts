@@ -1,8 +1,5 @@
 import { ColumnType } from "src/types/column";
 
-// import ImageColumn01 from "src/assets/images/column_01.jpg";
-// import ImageColumn02 from "src/assets/images/column_02.jpg";
-
 export const COLUMN_GENRES: string[] = ["作品解説", "インタビュー", "レポ"];
 
 export const MOCK_COLUMNS_BASE: ColumnType[] = [

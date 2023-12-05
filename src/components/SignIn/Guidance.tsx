@@ -13,8 +13,6 @@ type Props = {
 };
 
 const SignInGuidance: FC<Props> = ({ guidance }) => {
-  // const [firebaseUsers, setFirebaseUsers] = useState<string[]>();
-
   const text = "Googleでログイン";
 
   return (
@@ -46,7 +44,6 @@ const SignInGuidance: FC<Props> = ({ guidance }) => {
         fontWeight="bold"
         rounded="full"
         m="0 auto"
-        // onClick={() => signUp()}
         _hover={{
           cursor: "pointer",
         }}

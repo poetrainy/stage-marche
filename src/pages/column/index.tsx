@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import ColumnBunner from "src/components/Column/Bunner";
 
 import Layout from "src/components/Layout";
-import SubContents from "src/components/SubContents";
+import ContentsBase from "src/components/ContentsBase";
 
 import { MOCK_COLUMNS_BASE } from "src/constants/column";
 
@@ -18,7 +18,7 @@ const Column: NextPage = () => {
     },
   ];
 
-  return <Layout component={<SubContents data={ComponentArray} />} search />;
+  return <Layout component={<ContentsBase data={ComponentArray} />} search />;
 };
 
 export default Column;

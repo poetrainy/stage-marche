@@ -10,8 +10,6 @@ import PreText from "src/components/PreText";
 import { STAGE_GENRES, prefectureArray } from "src/constants/stage";
 import { firebase } from "src/libs/firebase";
 
-import useGetEmail from "src/hooks/useGetEmail";
-
 const Enquete: NextPage = () => {
   const [genre, setGenre] = useState<number[]>([]);
   const [prefecture, setPrefecture] = useState<number>(100);
@@ -22,7 +20,6 @@ const Enquete: NextPage = () => {
   ]);
   const [page, setPage] = useState<number>(0);
   const router = useRouter();
-  const email = useGetEmail();
 
   const sendFirebase = async () => {
     const db = firebase.firestore();

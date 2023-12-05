@@ -4,13 +4,11 @@ import NextLink from "next/link";
 
 import Layout from "src/components/Layout";
 import StageInformation from "src/components/Stage/Information";
-import useGetEmail from "src/hooks/useGetEmail";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
 import { MOCK_STAGES_BASE } from "src/constants/stage";
 
 const Ticket: NextPage = () => {
-  const email = useGetEmail();
 
   const flag: boolean[] = [true, false, false];
 

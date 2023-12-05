@@ -1,18 +1,5 @@
 import { CastType, StageType } from "src/types/stage";
 
-// import ImageStageElisabeth from "src/assets/images/stage_img_elisabeth_01.jpg";
-// import ImageStageShibiregumo from "src/assets/images/stage_img_shibiregumo_01.jpg";
-// import ImageStageEndlessshock from "src/assets/images/stage_img_endlessshock_01.jpg";
-
-// import ImageCastHanafusamari from "src/assets/images/cast_hanafusamari.jpg";
-// import ImageCastManakireika from "src/assets/images/cast_manakireika.jpg";
-// import ImageCastInoueyoshio from "src/assets/images/cast_inoueyoshio.jpg";
-// import ImageCastYamazakiikusaburo from "src/assets/images/cast_yamazakiikusaburo.jpg";
-// import ImageCastFurukawayuta from "src/assets/images/cast_furukawayuta.jpg";
-// import ImageCastDomotokoichi from "src/assets/images/cast_domotokoichi.jpg";
-// import ImageCastKitayamahiromitsu from "src/assets/images/cast_kitayamahiromitsu.jpg";
-// import ImageCastSatoshori from "src/assets/images/cast_satoshori.jpg";
-
 export const SEAT_STATUS_OK = "ok";
 export const SEAT_STATUS_FEW = "few";
 export const SEAT_STATUS_NO = "no";
