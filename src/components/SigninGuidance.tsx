@@ -17,51 +17,6 @@ const SignInGuidance: FC<Props> = ({ guidance }) => {
 
   const text = "Googleでログイン";
 
-  // const getFirebase = async () => {
-  //   const db = getFirestore(firebaseApp);
-  //   const col = collection(db, "user");
-  //   const querySnapshot = await getDocs(col);
-  //   const retId: string[] = [];
-  //   querySnapshot.forEach((doc) => {
-  //     retId.push(doc.id);
-  //   });
-  //   setFirebaseUsers(retId);
-  // };
-
-  // useEffect(() => {
-  //   getFirebase();
-  // }, []);
-
-  // const signUp = async () => {
-  //   try {
-  //     const provider = new firebase.auth.GoogleAuthProvider();
-  //     await auth.signInWithPopup(provider).catch(alert);
-  //     auth.onAuthStateChanged(async (user) => {
-  //       if (!!user) {
-  //         // @ts-ignore
-  //         const email = user?.providerData[0]?.email;
-  //         const users = firebaseUsers?.filter((element) => element === email);
-  //         if (
-  //           users !== undefined &&
-  //           users.length === 0 &&
-  //           typeof email === "string"
-  //         ) {
-  //           const db = firebase.firestore();
-  //           const userRef = db.collection("user").doc(email);
-  //           await userRef.set({
-  //             data: user?.providerData[0],
-  //           });
-  //           router.push("/enquete");
-  //         } else {
-  //           router.push("/");
-  //         }
-  //       }
-  //     });
-  //   } catch (err) {
-  //     alert(err);
-  //   }
-  // };
-
   return (
     <Center
       flexDir="column"
