@@ -5,8 +5,9 @@ import { Box } from "@chakra-ui/react";
 import Header from "src/components/Header";
 import Navigation from "src/components/Navigation";
 import Authenticator from "src/components/Authenticator";
-import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
 import SignInGuidance from "src/components/SignInGuidance";
+
+import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
 import { SIGN_IN_GUIDANCE_PAGES } from "src/constants/signIn";
 
 type Props = {
