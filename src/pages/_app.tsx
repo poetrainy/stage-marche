@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ChakraProvider resetCSS theme={theme}>
-      <Center
+      {/* <Center
         w="100vw"
         h="100vh"
         bg="skyblue"
@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         >
           <Box as="img" src="/img/icon-white.svg" w="100%" />
         </Box>
-      </Center>
+      </Center> */}
       <Component {...pageProps} />
     </ChakraProvider>
   );

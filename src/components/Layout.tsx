@@ -8,7 +8,7 @@ import Authenticator from "src/components/Authenticator";
 import SignInGuidance from "src/components/SignIn/Guidance";
 
 import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
-// import { SIGN_IN_GUIDANCE_PAGES } from "src/constants/signIn";
+import { SIGN_IN_GUIDANCE_PAGES } from "src/constants/signIn";
 
 type Props = {
   component: JSX.Element;
@@ -43,25 +43,21 @@ const Layout: FC<Props> = ({ component, search, index }) => {
               bg: "greenToBlue",
             }),
           }}
-          // children={
-          //   isSignIn ? (
-          //     <>{component}</>
-          //   ) : pathname === "/column" ||
-          //     pathname === "/ticket" ||
-          //     pathname === "/fav" ? (
-          //     <SignInGuidance
-          //       guidance={
-          //         SIGN_IN_GUIDANCE_PAGES[
-          //           pathname.split("/")[1] as "column" | "ticket" | "fav"
-          //         ]
-          //       }
-          //     />
-          //   ) : (
-          //     <>{component}</>
-          //   )
-          // }
         >
-          {component}
+          {!isSignIn &&
+          (pathname === "/column" ||
+            pathname === "/ticket" ||
+            pathname === "/fav") ? (
+            <SignInGuidance
+              guidance={
+                SIGN_IN_GUIDANCE_PAGES[
+                  pathname.split("/")[1] as "column" | "ticket" | "fav"
+                ]
+              }
+            />
+          ) : (
+            <>{component}</>
+          )}
         </Box>
         <Navigation path={pathname} />
       </>
