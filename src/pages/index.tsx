@@ -10,6 +10,7 @@ import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
 
 import { MOCK_STAGES_BASE } from "src/constants/stage";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
+import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 
 const Home: NextPage = () => {
   const Component = () => {
@@ -259,7 +260,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-function imageWithDirectoryPath(arg0: string): string | undefined {
-  throw new Error("Function not implemented.");
-}
-
