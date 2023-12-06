@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Flex, Image } from "@chakra-ui/react";
 
 import { StageType } from "src/types/stage";
-import { prefectureArray } from "src/constants/stage";
+import { PREFECTURES } from "src/constants/stage";
 
 import IconSchedule from "src/assets/svg/stage_info_schedule.svg";
 import IconPlace from "src/assets/svg/stage_info_place.svg";
@@ -31,7 +31,7 @@ const StageInformation: FC<Props> = ({
         <Image as={IconPlace} />
         {!prefecture && (
           <>
-            {prefectureArray[data.schedule[index].prefecture]}
+            {PREFECTURES[data.schedule[index].prefecture]}
             公演
           </>
         )}

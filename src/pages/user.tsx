@@ -8,11 +8,9 @@ import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
 
 import ICON_USER_SETTING from "src/assets/svg/icon_user_setting.svg";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
+import { MOCK_USER } from "src/constants/mock";
 
-const STAMPS_BASE = [...Array(9).keys()];
-const STAMPS_DONE_LENGTH: number = 2;
-
-const USER_PREFECTURE = "大阪府";
+const STAMPS = [...Array(9).keys()];
 
 const USER_FOOTER_LINKS: string[] = [
   "特定商取引法",
@@ -50,12 +48,12 @@ const User: NextPage = () => {
               w={`${56 * 3 + 8 * 2}px`}
               h={`${56 * 3 + 8 * 2}px`}
             >
-              {STAMPS_BASE.map((item, i) => (
+              {STAMPS.map((_, i) => (
                 <Box
                   w="56px"
                   h="56px"
                   border="5px dotted"
-                  borderColor={STAMPS_DONE_LENGTH >= i ? "primary" : "black400"}
+                  borderColor={MOCK_USER.doneStamps > i ? "primary" : "black400"}
                   rounded="full"
                 />
               ))}
@@ -64,7 +62,7 @@ const User: NextPage = () => {
               w="96px"
               h="96px"
               border="5px dotted"
-              borderColor={STAMPS_DONE_LENGTH === 10 ? "primary" : "black400"}
+              borderColor={MOCK_USER.doneStamps === 10 ? "primary" : "black400"}
               rounded="full"
             />
           </Center>
@@ -75,7 +73,7 @@ const User: NextPage = () => {
             rounded="16px"
             textStyle="lightShadow"
           >
-            {USER_PREFECTURE}
+            {MOCK_USER.prefecture}
           </Center>
           <Center
             w="calc(100% - 80px - 16px)"

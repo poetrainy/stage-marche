@@ -6,6 +6,6 @@ export type ColumnType = {
     m: number;
     d: number;
   };
-  genres: number[];
+  genres: ("作品解説" | "インタビュー" | "レポ")[];
   text: string;
 };

@@ -9,7 +9,7 @@ import StageTypeComponent from "src/components/Stage/Type";
 import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
 import CoverImage from "src/components/CoverImage";
 
-import { MOCK_STAGES_BASE } from "src/constants/stage";
+import { MOCK_STAGES } from "src/constants/mock";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
     const [selected, setSelected] = useState<number>(0);
     const prev = () => {
       if (selected === 0) {
-        setSelected(MOCK_STAGES_BASE.length - 1);
+        setSelected(MOCK_STAGES.length - 1);
       } else {
         setSelected(selected - 1);
       }
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       setSelected(i);
     };
     const next = () => {
-      if (selected === MOCK_STAGES_BASE.length - 1) {
+      if (selected === MOCK_STAGES.length - 1) {
         setSelected(0);
       } else {
         setSelected(selected + 1);
@@ -41,11 +41,11 @@ const Home: NextPage = () => {
           <Box w="100vw" overflow="hidden" pos="relative">
             <Flex
               as="ul"
-              w={`calc(100vw * ${MOCK_STAGES_BASE.length})`}
+              w={`calc(100vw * ${MOCK_STAGES.length})`}
               transform={`translateX(calc(100vw * -${selected}))`}
               transition="transform 0.3s"
             >
-              {MOCK_STAGES_BASE.map((item, i) => (
+              {MOCK_STAGES.map((item, i) => (
                 <Box as="li" key={item.name + i} w="100vw" h="264px">
                   <Box
                     as={NextLink}
@@ -80,10 +80,9 @@ const Home: NextPage = () => {
                             display: "block",
                             w: "16px",
                             h: "16px",
-                            background:
-                              `url(${imageWithDirectoryPath(
-                                "stage_info_place.svg"
-                              )}) no-repeat`,
+                            background: `url(${imageWithDirectoryPath(
+                              "stage_info_place.svg"
+                            )}) no-repeat`,
                             backgroundSize: "contain",
                             backgroundPosition: "center",
                             marginRight: "2px",
@@ -116,7 +115,7 @@ const Home: NextPage = () => {
             </Flex>
             <OriginalSpacer size="12px" />
             <Flex gap="8px" w="fit-content" m="0 auto">
-              {MOCK_STAGES_BASE.map((item, i) => (
+              {MOCK_STAGES.map((item, i) => (
                 <Box
                   key={item.path + i}
                   w="10px"
@@ -205,7 +204,7 @@ const Home: NextPage = () => {
       },
       {
         heading: "B席に余裕があります",
-        content: <StageBunnerLargeWrapper stages={MOCK_STAGES_BASE} />,
+        content: <StageBunnerLargeWrapper stages={MOCK_STAGES} />,
       },
     ];
 

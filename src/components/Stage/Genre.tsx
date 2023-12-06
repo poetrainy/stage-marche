@@ -1,9 +1,6 @@
 import { FC } from "react";
 import { Flex, Text } from "@chakra-ui/react";
 
-import { STAGE_GENRES } from "src/constants/stage";
-import { COLUMN_GENRES } from "src/constants/column";
-
 import { StageType } from "src/types/stage";
 import { ColumnType } from "src/types/column";
 
@@ -15,15 +12,15 @@ type Props = {
 const StageGenre: FC<Props> = ({ data, isColumn }) => {
   return (
     <Flex gap="4px">
-      {data.genres.map((genre, i) => (
+      {data.genres.map((genre) => (
         <Text
           as="span"
-          key={genre + i}
+          key={genre}
           color={isColumn ? "primary" : "black400"}
           fontSize="1.2rem"
           fontWeight="bold"
         >
-          {`#${isColumn ? COLUMN_GENRES[i] : STAGE_GENRES[genre]}`}
+          {`#${genre}`}
         </Text>
       ))}
     </Flex>

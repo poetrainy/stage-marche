@@ -6,7 +6,7 @@ import ColumnDate from "src/components/Column/Date";
 
 import { ColumnType } from "src/types/column";
 
-import { MOCK_COLUMNS_BASE } from "src/constants/column";
+import { MOCK_COLUMNS } from "src/constants/mock";
 import OriginalSpacer from "src/components/OriginalSpacer";
 import Header from "src/components/Header";
 
@@ -15,7 +15,7 @@ type Props = {
 };
 
 const ColumnId: NextPage<Props> = ({ id }) => {
-  const column = MOCK_COLUMNS_BASE.find((column) => String(column.id) === id)!;
+  const column = MOCK_COLUMNS.find((column) => String(column.id) === id)!;
 
   return (
     <>
@@ -42,7 +42,7 @@ const ColumnId: NextPage<Props> = ({ id }) => {
 export default ColumnId;
 
 export const getStaticPaths = async () => {
-  const paths = MOCK_COLUMNS_BASE.map((item: ColumnType) => ({
+  const paths = MOCK_COLUMNS.map((item: ColumnType) => ({
     params: { id: item.id + "" },
   }));
   return {

@@ -1,15 +1,22 @@
-import {
-  SEAT_STATUS_NO,
-  SEAT_STATUS_OK,
-  SEAT_STATUS_FEW,
-} from "src/constants/stage";
-
 export type StageType = {
   name: string;
   path: string;
   images: string[];
   type: "musical" | "straightPlay" | "kabuki" | "rakugo";
-  genres: number[];
+  genres: (
+    | "歴史"
+    | "現代"
+    | "近未来"
+    | "ミステリー"
+    | "シリアス"
+    | "ラブ"
+    | "革命"
+    | "ほのぼの"
+    | "成長"
+    | "スポーツ"
+    | "学園"
+    | "実写化"
+  )[];
   description: string;
   youtube: string[];
   casts: string[];
@@ -47,19 +54,13 @@ export type StageType = {
         | {
             class: string;
             price: string;
-            status:
-              | typeof SEAT_STATUS_NO
-              | typeof SEAT_STATUS_OK
-              | typeof SEAT_STATUS_FEW;
+            status: "no" | "ok" | "few";
           }
         | undefined;
       other: {
         class: string;
         price: string;
-        status:
-          | typeof SEAT_STATUS_NO
-          | typeof SEAT_STATUS_OK
-          | typeof SEAT_STATUS_FEW;
+        status: "no" | "ok" | "few";
       }[];
     };
   }[];

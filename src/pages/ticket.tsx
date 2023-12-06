@@ -6,7 +6,7 @@ import Layout from "src/components/Layout";
 import StageInformation from "src/components/Stage/Information";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
-import { MOCK_STAGES_BASE } from "src/constants/stage";
+import { MOCK_STAGES } from "src/constants/mock";
 
 const Ticket: NextPage = () => {
   const flag: boolean[] = [true, false, false];
@@ -22,7 +22,7 @@ const Ticket: NextPage = () => {
         zIndex={-1}
       />
       <Flex flexDir="column" gap="16px">
-        {MOCK_STAGES_BASE.map((item, i) => (
+        {MOCK_STAGES.map((item, i) => (
           <Flex
             as={NextLink}
             href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}

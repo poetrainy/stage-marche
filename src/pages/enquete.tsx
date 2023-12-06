@@ -1,12 +1,12 @@
 import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { FC, FormEvent, SVGProps, useState } from "react";
+import { FC, SVGProps, useState } from "react";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
 import PreText from "src/components/PreText";
 
-import { STAGE_GENRES, prefectureArray } from "src/constants/stage";
+import { PREFECTURES } from "src/constants/stage";
 import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
 
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
@@ -15,6 +15,21 @@ import SvgImageEnqueteGenre from "src/assets/svg/enquete_1_genre.svg";
 import SvgImageEnquetePrefecture from "src/assets/svg/enquete_2_prefecture.svg";
 import SvgImageEnqueteComplete from "src/assets/svg/enquete_3_complete.svg";
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+
+const STAGE_GENRES: string[] = [
+  "歴史",
+  "現代",
+  "近未来",
+  "ミステリー",
+  "シリアス",
+  "ラブ",
+  "革命",
+  "ほのぼの",
+  "成長",
+  "スポーツ",
+  "学園",
+  "実写化",
+];
 
 const Enquete: NextPage = () => {
   const router = useRouter();
@@ -155,7 +170,7 @@ const Enquete: NextPage = () => {
               <Box as="option" value={100}>
                 都道府県を選択
               </Box>
-              {prefectureArray.map((item, i) => (
+              {PREFECTURES.map((item, i) => (
                 <Box as="option" value={i} key={item + i}>
                   {item}
                 </Box>
@@ -302,10 +317,9 @@ const Enquete: NextPage = () => {
                       display: "block",
                       w: "28px",
                       h: "28px",
-                      background:
-                        `url(${imageWithDirectoryPath(
-                          "enquete_icon_check.svg"
-                        )}) no-repeat`,
+                      background: `url(${imageWithDirectoryPath(
+                        "enquete_icon_check.svg"
+                      )}) no-repeat`,
                       backgroundSize: "contain",
                       backgroundPosition: "center",
                       position: "absolute",

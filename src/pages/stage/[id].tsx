@@ -12,12 +12,8 @@ import Back from "src/components/Back";
 
 import { StageType } from "src/types/stage";
 
-import {
-  prefectureArray,
-  MOCK_STAGES_BASE,
-  MOCK_CASTS_BASE,
-} from "src/constants/stage";
-import { MOCK_COLUMNS_BASE } from "src/constants/column";
+import { PREFECTURES } from "src/constants/stage";
+import { MOCK_STAGES, MOCK_CASTS, MOCK_COLUMNS } from "src/constants/mock";
 
 import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
 
@@ -34,9 +30,9 @@ type RecommendType = {
 };
 
 const StageId: NextPage<Props> = ({ id }) => {
-  const stage = MOCK_STAGES_BASE.find(({ path }) => path === id)!;
+  const stage = MOCK_STAGES.find(({ path }) => path === id)!;
   const casts = stage.casts.map(
-    (cast) => MOCK_CASTS_BASE.find((mockCast) => mockCast.id === cast)!
+    (cast) => MOCK_CASTS.find((mockCast) => mockCast.id === cast)!
   );
   const ticketArea = useRef<HTMLDivElement>(null);
   const [ticketAreaHeight, setTicketAreaHeight] = useState<number>(0);
@@ -155,7 +151,7 @@ const StageId: NextPage<Props> = ({ id }) => {
       },
       {
         title: "あわせて読みたい",
-        component: <ColumnBunner column={MOCK_COLUMNS_BASE} />,
+        component: <ColumnBunner column={MOCK_COLUMNS} />,
       },
       {
         title: "キャスト",
@@ -287,7 +283,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                   fontWeight="bold"
                   fontSize="1.8rem"
                 >
-                  {prefectureArray[item.prefecture]}公演
+                  {PREFECTURES[item.prefecture]}公演
                 </Text>
                 <Center as="button" w="32px" h="24px">
                   <Box as={FAVORITE_ICON} w="24px" h="24px" />
@@ -359,7 +355,7 @@ const StageId: NextPage<Props> = ({ id }) => {
 export default StageId;
 
 export const getStaticPaths = async () => {
-  const paths = MOCK_STAGES_BASE.map((item: StageType) => ({
+  const paths = MOCK_STAGES.map((item: StageType) => ({
     params: { id: item.path },
   }));
   return {
