@@ -1,35 +1,14 @@
 import { FC } from "react";
 import { Center } from "@chakra-ui/react";
-import {
-  SEAT_STATUS_OK,
-  SEAT_STATUS_FEW,
-  SEAT_STATUS_NO,
-} from "src/constants/stage";
+
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 
-type Props = {
-  status:
-    | typeof SEAT_STATUS_OK
-    | typeof SEAT_STATUS_FEW
-    | typeof SEAT_STATUS_NO;
-};
+import { SEAT_STATUSES } from "src/constants/stage";
 
-const SEAT_STATUS_OBJECT: Record<
-  typeof SEAT_STATUS_OK | typeof SEAT_STATUS_FEW | typeof SEAT_STATUS_NO,
-  { text: string; background: string }
-> = {
-  ok: {
-    text: "残席あり",
-    background: "pink",
-  },
-  few: {
-    text: "残席わずか",
-    background: "yellow",
-  },
-  no: {
-    text: "残席なし",
-    background: "black300",
-  },
+import { StageSeatStatusType } from "src/types/stage";
+
+type Props = {
+  status: StageSeatStatusType;
 };
 
 const StageSeat: FC<Props> = ({ status }) => {
@@ -37,7 +16,7 @@ const StageSeat: FC<Props> = ({ status }) => {
     <Center
       w="72px"
       h="72px"
-      bg={SEAT_STATUS_OBJECT[status].background}
+      bg={SEAT_STATUSES[status].background}
       rounded="16px"
     >
       <Center
@@ -47,7 +26,7 @@ const StageSeat: FC<Props> = ({ status }) => {
         mb="40px"
         pos="relative"
         sx={{
-          ...(status === SEAT_STATUS_OK && {
+          ...(status === "ok" && {
             color: "white",
             "&::before": {
               content: '""',
@@ -70,7 +49,7 @@ const StageSeat: FC<Props> = ({ status }) => {
               inset: "auto auto -34px auto",
             },
           }),
-          ...(status === SEAT_STATUS_FEW && {
+          ...(status === "few" && {
             color: "white",
             "&::before": {
               content: '""',
@@ -86,7 +65,7 @@ const StageSeat: FC<Props> = ({ status }) => {
               inset: "auto auto -38px auto",
             },
           }),
-          ...(status === SEAT_STATUS_NO && {
+          ...(status === "no" && {
             color: "black400",
             "&::before": {
               content: '""',
@@ -113,7 +92,7 @@ const StageSeat: FC<Props> = ({ status }) => {
           }),
         }}
       >
-        {SEAT_STATUS_OBJECT[status].text}
+        {SEAT_STATUSES[status].text}
       </Center>
     </Center>
   );

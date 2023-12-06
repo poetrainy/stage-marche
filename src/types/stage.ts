@@ -1,8 +1,11 @@
+export type StageSeatStatusType = "ok" | "few" | "no";
+export type StageTypeType = "musical" | "straightPlay" | "kabuki" | "rakugo";
+
 export type StageType = {
   name: string;
   path: string;
   images: string[];
-  type: "musical" | "straightPlay" | "kabuki" | "rakugo";
+  type: StageTypeType;
   genres: (
     | "歴史"
     | "現代"
@@ -54,13 +57,13 @@ export type StageType = {
         | {
             class: string;
             price: string;
-            status: "no" | "ok" | "few";
+            status: StageSeatStatusType;
           }
         | undefined;
       other: {
         class: string;
         price: string;
-        status: "no" | "ok" | "few";
+        status: StageSeatStatusType;
       }[];
     };
   }[];

@@ -3,8 +3,10 @@ import { Text } from "@chakra-ui/react";
 
 import { STAGE_TYPES } from "src/constants/stage";
 
+import { StageTypeType } from "src/types/stage";
+
 type Props = {
-  type: "musical" | "straightPlay" | "kabuki" | "rakugo";
+  type: StageTypeType;
 };
 
 const StageTypeComponent: FC<Props> = ({ type }) => {
