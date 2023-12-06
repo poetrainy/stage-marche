@@ -5,6 +5,7 @@ import {
   SEAT_STATUS_FEW,
   SEAT_STATUS_NO,
 } from "src/constants/stage";
+import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 
 type Props = {
   status:
@@ -76,7 +77,9 @@ const StageSeat: FC<Props> = ({ status }) => {
               display: "block",
               w: "36px",
               h: "36px",
-              bg: 'url("/img/stage_seat_icon_triangle.svg") no-repeat',
+              bg: `url(${imageWithDirectoryPath(
+                "stage_seat_icon_triangle.svg"
+              )}) no-repeat`,
               backgroundSize: "contain",
               backgroundPosition: "center bottom",
               position: "absolute",

@@ -7,11 +7,11 @@ import Layout from "src/components/Layout";
 import OriginalSpacer from "src/components/OriginalSpacer";
 import StageTypeComponent from "src/components/Stage/Type";
 import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
+import CoverImage from "src/components/CoverImage";
 
 import { MOCK_STAGES_BASE } from "src/constants/stage";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
-import next from "next";
 
 const Home: NextPage = () => {
   const Component = () => {
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
               transition="transform 0.3s"
             >
               {MOCK_STAGES_BASE.map((item, i) => (
-                <Box as="li" key={item.name + i} w="100vw" h="280px">
+                <Box as="li" key={item.name + i} w="100vw" h="264px">
                   <Box
                     as={NextLink}
                     href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
@@ -57,6 +57,7 @@ const Home: NextPage = () => {
                     position="relative"
                     overflow="hidden"
                   >
+                    <CoverImage path={`stage_img_${item.path}_01.jpg`} />
                     <Box
                       w="100%"
                       bg={
@@ -80,7 +81,9 @@ const Home: NextPage = () => {
                             w: "16px",
                             h: "16px",
                             background:
-                              'url("./img/stage_info_place.svg") no-repeat',
+                              `url(${imageWithDirectoryPath(
+                                "stage_info_place.svg"
+                              )}) no-repeat`,
                             backgroundSize: "contain",
                             backgroundPosition: "center",
                             marginRight: "2px",
@@ -107,24 +110,6 @@ const Home: NextPage = () => {
                         ))}
                       </Flex>
                     </Box>
-                    <Image
-                      src={imageWithDirectoryPath(
-                        `stage_img_${item.path}_01.jpg`
-                      )}
-                      w="100%"
-                      h="100%"
-                      objectFit="contain"
-                    />
-                    <Box
-                      bg={`linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/stage_img_${item.path}_01.jpg')`}
-                      bgSize="100%, cover"
-                      bgPosition="center, center"
-                      filter="blur(8px)"
-                      pos="absolute"
-                      inset="0 0 0 0"
-                      zIndex="-1"
-                      m="-20px"
-                    />
                   </Box>
                 </Box>
               ))}

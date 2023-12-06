@@ -14,6 +14,7 @@ import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import SvgImageEnqueteGenre from "src/assets/svg/enquete_1_genre.svg";
 import SvgImageEnquetePrefecture from "src/assets/svg/enquete_2_prefecture.svg";
 import SvgImageEnqueteComplete from "src/assets/svg/enquete_3_complete.svg";
+import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 
 const Enquete: NextPage = () => {
   const router = useRouter();
@@ -302,7 +303,9 @@ const Enquete: NextPage = () => {
                       w: "28px",
                       h: "28px",
                       background:
-                        'url("./img/enquete_icon_check.svg") no-repeat',
+                        `url(${imageWithDirectoryPath(
+                          "enquete_icon_check.svg"
+                        )}) no-repeat`,
                       backgroundSize: "contain",
                       backgroundPosition: "center",
                       position: "absolute",

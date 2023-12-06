@@ -22,6 +22,7 @@ import { MOCK_COLUMNS_BASE } from "src/constants/column";
 import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
 
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import CoverImage from "src/components/CoverImage";
 
 type Props = {
   id: string;
@@ -65,26 +66,9 @@ const StageId: NextPage<Props> = ({ id }) => {
   };
 
   const Img = () => (
-    <Box w="100vw" h="264px" overflow="hidden" pos="relative">
+    <Box w="100vw" h="264px" pos="relative">
       <Back />
-      <Image
-        src={imageWithDirectoryPath(`stage_img_${stage.path}_01.jpg`)}
-        w="100%"
-        h="100%"
-        objectFit="contain"
-      />
-      <Box
-        bg={`linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('${imageWithDirectoryPath(
-          `stage_img_${stage.path}_01.jpg`
-        )}')`}
-        bgSize="100%, cover"
-        bgPosition="center, center"
-        filter="blur(8px)"
-        pos="absolute"
-        inset="0 0 0 0"
-        zIndex="-1"
-        m="-20px"
-      />
+      <CoverImage path={`stage_img_${stage.path}_01.jpg`} />
     </Box>
   );
 
