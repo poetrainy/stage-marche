@@ -38,16 +38,7 @@ const Layout: FC<Props> = ({ component, search, index }) => {
           as="main"
           minH="100vh"
           p="calc(64px + 32px) 0 calc(40px + 96px)"
-          sx={{
-            ...((isSignInGuidance ||
-              (pathname !== "/" && pathname !== "/ticket")) && {
-              textStyle: "bodyW",
-            }),
-            ...(!isSignInGuidance &&
-              pathname === "/ticket" && {
-                bg: "greenToBlue",
-              }),
-          }}
+          textStyle="bodyW"
         >
           <>
             {isSignInGuidance ? (
