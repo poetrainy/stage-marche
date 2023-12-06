@@ -3,7 +3,6 @@ const withPWA = require("next-pwa")({
   dest: "public",
 });
 
-
 const nextConfig = {
   webpack: (config) => {
     config.module.rules.push({
@@ -14,7 +13,7 @@ const nextConfig = {
       // use: ['@svgr/webpack']
       use: [
         {
-          loader: '@svgr/webpack',
+          loader: "@svgr/webpack",
           options: {
             svgo: false,
           },
@@ -28,4 +27,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withPWA(nextConfig);
