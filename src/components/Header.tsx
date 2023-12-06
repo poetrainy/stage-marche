@@ -13,11 +13,11 @@ import Logo from "src/assets/svg/logo.svg";
 
 type Props = {
   path: string;
-  back?: boolean;
-  search?: boolean;
+  isBack?: boolean;
+  isSearch?: boolean;
 };
 
-const Header: FC<Props> = ({ path, back, search }) => {
+const Header: FC<Props> = ({ path, isBack, isSearch }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigation = NAVIGATION_CONTENTS.find(
@@ -38,7 +38,7 @@ const Header: FC<Props> = ({ path, back, search }) => {
         textStyle="lightShadow"
         zIndex="10"
       >
-        {back && <IconBackArrow onClick={() => router.back()} />}
+        {isBack && <IconBackArrow onClick={() => router.back()} />}
         {path === "/" ? (
           <Box w="160px" mt="10px">
             <Image as={Logo} />
@@ -46,9 +46,9 @@ const Header: FC<Props> = ({ path, back, search }) => {
         ) : (
           <Text as="span">{navigation?.label}</Text>
         )}
-        {search && <IconSearch onClick={() => setIsOpen(!isOpen)} />}
+        {isSearch && <IconSearch onClick={() => setIsOpen(!isOpen)} />}
       </Center>
-      {search && (
+      {isSearch && (
         <Modal
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}

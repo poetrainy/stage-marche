@@ -234,7 +234,7 @@ const Home: NextPage = () => {
     );
   };
 
-  return <Layout component={<Component />} search index />;
+  return <Layout component={<Component />} isSearch index />;
 };
 
 export default Home;

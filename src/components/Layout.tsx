@@ -12,11 +12,11 @@ import { SIGN_IN_GUIDANCE_PAGES } from "src/constants/signIn";
 
 type Props = {
   component: JSX.Element;
-  search?: boolean;
+  isSearch?: boolean;
   index?: boolean;
 };
 
-const Layout: FC<Props> = ({ component, search, index }) => {
+const Layout: FC<Props> = ({ component, isSearch }) => {
   const { pathname } = useRouter();
 
   const isSignIn =
@@ -33,7 +33,7 @@ const Layout: FC<Props> = ({ component, search, index }) => {
   return (
     <Authenticator>
       <>
-        <Header path={pathname} search={search} />
+        <Header path={pathname} isSearch={!!isSignIn && isSearch} />
         <Box
           as="main"
           minH="100vh"

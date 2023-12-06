@@ -18,7 +18,7 @@ const Column: NextPage = () => {
     },
   ];
 
-  return <Layout component={<ContentsBase data={ComponentArray} />} search />;
+  return <Layout component={<ContentsBase data={ComponentArray} />} isSearch />;
 };
 
 export default Column;

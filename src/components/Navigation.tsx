@@ -1,6 +1,6 @@
 import { FC } from "react";
 import NextLink from "next/link";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 
 import { NAVIGATION_CONTENTS } from "src/constants/nav";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
