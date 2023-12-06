@@ -19,7 +19,7 @@ import {
 } from "src/constants/stage";
 import { MOCK_COLUMNS_BASE } from "src/constants/column";
 
-import FAVORITE_ICON from "src/assets/svg/nav_fav.svg";
+import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
 
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 
@@ -306,11 +306,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                   {prefectureArray[item.prefecture]}公演
                 </Text>
                 <Center as="button" w="32px" h="24px">
-                  <Box
-                    as={FAVORITE_ICON}
-                    w="24px"
-                    h="24px"
-                  />
+                  <Box as={FAVORITE_ICON} w="24px" h="24px" />
                 </Center>
               </Flex>
               <OriginalSpacer size="6px" />

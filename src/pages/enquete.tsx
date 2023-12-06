@@ -1,18 +1,23 @@
 import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { FC, FormEvent, SVGProps, useState } from "react";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
 import PreText from "src/components/PreText";
 
 import { STAGE_GENRES, prefectureArray } from "src/constants/stage";
+import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
+
+import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
 import SvgImageEnqueteGenre from "src/assets/svg/enquete_1_genre.svg";
 import SvgImageEnquetePrefecture from "src/assets/svg/enquete_2_prefecture.svg";
 import SvgImageEnqueteComplete from "src/assets/svg/enquete_3_complete.svg";
 
 const Enquete: NextPage = () => {
+  const router = useRouter();
+
   const [genre, setGenre] = useState<number[]>([]);
   const [prefecture, setPrefecture] = useState<number>(100);
   const [isGenreLengthArray, setIsGenreLengthArray] = useState<boolean[]>([
@@ -52,73 +57,9 @@ const Enquete: NextPage = () => {
     setGenre(keepGenre);
   };
 
-  const setPrefectureFunc = (e: FormEvent<HTMLDivElement>) => {
-    // @ts-ignore
-    setPrefecture(e.currentTarget.value);
-  };
-
-  const SignInEnquetePrefecture = () => {
-    return (
-      <Center h="210px" textStyle="bodyW">
-        <Box
-          w="80%"
-          h="72px"
-          rounded="full"
-          overflow="hidden"
-          pos="relative"
-          sx={{
-            "&::before": {
-              content: '""',
-              display: "flex",
-              w: "64px",
-              h: "72px",
-              bg: "skyblue",
-              position: "absolute",
-              inset: "0 0 auto auto",
-            },
-          }}
-        >
-          <Box
-            as="select"
-            name="prefecture"
-            value={prefecture}
-            w="100%"
-            h="100%"
-            fontSize="1.4rem"
-            fontWeight="bold"
-            p="0 32px"
-            appearance="none"
-            // @ts-ignore
-            onChange={(e) => setPrefectureFunc(e)}
-          >
-            <Box as="option" value={100}>
-              都道府県を選択
-            </Box>
-            {prefectureArray.map((item, i) => (
-              <Box as="option" value={i} key={item + i}>
-                {item}
-              </Box>
-            ))}
-          </Box>
-        </Box>
-      </Center>
-    );
-  };
-
-  const SignInEnqueteComplete = () => {
-    return (
-      <Center
-        as="p"
-        color="black600"
-        fontSize="1.2rem"
-        lineHeight="2.2rem"
-        textAlign="center"
-      >
-        会員登録をしていただき、ありがとうございます！
-        <br />
-        さまざまな作品があなたを待っていますよ！
-      </Center>
-    );
+  const localStorageSignIn = () => {
+    localStorage.setItem(LOCAL_STORAGE_AUTHENTICATOR, "true");
+    router.push(pathWithAuthenticator("/"));
   };
 
   const signInEnqueteText: {
@@ -177,12 +118,68 @@ const Enquete: NextPage = () => {
     {
       heading: "お住まいの都道府県は\nどこですか？",
       image: SvgImageEnquetePrefecture,
-      component: <SignInEnquetePrefecture />,
+      component: (
+        <Center h="210px" textStyle="bodyW">
+          <Box
+            w="80%"
+            h="72px"
+            rounded="full"
+            overflow="hidden"
+            pos="relative"
+            sx={{
+              "&::before": {
+                content: '""',
+                display: "flex",
+                w: "64px",
+                h: "72px",
+                bg: "skyblue",
+                position: "absolute",
+                inset: "0 0 auto auto",
+              },
+            }}
+          >
+            <Box
+              as="select"
+              name="prefecture"
+              value={prefecture}
+              w="100%"
+              h="100%"
+              fontSize="1.4rem"
+              fontWeight="bold"
+              p="0 32px"
+              appearance="none"
+              // @ts-ignore
+              onChange={(e) => setPrefecture(e.currentTarget.value)}
+            >
+              <Box as="option" value={100}>
+                都道府県を選択
+              </Box>
+              {prefectureArray.map((item, i) => (
+                <Box as="option" value={i} key={item + i}>
+                  {item}
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        </Center>
+      ),
     },
     {
       heading: "おめでとう！🎉\n登録が完了しました！",
       image: SvgImageEnqueteComplete,
-      component: <SignInEnqueteComplete />,
+      component: (
+        <Center
+          as="p"
+          color="black600"
+          fontSize="1.3rem"
+          lineHeight="2.2rem"
+          textAlign="center"
+        >
+          会員登録をしていただき、ありがとうございます！
+          <br />
+          さまざまな作品があなたを待っていますよ！
+        </Center>
+      ),
     },
   ];
 
@@ -318,9 +315,7 @@ const Enquete: NextPage = () => {
                 </Center>
               ) : (
                 <Center
-                  as={NextLink}
-                  href="/"
-                  passHref
+                  as="button"
                   display="flex"
                   w="240px"
                   h="64px"
@@ -329,6 +324,7 @@ const Enquete: NextPage = () => {
                   rounded="full"
                   fontWeight="bold"
                   fontSize="1.6rem"
+                  onClick={() => localStorageSignIn()}
                 >
                   舞台を探しに行く！
                 </Center>

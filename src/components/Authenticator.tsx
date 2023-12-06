@@ -17,15 +17,13 @@ const Authenticator: FC<Props> = ({ children }) => {
     if (!isSignInInformation) {
       localStorage.setItem(LOCAL_STORAGE_AUTHENTICATOR, "false");
     }
-    if (router.query.authenticated) {
+    if (!router.query.authenticated) {
       router.push(
         `${router.pathname}?authenticated=${
           isSignInInformation
-            ? "false"
-            : JSON.parse(
+            ? JSON.parse(
                 localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR) ?? ""
               )
-            ? "true"
             : "false"
         }`
       );

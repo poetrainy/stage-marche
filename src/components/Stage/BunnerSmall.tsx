@@ -9,6 +9,8 @@ import StageInformation from "src/components/Stage/Information";
 import { StageType } from "src/types/stage";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
+import IconFavorite from "src/assets/svg/navigation_favorite.svg";
+
 type Props = {
   data: StageType[];
 };
@@ -16,27 +18,20 @@ type Props = {
 const StageBunnerSmall: FC<Props> = ({ data }) => {
   return (
     <Box w="100%" overflow="scroll">
-      <Flex
-        gap="12px"
-        w={`calc(160px * ${data.length})`}
-        sx={{
-          ">a": {
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            w: "160px",
-            bg: "white",
-            padding: "10px 10px 14px",
-            rounded: "16px",
-            textStyle: "lightShadow",
-          },
-        }}
-      >
+      <Flex gap="12px" w={`calc(160px * ${data.length})`}>
         {data.map((item, i) => (
-          <NextLink
+          <Flex
+            as={NextLink}
             href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
             passHref
             key={item.name + i}
+            flexDirection="column"
+            justifyContent="space-between"
+            w="160px"
+            bg="white"
+            padding="10px 10px 14px"
+            rounded="16px"
+            textStyle="lightShadow"
           >
             <Box>
               <Box
@@ -64,7 +59,7 @@ const StageBunnerSmall: FC<Props> = ({ data }) => {
                   inset="8px auto auto 4px"
                   rounded="full"
                 >
-                  <Box as="img" src="/img/nav_fav.svg" />
+                  <Image as={IconFavorite} />
                 </Center>
               </Box>
               <OriginalSpacer size="8px" />
@@ -76,7 +71,7 @@ const StageBunnerSmall: FC<Props> = ({ data }) => {
               <OriginalSpacer size="8px" />
             </Box>
             <StageInformation data={item} index={0} time place />
-          </NextLink>
+          </Flex>
         ))}
       </Flex>
     </Box>

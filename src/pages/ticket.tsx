@@ -9,25 +9,20 @@ import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import { MOCK_STAGES_BASE } from "src/constants/stage";
 
 const Ticket: NextPage = () => {
-
   const flag: boolean[] = [true, false, false];
 
   const Component = () => (
     <Flex
       flexDir="column"
       gap="16px"
-      sx={{
-        ">a": {
-          display: "flex",
-          minh: "176px",
-        },
-      }}
     >
       {MOCK_STAGES_BASE.map((item, i) => (
-        <NextLink
+        <Flex
+          as={NextLink}
           href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
           passHref
           key={item.name + i}
+          minH="176px"
         >
           <Flex
             flexDir="column"
@@ -67,7 +62,7 @@ const Ticket: NextPage = () => {
               textStyle="deepShadow"
             ></Box>
           )}
-        </NextLink>
+        </Flex>
       ))}
     </Flex>
   );

@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Box, Center, Text } from "@chakra-ui/react";
+import { Box, Center, Image, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 import { NAVIGATION_CONTENTS } from "src/constants/nav";
@@ -8,6 +8,8 @@ import { FILTER_COLUMNS, FILTER_STAGES } from "src/constants/filter";
 import Modal from "src/components/Modal";
 import IconSearch from "src/components/Icon/IconSearch";
 import IconBackArrow from "src/components/Icon/IconBackArrow";
+
+import Logo from "src/assets/svg/logo.svg";
 
 type Props = {
   path: string;
@@ -29,7 +31,7 @@ const Header: FC<Props> = ({ path, back, search }) => {
         w="100vw"
         h="64px"
         bg="white"
-        fontSize="1.7rem"
+        fontSize="1.9rem"
         fontWeight="bold"
         pos="fixed"
         inset="0 0 auto auto"
@@ -39,10 +41,10 @@ const Header: FC<Props> = ({ path, back, search }) => {
         {back && <IconBackArrow onClick={() => router.back()} />}
         {path === "/" ? (
           <Box w="160px" mt="10px">
-            <Box as="img" src="./img/logo.svg" />
+            <Image as={Logo} />
           </Box>
         ) : (
-          <Text as="span">{navigation?.name}</Text>
+          <Text as="span">{navigation?.label}</Text>
         )}
         {search && <IconSearch onClick={() => setIsOpen(!isOpen)} />}
       </Center>

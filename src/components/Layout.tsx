@@ -49,11 +49,16 @@ const Layout: FC<Props> = ({ component, search, index }) => {
               }),
           }}
         >
-          {isSignInGuidance ? (
-            <SignInGuidance guidance={SIGN_IN_GUIDANCE_PAGES[pathname]} />
-          ) : (
-            <>{component}</>
-          )}
+          <>
+            {isSignInGuidance ? (
+              // {false ? (
+              <SignInGuidance guidance={SIGN_IN_GUIDANCE_PAGES[pathname]} />
+            ) : (
+              <>{component}</>
+            )}
+          </>
+          {/* <SignInGuidance guidance={SIGN_IN_GUIDANCE_PAGES["/column"]} /> */}
+          {/* <>{component}</> */}
         </Box>
         <Navigation path={pathname} />
       </>

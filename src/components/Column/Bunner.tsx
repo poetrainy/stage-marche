@@ -17,28 +17,20 @@ type Props = {
 
 const ColumnBunner: FC<Props> = ({ column }) => {
   return (
-    <Flex
-      flexDir="column"
-      gap="12px"
-      textStyle="bodyW"
-      sx={{
-        ">a": {
-          display: "flex",
-          alignItems: "center",
-          gap: "5%",
-          w: "100%",
-          bg: "white",
-          padding: "16px",
-          rounded: "16px",
-          textStyle: "lightShadow",
-        },
-      }}
-    >
+    <Flex flexDir="column" gap="12px" textStyle="bodyW">
       {column.map((item, i) => (
-        <NextLink
+        <Flex
+          as={NextLink}
           href={`${pathWithAuthenticator(`/column/${item.id}`)}`}
           passHref
           key={item.title + i}
+          alignItems="center"
+          gap="5%"
+          w="100%"
+          bg="white"
+          padding="16px"
+          rounded="16px"
+          textStyle="lightShadow"
         >
           <Box w="60%">
             <ColumnDate data={item} />
@@ -73,7 +65,7 @@ const ColumnBunner: FC<Props> = ({ column }) => {
               objectFit="cover"
             />
           </Box>
-        </NextLink>
+        </Flex>
       ))}
     </Flex>
   );

@@ -11,6 +11,7 @@ import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
 import { MOCK_STAGES_BASE } from "src/constants/stage";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import next from "next";
 
 const Home: NextPage = () => {
   const Component = () => {
@@ -45,24 +46,16 @@ const Home: NextPage = () => {
               transition="transform 0.3s"
             >
               {MOCK_STAGES_BASE.map((item, i) => (
-                <Box
-                  as="li"
-                  key={item.name + i}
-                  w="100vw"
-                  h="280px"
-                  sx={{
-                    ">a": {
-                      display: "block",
-                      w: "100%",
-                      h: "100%",
-                      position: "relative",
-                      overflow: "hidden",
-                    },
-                  }}
-                >
-                  <NextLink
+                <Box as="li" key={item.name + i} w="100vw" h="280px">
+                  <Box
+                    as={NextLink}
                     href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
                     passHref
+                    display="block"
+                    w="100%"
+                    h="100%"
+                    position="relative"
+                    overflow="hidden"
                   >
                     <Box
                       w="100%"
@@ -132,7 +125,7 @@ const Home: NextPage = () => {
                       zIndex="-1"
                       m="-20px"
                     />
-                  </NextLink>
+                  </Box>
                 </Box>
               ))}
             </Flex>
