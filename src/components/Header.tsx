@@ -19,7 +19,7 @@ const Header: FC<Props> = ({ path, back, search }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigation = NAVIGATION_CONTENTS.find(
-    (content) => `/${content.path}` === path
+    (content) => content.path === path
   );
 
   return (

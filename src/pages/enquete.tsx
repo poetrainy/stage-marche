@@ -1,14 +1,16 @@
-import { Box, Center, Flex } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import { FormEvent, useState } from "react";
-import { useRouter } from "next/router";
-import { doc, updateDoc } from "firebase/firestore";
+import NextLink from "next/link";
+import { FC, FormEvent, SVGProps, useState } from "react";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
 import PreText from "src/components/PreText";
 
 import { STAGE_GENRES, prefectureArray } from "src/constants/stage";
-import { firebase } from "src/libs/firebase";
+
+import SvgImageEnqueteGenre from "src/assets/svg/enquete_1_genre.svg";
+import SvgImageEnquetePrefecture from "src/assets/svg/enquete_2_prefecture.svg";
+import SvgImageEnqueteComplete from "src/assets/svg/enquete_3_complete.svg";
 
 const Enquete: NextPage = () => {
   const [genre, setGenre] = useState<number[]>([]);
@@ -19,18 +21,6 @@ const Enquete: NextPage = () => {
     false,
   ]);
   const [page, setPage] = useState<number>(0);
-  const router = useRouter();
-
-  const sendFirebase = async () => {
-    const db = firebase.firestore();
-    // @ts-ignore
-    const userRef = doc(db, "user", email);
-    await updateDoc(userRef, {
-      prefecture: prefecture,
-      genre: genre,
-      fav: [],
-    });
-  };
 
   const setPageFunc = () => {
     setPage(page + 1);
@@ -131,19 +121,14 @@ const Enquete: NextPage = () => {
     );
   };
 
-  const toHomeFunc = () => {
-    sendFirebase();
-    router.push("/");
-  };
-
   const signInEnqueteText: {
-    path: string;
     heading: string;
+    image: FC<SVGProps<SVGElement>>;
     component: JSX.Element;
   }[] = [
     {
-      path: "genre",
       heading: "好きな映画・ドラマ・小説・漫画の\nジャンルはなんですか？",
+      image: SvgImageEnqueteGenre,
       component: (
         <Center
           gap="4px 8px"
@@ -190,13 +175,13 @@ const Enquete: NextPage = () => {
       ),
     },
     {
-      path: "prefecture",
       heading: "お住まいの都道府県は\nどこですか？",
+      image: SvgImageEnquetePrefecture,
       component: <SignInEnquetePrefecture />,
     },
     {
-      path: "complete",
       heading: "おめでとう！🎉\n登録が完了しました！",
+      image: SvgImageEnqueteComplete,
       component: <SignInEnqueteComplete />,
     },
   ];
@@ -236,7 +221,7 @@ const Enquete: NextPage = () => {
         >
           {signInEnqueteText.map((item, i) => (
             <Center
-              key={item.path + i}
+              key={item.heading}
               flexDir="column"
               w="100vw"
               minH="100vh"
@@ -288,14 +273,20 @@ const Enquete: NextPage = () => {
             >
               <PreText text={item.heading} />
               <OriginalSpacer size="24px" />
-              <Box as="img" src={`/img/enquete_${i + 1}_${item.path}.svg`} />
+              <Image as={item.image} />
               <OriginalSpacer size="32px" />
               <>{item.component}</>
               <OriginalSpacer size="40px" />
               {i < 2 ? (
                 <Center
                   as="button"
+                  w="240px"
+                  h="64px"
+                  color="white"
                   bg="black300"
+                  fontWeight="bold"
+                  fontSize="1.6rem"
+                  pos="relative"
                   onClick={() => setPageFunc()}
                   sx={{
                     "&::before": {
@@ -320,13 +311,24 @@ const Enquete: NextPage = () => {
                       position: "absolute",
                     },
                   }}
-                />
+                >
+                  <Text as="span" pos="relative" zIndex={2}>
+                    次へ
+                  </Text>
+                </Center>
               ) : (
                 <Center
-                  as="button"
+                  as={NextLink}
+                  href="/"
+                  passHref
+                  display="flex"
+                  w="240px"
+                  h="64px"
                   color="white"
                   bg="greenToBlue"
-                  onClick={() => toHomeFunc()}
+                  rounded="full"
+                  fontWeight="bold"
+                  fontSize="1.6rem"
                 >
                   舞台を探しに行く！
                 </Center>

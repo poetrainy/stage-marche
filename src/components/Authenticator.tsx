@@ -19,7 +19,7 @@ const Authenticator: FC<Props> = ({ children }) => {
     }
     if (router.query.authenticated) {
       router.push(
-        `/${router.pathname}?authenticated=${
+        `${router.pathname}?authenticated=${
           isSignInInformation
             ? "false"
             : JSON.parse(

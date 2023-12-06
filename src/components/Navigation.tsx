@@ -1,6 +1,6 @@
 import { FC } from "react";
 import NextLink from "next/link";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 import { NAVIGATION_CONTENTS } from "src/constants/nav";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
@@ -27,7 +27,7 @@ const Navigation: FC<Props> = ({ path }) => {
       {NAVIGATION_CONTENTS.map((item) => (
         <Flex
           as={NextLink}
-          href={`${pathWithAuthenticator(`/${item.path}`)}`}
+          href={`${pathWithAuthenticator(item.path)}`}
           passHref
           key={item.path}
           flexDir="column"
@@ -40,7 +40,7 @@ const Navigation: FC<Props> = ({ path }) => {
           sx={{
             "&::before": {
               content: '""',
-              display: `/${item.path}` === path ? "block" : "none",
+              display: item.path === path ? "block" : "none",
               w: "24px",
               h: "4px",
               bg: "primary",
@@ -50,21 +50,21 @@ const Navigation: FC<Props> = ({ path }) => {
             },
           }}
         >
-          <Box
-            as={item.img}
+          <Image
+            as={item.icon}
             sx={{
               path: {
-                fill: `/${item.path}` === path ? "primary" : item.fill,
+                fill: item.path === path ? "primary" : "black400",
               },
             }}
           />
           <Text
             as="span"
-            color={`/${item.path}` === path ? "primary" : item.fill}
+            color={item.path === path ? "primary" : "black400"}
             fontSize="1rem"
             fontWeight="bold"
           >
-            {item.name}
+            {item.label}
           </Text>
         </Flex>
       ))}

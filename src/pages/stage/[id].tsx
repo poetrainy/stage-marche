@@ -19,7 +19,7 @@ import {
 } from "src/constants/stage";
 import { MOCK_COLUMNS_BASE } from "src/constants/column";
 
-import favIcon from "src/assets/svg/nav_fav";
+import FAVORITE_ICON from "src/assets/svg/nav_fav.svg";
 
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 
@@ -307,7 +307,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                 </Text>
                 <Center as="button" w="32px" h="24px">
                   <Box
-                    as={favIcon}
+                    as={FAVORITE_ICON}
                     w="24px"
                     h="24px"
                   />

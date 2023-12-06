@@ -26,6 +26,10 @@ const Layout: FC<Props> = ({ component, search, index }) => {
       localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR) ?? "false"
     ) as boolean);
 
+  const isSignInGuidance =
+    !isSignIn &&
+    (pathname === "/column" || pathname === "/ticket" || pathname === "/fav");
+
   return (
     <Authenticator>
       <>
@@ -35,26 +39,18 @@ const Layout: FC<Props> = ({ component, search, index }) => {
           minH="100vh"
           p="calc(64px + 32px) 0 calc(40px + 96px)"
           sx={{
-            ...(pathname !== "/" &&
-              pathname !== "/ticket" && {
-                textStyle: "bodyW",
-              }),
-            ...(pathname === "/ticket" && {
-              bg: "greenToBlue",
+            ...((isSignInGuidance ||
+              (pathname !== "/" && pathname !== "/ticket")) && {
+              textStyle: "bodyW",
             }),
+            ...(!isSignInGuidance &&
+              pathname === "/ticket" && {
+                bg: "greenToBlue",
+              }),
           }}
         >
-          {!isSignIn &&
-          (pathname === "/column" ||
-            pathname === "/ticket" ||
-            pathname === "/fav") ? (
-            <SignInGuidance
-              guidance={
-                SIGN_IN_GUIDANCE_PAGES[
-                  pathname.split("/")[1] as "column" | "ticket" | "fav"
-                ]
-              }
-            />
+          {isSignInGuidance ? (
+            <SignInGuidance guidance={SIGN_IN_GUIDANCE_PAGES[pathname]} />
           ) : (
             <>{component}</>
           )}
