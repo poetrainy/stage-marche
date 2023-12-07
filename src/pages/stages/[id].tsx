@@ -18,6 +18,7 @@ import { StageType } from "src/types/stage";
 import { MOCK_STAGES, MOCK_CASTS, MOCK_COLUMNS } from "src/constants/mock";
 
 import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
+import StageMovie from "src/components/Stage/Movie";
 
 type Props = {
   stage: StageType;
@@ -82,41 +83,11 @@ const StageId: NextPage<Props> = ({ stage }) => {
     </Box>
   );
 
-  const Youtube = () => (
-    <Flex flexDirection="column" gap="12px">
-      {stage.youtube.map((item) => (
-        <Box
-          key={item}
-          w="100%"
-          pt="calc(100% / 16 * 9)"
-          pos="relative"
-          rounded="20px"
-          overflow="hidden"
-        >
-          <Box
-            as="iframe"
-            w="100%"
-            h="100%"
-            pos="absolute"
-            inset="0 0 auto auto"
-            src={`https://www.youtube.com/embed/${item}`}
-            title="YouTube video player"
-            frameBorder={0}
-            allow={
-              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            }
-            allowFullScreen
-          />
-        </Box>
-      ))}
-    </Flex>
-  );
-
   const Recommend = () => {
     const recommendArray: RecommendType[] = [
       {
         title: "関連動画",
-        component: <Youtube />,
+        component: <StageMovie urls={stage.youtube} />,
       },
       {
         title: "あわせて読みたい",

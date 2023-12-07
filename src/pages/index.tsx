@@ -12,7 +12,7 @@ import StageBunnerSmall from "src/components/Stage/BunnerSmall";
 import ContentsBase from "src/components/ContentsBase";
 import StageCasts from "src/components/Stage/Casts";
 
-import { MOCK_STAGES, MOCK_USER } from "src/constants/mock";
+import { MOCK_CASTS, MOCK_STAGES, MOCK_USER } from "src/constants/mock";
 
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
@@ -223,7 +223,13 @@ const Home: NextPage = () => {
     },
     {
       text: "最近見ている出演者",
-      component: <StageCasts casts={MOCK_USER.recentCasts} />,
+      component: (
+        <StageCasts
+          casts={MOCK_USER.recentCasts.map(
+            (id) => MOCK_CASTS.find((cast) => cast.id === id)!
+          )}
+        />
+      ),
     },
   ];
 

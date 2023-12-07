@@ -177,34 +177,49 @@ export const MOCK_CASTS: CastType[] = [
   {
     id: "inoueyoshio",
     name: "井上芳雄",
+    description:
+      "井上 芳雄（いのうえ よしお、1979年〈昭和54年〉7月6日 - ）は、日本の俳優、歌手、声優。ミュージカルを中心に活動。身長182cm。グランアーツ所属。",
   },
   {
     id: "domotokoichi",
     name: "堂本光一",
+    description:
+      "堂本 光一（どうもと こういち、1979年〈昭和54年〉1月1日 - ）は、日本のアイドル、シンガーソングライター、俳優、タレントであり、男性アイドルデュオ・KinKi Kidsのメンバー。本名同じ。兵庫県芦屋市出身。SMILE-UP.（旧ジャニーズ事務所）所属。身長168cm。血液型はB型。",
   },
   {
     id: "hanafusamari",
     name: "花總まり",
+    description:
+      "花總 まり（はなふさ まり、1973年2月28日 - ）は、日本の女優・歌手。元宝塚歌劇団宙組・雪組トップ娘役。東京都、日本女子大学附属高等学校出身。身長163㎝。血液型O型。愛称は「ハナ」。所属事務所はブルーミングエージェンシー。",
   },
   {
     id: "manakireika",
     name: "愛希れいか",
+    description:
+      "愛希 れいか（まなき れいか、1991年8月21日 - ）は、日本の女優。元宝塚歌劇団月組トップ娘役。福井県坂井市、坂井中学校出身。身長167cm。血液型A型。愛称は「ちゃぴ」。所属事務所はアミューズ。",
   },
   {
     id: "yamazakiikusaburo",
     name: "山崎育三郎",
+    description:
+      "山崎 育三郎（やまざき いくさぶろう、1986年〈昭和61年〉1月18日 - ）は、日本のミュージカル俳優、俳優、歌手、司会者、StarS・IMYのメンバー。愛称は「いっくん」。東京都出身。研音所属。妻は元モーニング娘。の初期メンバーで、歌手・タレントの安倍なつみ。義妹は元タレントの安倍麻美。「ミュージカル界のプリンス」と呼ばれている。",
   },
   {
     id: "furukawayuta",
     name: "古川雄大",
+    description:
+      "古川 雄大（ふるかわ ゆうた、1987年〈昭和62年〉7月9日 - ）は、日本の俳優、歌手。長野県上高井郡高山村出身。所属事務所は研音、所属レコード会社はシンコーミュージック・レコーズ。",
   },
   {
     id: "kitayamahiromitsu",
     name: "北山宏光",
+    description: "カス",
   },
   {
     id: "satoshori",
     name: "佐藤勝利",
+    description:
+      "佐藤 勝利（さとう しょうり、1996年〈平成8年〉10月30日 - ）は、日本の歌手、俳優、タレント。男性アイドルグループ・Sexy Zoneのメンバー。東京都出身。SMILE-UP.（旧ジャニーズ事務所）所属。",
   },
 ];
 
@@ -236,14 +251,5 @@ export const MOCK_COLUMNS: ColumnType[] = [
 export const MOCK_USER: UserType = {
   prefecture: "大阪府",
   doneStamps: 3,
-  recentCasts: [
-    {
-      id: "inoueyoshio",
-      name: "井上芳雄",
-    },
-    {
-      id: "domotokoichi",
-      name: "堂本光一",
-    },
-  ],
+  recentCasts: ["domotokoichi", "inoueyoshio"],
 };

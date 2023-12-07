@@ -15,7 +15,7 @@ const Back: FC = () => {
       h="32px"
       bg="rgba(255, 255, 255, 0.7)"
       pos="absolute"
-      inset="5vw auto auto 5vw"
+      inset="24px auto auto 0"
       rounded="full"
       zIndex={3}
       textStyle="lightShadow"

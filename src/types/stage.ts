@@ -62,6 +62,7 @@ export type StageType = {
 export type CastType = {
   id: string;
   name: string;
+  description: string;
 };
 
 export type favType = { data: number; place: number };
