@@ -48,7 +48,7 @@ const StageInformation: FC<Props> = ({
       icon: IconSchedule,
       contents: (
         <>
-          {`${stage.schedule[index].dateFrom}-${stage.schedule[index].dateTo}`}
+          {`${stage.schedule[index].dateFrom}から${stage.schedule[index].dateTo}`}
         </>
       ),
     },
@@ -58,7 +58,7 @@ const StageInformation: FC<Props> = ({
       icon: IconTime,
       contents: (
         <>
-          {stage.schedule[0].time.matinee && (
+          {/* {stage.schedule[0].time.matinee && (
             <>
               {stage.schedule[0].time.matinee.start[0]}:
               {stage.schedule[0].time.matinee.start[1]}〜
@@ -74,7 +74,7 @@ const StageInformation: FC<Props> = ({
               {stage.schedule[0].time.soiree.end[0]}:
               {stage.schedule[0].time.soiree.end[1]}
             </>
-          )}
+          )} */}
         </>
       ),
     },
