@@ -19,7 +19,7 @@ const ColumnId: NextPage<Props> = ({ id }) => {
 
   return (
     <>
-      <Header path="/column" isBack />
+      <Header path="/columns" isBack />
       <OriginalSpacer size="88px" />
       <Box textStyle="bodyW">
         <ColumnDate data={column} />

@@ -6,7 +6,7 @@ import ContentsBase from "src/components/ContentsBase";
 
 import { MOCK_COLUMNS } from "src/constants/mock";
 
-const Column: NextPage = () => {
+const Columns: NextPage = () => {
   const ComponentArray = [
     {
       text: "気になる公演とあわせて読みたい",
@@ -25,4 +25,4 @@ const Column: NextPage = () => {
   );
 };
 
-export default Column;
+export default Columns;

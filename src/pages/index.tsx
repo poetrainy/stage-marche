@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { useState } from "react";
 import NextLink from "next/link";
@@ -60,7 +60,7 @@ const Home: NextPage = () => {
               >
                 <Box
                   as={NextLink}
-                  href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
+                  href={`${pathWithAuthenticator(`/stages/${item.path}`)}`}
                   passHref
                   display="block"
                   w="100%"

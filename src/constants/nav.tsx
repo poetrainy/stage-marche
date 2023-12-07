@@ -14,17 +14,17 @@ export const NAVIGATION_CONTENTS: ContentsBaseTypeWithIcon[] = [
   },
   {
     label: "コラム",
-    path: "/column",
+    path: "/columns",
     icon: SvgNavigationIconColumn,
   },
   {
     label: "チケット",
-    path: "/ticket",
+    path: "/tickets",
     icon: SvgNavigationIconTicket,
   },
   {
     label: "気になる",
-    path: "/fav",
+    path: "/favorites",
     icon: SvgNavigationIconFavorite,
   },
   {

@@ -1,6 +1,6 @@
 import { FC, SVGProps } from "react";
 
 export type SignInGuidancePageType = Record<
-  "/column" | "/ticket" | "/fav",
+  "/columns" | "/tickets" | "/favorites",
   { path: FC<SVGProps<SVGElement>>; heading: string; text: string }
 >;

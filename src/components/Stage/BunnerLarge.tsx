@@ -17,7 +17,7 @@ type Props = {
 const StageBunnerLarge: FC<Props> = ({ stage }) => (
   <Flex
     as={NextLink}
-    href={`${pathWithAuthenticator(`/stage/${stage.path}`)}`}
+    href={`${pathWithAuthenticator(`/stages/${stage.path}`)}`}
     passHref
     gap="4%"
     bg="white"

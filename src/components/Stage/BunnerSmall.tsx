@@ -7,6 +7,7 @@ import StageTypeComponent from "src/components/Stage/Type";
 import StageInformation from "src/components/Stage/Information";
 
 import { StageType } from "src/types/stage";
+
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
 import IconFavorite from "src/assets/svg/navigation_favorite.svg";
@@ -22,7 +23,7 @@ const StageBunnerSmall: FC<Props> = ({ stages }) => {
         {stages.map((stage, i) => (
           <Flex
             as={NextLink}
-            href={`${pathWithAuthenticator(`/stage/${stage.path}`)}`}
+            href={`${pathWithAuthenticator(`/stages/${stage.path}`)}`}
             passHref
             key={stage.name + i}
             flexDirection="column"

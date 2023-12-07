@@ -21,7 +21,7 @@ const ColumnBunner: FC<Props> = ({ column }) => {
       {column.map((item, i) => (
         <Flex
           as={NextLink}
-          href={`${pathWithAuthenticator(`/column/${item.id}`)}`}
+          href={`${pathWithAuthenticator(`/columns/${item.id}`)}`}
           passHref
           key={item.title + i}
           alignItems="center"

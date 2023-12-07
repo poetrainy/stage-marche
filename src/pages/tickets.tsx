@@ -9,7 +9,7 @@ import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 
 import { MOCK_STAGES } from "src/constants/mock";
 
-const Ticket: NextPage = () => {
+const Tickets: NextPage = () => {
   const flag: boolean[] = [true, false, false];
 
   return (
@@ -27,7 +27,7 @@ const Ticket: NextPage = () => {
           {MOCK_STAGES.map((item, i) => (
             <Flex
               as={NextLink}
-              href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
+              href={`${pathWithAuthenticator(`/stages/${item.path}`)}`}
               passHref
               key={item.name + i}
               minH="176px"
@@ -83,4 +83,4 @@ const Ticket: NextPage = () => {
   );
 };
 
-export default Ticket;
+export default Tickets;

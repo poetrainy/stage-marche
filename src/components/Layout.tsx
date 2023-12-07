@@ -22,7 +22,9 @@ const Layout: FC<Props> = ({ children, isSearch, isFixedObjectsView }) => {
 
   const isSignInGuidance =
     !isLocalStorageSignIn() &&
-    (pathname === "/column" || pathname === "/ticket" || pathname === "/fav");
+    (pathname === "/columns" ||
+      pathname === "/tickets" ||
+      pathname === "/favorites");
 
   return (
     <Authenticator>
