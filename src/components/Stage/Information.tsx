@@ -9,7 +9,7 @@ import IconPlace from "src/assets/svg/stage_info_place.svg";
 import IconTime from "src/assets/svg/stage_info_time.svg";
 
 type Props = {
-  data: StageType;
+  stage: StageType;
   prefecture?: boolean;
   place?: boolean;
   schedule?: boolean;
@@ -18,7 +18,7 @@ type Props = {
 };
 
 const StageInformation: FC<Props> = ({
-  data,
+  stage,
   prefecture,
   place,
   schedule,
@@ -31,39 +31,39 @@ const StageInformation: FC<Props> = ({
         <Image as={IconPlace} />
         {!prefecture && (
           <>
-            {PREFECTURES[data.schedule[index].prefecture]}
+            {PREFECTURES[stage.schedule[index].prefecture]}
             公演
           </>
         )}
-        {!place && data.schedule[index].place}
+        {!place && stage.schedule[index].place}
       </Flex>
     )}
     {!schedule && (
       <Flex gap="4px">
         <Image as={IconSchedule} />
-        {data.schedule[index].date.start.y}.{data.schedule[index].date.start.m}.
-        {data.schedule[index].date.start.d}-{data.schedule[index].date.end.y}.
-        {data.schedule[index].date.end.m}.{data.schedule[index].date.end.d}
+        {stage.schedule[index].date.start.y}.{stage.schedule[index].date.start.m}.
+        {stage.schedule[index].date.start.d}-{stage.schedule[index].date.end.y}.
+        {stage.schedule[index].date.end.m}.{stage.schedule[index].date.end.d}
       </Flex>
     )}
     {!time && (
       <Flex gap="4px">
         <Image as={IconTime} />
-        {data.schedule[0].time.matinee && (
+        {stage.schedule[0].time.matinee && (
           <>
-            {data.schedule[0].time.matinee.start[0]}:
-            {data.schedule[0].time.matinee.start[1]}〜
-            {data.schedule[0].time.matinee.end[0]}:
-            {data.schedule[0].time.matinee.end[1]}
+            {stage.schedule[0].time.matinee.start[0]}:
+            {stage.schedule[0].time.matinee.start[1]}〜
+            {stage.schedule[0].time.matinee.end[0]}:
+            {stage.schedule[0].time.matinee.end[1]}
             <br />
           </>
         )}
-        {data.schedule[0].time.soiree && (
+        {stage.schedule[0].time.soiree && (
           <>
-            {data.schedule[0].time.soiree.start[0]}:
-            {data.schedule[0].time.soiree.start[1]}〜
-            {data.schedule[0].time.soiree.end[0]}:
-            {data.schedule[0].time.soiree.end[1]}
+            {stage.schedule[0].time.soiree.start[0]}:
+            {stage.schedule[0].time.soiree.start[1]}〜
+            {stage.schedule[0].time.soiree.end[0]}:
+            {stage.schedule[0].time.soiree.end[1]}
           </>
         )}
       </Flex>

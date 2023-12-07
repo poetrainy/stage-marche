@@ -12,19 +12,19 @@ import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import IconFavorite from "src/assets/svg/navigation_favorite.svg";
 
 type Props = {
-  data: StageType[];
+  stages: StageType[];
 };
 
-const StageBunnerSmall: FC<Props> = ({ data }) => {
+const StageBunnerSmall: FC<Props> = ({ stages }) => {
   return (
     <Box w="100%" overflow="scroll">
-      <Flex gap="12px" w={`calc(160px * ${data.length})`}>
-        {data.map((item, i) => (
+      <Flex gap="12px" w={`calc(160px * ${stages.length})`}>
+        {stages.map((stage, i) => (
           <Flex
             as={NextLink}
-            href={`${pathWithAuthenticator(`/stage/${item.path}`)}`}
+            href={`${pathWithAuthenticator(`/stage/${stage.path}`)}`}
             passHref
-            key={item.name + i}
+            key={stage.name + i}
             flexDirection="column"
             justifyContent="space-between"
             w="160px"
@@ -44,7 +44,7 @@ const StageBunnerSmall: FC<Props> = ({ data }) => {
                 boxShadow="0px 0px 3px rgba(0, 0, 0, 0.1)"
               >
                 <Image
-                  src={item.images[0]}
+                  src={stage.images[0]}
                   w="100%"
                   h="100%"
                   objectFit="cover"
@@ -63,14 +63,14 @@ const StageBunnerSmall: FC<Props> = ({ data }) => {
                 </Center>
               </Box>
               <OriginalSpacer size="8px" />
-              <StageTypeComponent type={item.type} />
+              <StageTypeComponent type={stage.type} />
               <OriginalSpacer size="4px" />
               <Text as="h3" fontSize="1.4rem" fontWeight="bold">
-                {item.name}
+                {stage.name}
               </Text>
               <OriginalSpacer size="8px" />
             </Box>
-            <StageInformation data={item} index={0} time place />
+            <StageInformation stage={stage} index={0} time place />
           </Flex>
         ))}
       </Flex>

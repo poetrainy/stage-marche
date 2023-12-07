@@ -15,7 +15,7 @@ const Fav: NextPage = () => {
     },
     {
       text: "公演が終了した作品",
-      component: <StageBunnerSmall data={MOCK_STAGES} />,
+      component: <StageBunnerSmall stages={MOCK_STAGES} />,
     },
   ];
 

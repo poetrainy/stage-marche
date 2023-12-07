@@ -12,6 +12,7 @@ import CoverImage from "src/components/CoverImage";
 import { MOCK_STAGES } from "src/constants/mock";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import StageBunnerSmall from "src/components/Stage/BunnerSmall";
 
 const Home: NextPage = () => {
   const Component = () => {
@@ -205,6 +206,10 @@ const Home: NextPage = () => {
       {
         heading: "B席に余裕があります",
         content: <StageBunnerLargeWrapper stages={MOCK_STAGES} />,
+      },
+      {
+        heading: "気になる公演",
+        content: <StageBunnerSmall stages={MOCK_STAGES} />,
       },
     ];
 
