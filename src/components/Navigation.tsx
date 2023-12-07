@@ -4,6 +4,7 @@ import { Flex, Image, Text } from "@chakra-ui/react";
 
 import { NAVIGATION_CONTENTS } from "src/constants/nav";
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
+import { isLocalStorageSignIn } from "src/libs/authenticate";
 
 type Props = {
   path: string;
@@ -14,17 +15,19 @@ const Navigation: FC<Props> = ({ path }) => {
     <Flex
       as="nav"
       alignItems="flex-start"
+      justifyContent="center"
       w="100vw"
       h="96px"
       bg="white"
-      p="0 calc(5vw / 2)"
       pos="fixed"
       inset="auto auto -1px 0"
       textStyle="deepShadow"
       rounded="30px 30px 0px 0px"
       zIndex="10"
     >
-      {NAVIGATION_CONTENTS.map((item) => (
+      {NAVIGATION_CONTENTS.filter((content) =>
+        isLocalStorageSignIn() ? true : content.path !== "/user"
+      ).map((item) => (
         <Flex
           as={NextLink}
           href={`${pathWithAuthenticator(item.path)}`}
@@ -34,7 +37,7 @@ const Navigation: FC<Props> = ({ path }) => {
           alignItems="center"
           gap="4px"
           position="relative"
-          w="19vw"
+          w={isLocalStorageSignIn() ? "19vw" : "22vw"}
           h="100%"
           padding="16px 0"
           sx={{
