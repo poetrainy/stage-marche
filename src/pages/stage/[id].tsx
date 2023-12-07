@@ -290,7 +290,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                 </Center>
               </Flex>
               <OriginalSpacer size="6px" />
-              <StageInformation data={stage} time prefecture index={i} />
+              <StageInformation stage={stage} time prefecture index={i} />
               <OriginalSpacer size="16px" />
               <Box bg="#F6F6F6" p="16px" rounded="16px">
                 {item.seat.monopoly && (

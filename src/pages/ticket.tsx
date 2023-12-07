@@ -58,7 +58,7 @@ const Ticket: NextPage = () => {
                   {item.name}
                 </Text>
               </Box>
-              <StageInformation data={item} index={0} />
+              <StageInformation stage={item} index={0} />
             </Flex>
             {flag[i] && (
               <Box

@@ -51,7 +51,7 @@ const StageBunnerLarge: FC<Props> = ({ stage }) => (
         </Text>
         <StageGenre data={stage} />
       </Flex>
-      <StageInformation data={stage} index={0} time />
+      <StageInformation stage={stage} index={0} time />
     </Flex>
   </Flex>
 );
