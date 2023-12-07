@@ -10,8 +10,9 @@ import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
 import CoverImage from "src/components/CoverImage";
 import StageBunnerSmall from "src/components/Stage/BunnerSmall";
 import ContentsBase from "src/components/ContentsBase";
+import StageCasts from "src/components/Stage/Casts";
 
-import { MOCK_STAGES } from "src/constants/mock";
+import { MOCK_STAGES, MOCK_USER } from "src/constants/mock";
 
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
@@ -41,7 +42,7 @@ const Home: NextPage = () => {
     {
       text: "大阪公演中の作品があります",
       component: (
-        <Box w="100%" overflow="hidden" pos="relative">
+        <Box w="111.11111%" overflow="hidden" pos="relative" m="0 -5.5%">
           <Flex
             as="ul"
             w={`calc(100% * ${MOCK_STAGES.length})`}
@@ -219,6 +220,10 @@ const Home: NextPage = () => {
     {
       text: "気になる公演",
       component: <StageBunnerSmall stages={MOCK_STAGES} />,
+    },
+    {
+      text: "最近見ている出演者",
+      component: <StageCasts casts={MOCK_USER.recentCasts} />,
     },
   ];
 

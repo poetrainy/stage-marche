@@ -1,4 +1,5 @@
 import { ColumnType } from "src/types/column";
+import { UserType } from "src/types/common";
 import { StageType, CastType } from "src/types/stage";
 
 export const MOCK_STAGES: StageType[] = [
@@ -232,7 +233,17 @@ export const MOCK_COLUMNS: ColumnType[] = [
   },
 ];
 
-export const MOCK_USER = {
+export const MOCK_USER: UserType = {
   prefecture: "大阪府",
   doneStamps: 3,
+  recentCasts: [
+    {
+      id: "inoueyoshio",
+      name: "井上芳雄",
+    },
+    {
+      id: "domotokoichi",
+      name: "堂本光一",
+    },
+  ],
 };

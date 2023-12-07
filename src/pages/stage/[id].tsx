@@ -11,14 +11,13 @@ import ColumnBunner from "src/components/Column/Bunner";
 import Back from "src/components/Back";
 import CoverImage from "src/components/CoverImage";
 import LayoutWithMaxWidth from "src/components/LayoutWithMaxWidth";
+import StageCasts from "src/components/Stage/Casts";
 
 import { StageType } from "src/types/stage";
 
 import { MOCK_STAGES, MOCK_CASTS, MOCK_COLUMNS } from "src/constants/mock";
 
 import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
-
-import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 
 type Props = {
   id: string;
@@ -114,35 +113,6 @@ const StageId: NextPage<Props> = ({ id }) => {
     </Flex>
   );
 
-  const Cast = () => (
-    <Flex as="ul" gap="14px 4%" flexWrap="wrap" w="100%">
-      {casts.map((cast) => (
-        <Box as="li" key={cast.id} w="22%">
-          <Box
-            w="100%"
-            pt="100%"
-            bg="black600"
-            rounded="full"
-            overflow="hidden"
-            pos="relative"
-          >
-            <Image
-              src={imageWithDirectoryPath(`cast_${cast.id}.jpg`)}
-              w="100%"
-              h="100%"
-              pos="absolute"
-              inset="0 0 auto auto"
-            />
-          </Box>
-          <OriginalSpacer size="8px" />
-          <Text fontSize="1.2rem" fontWeight="bold" textAlign="center">
-            {cast.name}
-          </Text>
-        </Box>
-      ))}
-    </Flex>
-  );
-
   const Recommend = () => {
     const recommendArray: RecommendType[] = [
       {
@@ -155,20 +125,19 @@ const StageId: NextPage<Props> = ({ id }) => {
       },
       {
         title: "キャスト",
-        component: <Cast />,
+        component: <StageCasts casts={casts} />,
       },
     ];
 
     return (
       <Flex flexDir="column" gap="32px">
         {recommendArray.map((item, i) => (
-          <Box as="section" key={item.title + i}>
+          <Flex as="section" key={item.title + i} flexDir="column" gap="16px">
             <Text as="h2" fontSize="1.8rem" fontWeight="bold">
               {item.title}
             </Text>
-            <OriginalSpacer size="16px" />
             {item.component}
-          </Box>
+          </Flex>
         ))}
       </Flex>
     );

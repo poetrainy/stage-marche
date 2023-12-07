@@ -35,7 +35,7 @@ const User: NextPage = () => {
           inset="64px 0 0 0"
           zIndex={-1}
         />
-        <Flex flexDir="column" gap="24px" w="84%" m="auto">
+        <Flex flexDir="column" gap="24px" w="95%" m="auto">
           <Flex justify="center" flexWrap="wrap" gap="16px">
             <Center
               w="full"

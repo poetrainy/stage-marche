@@ -7,7 +7,7 @@ type Props = {
 
 const ContentsBase: FC<Props> = ({ data }) => {
   return (
-    <Flex flexDir="column" gap="28px" w="100%">
+    <Flex flexDir="column" gap="32px" w="100%">
       {data.map((item) => (
         <Flex flexDir="column" gap="16px" w="100%" key={item.text}>
           <Heading as="h2" fontSize="2rem" fontWeight="bold">
