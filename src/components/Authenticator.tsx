@@ -1,6 +1,10 @@
 import { useRouter } from "next/router";
 import { FC, useEffect } from "react";
-import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
+import {
+  getLocalStorageAuthenticated,
+  isLocalStorageAuthenticated,
+  onLocalStorageAuthenticate,
+} from "src/libs/authenticate";
 
 type Props = {
   children: JSX.Element;
@@ -9,22 +13,14 @@ type Props = {
 const Authenticator: FC<Props> = ({ children }) => {
   const router = useRouter();
 
-  const isSignInInformation =
-    typeof window !== "undefined" &&
-    localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR);
-
   useEffect(() => {
-    if (!isSignInInformation) {
-      localStorage.setItem(LOCAL_STORAGE_AUTHENTICATOR, "false");
+    if (!isLocalStorageAuthenticated()) {
+      onLocalStorageAuthenticate("false");
     }
     if (!router.query.authenticated) {
       router.push(
         `${router.pathname}?authenticated=${
-          isSignInInformation
-            ? JSON.parse(
-                localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR) ?? ""
-              )
-            : "false"
+          isLocalStorageAuthenticated() ? getLocalStorageAuthenticated() : "false"
         }`
       );
     }

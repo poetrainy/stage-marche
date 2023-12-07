@@ -15,6 +15,7 @@ import SvgImageEnqueteGenre from "src/assets/svg/enquete_1_genre.svg";
 import SvgImageEnquetePrefecture from "src/assets/svg/enquete_2_prefecture.svg";
 import SvgImageEnqueteComplete from "src/assets/svg/enquete_3_complete.svg";
 import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import { onLocalStorageAuthenticate } from "src/libs/authenticate";
 
 const STAGE_GENRES: string[] = [
   "歴史",
@@ -74,7 +75,7 @@ const Enquete: NextPage = () => {
   };
 
   const localStorageSignIn = () => {
-    localStorage.setItem(LOCAL_STORAGE_AUTHENTICATOR, "true");
+    onLocalStorageAuthenticate("true");
     router.push(pathWithAuthenticator("/"));
   };
 

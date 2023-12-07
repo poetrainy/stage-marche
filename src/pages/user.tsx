@@ -4,11 +4,13 @@ import { useRouter } from "next/router";
 
 import Layout from "src/components/Layout";
 
-import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
+import { MOCK_USER } from "src/constants/mock";
+
+import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
+
+import { onLocalStorageAuthenticate } from "src/libs/authenticate";
 
 import ICON_USER_SETTING from "src/assets/svg/icon_user_setting.svg";
-import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
-import { MOCK_USER } from "src/constants/mock";
 
 const STAMPS = [...Array(9).keys()];
 
@@ -53,7 +55,9 @@ const User: NextPage = () => {
                   w="56px"
                   h="56px"
                   border="5px dotted"
-                  borderColor={MOCK_USER.doneStamps > i ? "primary" : "black400"}
+                  borderColor={
+                    MOCK_USER.doneStamps > i ? "primary" : "black400"
+                  }
                   rounded="full"
                 />
               ))}
@@ -102,7 +106,7 @@ const User: NextPage = () => {
           color="black500"
           fontSize="1.2rem"
           onClick={() => {
-            localStorage.setItem(LOCAL_STORAGE_AUTHENTICATOR, "false");
+            onLocalStorageAuthenticate("false");
             router.push(pathWithAuthenticator("/"));
           }}
         >

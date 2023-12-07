@@ -7,8 +7,9 @@ import Navigation from "src/components/Navigation";
 import Authenticator from "src/components/Authenticator";
 import SignInGuidance from "src/components/SignIn/Guidance";
 
-import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
 import { SIGN_IN_GUIDANCE_PAGES } from "src/constants/signIn";
+
+import { isLocalStorageSignIn } from "src/libs/authenticate";
 
 type Props = {
   component: JSX.Element;
@@ -19,21 +20,17 @@ type Props = {
 const Layout: FC<Props> = ({ component, isSearch }) => {
   const { pathname } = useRouter();
 
-  const isSignIn =
-    typeof window !== "undefined" &&
-    localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR) &&
-    (JSON.parse(
-      localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR) ?? "false"
-    ) as boolean);
-
   const isSignInGuidance =
-    !isSignIn &&
+    !isLocalStorageSignIn() &&
     (pathname === "/column" || pathname === "/ticket" || pathname === "/fav");
 
   return (
     <Authenticator>
       <>
-        <Header path={pathname} isSearch={!!isSignIn && isSearch} />
+        <Header
+          path={pathname}
+          isSearch={!!isLocalStorageSignIn() && isSearch}
+        />
         <Box
           as="main"
           minH="100vh"

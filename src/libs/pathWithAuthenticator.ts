@@ -1,11 +1,4 @@
-import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
+import { isLocalStorageSignIn } from "src/libs/authenticate";
 
-export const pathWithAuthenticator: (path: string) => string = (
-  path: string
-) => {
-  const isAuthenticated =
-    typeof window !== "undefined" &&
-    localStorage.getItem(LOCAL_STORAGE_AUTHENTICATOR) === "true";
-
-  return `${path}?authenticated=${isAuthenticated ? "true" : "false"}`;
-};
+export const pathWithAuthenticator: (path: string) => string = (path: string) =>
+  `${path}?authenticated=${isLocalStorageSignIn() ? "true" : "false"}`;
