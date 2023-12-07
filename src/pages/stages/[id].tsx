@@ -20,7 +20,7 @@ import { MOCK_STAGES, MOCK_CASTS, MOCK_COLUMNS } from "src/constants/mock";
 import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
 
 type Props = {
-  id: string;
+  stage: StageType;
 };
 
 type RecommendType = {
@@ -28,8 +28,7 @@ type RecommendType = {
   component: JSX.Element;
 };
 
-const StageId: NextPage<Props> = ({ id }) => {
-  const stage = MOCK_STAGES.find(({ path }) => path === id)!;
+const StageId: NextPage<Props> = ({ stage }) => {
   const casts = stage.casts.map(
     (cast) => MOCK_CASTS.find((mockCast) => mockCast.id === cast)!
   );
@@ -345,7 +344,7 @@ export const getStaticProps = async ({
 }) => {
   return {
     props: {
-      id: params.id,
+      stage: MOCK_STAGES.find(({ path }) => path === params.id),
     },
   };
 };
