@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Flex, Image } from "@chakra-ui/react";
+import { FC, Fragment, SVGProps } from "react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 
 import { StageType } from "src/types/stage";
 import { PREFECTURES } from "src/constants/stage";
@@ -24,51 +24,87 @@ const StageInformation: FC<Props> = ({
   schedule,
   time,
   index,
-}) => (
-  <Flex flexDir="column" gap="6px" color="black500" fontSize="1.2rem">
-    {(!place || !prefecture) && (
-      <Flex gap="4px">
-        <Image as={IconPlace} />
-        {!prefecture && (
-          <>
-            {PREFECTURES[stage.schedule[index].prefecture]}
-            公演
-          </>
-        )}
-        {!place && stage.schedule[index].place}
-      </Flex>
-    )}
-    {!schedule && (
-      <Flex gap="4px">
-        <Image as={IconSchedule} />
-        {stage.schedule[index].date.start.y}.{stage.schedule[index].date.start.m}.
-        {stage.schedule[index].date.start.d}-{stage.schedule[index].date.end.y}.
-        {stage.schedule[index].date.end.m}.{stage.schedule[index].date.end.d}
-      </Flex>
-    )}
-    {!time && (
-      <Flex gap="4px">
-        <Image as={IconTime} />
-        {stage.schedule[0].time.matinee && (
-          <>
-            {stage.schedule[0].time.matinee.start[0]}:
-            {stage.schedule[0].time.matinee.start[1]}〜
-            {stage.schedule[0].time.matinee.end[0]}:
-            {stage.schedule[0].time.matinee.end[1]}
-            <br />
-          </>
-        )}
-        {stage.schedule[0].time.soiree && (
-          <>
-            {stage.schedule[0].time.soiree.start[0]}:
-            {stage.schedule[0].time.soiree.start[1]}〜
-            {stage.schedule[0].time.soiree.end[0]}:
-            {stage.schedule[0].time.soiree.end[1]}
-          </>
-        )}
-      </Flex>
-    )}
-  </Flex>
-);
+}) => {
+  const stageInformations: {
+    id: string;
+    isView: boolean;
+    icon: FC<SVGProps<SVGElement>>;
+    contents: JSX.Element;
+  }[] = [
+    {
+      id: "place",
+      isView: !place || !prefecture,
+      icon: IconPlace,
+      contents: (
+        <>
+          {!prefecture && (
+            <>
+              {PREFECTURES[stage.schedule[index].prefecture]}
+              公演
+            </>
+          )}
+          {!place && stage.schedule[index].place}
+        </>
+      ),
+    },
+    {
+      id: "schedule",
+      isView: !schedule,
+      icon: IconSchedule,
+      contents: (
+        <>
+          {stage.schedule[index].date.start.y}.
+          {stage.schedule[index].date.start.m}.
+          {stage.schedule[index].date.start.d}-
+          {stage.schedule[index].date.end.y}.{stage.schedule[index].date.end.m}.
+          {stage.schedule[index].date.end.d}
+        </>
+      ),
+    },
+    {
+      id: "time",
+      isView: !time,
+      icon: IconTime,
+      contents: (
+        <>
+          {stage.schedule[0].time.matinee && (
+            <>
+              {stage.schedule[0].time.matinee.start[0]}:
+              {stage.schedule[0].time.matinee.start[1]}〜
+              {stage.schedule[0].time.matinee.end[0]}:
+              {stage.schedule[0].time.matinee.end[1]}
+              <br />
+            </>
+          )}
+          {stage.schedule[0].time.soiree && (
+            <>
+              {stage.schedule[0].time.soiree.start[0]}:
+              {stage.schedule[0].time.soiree.start[1]}〜
+              {stage.schedule[0].time.soiree.end[0]}:
+              {stage.schedule[0].time.soiree.end[1]}
+            </>
+          )}
+        </>
+      ),
+    },
+  ];
+
+  return (
+    <Flex flexDir="column" gap="6px" color="black500" fontSize="1.2rem">
+      {stageInformations.map((information) => (
+        <Fragment key={information.id}>
+          {information.isView && (
+            <Flex gap="4px">
+              <Image as={information.icon} w="15px" h="15px" m="1.5px" />
+              <Text as="span" w="calc(100% - 16px - 4px)">
+                {information.contents}
+              </Text>
+            </Flex>
+          )}
+        </Fragment>
+      ))}
+    </Flex>
+  );
+};
 
 export default StageInformation;
