@@ -21,19 +21,9 @@ export const MOCK_STAGES: StageType[] = [
     schedule: [
       {
         place: "梅田芸術劇場 メインホール",
-        prefecture: 26,
-        date: {
-          start: {
-            y: 2023,
-            m: 1,
-            d: 1,
-          },
-          end: {
-            y: 2023,
-            m: 4,
-            d: 10,
-          },
-        },
+        prefecture: "大阪府",
+        dateFrom: "2023-1-1",
+        dateTo: "2023-4-10",
         time: {
           matinee: {
             start: ["17", "00"],
@@ -44,18 +34,18 @@ export const MOCK_STAGES: StageType[] = [
         seat: {
           monopoly: {
             class: "B",
-            price: "4,000",
+            price: 4000,
             status: "ok",
           },
           other: [
             {
               class: "A",
-              price: "9,000",
+              price: 9000,
               status: "few",
             },
             {
               class: "S",
-              price: "14,000",
+              price: 14000,
               status: "no",
             },
           ],
@@ -63,19 +53,9 @@ export const MOCK_STAGES: StageType[] = [
       },
       {
         place: "博多座",
-        prefecture: 39,
-        date: {
-          start: {
-            y: 2023,
-            m: 1,
-            d: 1,
-          },
-          end: {
-            y: 2023,
-            m: 4,
-            d: 10,
-          },
-        },
+        prefecture: "福岡県",
+        dateFrom: "2023-1-1",
+        dateTo: "2023-4-10",
         time: {
           matinee: {
             start: ["13", "00"],
@@ -91,12 +71,12 @@ export const MOCK_STAGES: StageType[] = [
           other: [
             {
               class: "A",
-              price: "9,000",
+              price: 9000,
               status: "few",
             },
             {
               class: "S",
-              price: "14,000",
+              price: 14000,
               status: "no",
             },
           ],
@@ -117,19 +97,9 @@ export const MOCK_STAGES: StageType[] = [
     schedule: [
       {
         place: "兵庫県立芸術文化センター 阪急中ホール",
-        prefecture: 27,
-        date: {
-          start: {
-            y: 2022,
-            m: 1,
-            d: 1,
-          },
-          end: {
-            y: 2022,
-            m: 4,
-            d: 10,
-          },
-        },
+        prefecture: "兵庫県",
+        dateFrom: "2023-1-1",
+        dateTo: "2023-4-10",
         time: {
           matinee: undefined,
           soiree: {
@@ -140,18 +110,18 @@ export const MOCK_STAGES: StageType[] = [
         seat: {
           monopoly: {
             class: "B",
-            price: "4,000",
+            price: 4000,
             status: "no",
           },
           other: [
             {
               class: "A",
-              price: "8,500",
+              price: 8500,
               status: "ok",
             },
             {
               class: "S",
-              price: "13,000",
+              price: 13000,
               status: "few",
             },
           ],
@@ -172,19 +142,9 @@ export const MOCK_STAGES: StageType[] = [
     schedule: [
       {
         place: "梅田芸術劇場 メインホール",
-        prefecture: 26,
-        date: {
-          start: {
-            y: 2023,
-            m: 1,
-            d: 1,
-          },
-          end: {
-            y: 2023,
-            m: 4,
-            d: 10,
-          },
-        },
+        prefecture: "大阪府",
+        dateFrom: "2023-1-1",
+        dateTo: "2023-4-10",
         time: {
           matinee: {
             start: ["17", "00"],
@@ -197,12 +157,12 @@ export const MOCK_STAGES: StageType[] = [
           other: [
             {
               class: "A",
-              price: "8,500",
+              price: 8500,
               status: "few",
             },
             {
               class: "S",
-              price: "13,000",
+              price: 13000,
               status: "no",
             },
           ],

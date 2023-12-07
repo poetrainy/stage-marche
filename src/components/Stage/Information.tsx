@@ -37,12 +37,7 @@ const StageInformation: FC<Props> = ({
       icon: IconPlace,
       contents: (
         <>
-          {!prefecture && (
-            <>
-              {PREFECTURES[stage.schedule[index].prefecture]}
-              公演
-            </>
-          )}
+          {!prefecture && <>{`${stage.schedule[index].prefecture}公演`}</>}
           {!place && stage.schedule[index].place}
         </>
       ),
@@ -53,11 +48,7 @@ const StageInformation: FC<Props> = ({
       icon: IconSchedule,
       contents: (
         <>
-          {stage.schedule[index].date.start.y}.
-          {stage.schedule[index].date.start.m}.
-          {stage.schedule[index].date.start.d}-
-          {stage.schedule[index].date.end.y}.{stage.schedule[index].date.end.m}.
-          {stage.schedule[index].date.end.d}
+          {`${stage.schedule[index].dateFrom}-${stage.schedule[index].dateTo}`}
         </>
       ),
     },

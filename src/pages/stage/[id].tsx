@@ -12,7 +12,6 @@ import Back from "src/components/Back";
 
 import { StageType } from "src/types/stage";
 
-import { PREFECTURES } from "src/constants/stage";
 import { MOCK_STAGES, MOCK_CASTS, MOCK_COLUMNS } from "src/constants/mock";
 
 import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
@@ -283,7 +282,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                   fontWeight="bold"
                   fontSize="1.8rem"
                 >
-                  {PREFECTURES[item.prefecture]}公演
+                  {`${item.prefecture}公演`}
                 </Text>
                 <Center as="button" w="32px" h="24px">
                   <Box as={FAVORITE_ICON} w="24px" h="24px" />

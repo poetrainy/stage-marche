@@ -25,19 +25,9 @@ export type StageType = {
   casts: string[];
   schedule: {
     place: string;
-    prefecture: number;
-    date: {
-      start: {
-        y: number;
-        m: number;
-        d: number;
-      };
-      end: {
-        y: number;
-        m: number;
-        d: number;
-      };
-    };
+    prefecture: string;
+    dateFrom: string;
+    dateTo: string;
     time: {
       matinee:
         | {
@@ -55,14 +45,14 @@ export type StageType = {
     seat: {
       monopoly:
         | {
-            class: string;
-            price: string;
+            class: "S" | "A" | "B";
+            price: number;
             status: StageSeatStatusType;
           }
         | undefined;
       other: {
-        class: string;
-        price: string;
+        class: "S" | "A" | "B";
+        price: number;
         status: StageSeatStatusType;
       }[];
     };
