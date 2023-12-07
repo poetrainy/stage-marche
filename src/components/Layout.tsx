@@ -12,12 +12,12 @@ import { SIGN_IN_GUIDANCE_PAGES } from "src/constants/signIn";
 import { isLocalStorageSignIn } from "src/libs/authenticate";
 
 type Props = {
-  component: JSX.Element;
+  children: JSX.Element;
   isSearch?: boolean;
-  index?: boolean;
+  isFixedObjectsView?: boolean;
 };
 
-const Layout: FC<Props> = ({ component, isSearch }) => {
+const Layout: FC<Props> = ({ children, isSearch, isFixedObjectsView }) => {
   const { pathname } = useRouter();
 
   const isSignInGuidance =
@@ -27,10 +27,12 @@ const Layout: FC<Props> = ({ component, isSearch }) => {
   return (
     <Authenticator>
       <>
-        <Header
-          path={pathname}
-          isSearch={!!isLocalStorageSignIn() && isSearch}
-        />
+        {isFixedObjectsView && (
+          <Header
+            path={pathname}
+            isSearch={!!isLocalStorageSignIn() && isSearch}
+          />
+        )}
         <Box
           as="main"
           minH="100vh"
@@ -41,11 +43,11 @@ const Layout: FC<Props> = ({ component, isSearch }) => {
             {isSignInGuidance ? (
               <SignInGuidance guidance={SIGN_IN_GUIDANCE_PAGES[pathname]} />
             ) : (
-              <>{component}</>
+              <>{children}</>
             )}
           </>
         </Box>
-        <Navigation path={pathname} />
+        {isFixedObjectsView && <Navigation path={pathname} />}
       </>
     </Authenticator>
   );

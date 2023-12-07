@@ -7,15 +7,14 @@ import OriginalSpacer from "src/components/OriginalSpacer";
 import PreText from "src/components/PreText";
 
 import { PREFECTURES } from "src/constants/stage";
-import { LOCAL_STORAGE_AUTHENTICATOR } from "src/constants/authenticator";
 
 import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
+import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import { onLocalStorageAuthenticate } from "src/libs/authenticate";
 
 import SvgImageEnqueteGenre from "src/assets/svg/enquete_1_genre.svg";
 import SvgImageEnquetePrefecture from "src/assets/svg/enquete_2_prefecture.svg";
 import SvgImageEnqueteComplete from "src/assets/svg/enquete_3_complete.svg";
-import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
-import { onLocalStorageAuthenticate } from "src/libs/authenticate";
 
 const STAGE_GENRES: string[] = [
   "歴史",

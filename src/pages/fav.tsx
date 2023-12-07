@@ -3,9 +3,9 @@ import type { NextPage } from "next";
 import Layout from "src/components/Layout";
 import StageBunnerSmall from "src/components/Stage/BunnerSmall";
 import ContentsBase from "src/components/ContentsBase";
+import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
 
 import { MOCK_STAGES } from "src/constants/mock";
-import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
 
 const Fav: NextPage = () => {
   const ComponentArray = [
@@ -19,7 +19,11 @@ const Fav: NextPage = () => {
     },
   ];
 
-  return <Layout component={<ContentsBase data={ComponentArray} />} />;
+  return (
+    <Layout isFixedObjectsView>
+      <ContentsBase data={ComponentArray} />
+    </Layout>
+  );
 };
 
 export default Fav;

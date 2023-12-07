@@ -18,7 +18,11 @@ const Column: NextPage = () => {
     },
   ];
 
-  return <Layout component={<ContentsBase data={ComponentArray} />} isSearch />;
+  return (
+    <Layout isSearch isFixedObjectsView>
+      <ContentsBase data={ComponentArray} />
+    </Layout>
+  );
 };
 
 export default Column;

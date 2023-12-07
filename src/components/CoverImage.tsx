@@ -7,7 +7,7 @@ type Props = {
 };
 
 const CoverImage: FC<Props> = ({ path }) => (
-  <Box w="100vw" h="264px" overflow="hidden" pos="relative">
+  <Box w="100%" h="264px" overflow="hidden" pos="relative">
     <Image
       src={imageWithDirectoryPath(path)}
       w="100%"

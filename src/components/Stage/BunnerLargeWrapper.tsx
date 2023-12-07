@@ -11,7 +11,7 @@ type Props = {
 
 const StageBunnerLargeWrapper: FC<Props> = ({ stages, number }) => {
   return (
-    <Flex flexDir="column" gap="16px" textStyle="bodyW">
+    <Flex flexDir="column" gap="16px" w="100%">
       {stages.map((item) => (
         <StageBunnerLarge key={item.name} stage={item} />
       ))}

@@ -17,7 +17,7 @@ type Props = {
 
 const ColumnBunner: FC<Props> = ({ column }) => {
   return (
-    <Flex flexDir="column" gap="12px" textStyle="bodyW">
+    <Flex flexDir="column" gap="12px">
       {column.map((item, i) => (
         <Flex
           as={NextLink}

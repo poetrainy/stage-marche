@@ -58,6 +58,7 @@ const breakpoints = {
 const textStyles = {
   bodyW: {
     w: "90vw",
+    maxW: "640px",
     margin: "0 auto",
   },
   lightShadow: {
