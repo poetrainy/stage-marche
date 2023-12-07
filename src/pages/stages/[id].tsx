@@ -21,7 +21,7 @@ import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
 import StageMovie from "src/components/Stage/Movie";
 
 type Props = {
-  stage: StageType;
+  id: string;
 };
 
 type RecommendType = {
@@ -29,7 +29,8 @@ type RecommendType = {
   component: JSX.Element;
 };
 
-const StageId: NextPage<Props> = ({ stage }) => {
+const StageId: NextPage<Props> = ({ id }) => {
+  const stage = MOCK_STAGES.find(({ path }) => path === id)!;
   const casts = stage.casts.map(
     (cast) => MOCK_CASTS.find((mockCast) => mockCast.id === cast)!
   );
@@ -315,7 +316,7 @@ export const getStaticProps = async ({
 }) => {
   return {
     props: {
-      stage: MOCK_STAGES.find(({ path }) => path === params.id),
+      id: params.id,
     },
   };
 };
