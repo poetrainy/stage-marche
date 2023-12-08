@@ -47,7 +47,7 @@ const Home: NextPage = () => {
         MOCK_USER.prefecture
       )}中の作品があります`,
       component: (
-        <Box w="111.11111%" overflow="hidden" pos="relative" m="0 -5.5%">
+        <Box w="100vw" overflow="hidden" pos="relative" m="0 -5.5%">
           <Flex
             as="ul"
             w={`calc(100% * ${MOCK_STAGES.length})`}

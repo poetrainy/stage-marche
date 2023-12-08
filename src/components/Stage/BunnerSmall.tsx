@@ -18,7 +18,7 @@ type Props = {
 
 const StageBunnerSmall: FC<Props> = ({ stages }) => {
   return (
-    <Box w="100%" overflow="scroll">
+    <Box w="100vw" overflow="scroll" m="0 -5.5%" p="0 5vw">
       <Flex gap="12px" w={`calc(160px * ${stages.length})`}>
         {stages.map((stage, i) => (
           <Flex

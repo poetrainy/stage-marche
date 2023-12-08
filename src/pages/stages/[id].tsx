@@ -64,7 +64,7 @@ const StageId: NextPage<Props> = ({ id }) => {
   };
 
   const Img = () => (
-    <Box w="111.11111%" h="264px" overflow="hidden" pos="relative" m="0 -5.5%">
+    <Box w="100vw" h="264px" overflow="hidden" pos="relative" m="0 -5.5%">
       <CoverImage path={`stage_img_${stage.id}_01.jpg`} />
     </Box>
   );
@@ -177,7 +177,7 @@ const StageId: NextPage<Props> = ({ id }) => {
             <Flex
               flexDir="column"
               gap="10vw"
-              w="111.11111%"
+              w="100vw"
               bg="white"
               p="calc(24px + 5vw) 5vw 5vw"
               m="0 -5.5%"
