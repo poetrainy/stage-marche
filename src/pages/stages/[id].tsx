@@ -253,7 +253,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                               fontSize="2rem"
                               fontWeight="bold"
                             >
-                              ¥{item.seat.monopoly.price}
+                              ¥{item.seat.monopoly.price.toLocaleString()}
                             </Text>
                           </Box>
                           <StageSeat status={item.seat.monopoly.status} />
@@ -282,7 +282,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                             fontSize="1.3rem"
                             textAlign="center"
                           >
-                            ¥{content.price}
+                            ¥{content.price.toLocaleString()}
                           </Text>
                         </Box>
                       ))}
