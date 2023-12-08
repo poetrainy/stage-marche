@@ -32,7 +32,7 @@ type RecommendType = {
 };
 
 const StageId: NextPage<Props> = ({ id }) => {
-  const stage = MOCK_STAGES.find(({ path }) => path === id)!;
+  const stage = MOCK_STAGES.find((stage) => stage.id === id)!;
   const casts = stage.casts.map(
     (cast) => MOCK_CASTS.find((mockCast) => mockCast.id === cast)!
   );
@@ -66,7 +66,7 @@ const StageId: NextPage<Props> = ({ id }) => {
   const Img = () => (
     <Box w="111.11111%" h="264px" overflow="hidden" pos="relative" m="0 -5.5%">
       <Back />
-      <CoverImage path={`stage_img_${stage.path}_01.jpg`} />
+      <CoverImage path={`stage_img_${stage.id}_01.jpg`} />
     </Box>
   );
 
@@ -303,7 +303,7 @@ export default StageId;
 
 export const getStaticPaths = async () => {
   const paths = MOCK_STAGES.map((item: StageType) => ({
-    params: { id: item.path },
+    params: { id: item.id },
   }));
   return {
     paths,

@@ -2,9 +2,8 @@ export type StageSeatStatusType = "ok" | "few" | "no";
 export type StageTypeType = "musical" | "straightPlay" | "kabuki" | "rakugo";
 
 export type StageType = {
+  id: string;
   name: string;
-  path: string;
-  images: string[];
   type: StageTypeType;
   genres: (
     | "歴史"

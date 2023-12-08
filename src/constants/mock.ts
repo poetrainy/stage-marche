@@ -4,9 +4,8 @@ import { StageType, CastType } from "src/types/stage";
 
 export const MOCK_STAGES: StageType[] = [
   {
+    id: "elisabeth",
     name: "ミュージカル『エリザベート』",
-    path: "elisabeth",
-    images: [],
     type: "musical",
     genres: ["歴史", "シリアス"],
     description:
@@ -86,9 +85,8 @@ export const MOCK_STAGES: StageType[] = [
     ],
   },
   {
+    id: "shibiregumo",
     name: "しびれ雲",
-    path: "shibiregumo",
-    images: [],
     type: "straightPlay",
     genres: ["現代", "ほのぼの"],
     description:
@@ -131,9 +129,8 @@ export const MOCK_STAGES: StageType[] = [
     ],
   },
   {
+    id: "endlessshock",
     name: "Endless SHOCK",
-    path: "endlessshock",
-    images: [],
     type: "musical",
     genres: ["現代", "成長"],
     description:

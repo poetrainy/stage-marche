@@ -65,7 +65,7 @@ const Home: NextPage = () => {
               >
                 <Box
                   as={NextLink}
-                  href={`${pathWithAuthenticator(`/stages/${item.path}`)}`}
+                  href={`${pathWithAuthenticator(`/stages/${item.id}`)}`}
                   passHref
                   display="block"
                   w="100%"
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
                   position="relative"
                   overflow="hidden"
                 >
-                  <CoverImage path={`stage_img_${item.path}_01.jpg`} />
+                  <CoverImage path={`stage_img_${item.id}_01.jpg`} />
                   <Box
                     w="100%"
                     bg={
@@ -133,7 +133,7 @@ const Home: NextPage = () => {
           <Flex gap="8px" w="fit-content" m="0 auto">
             {MOCK_STAGES.map((item, i) => (
               <Box
-                key={item.path + i}
+                key={item.id}
                 w="10px"
                 h="10px"
                 rounded="full"
