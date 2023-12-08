@@ -76,7 +76,7 @@ const CastId: NextPage<Props> = ({ cast }) => {
                   rounded="full"
                 />
                 <Box w="calc(100% - 64px - 8px)">
-                  <Text as="span" display="block" fontSize="1rem">
+                  <Text as="span" display="block" color="black500" fontSize="1rem">
                     {`${recommendCast.stage[0].name}${
                       recommendCast.stage.length >= 2 ? "他" : ""
                     } 出演`}
