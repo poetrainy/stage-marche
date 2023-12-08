@@ -97,7 +97,7 @@ const StageId: NextPage<Props> = ({ id }) => {
         component: <ColumnBunner column={MOCK_COLUMNS} />,
       },
       {
-        title: "キャスト",
+        title: "出演者",
         component: <StageCasts casts={casts} />,
       },
     ];
