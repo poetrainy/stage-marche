@@ -9,11 +9,11 @@ import { MOCK_COLUMNS } from "src/constants/mock";
 const Columns: NextPage = () => {
   const ComponentArray = [
     {
-      text: "気になる公演とあわせて読みたい",
+      heading: "気になる公演とあわせて読みたい",
       component: <ColumnBunner column={MOCK_COLUMNS} />,
     },
     {
-      text: "最近読まれています",
+      heading: "最近読まれています",
       component: <ColumnBunner column={MOCK_COLUMNS} />,
     },
   ];

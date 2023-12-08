@@ -21,11 +21,11 @@ const CastId: NextPage<Props> = ({ cast }) => {
 
   const castObjects = [
     {
-      text: "出演している作品",
+      heading: "出演している作品",
       component: <StageBunnerLargeWrapper stages={stages} />,
     },
     {
-      text: "配信中の動画",
+      heading: "配信中の動画",
       component: (
         <StageMovie urls={stages.map(({ youtube }) => youtube).flat()} />
       ),

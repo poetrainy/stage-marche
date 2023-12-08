@@ -43,7 +43,7 @@ const Home: NextPage = () => {
 
   const contents = [
     {
-      text: `${prefectureWithFixedText(
+      heading: `${prefectureWithFixedText(
         MOCK_USER.prefecture
       )}中の作品があります`,
       component: (
@@ -219,15 +219,15 @@ const Home: NextPage = () => {
       ),
     },
     {
-      text: "B席に余裕があります",
+      heading: "B席に余裕があります",
       component: <StageBunnerLargeWrapper stages={MOCK_STAGES} />,
     },
     {
-      text: "気になる公演",
+      heading: "気になる公演",
       component: <StageBunnerSmall stages={MOCK_STAGES} />,
     },
     {
-      text: "最近見ている出演者",
+      heading: "最近見ている出演者",
       component: (
         <StageCasts
           casts={MOCK_USER.recentCasts.map(

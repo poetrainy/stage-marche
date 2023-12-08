@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Flex, Heading } from "@chakra-ui/react";
 
 type Props = {
-  data: { text: string; component: JSX.Element }[];
+  data: { heading: string; component: JSX.Element }[];
   fontSize?: string;
 };
 
@@ -10,9 +10,9 @@ const ContentsBase: FC<Props> = ({ data, fontSize = "2rem" }) => {
   return (
     <Flex flexDir="column" gap="32px" w="100%">
       {data.map((item) => (
-        <Flex flexDir="column" gap="16px" w="100%" key={item.text}>
+        <Flex flexDir="column" gap="16px" w="100%" key={item.heading}>
           <Heading as="h2" fontSize={fontSize} fontWeight="bold">
-            {item.text}
+            {item.heading}
           </Heading>
           {item.component}
         </Flex>

@@ -10,11 +10,11 @@ import { MOCK_STAGES } from "src/constants/mock";
 const Fav: NextPage = () => {
   const ComponentArray = [
     {
-      text: "公演予定の作品",
+      heading: "公演予定の作品",
       component: <StageBunnerLargeWrapper stages={MOCK_STAGES} />,
     },
     {
-      text: "公演が終了した作品",
+      heading: "公演が終了した作品",
       component: <StageBunnerSmall stages={MOCK_STAGES} />,
     },
   ];
