@@ -7,7 +7,7 @@ import ContentsBase from "src/components/ContentsBase";
 import { MOCK_COLUMNS } from "src/constants/mock";
 
 const Columns: NextPage = () => {
-  const ComponentArray = [
+  const components = [
     {
       heading: "気になる公演とあわせて読みたい",
       component: <ColumnBunner column={MOCK_COLUMNS} />,
@@ -20,7 +20,7 @@ const Columns: NextPage = () => {
 
   return (
     <Layout isSearch isFixedObjectsView>
-      <ContentsBase data={ComponentArray} />
+      <ContentsBase data={components} />
     </Layout>
   );
 };

@@ -24,12 +24,12 @@ const Tickets: NextPage = () => {
           zIndex={-1}
         />
         <Flex flexDir="column" gap="16px">
-          {MOCK_STAGES.map((item, i) => (
+          {MOCK_STAGES.map((stage, i) => (
             <Flex
               as={NextLink}
-              href={pathWithAuthenticator(`/stages/${item.id}`)}
+              href={pathWithAuthenticator(`/stages/${stage.id}`)}
               passHref
-              key={item.name + i}
+              key={stage.name + i}
               minH="176px"
             >
               <Flex
@@ -62,10 +62,18 @@ const Tickets: NextPage = () => {
                     fontSize="2rem"
                     fontWeight="bold"
                   >
-                    {item.name}
+                    {stage.name}
                   </Text>
                 </Box>
-                <StageInformation stage={item} index={0} />
+                <StageInformation
+                  places={[stage.schedule[0].place]}
+                  date={{ to: stage.schedule[0].dateFrom }}
+                  time={{
+                    matinee:
+                      stage.schedule[0].time.matinee ??
+                      stage.schedule[0].time.soiree,
+                  }}
+                />
               </Flex>
               {flag[i] && (
                 <Box

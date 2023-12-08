@@ -8,6 +8,7 @@ type Props = {
 const IconBackArrow: FC<Props> = ({ onClick }) => (
   <Box
     as="button"
+    type="button"
     w="24px"
     h="24px"
     pos="absolute"

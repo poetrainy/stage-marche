@@ -53,7 +53,13 @@ const StageBunnerLarge: FC<Props> = ({ stage }) => (
         </Text>
         <StageGenre data={stage} />
       </Flex>
-      <StageInformation stage={stage} index={0} time />
+      <StageInformation
+        places={stage.schedule.map((schedule) => schedule.prefecture)}
+        date={{
+          from: stage.schedule[0].dateFrom,
+          to: stage.schedule[stage.schedule.length - 1].dateTo,
+        }}
+      />
     </Flex>
   </Flex>
 );

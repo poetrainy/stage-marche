@@ -28,18 +28,8 @@ export type StageType = {
     dateFrom: string;
     dateTo: string;
     time: {
-      matinee:
-        | {
-            start: string[];
-            end: string[];
-          }
-        | undefined;
-      soiree:
-        | {
-            start: string[];
-            end: string[];
-          }
-        | undefined;
+      matinee: string | undefined;
+      soiree: string | undefined;
     };
     seat: {
       monopoly:

@@ -8,6 +8,7 @@ type Props = {
 const IconSearch: FC<Props> = ({ onClick }) => (
   <Box
     as="button"
+    type="button"
     w="40px"
     h="40px"
     pos="absolute"
@@ -25,6 +26,7 @@ const IconSearch: FC<Props> = ({ onClick }) => (
         inset: "0 0 0 0",
         margin: "auto",
         rounded: "full",
+        boxSizing:"border-box"
       },
       "&::after": {
         content: '""',

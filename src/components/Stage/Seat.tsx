@@ -20,7 +20,6 @@ const StageSeat: FC<Props> = ({ status }) => {
       rounded="16px"
     >
       <Center
-        as="p"
         fontSize="1.1rem"
         fontWeight="bold"
         mb="40px"

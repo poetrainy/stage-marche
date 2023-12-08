@@ -11,6 +11,8 @@ const Back: FC = () => {
 
   return (
     <Center
+      as="button"
+      type="button"
       w="32px"
       h="32px"
       bg="rgba(255, 255, 255, 0.7)"
@@ -19,6 +21,7 @@ const Back: FC = () => {
       rounded="full"
       zIndex={3}
       textStyle="lightShadow"
+      flex="none"
       sx={{
         "&::before": {
           content: '""',

@@ -1,98 +1,69 @@
 import { FC, Fragment, SVGProps } from "react";
 import { Flex, Image, Text } from "@chakra-ui/react";
 
-import { StageType } from "src/types/stage";
-
-import { prefectureWithFixedText } from "src/libs/convert";
+import { dateConvert } from "src/libs/convert";
 
 import IconSchedule from "src/assets/svg/stage_info_schedule.svg";
 import IconPlace from "src/assets/svg/stage_info_place.svg";
 import IconTime from "src/assets/svg/stage_info_time.svg";
 
 type Props = {
-  stage: StageType;
-  prefecture?: boolean;
-  place?: boolean;
-  schedule?: boolean;
-  time?: boolean;
-  index: number;
+  places?: string[];
+  date?: {
+    from?: string;
+    to: string;
+  };
+  time?: {
+    matinee?: string;
+    soiree?: string;
+  };
 };
 
-const StageInformation: FC<Props> = ({
-  stage,
-  prefecture,
-  place,
-  schedule,
-  time,
-  index,
-}) => {
-  const stageInformations: {
+const StageInformation: FC<Props> = ({ places, date, time }) => {
+  const stageInformation: {
     id: string;
     isView: boolean;
     icon: FC<SVGProps<SVGElement>>;
-    contents: JSX.Element;
+    text: string;
   }[] = [
     {
       id: "place",
-      isView: !place || !prefecture,
+      isView: !!places,
       icon: IconPlace,
-      contents: (
-        <>
-          {!prefecture && (
-            <>{prefectureWithFixedText(stage.schedule[index].prefecture)}</>
-          )}
-          {!place && stage.schedule[index].place}
-        </>
-      ),
+      text: places!.join("、"),
     },
     {
       id: "schedule",
-      isView: !schedule,
+      isView: !!date,
       icon: IconSchedule,
-      contents: (
-        <>
-          {`${stage.schedule[index].dateFrom}から${stage.schedule[index].dateTo}`}
-        </>
-      ),
+      text: `${date?.from ? `${dateConvert(date.from)}-` : ""}${dateConvert(
+        date?.to ?? ""
+      )}`,
     },
     {
       id: "time",
-      isView: !time,
+      isView: !!time,
       icon: IconTime,
-      contents: (
-        <>
-          {stage.schedule[0].time.matinee && (
-            <>
-              {stage.schedule[0].time.matinee.start[0]}:
-              {stage.schedule[0].time.matinee.start[1]}〜
-              {stage.schedule[0].time.matinee.end[0]}:
-              {stage.schedule[0].time.matinee.end[1]}
-              <br />
-            </>
-          )}
-          {stage.schedule[0].time.soiree && (
-            <>
-              {stage.schedule[0].time.soiree.start[0]}:
-              {stage.schedule[0].time.soiree.start[1]}〜
-              {stage.schedule[0].time.soiree.end[0]}:
-              {stage.schedule[0].time.soiree.end[1]}
-            </>
-          )}
-        </>
-      ),
+      text: `${time?.matinee ? time.matinee : ""}${
+        time?.matinee && time?.soiree ? "、" : ""
+      }${time?.soiree ? time.soiree : ""}`,
     },
   ];
 
   return (
     <Flex flexDir="column" gap="6px" color="black500" fontSize="1.2rem">
-      {stageInformations.map((information) => (
+      {stageInformation.map((information) => (
         <Fragment key={information.id}>
           {information.isView && (
             <Flex gap="4px">
-              <Image as={information.icon} w="15px" h="15px" m="1.5px" />
-              <Text as="span" w="calc(100% - 16px - 4px)">
-                {information.contents}
-              </Text>
+              <Image
+                as={information.icon}
+                w="15px"
+                h="15px"
+                m="1.5px"
+                flex="none"
+              />
+              <Text as="span">{information.text}</Text>
             </Flex>
           )}
         </Fragment>

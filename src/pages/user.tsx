@@ -87,7 +87,7 @@ const User: NextPage = () => {
               bg="white"
               rounded="16px"
               textStyle="lightShadow"
-            ></Center>
+            >好きな出演者の一覧は？ジャンルはどこにだす？</Center>
           </Flex>
           <Flex gap="4px">
             <Image as={ICON_USER_SETTING} fill="black500" />

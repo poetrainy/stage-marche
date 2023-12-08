@@ -295,6 +295,7 @@ const Enquete: NextPage = () => {
               {i < 2 ? (
                 <Center
                   as="button"
+                  type="button"
                   w="240px"
                   h="64px"
                   color="white"
@@ -335,6 +336,7 @@ const Enquete: NextPage = () => {
               ) : (
                 <Center
                   as="button"
+                  type="button"
                   display="flex"
                   w="240px"
                   h="64px"

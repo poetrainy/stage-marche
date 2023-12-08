@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useEffect, useRef, useState } from "react";
-import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Spacer, Text } from "@chakra-ui/react";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
 import StageInformation from "src/components/Stage/Information";
@@ -13,6 +13,8 @@ import CoverImage from "src/components/CoverImage";
 import LayoutWithMaxWidth from "src/components/LayoutWithMaxWidth";
 import StageCasts from "src/components/Stage/Casts";
 import StageMovie from "src/components/Stage/Movie";
+import ContentsBase from "src/components/ContentsBase";
+import FavoriteStageButton from "src/components/FavoriteStageButton";
 
 import { StageType } from "src/types/stage";
 
@@ -20,15 +22,8 @@ import { MOCK_STAGES, MOCK_CASTS, MOCK_COLUMNS } from "src/constants/mock";
 
 import { prefectureWithFixedText } from "src/libs/convert";
 
-import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
-
 type Props = {
   id: string;
-};
-
-type RecommendType = {
-  title: string;
-  component: JSX.Element;
 };
 
 const StageId: NextPage<Props> = ({ id }) => {
@@ -64,14 +59,22 @@ const StageId: NextPage<Props> = ({ id }) => {
   };
 
   const Img = () => (
-    <Box w="100vw" h="264px" overflow="hidden" pos="relative" m="0 -5.5%">
+    <Box w="111.11111%" h="264px" overflow="hidden" pos="relative" m="0 -5.5%">
       <CoverImage path={`stage_img_${stage.id}_01.jpg`} />
     </Box>
   );
 
   const StageInfo = () => (
     <Box>
-      <StageTypeComponent type={stage.type} />
+      <Flex
+        gap="8px"
+        justifyContent="space-between"
+        alignItems="center"
+        pos="relative"
+      >
+        <StageTypeComponent type={stage.type} />
+        <FavoriteStageButton getIsFavorite />
+      </Flex>
       <OriginalSpacer size="4px" />
       <Text fontSize="2.2rem" fontWeight="bold">
         {stage.name}
@@ -86,33 +89,22 @@ const StageId: NextPage<Props> = ({ id }) => {
   );
 
   const Recommend = () => {
-    const recommendArray: RecommendType[] = [
+    const recommends = [
       {
-        title: "関連動画",
+        heading: "関連動画",
         component: <StageMovie urls={stage.youtube} />,
       },
       {
-        title: "あわせて読みたい",
+        heading: "あわせて読みたい",
         component: <ColumnBunner column={MOCK_COLUMNS} />,
       },
       {
-        title: "出演者",
+        heading: "出演者",
         component: <StageCasts casts={casts} />,
       },
     ];
 
-    return (
-      <Flex flexDir="column" gap="32px">
-        {recommendArray.map((item, i) => (
-          <Flex as="section" key={item.title + i} flexDir="column" gap="16px">
-            <Text as="h2" fontSize="1.8rem" fontWeight="bold">
-              {item.title}
-            </Text>
-            {item.component}
-          </Flex>
-        ))}
-      </Flex>
-    );
+    return <ContentsBase data={recommends} fontSize="1.8rem" />;
   };
 
   return (
@@ -177,7 +169,7 @@ const StageId: NextPage<Props> = ({ id }) => {
             <Flex
               flexDir="column"
               gap="10vw"
-              w="100vw"
+              w="111.11111%"
               bg="white"
               p="calc(24px + 5vw) 5vw 5vw"
               m="0 -5.5%"
@@ -216,21 +208,28 @@ const StageId: NextPage<Props> = ({ id }) => {
                     }),
                   }}
                 >
-                  <Flex alignItems="center" gap="16px" w="100%">
-                    <Text
-                      w="calc(100% - 16px - 32px)"
-                      color="black800"
-                      fontWeight="bold"
-                      fontSize="1.8rem"
-                    >
-                      {prefectureWithFixedText(item.prefecture)}
-                    </Text>
-                    <Center as="button" w="32px" h="24px">
-                      <Box as={FAVORITE_ICON} w="24px" h="24px" />
-                    </Center>
-                  </Flex>
+                  <Text
+                    w="calc(100% - 16px - 32px)"
+                    color="black800"
+                    fontWeight="bold"
+                    fontSize="1.8rem"
+                  >
+                    {prefectureWithFixedText(item.prefecture)}
+                  </Text>
                   <OriginalSpacer size="6px" />
-                  <StageInformation stage={stage} time prefecture index={i} />
+                  <StageInformation
+                    places={stage.schedule.map(
+                      (schedule) => schedule.prefecture
+                    )}
+                    date={{
+                      from: stage.schedule[0].dateFrom,
+                      to: stage.schedule[stage.schedule.length - 1].dateTo,
+                    }}
+                    time={{
+                      matinee: stage.schedule[0].time.matinee,
+                      soiree: stage.schedule[0].time.soiree,
+                    }}
+                  />
                   <OriginalSpacer size="16px" />
                   <Box bg="#F6F6F6" p="16px" rounded="16px">
                     {item.seat.monopoly && (

@@ -25,10 +25,7 @@ export const MOCK_STAGES: StageType[] = [
         dateFrom: "2023-1-1",
         dateTo: "2023-4-10",
         time: {
-          matinee: {
-            start: ["17", "00"],
-            end: ["20", "30"],
-          },
+          matinee: "17:00",
           soiree: undefined,
         },
         seat: {
@@ -57,14 +54,8 @@ export const MOCK_STAGES: StageType[] = [
         dateFrom: "2023-1-1",
         dateTo: "2023-4-10",
         time: {
-          matinee: {
-            start: ["13", "00"],
-            end: ["15", "30"],
-          },
-          soiree: {
-            start: ["17", "00"],
-            end: ["20", "30"],
-          },
+          matinee: "13:00",
+          soiree: "17:00",
         },
         seat: {
           monopoly: undefined,
@@ -101,10 +92,7 @@ export const MOCK_STAGES: StageType[] = [
         dateTo: "2023-4-10",
         time: {
           matinee: undefined,
-          soiree: {
-            start: ["17", "00"],
-            end: ["20", "30"],
-          },
+          soiree: "17:00",
         },
         seat: {
           monopoly: {
@@ -144,10 +132,7 @@ export const MOCK_STAGES: StageType[] = [
         dateFrom: "2023-1-1",
         dateTo: "2023-4-10",
         time: {
-          matinee: {
-            start: ["17", "00"],
-            end: ["20", "30"],
-          },
+          matinee: "17:00",
           soiree: undefined,
         },
         seat: {

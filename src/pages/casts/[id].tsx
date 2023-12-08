@@ -15,6 +15,7 @@ import {
   imageWithDirectoryPath,
   pathWithAuthenticator,
 } from "src/libs/convert";
+import FavoriteActorButton from "src/components/FavoriteActorButton";
 
 type Props = {
   cast: CastType;
@@ -36,8 +37,6 @@ const CastId: NextPage<Props> = ({ cast }) => {
       };
     });
 
-  console.log(recommendCasts);
-
   const castObjects = [
     {
       heading: "出演している作品",
@@ -52,13 +51,9 @@ const CastId: NextPage<Props> = ({ cast }) => {
     {
       heading: "こんな共演者もいます",
       component: (
-        <Flex as="ul" flexWrap="wrap" gap="8px" w="100%">
+        <Flex as="ul" flexDir="column" gap="12px" w="100%">
           {recommendCasts.map((recommendCast) => (
-            <Box
-              as="li"
-              key={`recommend${recommendCast.cast?.id}`}
-              w="calc(50% - 4px)"
-            >
+            <Box as="li" key={`recommend${recommendCast.cast?.id}`}>
               <Flex
                 as={NextLink}
                 href={pathWithAuthenticator(`/casts/${recommendCast.cast?.id}`)}
@@ -70,21 +65,31 @@ const CastId: NextPage<Props> = ({ cast }) => {
                   src={imageWithDirectoryPath(
                     `cast_${recommendCast.cast?.id}.jpg`
                   )}
-                  w="48px"
-                  h="48px"
+                  w="56px"
+                  h="56px"
                   overflow="hidden"
                   rounded="full"
                 />
-                <Box w="calc(100% - 64px - 8px)">
-                  <Text as="span" display="block" color="black500" fontSize="1rem">
+                <Flex flexDir="column" gap="4px" w="calc(100% - 64px - 8px)">
+                  <Text
+                    as="span"
+                    display="block"
+                    color="black500"
+                    fontSize="1rem"
+                  >
                     {`${recommendCast.stage[0].name}${
                       recommendCast.stage.length >= 2 ? "他" : ""
                     } 出演`}
                   </Text>
-                  <Text as="span" display="block" fontWeight="bold">
+                  <Text
+                    as="span"
+                    display="block"
+                    fontSize="1.6rem"
+                    fontWeight="bold"
+                  >
                     {recommendCast.cast?.name}
                   </Text>
-                </Box>
+                </Flex>
               </Flex>
             </Box>
           ))}
@@ -104,22 +109,25 @@ const CastId: NextPage<Props> = ({ cast }) => {
       />
       <Flex
         flexDir="column"
-        gap="32px"
+        gap="40px"
         p="80px 0 64px"
         pos="relative"
         textStyle="bodyW"
       >
         <Back />
         <Flex alignItems="center" flexDir="column" gap="8px" m="auto">
-          <Image
-            src={imageWithDirectoryPath(`cast_${cast.id}.jpg`)}
-            w="120px"
-            h="120px"
-            rounded="full"
-            overflow="hidden"
-            border="5px solid white"
-            textStyle="lightShadow"
-          />
+          <Box w="120px" h="120px" pos="relative">
+            <Image
+              src={imageWithDirectoryPath(`cast_${cast.id}.jpg`)}
+              w="100%"
+              h="100%"
+              rounded="full"
+              overflow="hidden"
+              border="5px solid white"
+              textStyle="lightShadow"
+            />
+            <FavoriteActorButton />
+          </Box>
           <Heading as="h1" w="fit-content" fontSize="2.2rem">
             {cast.name}
           </Heading>
@@ -127,7 +135,7 @@ const CastId: NextPage<Props> = ({ cast }) => {
             {cast.description}
           </Text>
         </Flex>
-        <ContentsBase data={castObjects} fontSize="1.6rem" />
+        <ContentsBase data={castObjects} fontSize="1.8rem" />
       </Flex>
     </>
   );

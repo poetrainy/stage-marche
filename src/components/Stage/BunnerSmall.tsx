@@ -1,15 +1,18 @@
 import { FC } from "react";
-import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
 import StageTypeComponent from "src/components/Stage/Type";
 import StageInformation from "src/components/Stage/Information";
+import FavoriteStageButton from "src/components/FavoriteStageButton";
 
 import { StageType } from "src/types/stage";
 
-import { imageWithDirectoryPath, pathWithAuthenticator } from "src/libs/convert";
-import FavoriteButton from "src/components/FavoriteButton";
+import {
+  imageWithDirectoryPath,
+  pathWithAuthenticator,
+} from "src/libs/convert";
 
 type Props = {
   stages: StageType[];
@@ -17,7 +20,7 @@ type Props = {
 
 const StageBunnerSmall: FC<Props> = ({ stages }) => {
   return (
-    <Box w="100vw" overflow="scroll" m="0 -5.5%" p="0 5vw">
+    <Box w="111.11111%" overflow="scroll" m="0 -5.5%" p="0 5vw">
       <Flex gap="12px" w={`calc(160px * ${stages.length})`}>
         {stages.map((stage, i) => (
           <Flex
@@ -51,7 +54,7 @@ const StageBunnerSmall: FC<Props> = ({ stages }) => {
                   pos="absolute"
                   inset="0 0 0 0"
                 />
-                <FavoriteButton/>
+                <FavoriteStageButton getIsFavorite isFixed />
               </Box>
               <OriginalSpacer size="8px" />
               <StageTypeComponent type={stage.type} />
@@ -61,7 +64,13 @@ const StageBunnerSmall: FC<Props> = ({ stages }) => {
               </Text>
               <OriginalSpacer size="8px" />
             </Box>
-            <StageInformation stage={stage} index={0} time place />
+            <StageInformation
+              places={stage.schedule.map((schedule) => schedule.prefecture)}
+              date={{
+                from: stage.schedule[0].dateFrom,
+                to: stage.schedule[stage.schedule.length - 1].dateTo,
+              }}
+            />
           </Flex>
         ))}
       </Flex>

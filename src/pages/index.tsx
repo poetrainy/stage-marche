@@ -47,7 +47,7 @@ const Home: NextPage = () => {
         MOCK_USER.prefecture
       )}中の作品があります`,
       component: (
-        <Box w="100vw" overflow="hidden" pos="relative" m="0 -5.5%">
+        <Box w="111.11111%" overflow="hidden" pos="relative" m="0 -5.5%">
           <Flex
             as="ul"
             w={`calc(100% * ${MOCK_STAGES.length})`}
@@ -153,6 +153,7 @@ const Home: NextPage = () => {
           </Flex>
           <Box
             as="button"
+            type="button"
             onClick={() => prev()}
             inset="0 auto 22px 16px"
             textStyle="button"
@@ -185,6 +186,7 @@ const Home: NextPage = () => {
           />
           <Box
             as="button"
+            type="button"
             onClick={() => next()}
             inset="0 16px 22px auto"
             textStyle="button"

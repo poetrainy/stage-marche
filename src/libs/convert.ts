@@ -11,3 +11,5 @@ export const imageWithDirectoryPath = (src: string) => `/images/${src}`;
 
 export const prefectureWithFixedText = (prefecture: string) =>
   `${prefecture === "北海道" ? prefecture : prefecture.slice(0, -1)}公演`;
+
+export const dateConvert = (date: string) => date.replaceAll("-", ".");

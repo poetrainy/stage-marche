@@ -8,6 +8,7 @@ type Props = {
 const IconClose: FC<Props> = ({ onClick }) => (
   <Center
     as="button"
+    type="button"
     w="40px"
     h="40px"
     pos="absolute"
