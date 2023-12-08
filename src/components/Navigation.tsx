@@ -31,7 +31,7 @@ const Navigation: FC<Props> = ({ path }) => {
       ).map((item) => (
         <Flex
           as={NextLink}
-          href={`${pathWithAuthenticator(item.path)}`}
+          href={pathWithAuthenticator(item.path)}
           passHref
           key={item.path}
           flexDir="column"

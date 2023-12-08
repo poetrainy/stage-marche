@@ -8,7 +8,7 @@ import StageInformation from "src/components/Stage/Information";
 
 import { StageType } from "src/types/stage";
 
-import { pathWithAuthenticator } from "src/libs/convert";
+import { imageWithDirectoryPath, pathWithAuthenticator } from "src/libs/convert";
 
 import IconFavorite from "src/assets/svg/navigation_favorite.svg";
 
@@ -23,7 +23,7 @@ const StageBunnerSmall: FC<Props> = ({ stages }) => {
         {stages.map((stage, i) => (
           <Flex
             as={NextLink}
-            href={`${pathWithAuthenticator(`/stages/${stage.path}`)}`}
+            href={pathWithAuthenticator(`/stages/${stage.id}`)}
             passHref
             key={stage.name + i}
             flexDirection="column"
@@ -45,7 +45,7 @@ const StageBunnerSmall: FC<Props> = ({ stages }) => {
                 boxShadow="0px 0px 3px rgba(0, 0, 0, 0.1)"
               >
                 <Image
-                  src={stage.images[0]}
+                  src={imageWithDirectoryPath(`stage_img_${stage.id}_01.jpg`)}
                   w="100%"
                   h="100%"
                   objectFit="cover"
