@@ -9,8 +9,7 @@ import StageInformation from "src/components/Stage/Information";
 import { StageType } from "src/types/stage";
 
 import { imageWithDirectoryPath, pathWithAuthenticator } from "src/libs/convert";
-
-import IconFavorite from "src/assets/svg/navigation_favorite.svg";
+import FavoriteButton from "src/components/FavoriteButton";
 
 type Props = {
   stages: StageType[];
@@ -52,16 +51,7 @@ const StageBunnerSmall: FC<Props> = ({ stages }) => {
                   pos="absolute"
                   inset="0 0 0 0"
                 />
-                <Center
-                  w="40px"
-                  h="40px"
-                  bg="primary"
-                  pos="absolute"
-                  inset="8px auto auto 4px"
-                  rounded="full"
-                >
-                  <Image as={IconFavorite} />
-                </Center>
+                <FavoriteButton/>
               </Box>
               <OriginalSpacer size="8px" />
               <StageTypeComponent type={stage.type} />

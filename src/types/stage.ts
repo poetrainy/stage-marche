@@ -63,5 +63,3 @@ export type CastType = {
   name: string;
   description: string;
 };
-
-export type favType = { data: number; place: number };
