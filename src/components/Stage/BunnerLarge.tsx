@@ -7,8 +7,10 @@ import StageGenre from "src/components/Stage/Genre";
 import StageInformation from "src/components/Stage/Information";
 import { StageType } from "src/types/stage";
 
-import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
-import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import {
+  pathWithAuthenticator,
+  imageWithDirectoryPath,
+} from "src/libs/convert";
 
 type Props = {
   stage: StageType;

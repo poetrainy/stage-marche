@@ -1,15 +1,16 @@
 import type { NextPage } from "next";
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 
-import { CastType } from "src/types/stage";
-
-import { MOCK_CASTS, MOCK_STAGES } from "src/constants/mock";
-
-import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
 import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
 import ContentsBase from "src/components/ContentsBase";
 import StageMovie from "src/components/Stage/Movie";
 import Back from "src/components/Back";
+
+import { CastType } from "src/types/stage";
+
+import { MOCK_CASTS, MOCK_STAGES } from "src/constants/mock";
+
+import { imageWithDirectoryPath } from "src/libs/convert";
 
 type Props = {
   cast: CastType;

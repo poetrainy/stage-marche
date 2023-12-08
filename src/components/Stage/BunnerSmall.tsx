@@ -8,7 +8,7 @@ import StageInformation from "src/components/Stage/Information";
 
 import { StageType } from "src/types/stage";
 
-import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
+import { pathWithAuthenticator } from "src/libs/convert";
 
 import IconFavorite from "src/assets/svg/navigation_favorite.svg";
 

@@ -2,7 +2,8 @@ import { FC, Fragment, SVGProps } from "react";
 import { Flex, Image, Text } from "@chakra-ui/react";
 
 import { StageType } from "src/types/stage";
-import { PREFECTURES } from "src/constants/stage";
+
+import { prefectureWithFixedText } from "src/libs/convert";
 
 import IconSchedule from "src/assets/svg/stage_info_schedule.svg";
 import IconPlace from "src/assets/svg/stage_info_place.svg";
@@ -37,7 +38,9 @@ const StageInformation: FC<Props> = ({
       icon: IconPlace,
       contents: (
         <>
-          {!prefecture && <>{`${stage.schedule[index].prefecture}公演`}</>}
+          {!prefecture && (
+            <>{prefectureWithFixedText(stage.schedule[index].prefecture)}</>
+          )}
           {!place && stage.schedule[index].place}
         </>
       ),

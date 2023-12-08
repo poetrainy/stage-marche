@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import Layout from "src/components/Layout";
 import StageInformation from "src/components/Stage/Information";
 
-import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
+import { pathWithAuthenticator } from "src/libs/convert";
 
 import { MOCK_STAGES } from "src/constants/mock";
 

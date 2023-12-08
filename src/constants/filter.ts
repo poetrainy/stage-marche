@@ -1,3 +1,5 @@
+import { MOCK_USER } from "src/constants/mock";
+import { prefectureWithFixedText } from "src/libs/convert";
 import { FilterContentsType } from "src/types/search";
 
 export const FILTER_STAGES: FilterContentsType[] = [
@@ -26,7 +28,7 @@ export const FILTER_STAGES: FilterContentsType[] = [
     condition: "こだわり",
     item: [
       "はじめてのB席",
-      "大阪公演がある",
+      `${prefectureWithFixedText(MOCK_USER.prefecture)}がある`,
       "動画がある",
       "コラムが読める",
       "配信公演がある",
@@ -45,6 +47,10 @@ export const FILTER_COLUMNS: FilterContentsType[] = [
   },
   {
     condition: "こだわり",
-    item: ["はじめてのB席", "大阪公演がある", "配信公演がある"],
+    item: [
+      "はじめてのB席",
+      `${prefectureWithFixedText(MOCK_USER.prefecture)}がある`,
+      "配信公演がある",
+    ],
   },
 ];

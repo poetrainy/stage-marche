@@ -6,8 +6,7 @@ import Layout from "src/components/Layout";
 
 import { MOCK_USER } from "src/constants/mock";
 
-import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
-
+import { pathWithAuthenticator } from "src/libs/convert";
 import { onLocalStorageAuthenticate } from "src/libs/authenticate";
 
 import ICON_USER_SETTING from "src/assets/svg/icon_user_setting.svg";

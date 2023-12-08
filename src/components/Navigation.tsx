@@ -3,8 +3,9 @@ import NextLink from "next/link";
 import { Flex, Image, Text } from "@chakra-ui/react";
 
 import { NAVIGATION_CONTENTS } from "src/constants/nav";
-import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
 import { isLocalStorageSignIn } from "src/libs/authenticate";
+
+import { pathWithAuthenticator } from "src/libs/convert";
 
 type Props = {
   path: string;

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Center } from "@chakra-ui/react";
 
-import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import { imageWithDirectoryPath } from "src/libs/convert";
 
 import { SEAT_STATUSES } from "src/constants/stage";
 

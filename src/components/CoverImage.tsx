@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Box, Image } from "@chakra-ui/react";
-import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import { imageWithDirectoryPath } from "src/libs/convert";
 
 type Props = {
   path: string;

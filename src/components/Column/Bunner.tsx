@@ -8,8 +8,10 @@ import ColumnDate from "src/components/Column/Date";
 
 import { ColumnType } from "src/types/column";
 
-import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
-import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import {
+  pathWithAuthenticator,
+  imageWithDirectoryPath,
+} from "src/libs/convert";
 
 type Props = {
   column: ColumnType[];

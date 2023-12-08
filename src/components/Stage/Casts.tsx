@@ -4,7 +4,7 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 import { CastType } from "src/types/stage";
 
-import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import { imageWithDirectoryPath } from "src/libs/convert";
 
 type Props = {
   casts: CastType[];
@@ -14,7 +14,12 @@ const StageCasts: FC<Props> = ({ casts }) => (
   <Flex as="ul" gap="14px 4%" flexWrap="wrap" w="100%">
     {casts.map((cast) => (
       <Box as="li" key={cast.id} w="22%">
-        <Flex as={NextLink} href={`/casts/${cast.id}`} flexDir="column" gap="8px">
+        <Flex
+          as={NextLink}
+          href={`/casts/${cast.id}`}
+          flexDir="column"
+          gap="8px"
+        >
           <Box
             w="100%"
             pt="100%"

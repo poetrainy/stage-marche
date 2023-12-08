@@ -12,13 +12,15 @@ import Back from "src/components/Back";
 import CoverImage from "src/components/CoverImage";
 import LayoutWithMaxWidth from "src/components/LayoutWithMaxWidth";
 import StageCasts from "src/components/Stage/Casts";
+import StageMovie from "src/components/Stage/Movie";
 
 import { StageType } from "src/types/stage";
 
 import { MOCK_STAGES, MOCK_CASTS, MOCK_COLUMNS } from "src/constants/mock";
 
+import { prefectureWithFixedText } from "src/libs/convert";
+
 import FAVORITE_ICON from "src/assets/svg/navigation_favorite.svg";
-import StageMovie from "src/components/Stage/Movie";
 
 type Props = {
   id: string;
@@ -221,7 +223,7 @@ const StageId: NextPage<Props> = ({ id }) => {
                       fontWeight="bold"
                       fontSize="1.8rem"
                     >
-                      {`${item.prefecture}公演`}
+                      {prefectureWithFixedText(item.prefecture)}
                     </Text>
                     <Center as="button" w="32px" h="24px">
                       <Box as={FAVORITE_ICON} w="24px" h="24px" />

@@ -8,8 +8,10 @@ import PreText from "src/components/PreText";
 
 import { PREFECTURES } from "src/constants/stage";
 
-import { pathWithAuthenticator } from "src/libs/pathWithAuthenticator";
-import { imageWithDirectoryPath } from "src/libs/imageWithDirectoryPath";
+import {
+  pathWithAuthenticator,
+  imageWithDirectoryPath,
+} from "src/libs/convert";
 import { onLocalStorageAuthenticate } from "src/libs/authenticate";
 
 import SvgImageEnqueteGenre from "src/assets/svg/enquete_1_genre.svg";
