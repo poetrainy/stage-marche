@@ -20,11 +20,12 @@ const Navigation: FC<Props> = ({ path }) => {
       w="100vw"
       h="96px"
       bg="white"
+      m="auto"
       pos="fixed"
-      inset="auto auto -1px 0"
-      textStyle="deepShadow"
-      rounded="30px 30px 0px 0px"
+      inset="auto 0 -1px 0"
+      rounded="28px 28px 0px 0px"
       zIndex="10"
+      textStyle="deepShadow"
     >
       {NAVIGATION_CONTENTS.filter((content) =>
         isLocalStorageSignIn() ? true : content.path !== "/user"

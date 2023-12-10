@@ -33,8 +33,9 @@ const Header: FC<Props> = ({ path, isBack, isSearch }) => {
         bg="white"
         fontSize="1.9rem"
         fontWeight="bold"
+        m="auto"
         pos="fixed"
-        inset="0 0 auto auto"
+        inset="0 0 auto 0"
         textStyle="lightShadow"
         zIndex="10"
       >

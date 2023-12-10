@@ -20,9 +20,10 @@ const Modal: FC<Props> = ({ isOpen, onClose, target, filter }) => {
       w="100vw"
       h="100vh"
       bg="white"
+      m="auto"
       p="64px 0"
       pos="fixed"
-      inset="0 0 auto auto"
+      inset="0 0 0 0"
       zIndex="15"
       textAlign="center"
       transition="transform 0.3s"
@@ -30,7 +31,7 @@ const Modal: FC<Props> = ({ isOpen, onClose, target, filter }) => {
     >
       <Center
         as="header"
-        w="100vw"
+        w="100%"
         h="64px"
         fontSize="1.7rem"
         fontWeight="bold"
@@ -62,7 +63,7 @@ const Modal: FC<Props> = ({ isOpen, onClose, target, filter }) => {
         <Input
           placeholder={`フリーワードで${target}を絞り込み`}
           value={inputValue}
-          w="90vw"
+          w="90%"
           h="48px"
           rounded="full"
           fontSize="1.6rem"
