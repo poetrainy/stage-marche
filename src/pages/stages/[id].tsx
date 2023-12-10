@@ -60,7 +60,7 @@ const StageId: NextPage<Props> = ({ id }) => {
 
   const Img = () => (
     <Box w="111.11111%" h="264px" overflow="hidden" pos="relative" m="0 -5.5%">
-      <CoverImage path={`stage_img_${stage.id}_01.jpg`} />
+      <CoverImage path={`stage_${stage.id}.jpg`} />
     </Box>
   );
 

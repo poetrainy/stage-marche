@@ -31,7 +31,7 @@ const ColumnId: NextPage<Props> = ({ column }) => (
       </Box>
       <Flex flexDir="column" gap="16px" bg="white" p="32px 0 24px">
         <Image
-          src={imageWithDirectoryPath(`column_0${column.id}.jpg`)}
+          src={imageWithDirectoryPath(`column_${column.id}.jpg`)}
           w="100%"
           h="240px"
           objectFit="cover"

@@ -73,7 +73,7 @@ const Home: NextPage = () => {
                   position="relative"
                   overflow="hidden"
                 >
-                  <CoverImage path={`stage_img_${item.id}_01.jpg`} />
+                  <CoverImage path={`stage_${item.id}.jpg`} />
                   <Box
                     w="100%"
                     bg={

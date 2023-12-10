@@ -37,7 +37,7 @@ const StageCardLarge: FC<Props> = ({ stage }) => (
       boxShadow="0px 0px 3px rgba(0, 0, 0, 0.1)"
     >
       <Image
-        src={imageWithDirectoryPath(`stage_img_${stage.id}_01.jpg`)}
+        src={imageWithDirectoryPath(`stage_${stage.id}.jpg`)}
         w="100%"
         h="100%"
         objectFit="cover"

@@ -66,7 +66,7 @@ const ColumnCard: FC<Props> = ({ column }) => {
           </Box>
           <Box w="35%" pt="50%" pos="relative" rounded="8px" overflow="hidden">
             <Image
-              src={imageWithDirectoryPath(`column_0${column.id}.jpg`)}
+              src={imageWithDirectoryPath(`column_${column.id}.jpg`)}
               w="100%"
               h="100%"
               pos="absolute"
