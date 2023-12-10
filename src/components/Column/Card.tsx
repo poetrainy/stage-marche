@@ -17,7 +17,7 @@ type Props = {
   column: ColumnType[];
 };
 
-const ColumnBunner: FC<Props> = ({ column }) => {
+const ColumnCard: FC<Props> = ({ column }) => {
   return (
     <Flex flexDir="column" gap="12px">
       {column.map((item, i) => (
@@ -73,4 +73,4 @@ const ColumnBunner: FC<Props> = ({ column }) => {
   );
 };
 
-export default ColumnBunner;
+export default ColumnCard;

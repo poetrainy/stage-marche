@@ -16,7 +16,7 @@ type Props = {
   stage: StageType;
 };
 
-const StageBunnerLarge: FC<Props> = ({ stage }) => (
+const StageCardLarge: FC<Props> = ({ stage }) => (
   <Flex
     as={NextLink}
     href={pathWithAuthenticator(`stages/${stage.id}`)}
@@ -64,4 +64,4 @@ const StageBunnerLarge: FC<Props> = ({ stage }) => (
   </Flex>
 );
 
-export default StageBunnerLarge;
+export default StageCardLarge;

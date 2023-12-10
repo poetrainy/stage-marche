@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import NextLink from "next/link";
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 
-import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
+import StageCardLargeWrapper from "src/components/Stage/CardLargeWrapper";
 import ContentsBase from "src/components/ContentsBase";
 import StageMovie from "src/components/Stage/Movie";
 import Back from "src/components/Back";
@@ -40,7 +40,7 @@ const CastId: NextPage<Props> = ({ cast }) => {
   const castObjects = [
     {
       heading: "出演している作品",
-      component: <StageBunnerLargeWrapper stages={stages} />,
+      component: <StageCardLargeWrapper stages={stages} />,
     },
     {
       heading: "配信中の動画",

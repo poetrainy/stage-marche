@@ -7,7 +7,7 @@ import StageInformation from "src/components/Stage/Information";
 import StageTypeComponent from "src/components/Stage/Type";
 import StageSeat from "src/components/Stage/Seat";
 import StageGenre from "src/components/Stage/Genre";
-import ColumnBunner from "src/components/Column/Bunner";
+import ColumnCard from "src/components/Column/Card";
 import Back from "src/components/Back";
 import CoverImage from "src/components/CoverImage";
 import LayoutWithMaxWidth from "src/components/LayoutWithMaxWidth";
@@ -96,7 +96,7 @@ const StageId: NextPage<Props> = ({ id }) => {
       },
       {
         heading: "あわせて読みたい",
-        component: <ColumnBunner column={MOCK_COLUMNS} />,
+        component: <ColumnCard column={MOCK_COLUMNS} />,
       },
       {
         heading: "出演者",

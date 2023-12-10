@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-const SignInSuccessBunner: FC = () => {
+const SignInSuccessCard: FC = () => {
   const [isNewUser, setIsNewUser] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [isDisplay, setIsDisplay] = useState<boolean>(true);
@@ -51,4 +51,4 @@ const SignInSuccessBunner: FC = () => {
   );
 };
 
-export default SignInSuccessBunner;
+export default SignInSuccessCard;

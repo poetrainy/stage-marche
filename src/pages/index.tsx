@@ -6,9 +6,9 @@ import NextLink from "next/link";
 import Layout from "src/components/Layout";
 import OriginalSpacer from "src/components/OriginalSpacer";
 import StageTypeComponent from "src/components/Stage/Type";
-import StageBunnerLargeWrapper from "src/components/Stage/BunnerLargeWrapper";
+import StageCardLargeWrapper from "src/components/Stage/CardLargeWrapper";
 import CoverImage from "src/components/CoverImage";
-import StageBunnerSmall from "src/components/Stage/BunnerSmall";
+import StageCardSmallWrapper from "src/components/Stage/CardSmallWrapper";
 import ContentsBase from "src/components/ContentsBase";
 import StageCasts from "src/components/Stage/Casts";
 
@@ -222,11 +222,11 @@ const Home: NextPage = () => {
     },
     {
       heading: "B席に余裕があります",
-      component: <StageBunnerLargeWrapper stages={MOCK_STAGES} />,
+      component: <StageCardLargeWrapper stages={MOCK_STAGES} />,
     },
     {
       heading: "気になる公演",
-      component: <StageBunnerSmall stages={MOCK_STAGES} />,
+      component: <StageCardSmallWrapper stages={MOCK_STAGES} />,
     },
     {
       heading: "最近見ている出演者",
