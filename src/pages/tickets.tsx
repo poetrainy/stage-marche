@@ -7,10 +7,20 @@ import StageInformation from "src/components/Stage/Information";
 
 import { pathWithAuthenticator } from "src/libs/convert";
 
-import { MOCK_STAGES } from "src/constants/mock";
+import { MOCK_STAGES, MOCK_USER } from "src/constants/mock";
 
 const Tickets: NextPage = () => {
-  const flag: boolean[] = [true, false, false];
+  const UserBoughtTicketsStages = MOCK_USER.tickets.map((stage) => {
+    return {
+      stage: MOCK_STAGES.find(({ path }) => stage.stageId === path),
+      place: stage.place,
+      // place: returnStage.schedule.find(({ id }) => stage.scheduleId === id)
+      //   ?.place,
+      date: stage.date,
+      time: stage.time,
+      isCompleted: stage.isCompleted,
+    };
+  });
 
   return (
     <Layout isFixedObjectsView>
@@ -24,12 +34,12 @@ const Tickets: NextPage = () => {
           zIndex={-1}
         />
         <Flex flexDir="column" gap="16px">
-          {MOCK_STAGES.map((stage, i) => (
+          {UserBoughtTicketsStages.map((stage, i) => (
             <Flex
               as={NextLink}
-              href={pathWithAuthenticator(`stages/${stage.path}`)}
+              href={pathWithAuthenticator(`stages/${stage.stage?.path}`)}
               passHref
-              key={stage.name + i}
+              key={stage.stage?.path + stage.date}
               minH="176px"
             >
               <Flex
@@ -49,7 +59,7 @@ const Tickets: NextPage = () => {
                     h: "100%",
                     borderRightColor: "black500",
                     borderRightStyle: "dotted",
-                    borderRightw: "3px",
+                    borderRightWidth: "3px",
                     position: "absolute",
                     inset: "0 -2px auto auto",
                   },
@@ -62,20 +72,16 @@ const Tickets: NextPage = () => {
                     fontSize="2rem"
                     fontWeight="bold"
                   >
-                    {stage.name}
+                    {stage.stage?.name}
                   </Text>
                 </Box>
                 <StageInformation
-                  places={[stage.schedule[0].place]}
-                  date={{ to: stage.schedule[0].dateFrom }}
-                  time={{
-                    matinee:
-                      stage.schedule[0].time.matinee ??
-                      stage.schedule[0].time.soiree,
-                  }}
+                  places={[stage.place ?? ""]}
+                  date={{ to: stage.date }}
+                  time={{ matinee: stage.time }}
                 />
               </Flex>
-              {flag[i] && (
+              {stage.isCompleted && (
                 <Box
                   w="23%"
                   bg="rgba(255, 255, 255, 0.95)"

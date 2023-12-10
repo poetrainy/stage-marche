@@ -21,6 +21,7 @@ export const MOCK_STAGES: StageType[] = [
     ],
     schedule: [
       {
+        id: 1,
         place: "梅田芸術劇場 メインホール",
         prefecture: "大阪府",
         dateFrom: "2023-1-1",
@@ -50,6 +51,7 @@ export const MOCK_STAGES: StageType[] = [
         },
       },
       {
+        id: 2,
         place: "博多座",
         prefecture: "福岡県",
         dateFrom: "2023-1-1",
@@ -88,6 +90,7 @@ export const MOCK_STAGES: StageType[] = [
     casts: ["inoueyoshio"],
     schedule: [
       {
+        id: 1,
         place: "兵庫県立芸術文化センター 阪急中ホール",
         prefecture: "兵庫県",
         dateFrom: "2023-1-1",
@@ -130,6 +133,7 @@ export const MOCK_STAGES: StageType[] = [
     casts: ["domotokoichi", "kitayamahiromitsu", "satoshori"],
     schedule: [
       {
+        id: 1,
         place: "梅田芸術劇場 メインホール",
         prefecture: "大阪府",
         dateFrom: "2023-1-1",
@@ -241,9 +245,27 @@ export const MOCK_USER: UserType = {
   tickets: [
     {
       stageId: "elizabeth",
+      scheduleId: 2,
       place: "博多座",
       date: "2023-1-28",
       time: "13:00",
+      isCompleted: true,
+    },
+    {
+      stageId: "endlessshock",
+      scheduleId: 1,
+      place: "梅田芸術劇場 メインホール",
+      date: "2023-1-28",
+      time: "13:00",
+      isCompleted: false,
+    },
+    {
+      stageId: "shibiregumo",
+      scheduleId: 1,
+      place: "兵庫県立芸術文化センター 阪急中ホール",
+      date: "2023-1-28",
+      time: "13:00",
+      isCompleted: false,
     },
   ],
   favoriteStages: ["elizabeth", "endlessshock"],

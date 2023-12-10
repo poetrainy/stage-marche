@@ -59,7 +59,7 @@ const textStyles = {
   bodyW: {
     w: "90vw",
     maxW: "400px",
-    margin: "0 auto",
+    m: "0 auto",
   },
   lightShadow: {
     boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.05)",

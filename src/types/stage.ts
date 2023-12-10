@@ -24,6 +24,7 @@ export type StageType = {
   youtube: string[];
   casts: string[];
   schedule: {
+    id: number;
     place: string;
     prefecture: string;
     dateFrom: string;

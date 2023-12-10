@@ -29,14 +29,23 @@ const ColumnId: NextPage<Props> = ({ column }) => (
         </Text>
         <StageGenre data={column} isColumn />
       </Box>
-      <Flex flexDir="column" gap="16px" bg="white" p="32px 0 24px">
+      <Flex
+        flexDir="column"
+        gap="16px"
+        bg="white"
+        w="100%"
+        maxW="400px"
+        m="0 auto"
+        p="32px 0 24px"
+        rounded="24px"
+      >
         <Image
           src={imageWithDirectoryPath(`column_${column.path}.jpg`)}
           w="100%"
           h="240px"
-          objectFit="cover"
+          objectFit="contain"
         />
-        <Text as="pre" p="0 5vw" lineHeight="2.6rem">
+        <Text as="pre" p="0 5%" lineHeight="2.6rem">
           {column.text}
         </Text>
       </Flex>
@@ -48,7 +57,7 @@ export default ColumnId;
 
 export const getStaticPaths = async () => {
   const paths = MOCK_COLUMNS.map(({ id }) => ({
-    params: { id: id },
+    params: { id: String(id) },
   }));
   return {
     paths,

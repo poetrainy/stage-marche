@@ -5,9 +5,11 @@ export type UserType = {
   doneStamps: number;
   tickets: {
     stageId: string;
+    scheduleId: number;
     place: string;
     date: string;
     time: string;
+    isCompleted: boolean;
   }[];
   favoriteStages: string[];
   recentCasts: string[];
