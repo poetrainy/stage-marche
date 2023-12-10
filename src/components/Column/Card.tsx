@@ -4,13 +4,13 @@ import { Box, Flex, Image, Text } from "@chakra-ui/react";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
 import StageGenre from "src/components/Stage/Genre";
-import ColumnDate from "src/components/Column/Date";
 
 import { ColumnType } from "src/types/column";
 
 import {
   pathWithAuthenticator,
   imageWithDirectoryPath,
+  dateConvertToJapanese,
 } from "src/libs/convert";
 
 type Props = {
@@ -20,12 +20,12 @@ type Props = {
 const ColumnCard: FC<Props> = ({ column }) => {
   return (
     <Flex flexDir="column" gap="12px">
-      {column.map((item, i) => (
+      {column.map((column, i) => (
         <Flex
           as={NextLink}
-          href={pathWithAuthenticator(`columns/${item.id}`)}
+          href={pathWithAuthenticator(`columns/${column.id}`)}
           passHref
-          key={item.title + i}
+          key={column.title}
           alignItems="center"
           gap="5%"
           w="100%"
@@ -35,10 +35,17 @@ const ColumnCard: FC<Props> = ({ column }) => {
           textStyle="lightShadow"
         >
           <Box w="60%">
-            <ColumnDate data={item} />
+            <Text
+              as="span"
+              color="black400"
+              fontSize="1.1rem"
+              fontWeight="bold"
+            >
+              {dateConvertToJapanese(column.date)}
+            </Text>
             <OriginalSpacer size="2px" />
             <Text fontSize="1.5rem" fontWeight="bold">
-              {item.title}
+              {column.title}
             </Text>
             <OriginalSpacer size="4px" />
             <Text
@@ -52,14 +59,14 @@ const ColumnCard: FC<Props> = ({ column }) => {
                 WebkitLineClamp: "3",
               }}
             >
-              {item.text}
+              {column.text}
             </Text>
             <OriginalSpacer size="4px" />
-            <StageGenre data={item} isColumn />
+            <StageGenre data={column} isColumn />
           </Box>
           <Box w="35%" pt="50%" pos="relative" rounded="8px" overflow="hidden">
             <Image
-              src={imageWithDirectoryPath(`column_0${item.id}.jpg`)}
+              src={imageWithDirectoryPath(`column_0${column.id}.jpg`)}
               w="100%"
               h="100%"
               pos="absolute"
