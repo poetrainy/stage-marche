@@ -13,10 +13,10 @@ type Props = {
 const StageCasts: FC<Props> = ({ casts }) => (
   <Flex as="ul" gap="14px 4%" flexWrap="wrap" w="100%">
     {casts.map((cast) => (
-      <Box as="li" key={cast.id} w="22%">
+      <Box as="li" key={cast.path} w="22%">
         <Flex
           as={NextLink}
-          href={`/casts/${cast.id}`}
+          href={`/casts/${cast.path}`}
           flexDir="column"
           gap="8px"
         >
@@ -29,7 +29,7 @@ const StageCasts: FC<Props> = ({ casts }) => (
             pos="relative"
           >
             <Image
-              src={imageWithDirectoryPath(`cast_${cast.id}.jpg`)}
+              src={imageWithDirectoryPath(`cast_${cast.path}.jpg`)}
               w="100%"
               h="100%"
               pos="absolute"

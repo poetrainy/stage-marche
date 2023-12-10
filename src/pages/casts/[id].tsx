@@ -22,17 +22,17 @@ type Props = {
 };
 
 const CastId: NextPage<Props> = ({ cast }) => {
-  const stages = MOCK_STAGES.filter((stage) => stage.casts.includes(cast.id));
+  const stages = MOCK_STAGES.filter(({ casts }) => casts.includes(cast.path));
   /**
    * 同じ舞台に出演しているキャストを掲載する
    * 上限4人
    *  */
   const recommendCasts = [...new Set(stages.map(({ casts }) => casts).flat())]
-    .filter((resultCast) => resultCast !== cast.id)
+    .filter((resultCast) => resultCast !== cast.path)
     .splice(-4)
     .map((cast) => {
       return {
-        cast: MOCK_CASTS.find(({ id }) => id === cast),
+        cast: MOCK_CASTS.find(({ path }) => path === cast),
         stage: stages.filter((stage) => stage.casts.includes(cast)),
       };
     });
@@ -53,17 +53,19 @@ const CastId: NextPage<Props> = ({ cast }) => {
       component: (
         <Flex as="ul" flexDir="column" gap="12px" w="100%">
           {recommendCasts.map((recommendCast) => (
-            <Box as="li" key={`recommend${recommendCast.cast?.id}`}>
+            <Box as="li" key={`recommend${recommendCast.cast?.path}`}>
               <Flex
                 as={NextLink}
-                href={pathWithAuthenticator(`casts/${recommendCast.cast?.id}`)}
+                href={pathWithAuthenticator(
+                  `casts/${recommendCast.cast?.path}`
+                )}
                 alignItems="center"
                 gap="8px"
                 w="100%"
               >
                 <Image
                   src={imageWithDirectoryPath(
-                    `cast_${recommendCast.cast?.id}.jpg`
+                    `cast_${recommendCast.cast?.path}.jpg`
                   )}
                   w="56px"
                   h="56px"
@@ -118,7 +120,7 @@ const CastId: NextPage<Props> = ({ cast }) => {
         <Flex alignItems="center" flexDir="column" gap="8px" m="auto">
           <Box w="120px" h="120px" pos="relative">
             <Image
-              src={imageWithDirectoryPath(`cast_${cast.id}.jpg`)}
+              src={imageWithDirectoryPath(`cast_${cast.path}.jpg`)}
               w="100%"
               h="100%"
               rounded="full"
@@ -144,8 +146,8 @@ const CastId: NextPage<Props> = ({ cast }) => {
 export default CastId;
 
 export const getStaticPaths = async () => {
-  const paths = MOCK_CASTS.map((item: CastType) => ({
-    params: { id: item.id },
+  const paths = MOCK_CASTS.map(({ path }) => ({
+    params: { id: path },
   }));
   return {
     paths,
@@ -160,7 +162,7 @@ export const getStaticProps = async ({
 }) => {
   return {
     props: {
-      cast: MOCK_CASTS.find(({ id }) => id === params.id)!,
+      cast: MOCK_CASTS.find(({ path }) => path === params.id)!,
     },
   };
 };

@@ -56,16 +56,16 @@ const Home: NextPage = () => {
             }% * ${-selected}))`}
             transition="transform 0.3s"
           >
-            {MOCK_STAGES.map((item, i) => (
+            {MOCK_STAGES.map((stage) => (
               <Box
                 as="li"
-                key={item.name + i}
+                key={"recommend" + stage.name}
                 w={`${100 / MOCK_STAGES.length}%`}
                 h="264px"
               >
                 <Box
                   as={NextLink}
-                  href={pathWithAuthenticator(`stages/${item.id}`)}
+                  href={pathWithAuthenticator(`stages/${stage.path}`)}
                   passHref
                   display="block"
                   w="100%"
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
                   position="relative"
                   overflow="hidden"
                 >
-                  <CoverImage path={`stage_${item.id}.jpg`} />
+                  <CoverImage path={`stage_${stage.path}.jpg`} />
                   <Box
                     w="100%"
                     bg={
@@ -83,10 +83,10 @@ const Home: NextPage = () => {
                     inset="auto auto 0 0"
                     p="0 5vw 20px"
                   >
-                    <StageTypeComponent type={item.type} />
+                    <StageTypeComponent type={stage.type} />
                     <OriginalSpacer size="4px" />
                     <Text color="white" fontWeight="bold" fontSize="2.2rem">
-                      {item.name}
+                      {stage.name}
                     </Text>
                     <Flex
                       alignItems="center"
@@ -105,14 +105,14 @@ const Home: NextPage = () => {
                         },
                       }}
                     >
-                      {item.schedule.map((content, i2) => (
+                      {stage.schedule.map((content, i2) => (
                         <Text
                           as="span"
                           key={content.place + i2}
                           color="black300"
                           fontSize="1.2rem"
                           sx={{
-                            ...(i2 < item.schedule.length - 1 && {
+                            ...(i2 < stage.schedule.length - 1 && {
                               "&::after": {
                                 content: '","',
                                 marginRight: "3px",
@@ -131,9 +131,9 @@ const Home: NextPage = () => {
           </Flex>
           <OriginalSpacer size="12px" />
           <Flex gap="8px" w="fit-content" m="0 auto">
-            {MOCK_STAGES.map((item, i) => (
+            {MOCK_STAGES.map((stage, i) => (
               <Box
-                key={item.id}
+                key={stage.path}
                 w="10px"
                 h="10px"
                 rounded="full"
@@ -233,7 +233,7 @@ const Home: NextPage = () => {
       component: (
         <StageCasts
           casts={MOCK_USER.recentCasts.map(
-            (id) => MOCK_CASTS.find((cast) => cast.id === id)!
+            (id) => MOCK_CASTS.find((cast) => cast.path === id)!
           )}
         />
       ),

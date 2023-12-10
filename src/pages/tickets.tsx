@@ -27,7 +27,7 @@ const Tickets: NextPage = () => {
           {MOCK_STAGES.map((stage, i) => (
             <Flex
               as={NextLink}
-              href={pathWithAuthenticator(`stages/${stage.id}`)}
+              href={pathWithAuthenticator(`stages/${stage.path}`)}
               passHref
               key={stage.name + i}
               minH="176px"

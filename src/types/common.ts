@@ -3,6 +3,12 @@ import { FC, SVGProps } from "react";
 export type UserType = {
   prefecture: string;
   doneStamps: number;
+  tickets: {
+    stageId: string;
+    place: string;
+    date: string;
+    time: string;
+  }[];
   favoriteStages: string[];
   recentCasts: string[];
 };

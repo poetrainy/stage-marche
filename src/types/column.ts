@@ -1,5 +1,6 @@
 export type ColumnType = {
-  id: string;
+  id: number;
+  path: string;
   title: string;
   date: string;
   genres: ("作品解説" | "インタビュー" | "レポ")[];

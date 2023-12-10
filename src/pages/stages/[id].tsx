@@ -27,9 +27,9 @@ type Props = {
 };
 
 const StageId: NextPage<Props> = ({ id }) => {
-  const stage = MOCK_STAGES.find((stage) => stage.id === id)!;
+  const stage = MOCK_STAGES.find(({ path }) => path === id)!;
   const casts = stage.casts.map(
-    (cast) => MOCK_CASTS.find((mockCast) => mockCast.id === cast)!
+    (cast) => MOCK_CASTS.find(({ path }) => path === cast)!
   );
   const ticketArea = useRef<HTMLDivElement>(null);
   const [ticketAreaHeight, setTicketAreaHeight] = useState<number>(0);
@@ -60,7 +60,7 @@ const StageId: NextPage<Props> = ({ id }) => {
 
   const Img = () => (
     <Box w="111.11111%" h="264px" overflow="hidden" pos="relative" m="0 -5.5%">
-      <CoverImage path={`stage_${stage.id}.jpg`} />
+      <CoverImage path={`stage_${stage.path}.jpg`} />
     </Box>
   );
 
@@ -301,8 +301,8 @@ const StageId: NextPage<Props> = ({ id }) => {
 export default StageId;
 
 export const getStaticPaths = async () => {
-  const paths = MOCK_STAGES.map((item: StageType) => ({
-    params: { id: item.id },
+  const paths = MOCK_STAGES.map((stage: StageType) => ({
+    params: { id: stage.path },
   }));
   return {
     paths,
