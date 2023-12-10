@@ -24,7 +24,7 @@ const FavoriteStageButton: FC<Props> = ({ getIsFavorite, isFixed = false }) => {
       sx={{
         ...(isFixed && {
           pos: "absolute",
-          inset: "8px 4px auto auto",
+          inset: "20px 16px auto auto",
         }),
       }}
     >

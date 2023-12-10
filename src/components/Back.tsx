@@ -5,10 +5,6 @@ import { useRouter } from "next/router";
 const Back: FC = () => {
   const router = useRouter();
 
-  const backFunc = () => {
-    router.back();
-  };
-
   return (
     <Center
       as="button"
@@ -48,7 +44,7 @@ const Back: FC = () => {
           transform: "rotateZ(45deg)",
         },
       }}
-      onClick={() => backFunc()}
+      onClick={() => router.back()}
     />
   );
 };
