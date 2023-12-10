@@ -23,7 +23,7 @@ const ColumnCard: FC<Props> = ({ column }) => {
       {column.map((column, i) => (
         <Flex
           as={NextLink}
-          href={pathWithAuthenticator(`columns/${column.id}`)}
+          href={pathWithAuthenticator(`/columns/${column.id}`)}
           passHref
           key={column.title}
           alignItems="center"

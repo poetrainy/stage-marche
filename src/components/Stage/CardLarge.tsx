@@ -19,7 +19,7 @@ type Props = {
 const StageCardLarge: FC<Props> = ({ stage }) => (
   <Flex
     as={NextLink}
-    href={pathWithAuthenticator(`stages/${stage.path}`)}
+    href={pathWithAuthenticator(`/stages/${stage.path}`)}
     passHref
     gap="4%"
     bg="white"

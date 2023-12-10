@@ -21,7 +21,7 @@ type Props = {
 const StageCardSmall: FC<Props> = ({ stage }) => (
   <Flex
     as={NextLink}
-    href={pathWithAuthenticator(`stages/${stage.path}`)}
+    href={pathWithAuthenticator(`/stages/${stage.path}`)}
     passHref
     flexDirection="column"
     justifyContent="space-between"

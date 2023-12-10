@@ -37,7 +37,7 @@ const Tickets: NextPage = () => {
           {UserBoughtTicketsStages.map((stage, i) => (
             <Flex
               as={NextLink}
-              href={pathWithAuthenticator(`stages/${stage.stage?.path}`)}
+              href={pathWithAuthenticator(`/stages/${stage.stage?.path}`)}
               passHref
               key={stage.stage?.path + stage.date}
               minH="176px"

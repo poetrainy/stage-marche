@@ -65,7 +65,7 @@ const Home: NextPage = () => {
               >
                 <Box
                   as={NextLink}
-                  href={pathWithAuthenticator(`stages/${stage.path}`)}
+                  href={pathWithAuthenticator(`/stages/${stage.path}`)}
                   passHref
                   display="block"
                   w="100%"
