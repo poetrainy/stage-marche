@@ -100,21 +100,19 @@ const Modal: FC<Props> = ({ isOpen, onClose, target, filter }) => {
                       ? selected[i].filter((item) => item !== i2)
                       : [...selected[i], i2];
                     keepArray[i] = newArray;
-                    console.log(keepArray);
-
                     setSelected(keepArray);
                   }}
-                  sx={{
-                    ...(selected[i].includes(i2)
-                      ? {
-                          color: "white",
-                          bg: "primary",
-                        }
-                      : {
-                          color: "black400",
-                          bg: "black100",
-                        }),
-                  }}
+                  // sx={{
+                  //   ...(selected[i].includes(i2)
+                  //     ? {
+                  //         color: "white",
+                  //         bg: "primary",
+                  //       }
+                  //     : {
+                  //         color: "black400",
+                  //         bg: "black100",
+                  //       }),
+                  // }}
                 >
                   {tag}
                 </Box>

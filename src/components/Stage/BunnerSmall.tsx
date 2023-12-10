@@ -25,7 +25,7 @@ const StageBunnerSmall: FC<Props> = ({ stages }) => {
         {stages.map((stage, i) => (
           <Flex
             as={NextLink}
-            href={pathWithAuthenticator(`/stages/${stage.id}`)}
+            href={pathWithAuthenticator(`stages/${stage.id}`)}
             passHref
             key={stage.name + i}
             flexDirection="column"

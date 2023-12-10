@@ -38,7 +38,7 @@ const SignInGuidance: FC<Props> = ({ guidance }) => {
       <OriginalSpacer size="32px" />
       <Center
         as={NextLink}
-        href="/enquete"
+        href="enquete"
         passHref
         w="240px"
         h="64px"

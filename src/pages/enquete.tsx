@@ -1,17 +1,14 @@
-import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, Select, Text } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { FC, SVGProps, useState } from "react";
+import { FC, FormEvent, SVGProps, useState } from "react";
 
 import OriginalSpacer from "src/components/OriginalSpacer";
 import PreText from "src/components/PreText";
 
 import { PREFECTURES } from "src/constants/stage";
 
-import {
-  pathWithAuthenticator,
-  imageWithDirectoryPath,
-} from "src/libs/convert";
+import { pathWithAuthenticator } from "src/libs/convert";
 import { onLocalStorageAuthenticate } from "src/libs/authenticate";
 
 import SvgImageEnqueteGenre from "src/assets/svg/enquete_1_genre.svg";
@@ -37,43 +34,9 @@ const Enquete: NextPage = () => {
   const router = useRouter();
 
   const [genre, setGenre] = useState<number[]>([]);
-  const [prefecture, setPrefecture] = useState<number>(100);
-  const [isGenreLengthArray, setIsGenreLengthArray] = useState<boolean[]>([
-    false,
-    false,
-    false,
-  ]);
+  const [prefecture, setPrefecture] = useState<string>("none");
   const [page, setPage] = useState<number>(0);
-
-  const setPageFunc = () => {
-    setPage(page + 1);
-  };
-
-  const setGenreFunc = (input: number) => {
-    let keepGenre = genre;
-    let keepGenreLength = genre.length;
-    for (let i = 0; i < genre.length; i++) {
-      if (genre[i] === input) {
-        keepGenre.splice(i, 1);
-        break;
-      }
-    }
-    if (keepGenre.length === keepGenreLength) {
-      if (keepGenre.length < 3) {
-        keepGenre.push(input);
-      }
-    }
-    if (keepGenre.length === 3) {
-      setIsGenreLengthArray([false, false, true]);
-    } else if (keepGenre.length === 2) {
-      setIsGenreLengthArray([false, true, false]);
-    } else if (keepGenre.length === 1) {
-      setIsGenreLengthArray([true, false, false]);
-    } else {
-      setIsGenreLengthArray([false, false, false]);
-    }
-    setGenre(keepGenre);
-  };
+  const [buttonProgress, setButtonProgress] = useState<number>(0);
 
   const localStorageSignIn = () => {
     onLocalStorageAuthenticate("true");
@@ -92,39 +55,47 @@ const Enquete: NextPage = () => {
         <Center
           gap="4px 8px"
           flexWrap="wrap"
-          h="210px"
+          h="200px"
           px="8px"
           textStyle="bodyW"
         >
           {STAGE_GENRES.map((item: string, i) => (
             <Box
-              key={0 + item + i}
+              key={item}
+              as="button"
+              type="button"
               bg="white"
+              color={genre.length === 3 ? "#bdbdbd" : "skyblue"}
               textStyle="tagItem"
-              onClick={() => setGenreFunc(i)}
+              onClick={() => {
+                const includedGenre = genre.includes(i);
+                const afterGenreLength = includedGenre
+                  ? genre.length - 1
+                  : genre.length + 1;
+
+                setButtonProgress((prev) =>
+                  afterGenreLength === 1
+                    ? 100 / 3
+                    : afterGenreLength === 2
+                    ? (100 / 3) * 2
+                    : afterGenreLength === 3 || genre.length === 3
+                    ? 100
+                    : 0
+                );
+
+                setGenre((prev) =>
+                  includedGenre
+                    ? prev.filter((p) => p !== i)
+                    : genre.length !== 3
+                    ? [...prev, i]
+                    : prev
+                );
+              }}
               sx={{
-                ...(isGenreLengthArray[2]
-                  ? {
-                      color: "#bdbdbd",
-                    }
-                  : {
-                      color: "skyblue",
-                    }),
-                ...(isGenreLengthArray[0] &&
-                  genre[0] === i && {
-                    bg: "skyblue",
-                    color: "white",
-                  }),
-                ...(isGenreLengthArray[1] &&
-                  (genre[0] === i || genre[1] === i) && {
-                    bg: "skyblue",
-                    color: "white",
-                  }),
-                ...(isGenreLengthArray[2] &&
-                  (genre[0] === i || genre[1] === i || genre[2] === i) && {
-                    bg: "skyblue",
-                    color: "white",
-                  }),
+                ...(genre.includes(i) && {
+                  bg: "skyblue",
+                  color: "white",
+                }),
               }}
             >
               {item}
@@ -137,66 +108,36 @@ const Enquete: NextPage = () => {
       heading: "お住まいの都道府県は\nどこですか？",
       image: SvgImageEnquetePrefecture,
       component: (
-        <Center h="210px" textStyle="bodyW">
-          <Box
-            w="80%"
-            h="72px"
-            rounded="full"
-            overflow="hidden"
-            pos="relative"
-            sx={{
-              "&::before": {
-                content: '""',
-                display: "flex",
-                w: "64px",
-                h: "72px",
-                bg: "skyblue",
-                position: "absolute",
-                inset: "0 0 auto auto",
-              },
-            }}
-          >
-            <Box
-              as="select"
-              name="prefecture"
-              value={prefecture}
-              w="100%"
-              h="100%"
-              fontSize="1.4rem"
-              fontWeight="bold"
-              p="0 32px"
-              appearance="none"
-              // @ts-ignore
-              onChange={(e) => setPrefecture(e.currentTarget.value)}
-            >
-              <Box as="option" value={100}>
-                都道府県を選択
-              </Box>
-              {PREFECTURES.map((item, i) => (
-                <Box as="option" value={i} key={item + i}>
-                  {item}
-                </Box>
-              ))}
-            </Box>
-          </Box>
-        </Center>
-      ),
-    },
-    {
-      heading: "おめでとう！🎉\n登録が完了しました！",
-      image: SvgImageEnqueteComplete,
-      component: (
-        <Center
-          as="p"
-          color="black600"
-          fontSize="1.3rem"
-          lineHeight="2.2rem"
-          textAlign="center"
+        <Box
+          as="select"
+          appearance="none"
+          value={prefecture}
+          placeholder="都道府県を選択"
+          w="70%"
+          h="64px"
+          fontSize="1.4rem"
+          fontWeight="bold"
+          p="0 32px"
+          m="68px"
+          rounded="full"
+          onChange={(e: FormEvent<HTMLDivElement>) => {
+            // @ts-ignore
+            setPrefecture(e.target.value);
+            // @ts-ignore
+            if (e.target.value !== "none") {
+              setButtonProgress(100);
+            }
+          }}
         >
-          会員登録をしていただき、ありがとうございます！
-          <br />
-          さまざまな作品があなたを待っていますよ！
-        </Center>
+          <Box as="option" value="none">
+            都道府県を選択
+          </Box>
+          {PREFECTURES.map((item) => (
+            <Box as="option" value={item} key={item}>
+              {item}
+            </Box>
+          ))}
+        </Box>
       ),
     },
   ];
@@ -230,128 +171,97 @@ const Enquete: NextPage = () => {
         />
         <Flex
           flexWrap="wrap"
-          w={`calc(${signInEnqueteText.length} * 100vw)`}
+          alignItems="center"
+          w={`calc(${signInEnqueteText.length + 1} * 100vw)`}
+          minH="100vh"
+          pt="16px"
           transform={`translateX(calc(${page} * -100vw))`}
           transition="transform 0.3s"
         >
-          {signInEnqueteText.map((item, i) => (
+          <Flex
+            alignItems="center"
+            w={`calc(${signInEnqueteText.length} * 100vw)`}
+            h="fit-content"
+            py="56px"
+            pos="relative"
+          >
+            {signInEnqueteText.map((item) => (
+              <Center key={item.heading} flexDir="column" gap="24px" w="100vw">
+                <PreText text={item.heading} />
+                <Image as={item.image} />
+                <>{item.component}</>
+                <Box h="64px" />
+              </Center>
+            ))}
             <Center
-              key={item.heading}
-              flexDir="column"
-              w="100vw"
-              minH="100vh"
-              pb="16px"
+              as="button"
+              type="button"
+              disabled={buttonProgress !== 100 ?? false}
+              w="240px"
+              h="56px"
+              color="white"
+              bg="black300"
+              fontWeight="bold"
+              fontSize="1.6rem"
+              pos="absolute"
+              inset={`auto 100vw ${4 + 56}px 0`}
+              transform={`translateX(${page === 0 ? "0" : "100vw"})`}
+              transition="transform 0.3s"
+              m="auto"
+              rounded="full"
+              overflow="hidden"
+              onClick={() => {
+                setPage(page + 1);
+                setButtonProgress(0);
+              }}
               sx={{
-                ">button": {
-                  w: "232px",
-                  h: "64px",
-                  rounded: "full",
-                  overflow: "hidden",
-                  pos: "relative",
-                  fontWeight: "bold",
-                  "&:nth-of-type(1)": {
-                    ...(isGenreLengthArray[0] && {
-                      "&::before": {
-                        w: "33%",
-                      },
-                    }),
-                    ...(isGenreLengthArray[1] && {
-                      "&::before": {
-                        w: "66%",
-                      },
-                    }),
-                    ...(isGenreLengthArray[2]
-                      ? {
-                          pointerEvents: "auto",
-                          "&::before": {
-                            w: "100%",
-                          },
-                        }
-                      : {
-                          pointerEvents: "none",
-                        }),
-                  },
-                  "&:nth-of-type(2)": {
-                    ...(Number(prefecture) !== 100
-                      ? {
-                          pointerEvents: "auto",
-                          "&::before": {
-                            w: "100%",
-                          },
-                        }
-                      : {
-                          pointerEvents: "none",
-                        }),
-                  },
+                "&::before": {
+                  content: '""',
+                  display: "block",
+                  w: `${buttonProgress}%`,
+                  h: "100%",
+                  bg: "skyblue",
+                  position: "absolute",
+                  inset: "0 auto auto 0",
+                  transition: "width 0.4s",
                 },
               }}
             >
-              <PreText text={item.heading} />
-              <OriginalSpacer size="24px" />
-              <Image as={item.image} />
-              <OriginalSpacer size="32px" />
-              <>{item.component}</>
-              <OriginalSpacer size="40px" />
-              {i < 2 ? (
-                <Center
-                  as="button"
-                  type="button"
-                  w="240px"
-                  h="64px"
-                  color="white"
-                  bg="black300"
-                  fontWeight="bold"
-                  fontSize="1.6rem"
-                  pos="relative"
-                  onClick={() => setPageFunc()}
-                  sx={{
-                    "&::before": {
-                      content: '""',
-                      display: "block",
-                      w: 0,
-                      h: "100%",
-                      bg: "skyblue",
-                      position: "absolute",
-                      inset: "0 auto auto 0",
-                      transition: "width 0.4s",
-                    },
-                    "&::after": {
-                      content: '""',
-                      display: "block",
-                      w: "28px",
-                      h: "28px",
-                      background: `url(${imageWithDirectoryPath(
-                        "enquete_icon_check.svg"
-                      )}) no-repeat`,
-                      backgroundSize: "contain",
-                      backgroundPosition: "center",
-                      position: "absolute",
-                    },
-                  }}
-                >
-                  <Text as="span" pos="relative" zIndex={2}>
-                    次へ
-                  </Text>
-                </Center>
-              ) : (
-                <Center
-                  as="button"
-                  type="button"
-                  display="flex"
-                  w="240px"
-                  h="64px"
-                  color="white"
-                  bg="greenToBlue"
-                  rounded="full"
-                  fontWeight="bold"
-                  fontSize="1.6rem"
-                  onClick={() => localStorageSignIn()}
-                >
-                  舞台を探しに行く！
-                </Center>
-              )}
+              <Text as="span" pos="relative" zIndex={2}>
+                次へ
+              </Text>
             </Center>
-          ))}
+          </Flex>
+          <Center flexDir="column" gap="24px" w="100vw">
+            <PreText text={`おめでとう！🎉\n登録が完了しました！`} />
+            <Image as={SvgImageEnqueteComplete} />
+            <Center
+              as="p"
+              color="black600"
+              fontSize="1.3rem"
+              lineHeight="2.2rem"
+              textAlign="center"
+            >
+              会員登録をしていただき、ありがとうございます！
+              <br />
+              さまざまな作品があなたを待っていますよ！
+            </Center>
+            <Center
+              as="button"
+              type="button"
+              display="flex"
+              w="240px"
+              h="64px"
+              color="white"
+              bg="greenToBlue"
+              rounded="full"
+              fontWeight="bold"
+              fontSize="1.6rem"
+              onClick={() => localStorageSignIn()}
+            >
+              舞台を探しに行く！
+            </Center>
+          </Center>
         </Flex>
       </Box>
     </>

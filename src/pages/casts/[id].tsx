@@ -56,7 +56,7 @@ const CastId: NextPage<Props> = ({ cast }) => {
             <Box as="li" key={`recommend${recommendCast.cast?.id}`}>
               <Flex
                 as={NextLink}
-                href={pathWithAuthenticator(`/casts/${recommendCast.cast?.id}`)}
+                href={pathWithAuthenticator(`casts/${recommendCast.cast?.id}`)}
                 alignItems="center"
                 gap="8px"
                 w="100%"
