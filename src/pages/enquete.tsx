@@ -144,7 +144,7 @@ const Enquete: NextPage = () => {
 
   return (
     <>
-      <Box w="100vw" overflow="hidden">
+      <Box w="100vw" maxW="400px" m="0 auto" overflow="hidden">
         <Box
           w="100vw"
           h="16px"
@@ -170,23 +170,28 @@ const Enquete: NextPage = () => {
           }}
         />
         <Flex
-          flexWrap="wrap"
           alignItems="center"
-          w={`calc(${signInEnqueteText.length + 1} * 100vw)`}
+          w={[
+            `calc(${signInEnqueteText.length + 1} * 100%)`,
+            `calc(${signInEnqueteText.length + 1} * 400px)`,
+          ]}
           minH="100vh"
           pt="16px"
-          transform={`translateX(calc(${page} * -100vw))`}
+          transform={[
+            `translateX(calc(${page} * -100%))`,
+            `translateX(calc(${page} * -400px))`,
+          ]}
           transition="transform 0.3s"
         >
           <Flex
             alignItems="center"
-            w={`calc(${signInEnqueteText.length} * 100vw)`}
+            w={`calc(${signInEnqueteText.length} * 100%)`}
             h="fit-content"
             py="56px"
             pos="relative"
           >
             {signInEnqueteText.map((item) => (
-              <Center key={item.heading} flexDir="column" gap="24px" w="100vw">
+              <Center key={item.heading} flexDir="column" gap="24px" w="100%">
                 <PreText text={item.heading} />
                 <Image as={item.image} />
                 <>{item.component}</>
@@ -204,8 +209,11 @@ const Enquete: NextPage = () => {
               fontWeight="bold"
               fontSize="1.6rem"
               pos="absolute"
-              inset={`auto 100vw ${4 + 56}px 0`}
-              transform={`translateX(${page === 0 ? "0" : "100vw"})`}
+              inset={[`auto 100% ${4 + 56}px 0`, `auto 400px ${4 + 56}px 0`]}
+              transform={[
+                `translateX(${page === 0 ? "0" : "100%"})`,
+                `translateX(${page === 0 ? "0" : "400px"})`,
+              ]}
               transition="transform 0.3s"
               m="auto"
               rounded="full"
@@ -232,7 +240,7 @@ const Enquete: NextPage = () => {
               </Text>
             </Center>
           </Flex>
-          <Center flexDir="column" gap="24px" w="100vw">
+          <Center flexDir="column" gap="24px" w="100%">
             <PreText text={`おめでとう！🎉\n登録が完了しました！`} />
             <Image as={SvgImageEnqueteComplete} />
             <Center

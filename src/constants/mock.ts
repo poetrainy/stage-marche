@@ -223,7 +223,7 @@ export const MOCK_CASTS: CastType[] = [
 export const MOCK_COLUMNS: ColumnType[] = [
   {
     id: 1,
-    path: "elizabeth",
+    path: "elisabeth",
     title: "『エリザベート』が愛される理由　4年ぶりのトート役（井上芳雄）",
     date: "2023-1-20",
     genres: ["作品解説"],
@@ -244,9 +244,8 @@ export const MOCK_USER: UserType = {
   doneStamps: 3,
   tickets: [
     {
-      stageId: "elizabeth",
+      stageId: "elisabeth",
       scheduleId: 2,
-      place: "博多座",
       date: "2023-1-28",
       time: "13:00",
       isCompleted: true,
@@ -254,20 +253,19 @@ export const MOCK_USER: UserType = {
     {
       stageId: "endlessshock",
       scheduleId: 1,
-      place: "梅田芸術劇場 メインホール",
-      date: "2023-1-28",
+
+    date: "2023-1-28",
       time: "13:00",
       isCompleted: false,
     },
     {
       stageId: "shibiregumo",
       scheduleId: 1,
-      place: "兵庫県立芸術文化センター 阪急中ホール",
       date: "2023-1-28",
       time: "13:00",
       isCompleted: false,
     },
   ],
-  favoriteStages: ["elizabeth", "endlessshock"],
+  favoriteStages: ["elisabeth", "endlessshock"],
   recentCasts: ["domotokoichi", "inoueyoshio"],
 };

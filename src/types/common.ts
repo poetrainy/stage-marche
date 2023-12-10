@@ -6,7 +6,6 @@ export type UserType = {
   tickets: {
     stageId: string;
     scheduleId: number;
-    place: string;
     date: string;
     time: string;
     isCompleted: boolean;

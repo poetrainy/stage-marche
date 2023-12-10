@@ -11,11 +11,11 @@ import { MOCK_STAGES, MOCK_USER } from "src/constants/mock";
 
 const Tickets: NextPage = () => {
   const UserBoughtTicketsStages = MOCK_USER.tickets.map((stage) => {
+    const returnStage = MOCK_STAGES.find(({ path }) => path === stage.stageId)!;
     return {
       stage: MOCK_STAGES.find(({ path }) => stage.stageId === path),
-      place: stage.place,
-      // place: returnStage.schedule.find(({ id }) => stage.scheduleId === id)
-      //   ?.place,
+      place: returnStage.schedule.find(({ id }) => stage.scheduleId === id)
+        ?.place,
       date: stage.date,
       time: stage.time,
       isCompleted: stage.isCompleted,
