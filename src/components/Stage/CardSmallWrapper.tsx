@@ -10,7 +10,7 @@ type Props = {
 };
 
 const StageCardSmallWrapper: FC<Props> = ({ stages }) => (
-  <Box w="111.11111%" m="0 -5.5%">
+  <Box w="111.11111%" m="0 -5.5%" overflow="scroll">
     <Flex gap="12px" w={`calc(160px * ${stages.length})`} p="0 5.5%">
       {stages.map((stage) => (
         <StageCardSmall key={"small" + stage.name} stage={stage} />
