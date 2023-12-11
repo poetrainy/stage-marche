@@ -12,7 +12,8 @@ type Props = {
 const StageCardSmallWrapper: FC<Props> = ({ stages }) => (
   <Box
     w="111.11111%"
-    m="0 -5.5%"
+    m="-16px -5.5%"
+    p="16px 0"
     overflow="scroll"
     sx={{
       "&::-webkit-scrollbar": {
