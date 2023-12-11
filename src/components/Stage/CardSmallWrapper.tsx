@@ -23,7 +23,11 @@ const StageCardSmallWrapper: FC<Props> = ({ stages }) => (
       scrollbarWidth: "none",
     }}
   >
-    <Flex gap="12px" w={`calc(160px * ${stages.length})`} p="0 5.5%">
+    <Flex
+      gap="12px"
+      w={`calc(160px * ${stages.length} + 12px * 2 + 5.5% * 2)`}
+      p="0 5.5%"
+    >
       {stages.map((stage) => (
         <StageCardSmall key={"small" + stage.name} stage={stage} />
       ))}
