@@ -5,7 +5,6 @@ import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import StageCardLargeWrapper from "src/components/Stage/CardLargeWrapper";
 import ContentsBase from "src/components/ContentsBase";
 import StageMovie from "src/components/Stage/Movie";
-import Back from "src/components/Back";
 
 import { CastType } from "src/types/stage";
 
@@ -16,6 +15,7 @@ import {
   pathWithAuthenticator,
 } from "src/libs/convert";
 import FavoriteActorButton from "src/components/FavoriteActorButton";
+import Header from "src/components/Header";
 
 type Props = {
   cast: CastType;
@@ -51,13 +51,13 @@ const CastId: NextPage<Props> = ({ cast }) => {
     {
       heading: "こんな共演者もいます",
       component: (
-        <Flex as="ul" flexDir="column" gap="12px" w="100%">
+        <Flex as="ul" flexDir="column" gap="16px" w="100%">
           {recommendCasts.map((recommendCast) => (
             <Box as="li" key={`recommend${recommendCast.cast?.path}`}>
               <Flex
                 as={NextLink}
                 href={pathWithAuthenticator(
-                  `casts/${recommendCast.cast?.path}`
+                  `/casts/${recommendCast.cast?.path}`
                 )}
                 alignItems="center"
                 gap="8px"
@@ -77,7 +77,7 @@ const CastId: NextPage<Props> = ({ cast }) => {
                     as="span"
                     display="block"
                     color="black500"
-                    fontSize="1rem"
+                    fontSize="1.2rem"
                   >
                     {`${recommendCast.stage[0].name}${
                       recommendCast.stage.length >= 2 ? "他" : ""
@@ -102,21 +102,22 @@ const CastId: NextPage<Props> = ({ cast }) => {
 
   return (
     <>
+      <Header path={`/casts/${cast.path}`} isBack />
       <Box
         w="100%"
         h="160px"
         bg="greenToBlue"
         pos="absolute"
+        inset="64px auto auto auto"
         textStyle="lightShadow"
       />
       <Flex
         flexDir="column"
         gap="40px"
-        p="80px 0 64px"
+        p="144px 0 64px"
         pos="relative"
         textStyle="bodyW"
       >
-        <Back />
         <Flex alignItems="center" flexDir="column" gap="8px" m="auto">
           <Box w="120px" h="120px" pos="relative">
             <Image

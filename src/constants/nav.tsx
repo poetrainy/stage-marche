@@ -1,4 +1,4 @@
-import { ContentsBaseTypeWithIcon } from "src/types/common";
+import { ContentsBaseType, ContentsBaseTypeWithIcon } from "src/types/common";
 
 import SvgNavigationIconHome from "src/assets/svg/navigation_home.svg";
 import SvgNavigationIconColumn from "src/assets/svg/navigation_column.svg";
@@ -31,5 +31,28 @@ export const NAVIGATION_CONTENTS: ContentsBaseTypeWithIcon[] = [
     label: "アカウント",
     path: "/user",
     icon: SvgNavigationIconUser,
+  },
+];
+
+export const HEADER_LABELS: ContentsBaseType[] = [
+  {
+    label: "コラム",
+    path: "/columns",
+  },
+  {
+    label: "チケット",
+    path: "/tickets",
+  },
+  {
+    label: "気になる",
+    path: "/favorites",
+  },
+  {
+    label: "アカウント",
+    path: "/user",
+  },
+  {
+    label: "キャスト",
+    path: "/casts",
   },
 ];

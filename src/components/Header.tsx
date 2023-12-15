@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { Box, Center, Image, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-import { NAVIGATION_CONTENTS } from "src/constants/nav";
+import { HEADER_LABELS } from "src/constants/nav";
 import { FILTER_COLUMNS, FILTER_STAGES } from "src/constants/filter";
 
 import Modal from "src/components/Modal";
@@ -20,8 +20,8 @@ type Props = {
 const Header: FC<Props> = ({ path, isBack, isSearch }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const navigation = NAVIGATION_CONTENTS.find(
-    (content) => content.path === path
+  const navigation = HEADER_LABELS.find((content) =>
+    path.startsWith(content.path)
   );
 
   return (
